@@ -1,81 +1,80 @@
-# Architecture
+# Architektur
 
-> Working title: **Aldermark**. Theme: original-mythology medieval. Scope: **single shared world**, **self-hosted** (target: tens to low-hundreds of concurrent players). Server is **authoritative**; the client renders and previews but never decides state.
+> Projekt: **Kingdoms of Adelia**. Thematik: eigene mittelalterliche Mythologie. Umfang: **eine gemeinsame Welt**, **selbst gehostet** (Ziel: zehn bis wenige hundert gleichzeitige Spieler). Der Server ist durchgehend **autoritativ** (der Client rendert und zeigt Vorschauen, entscheidet aber nie über den Zustand).
 
-This document records every tech decision with a one-line justification and the main alternative considered. Locked decisions (from the project brief) are marked 🔒.
+Dieses Dokument hält jede Tech-Entscheidung mit einer Ein-Zeilen-Begründung und der wichtigsten erwogenen Alternative fest. Aus dem Bootstrap festgelegte Entscheidungen sind mit 🔒 markiert.
 
-## 1. Tech stack
+## 1. Tech-Stack
 
-| Concern | Decision | Why | Alternative considered |
+| Belang | Entscheidung | Warum | Erwogene Alternative |
 |---|---|---|---|
-| Language | 🔒 **TypeScript**, `strict: true`, no `any` | One language across client/server/shared; types are the contract | (none — locked) |
-| Frontend framework | **Svelte 5 (runes) + Vite** | Tiny runtime, compile-time fine-grained reactivity (ideal for many live-ticking numbers), scoped CSS that pairs with our token system, gentlest learning curve | **SolidJS** (very close 2nd — signals are excellent; rejected only for smaller ecosystem). 🔒 React/Next excluded. |
-| Styling | **Plain CSS + CSS custom properties** (design tokens), component-scoped | "Close to the metal", exact control of the data-dense density we want | **Tailwind** (rejected: utility churn fights bespoke density tokens) |
-| City grid rendering | **CSS Grid + SVG overlay** | City is a bounded grid (~hundreds of plots); DOM gives free hit-testing, tooltips, keyboard nav, accessibility; SVG draws adjacency links/highlights | Canvas (rejected for city: loses cheap interactivity) |
-| World map rendering | **Canvas 2D** with viewport culling + tile cache | World map is large (pan/zoom over many tiles); DOM won't scale | **WebGL/PixiJS** (deferred — upgrade path if tile counts demand it) |
-| Backend framework | **Fastify** | Schema-first validation that dovetails with our shared zod contracts; great TS support; fast | **Express** (the familiar default; rejected for weaker built-in validation/types — but a thin enough layer that switching is cheap) |
-| Realtime transport | **`ws`** (raw WebSocket) with a typed message protocol | Lean, full control of the protocol via shared schemas, minimal overhead; we add a small room/subscription layer | **socket.io** (rejected: heavier, opinionated protocol, unneeded at our scale) |
-| Database | 🔒 **PostgreSQL 16** (dev + prod) | One DB everywhere; strong indexing, JSONB, time math for the scheduler | (none — locked; **no SQLite**) |
-| DB access | **Kysely** (typed query builder) + its migration runner | End-to-end type safety with no heavy ORM; close to SQL for tick-loop query tuning | **Knex** (less type-safe), **Prisma** (🔒 excluded — too heavy/opaque for our query patterns) |
-| Validation / contracts | **Zod** schemas in `shared/` | Single source of truth for REST bodies, WS payloads, and data-file validation; infer TS types from them | io-ts / typebox (rejected: ergonomics) |
-| Local DB dev | **Docker Compose** (`postgres:16-alpine`) | `docker compose up -d db` → clean local Postgres in seconds | Native install (rejected: per-machine drift) |
-| Build/dev | **Vite** (client); **tsx** (server dev/watch), **tsc** (typecheck) + **esbuild** (server bundle); **npm workspaces** monorepo | Minimal toolchain; fast HMR client, fast restart server | Turborepo/nx (rejected: overkill at this size) |
-| Lint/format | **ESLint** (`@typescript-eslint` strict) + **Prettier** (defaults) | Consistency, catch `any`/unsafe | — |
-| Asset pipeline | **SVG** for UI icons (sprite sheet), **PNG/WebP** for tiles; all original | Crisp scalable UI, compact tiles | — |
+| Sprache | 🔒 **TypeScript**, `strict: true`, kein `any` | Eine Sprache über Client/Server/Shared; Typen sind der Vertrag | (keine — gesetzt) |
+| Frontend-Framework | **Svelte 5 (Runes) + Vite** | Winzige Runtime, feingranulare Reaktivität zur Compile-Zeit (ideal für viele live tickende Zahlen), gescopetes CSS passend zum Token-System, flachste Lernkurve | **SolidJS** (sehr knapp dahinter; nur wegen kleinerem Ökosystem verworfen). 🔒 React/Next ausgeschlossen. |
+| Styling | **Reines CSS + CSS Custom Properties** (Design-Tokens), komponenten-gescopet | „Nah am Metall", exakte Kontrolle über die gewünschte Datendichte | **Tailwind** (verworfen: Utility-Wildwuchs kämpft gegen eigene Dichte-Tokens) |
+| Stadtraster-Rendering | **CSS-Grid + SVG-Overlay** | Stadt ist ein begrenztes Raster (~hunderte Felder); DOM liefert Hit-Testing, Tooltips, Tastatur-Navigation, Barrierefreiheit gratis; SVG zeichnet Adjazenz-Verbindungen/Highlights | Canvas (für die Stadt verworfen: verliert günstige Interaktivität) |
+| Weltkarten-Rendering | **Canvas 2D** mit Viewport-Culling + Tile-Cache | Weltkarte ist groß (Pan/Zoom über viele Tiles); DOM skaliert nicht | **WebGL/PixiJS** (zurückgestellt — Upgrade-Pfad, falls die Tile-Mengen es erfordern) |
+| Backend-Framework | **Fastify** | Schema-first-Validierung, die zu unseren geteilten Zod-Verträgen passt; starke TS-Unterstützung; schnell | **Express** (der vertraute Standard; wegen schwächerer eingebauter Validierung/Typen verworfen — aber dünn genug, um günstig zu wechseln) |
+| Realtime-Transport | **`ws`** (rohes WebSocket) mit typisiertem Nachrichten-Protokoll | Schlank, volle Kontrolle über das Protokoll via geteilte Schemas, minimaler Overhead; wir bauen eine kleine Room-/Subscription-Schicht | **socket.io** (verworfen: schwerer, meinungsstark, in unserer Größe unnötig) |
+| Datenbank | 🔒 **PostgreSQL 16** (Dev + Prod) | Eine DB überall; starkes Indexing, JSONB, Zeit-Arithmetik für den Scheduler | (keine — gesetzt; **kein SQLite**) |
+| DB-Zugriff | **Kysely** (typisierter Query-Builder) + dessen Migration-Runner | Durchgängige Typsicherheit ohne schweres ORM; nah an SQL für Tick-Loop-Query-Tuning | **Knex** (weniger typsicher), **Prisma** (🔒 ausgeschlossen — zu schwer/opak für unsere Query-Muster) |
+| Validierung / Verträge | **Zod**-Schemas in `shared/` | Eine Quelle der Wahrheit für REST-Bodies, WS-Payloads und Datendatei-Validierung; TS-Typen daraus ableiten | io-ts / typebox (verworfen: Ergonomie) |
+| Lokale DB-Entwicklung | **Docker Compose** (`postgres:16-alpine`) | `docker compose up -d db` → sauberes lokales Postgres in Sekunden | Native Installation (verworfen: Drift pro Rechner) |
+| Build/Dev | **Vite** (Client); **tsx** (Server-Dev/Watch), **tsc** (Typecheck) + **esbuild** (Server-Bundle); **npm workspaces** Monorepo | Minimale Toolchain; schnelles HMR im Client, schneller Restart im Server | Turborepo/nx (verworfen: Overkill in dieser Größe) |
+| Lint/Format | **ESLint** (`@typescript-eslint` strict) + **Prettier** (Defaults) | Konsistenz, fängt `any`/Unsicheres | — |
+| Asset-Pipeline | **SVG** für UI-Icons (Sprite-Sheet), **PNG/WebP** für Tiles; alles eigen | Scharfe skalierbare UI, kompakte Tiles | — |
 
-## 2. Module boundaries
+## 2. Modulgrenzen
 
 ```
-shared/          # imported by BOTH client and server — no Node or DOM APIs
-  schemas/       # zod schemas: REST bodies, WS messages, data-file shapes
-  constants/     # PROJECT_NAME, resource/building/unit enums, tunables
-  types/         # types inferred from schemas; domain types
-  formulas/      # PURE deterministic functions: adjacency, costs, production,
-                 #   combat math, travel time. Server = source of truth;
-                 #   client = optimistic preview only. Identical code → no drift.
+shared/          # von BEIDEN (Client und Server) importiert — keine Node- oder DOM-APIs
+  schemas/       # Zod-Schemas: REST-Bodies, WS-Nachrichten, Datendatei-Formen
+  constants/     # PROJECT_NAME, Ressourcen-/Gebäude-/Einheiten-Enums, Stellschrauben
+  types/         # aus Schemas abgeleitete Typen; Domänentypen
+  formulas/      # REINE deterministische Funktionen: Adjazenz, Kosten, Produktion,
+                 #   Kampf-Mathematik, Reisezeit. Server = Quelle der Wahrheit;
+                 #   Client = nur optimistische Vorschau. Gleicher Code → kein Drift.
 
 server/
-  src/           # bootstrap, config, di wiring
+  src/           # Bootstrap, Config, DI-Verdrahtung
   db/
-    migrations/  # Kysely migrations (timestamped)
-    schema.sql   # generated reference snapshot of current schema
-  game/          # tick scheduler, resource model, construction, combat,
-                 #   market, alliance — the authoritative game logic
-  routes/        # Fastify REST handlers (account, settings, market, read APIs)
-  ws/            # ws server: connection, auth, rooms/subscriptions, dispatch
+    migrations/  # Kysely-Migrationen (mit Zeitstempel)
+    schema.sql   # generierter Referenz-Snapshot des aktuellen Schemas
+  game/          # Tick-Scheduler, Ressourcenmodell, Bau, Kampf, Markt, Allianz
+  routes/        # Fastify-REST-Handler (Account, Settings, Markt, Lese-APIs)
+  ws/            # ws-Server: Verbindung, Auth, Rooms/Subscriptions, Dispatch
 
 client/
-  src/           # Svelte app: stores, views (city grid, world map, panels),
-                 #   ws client, REST client, local interpolation
-  public/        # static
-  assets/        # ORIGINAL art only (see IP-COMPLIANCE.md)
-  design-system.html  # living component demo
+  src/           # Svelte-App: Stores, Views (Stadtraster, Weltkarte, Panels),
+                 #   ws-Client, REST-Client, lokale Interpolation
+  public/        # statisch
+  assets/        # NUR EIGENE Grafik (siehe IP-COMPLIANCE.md)
+  design-system.html  # lebende Komponenten-Demo
 
-data/            # buildings.yaml, units.yaml, resources.yaml — balance data,
-                 #   validated by shared/schemas at load time
+data/            # buildings.yaml, units.yaml, resources.yaml — Balance-Daten,
+                 #   beim Laden durch shared/schemas validiert
 ```
 
-**Rule:** `shared/` must stay environment-agnostic (no `fs`, no `window`). The client may import `shared/formulas` to *preview* an action's outcome, but the server recomputes authoritatively and the result it broadcasts wins.
+**Regel:** `shared/` bleibt umgebungsneutral (kein `fs`, kein `window`). Der Client darf `shared/formulas` importieren, um das Ergebnis einer Aktion zu *zeigen* (Vorschau), aber der Server rechnet autoritativ nach, und sein gesendetes Ergebnis gewinnt.
 
-## 3. System diagram
+## 3. Systemdiagramm
 
 ```mermaid
 flowchart LR
   subgraph Browser["Client (Svelte + Vite)"]
-    UI["City grid (CSS+SVG)\nWorld map (Canvas)\nData panels/tables"]
-    Store["Reactive stores\n+ local interpolation"]
-    WSC["ws client (typed)"]
-    REST["REST client"]
+    UI["Stadtraster (CSS+SVG)\nWeltkarte (Canvas)\nDaten-Panels/Tabellen"]
+    Store["Reaktive Stores\n+ lokale Interpolation"]
+    WSC["ws-Client (typisiert)"]
+    REST["REST-Client"]
     UI <--> Store
     Store <--> WSC
     Store <--> REST
   end
 
-  subgraph Server["Node process (single, authoritative)"]
-    FAST["Fastify REST\n(account, settings, market, reads)"]
-    WSS["ws server\n(rooms: per-user, per-city, alliance, world-region)"]
-    SCHED["Tick scheduler\n(1s: resolve due events)"]
-    GAME["Game logic\n(uses shared/formulas)"]
+  subgraph Server["Node-Prozess (einzeln, autoritativ)"]
+    FAST["Fastify REST\n(Account, Settings, Markt, Lesen)"]
+    WSS["ws-Server\n(Rooms: pro-User, pro-Stadt, Allianz, Welt-Region)"]
+    SCHED["Tick-Scheduler\n(1s: fällige Events auflösen)"]
+    GAME["Spiel-Logik\n(nutzt shared/formulas)"]
     FAST --> GAME
     WSS --> GAME
     SCHED --> GAME
@@ -84,76 +83,76 @@ flowchart LR
 
   PG[("PostgreSQL 16")]
 
-  Browser <-->|"WS: live deltas"| WSS
+  Browser <-->|"WS: Live-Deltas"| WSS
   Browser <-->|"HTTPS: CRUD"| FAST
   GAME <--> PG
   SCHED <--> PG
-  SH["shared/ (schemas, formulas, constants)"] -.imported by.-> Browser
-  SH -.imported by.-> Server
+  SH["shared/ (Schemas, Formeln, Konstanten)"] -.importiert von.-> Browser
+  SH -.importiert von.-> Server
 ```
 
-## 4. The tick loop — server-authoritative, timestamp-driven
+## 4. Der Tick-Loop — server-autoritativ, zeitstempelgetrieben
 
-We do **not** recompute every city every second. Two ideas keep it cheap (both informed by OpenLoU's schema — see `research/openlou-analysis.md`):
+Wir berechnen **nicht** jede Stadt jede Sekunde neu. Zwei Ideen halten es günstig (beide aus OpenLoUs Schema abgeleitet — siehe `research/openlou-analysis.md`):
 
-### 4.1 Resources are computed analytically, not ticked
-Each city stores, per resource: `amount`, `rate_per_hour`, `capacity`, and `as_of` (timestamp). Current amount on read:
+### 4.1 Ressourcen werden analytisch berechnet, nicht getickt
+Jede Stadt speichert pro Ressource: `amount`, `rate_per_hour`, `capacity` und `as_of` (Zeitstempel). Aktueller Stand beim Lesen:
 ```
-current = min(capacity, amount + rate_per_hour × hoursElapsed(now - as_of))
+current = min(capacity, amount + rate_per_hour × verstricheneStunden(now - as_of))
 ```
-We **materialize** (write back `amount` + bump `as_of`) only when something changes the rate or consumes resources (start a build, train units, get plundered). Idle cities cost zero CPU. The client runs the same formula locally to animate counters smoothly between syncs.
+Wir **materialisieren** (schreiben `amount` zurück + setzen `as_of` neu) nur, wenn sich die Rate ändert oder Ressourcen verbraucht werden (Bau starten, Einheiten trainieren, geplündert werden). Untätige Städte kosten null CPU. Der Client rechnet dieselbe Formel lokal, um Zähler zwischen Syncs flüssig zu animieren.
 
-### 4.2 Discrete events are rows with a `resolve_at` timestamp
-Build/upgrade completion, unit-training batches, troop arrival, and combat resolution are persisted with a `resolve_at`. The scheduler does one cheap job per tick:
+### 4.2 Diskrete Events sind Zeilen mit einem `resolve_at`-Zeitstempel
+Bau-/Ausbau-Abschluss, Einheiten-Trainings-Batches, Truppenankunft und Kampfauflösung werden mit einem `resolve_at` persistiert. Der Scheduler erledigt pro Tick einen günstigen Job:
 ```
-every 1000ms:
-  rows = SELECT ... WHERE resolve_at <= now() ORDER BY resolve_at  (indexed)
-  for each row (in time order):
-     apply effect (atomically, in a tx)
-     enqueue any follow-on event
-     emit WS delta to affected rooms
+alle 1000ms:
+  rows = SELECT ... WHERE resolve_at <= now() ORDER BY resolve_at  (indiziert)
+  für jede Zeile (in Zeit-Reihenfolge):
+     Effekt anwenden (atomar, in einer Transaktion)
+     Folge-Event einreihen
+     WS-Delta an betroffene Rooms senden
 ```
-Tick cadence is **1 s** for responsiveness; correctness does not depend on tick precision because effects are timestamped (a missed/late tick just resolves a moment later, deterministically).
+Die Tick-Taktung ist **1 s** für Reaktionsschnelligkeit; die Korrektheit hängt nicht von der Tick-Präzision ab, weil Effekte zeitgestempelt sind (ein verpasster/verspäteter Tick löst kurz darauf deterministisch auf).
 
-### 4.3 Adjacency is cached
-A construction slot's adjacency multiplier is expensive (scan up to 8 neighbors × 3 bonus groups). We store it per slot and recompute **only** when a building in that city is placed/upgraded/demolished (OpenLoU's `need_refresh` flag). Production rate = `base(level) × cached_multiplier`.
+### 4.3 Adjazenz wird gecacht
+Der Adjazenz-Multiplikator eines Bau-Slots ist teuer (bis zu 8 Nachbarn × 3 Bonus-Gruppen scannen). Wir speichern ihn pro Slot und berechnen ihn **nur** neu, wenn ein Gebäude in der Stadt platziert/ausgebaut/abgerissen wird (OpenLoUs `need_refresh`-Flag). Produktionsrate = `base(level) × cached_multiplier`.
 
-## 5. Data-flow walkthroughs
+## 5. Datenfluss-Durchläufe
 
-**Building construction**
-1. Client previews cost/time via `shared/formulas` and `data/buildings.yaml`; shows affordability.
-2. `POST /cities/:id/build {slot, buildingType}` (or WS `build` msg). Server validates: slot empty, prereqs met, TH building-cap not exceeded, resources sufficient.
-3. Server materializes resources, deducts cost, inserts a `queue` row with `resolve_at = now + buildTime / constructionSpeed`. Emits `queue.updated`.
-4. Scheduler resolves at `resolve_at`: writes the construction (level 1 / +1), flags city `need_refresh`, recomputes affected adjacency multipliers + production rates, materializes resources, emits `city.updated`.
+**Gebäudebau**
+1. Client zeigt Kosten/Zeit-Vorschau via `shared/formulas` und `data/buildings.yaml`; signalisiert Leistbarkeit.
+2. `POST /cities/:id/build {slot, buildingType}` (oder WS-`build`-Nachricht). Server validiert: Slot leer, Voraussetzungen erfüllt, Hall-Gebäudelimit nicht überschritten, Ressourcen ausreichend.
+3. Server materialisiert Ressourcen, zieht Kosten ab, fügt eine `queue`-Zeile mit `resolve_at = now + buildTime / constructionSpeed` ein. Sendet `queue.updated`.
+4. Scheduler löst bei `resolve_at` auf: schreibt das Gebäude (Stufe 1 / +1), markiert Stadt `need_refresh`, berechnet betroffene Adjazenz-Multiplikatoren + Produktionsraten neu, materialisiert Ressourcen, sendet `city.updated`.
 
-**Resource production** — no per-tick work; see §4.1. Recomputed lazily on read and on every rate-changing event.
+**Ressourcenproduktion** — keine Arbeit pro Tick; siehe §4.1. Bei Bedarf beim Lesen und bei jedem raten-ändernden Event neu berechnet.
 
-**Combat** (Phase 4)
-1. Attacker selects target + army → client previews travel time via `shared/formulas` (distance/speed).
-2. `POST /attacks` validates army availability + command-queue slot (Citadel). Inserts `military_action` with `resolve_at = now + travelTime`, decrements home garrison.
-3. Scheduler at arrival: loads defender garrison + City Wall bonus, runs deterministic combat (`shared/formulas/combat`), computes casualties + plunder (capped by carry capacity), schedules the return trip, emits `combat.report` to both parties.
+**Kampf** (Phase 4)
+1. Angreifer wählt Ziel + Armee → Client zeigt Reisezeit-Vorschau via `shared/formulas` (Distanz/Tempo).
+2. `POST /attacks` validiert Armee-Verfügbarkeit + Befehls-Queue-Slot (Citadel). Fügt `military_action` mit `resolve_at = now + travelTime` ein, reduziert Heimat-Garnison.
+3. Scheduler bei Ankunft: lädt Verteidiger-Garnison + City-Wall-Bonus, führt deterministischen Kampf aus (`shared/formulas/combat`), berechnet Verluste + Plünderung (gedeckelt durch Tragekapazität), plant die Rückreise, sendet `combat.report` an beide Parteien.
 
-**Marketplace** (Phase 4) — listing = REST CRUD row; a purchase schedules a cart/ship `military_action`-style transfer with `resolve_at` = travel time; resources move on resolution.
+**Marktplatz** (Phase 4) — Inserat = REST-CRUD-Zeile; ein Kauf plant einen Karren-/Schiff-Transfer (wie `military_action`) mit `resolve_at` = Reisezeit; Ressourcen werden bei Auflösung bewegt.
 
-**Alliance** (Phase 4) — membership/roles are REST CRUD; alliance chat + events flow over a WS `alliance:{id}` room.
+**Allianz** (Phase 4) — Mitgliedschaft/Rollen sind REST-CRUD; Allianz-Chat + Events laufen über einen WS-`alliance:{id}`-Room.
 
-## 6. Realtime protocol
+## 6. Realtime-Protokoll
 
-- **WS = live deltas** the user must see immediately: construction/training completion, incoming attack + combat report, chat, resource-rate changes. Messages are `{type, payload}` validated by shared zod schemas; direction documented in `GAME-DATA-SCHEMA.md`.
-- **Rooms/subscriptions**: a client subscribes to its `user:{id}` and currently-open `city:{id}`; alliance members join `alliance:{id}`; world-map viewers join coarse `region:{cx},{cy}` rooms so map deltas fan out only to lookers.
-- **REST = everything else**: auth, settings, market listings, leaderboards, historical reports, initial state hydration on load.
+- **WS = Live-Deltas**, die der Nutzer sofort sehen muss: Bau-/Trainings-Abschluss, eingehender Angriff + Kampfbericht, Chat, Änderungen der Ressourcenrate. Nachrichten sind `{type, payload}`, validiert durch geteilte Zod-Schemas; Richtung dokumentiert in `GAME-DATA-SCHEMA.md`.
+- **Rooms/Subscriptions**: ein Client abonniert seinen `user:{id}` und die aktuell geöffnete `city:{id}`; Allianzmitglieder treten `alliance:{id}` bei; Weltkarten-Betrachter treten groben `region:{cx},{cy}`-Rooms bei, damit Karten-Deltas nur an Betrachter fächern.
+- **REST = alles andere**: Auth, Settings, Markt-Inserate, Bestenlisten, historische Berichte, initiale Zustands-Hydration beim Laden.
 
-## 7. Scalability notes (self-hosted scale)
+## 7. Skalierungs-Hinweise (selbst gehostete Größe)
 
-- **Target:** tens–low hundreds concurrent; single Node process + single Postgres on one box. **No sharding, no `world_id`** (single world by decision).
-- **Anticipated bottlenecks & mitigations:**
-  - Due-event query each tick → covering index on `resolve_at`; batch + process in one tx; keep the query bounded (`LIMIT`, loop until drained).
-  - WS fan-out on busy regions → coarse region rooms; coalesce map deltas into ~1 Hz batches.
-  - Combat bursts → resolve sequentially in the scheduler; combat math is pure and fast.
-  - Resource materialization writes → only on rate change, not on read.
-- **If it ever went public** (explicitly out of scope): split the scheduler into its own process, add Postgres read replicas for map/leaderboard reads, partition the world map by region. Designed-for, not built-now.
+- **Ziel:** zehn bis wenige hundert gleichzeitig; ein Node-Prozess + ein Postgres auf einer Maschine. **Kein Sharding, kein `world_id`** (eine Welt per Entscheidung).
+- **Erwartete Engpässe & Gegenmaßnahmen:**
+  - Fällige-Events-Query pro Tick → Covering-Index auf `resolve_at`; in einer Transaktion bündeln; Query begrenzt halten (`LIMIT`, Schleife bis geleert).
+  - WS-Fan-out in geschäftigen Regionen → grobe Region-Rooms; Karten-Deltas auf ~1 Hz bündeln.
+  - Kampf-Spitzen → sequentiell im Scheduler auflösen; Kampf-Mathematik ist rein und schnell.
+  - Ressourcen-Materialisierungs-Writes → nur bei Ratenänderung, nicht beim Lesen.
+- **Falls es je öffentlich ginge** (ausdrücklich außerhalb des Umfangs): Scheduler in einen eigenen Prozess auslagern, Postgres-Read-Replicas für Karten-/Bestenlisten-Reads, Weltkarte nach Region partitionieren. Mitgedacht, nicht jetzt gebaut.
 
-## 8. Testing & quality (see `CLAUDE.md` for the full standard)
+## 8. Tests & Qualität (vollständiger Standard in `CLAUDE.md`)
 
-- Unit-test the things that can be wrong and hurt: `shared/formulas` (adjacency, costs, production, combat, travel), scheduler resolution ordering, schema validation. Skip UI minutiae.
-- Determinism: all game math is pure functions of `(state, data, timestamps)` → reproducible and testable without a DB.
+- Das testen, was falsch sein kann und wehtut: `shared/formulas` (Adjazenz, Kosten, Produktion, Kampf, Reise), Scheduler-Auflösungsreihenfolge, Schema-Validierung. UI-Kleinkram auslassen.
+- Determinismus: alle Spiel-Mathematik sind reine Funktionen von `(state, data, timestamps)` → reproduzierbar und ohne DB testbar.

@@ -1,123 +1,123 @@
-# Roadmap — Aldermark
+# Roadmap — Kingdoms of Adelia
 
-> Phased, milestone-based. Each phase has explicit **acceptance criteria** (the bar for "done"). Pacing assumes the **heavy weekly time budget** chosen at bootstrap, so estimates are aggressive. Server is authoritative throughout (`ARCHITECTURE.md`).
+> Phasen- und meilensteinbasiert. Jede Phase hat explizite **Akzeptanzkriterien** (die Messlatte für „fertig"). Das Tempo geht vom **hohen Wochenbudget** aus dem Bootstrap aus, daher sind die Schätzungen aggressiv. Der Server ist durchgehend autoritativ (`ARCHITECTURE.md`).
 >
-> **Stack note overriding the original brief:** Phase 1 uses **PostgreSQL via Docker Compose**, *not* SQLite — PostgreSQL-everywhere is a locked decision (`ARCHITECTURE.md`). "No SQLite" applies from day one.
+> **Stack-Hinweis (überschreibt den ursprünglichen Brief):** Phase 1 nutzt **PostgreSQL via Docker Compose**, *nicht* SQLite — PostgreSQL-überall ist gesetzt (`ARCHITECTURE.md`). „Kein SQLite" gilt ab Tag 1.
 
-## Phase 1 — Solo Prototype  ·  ~1–2 weeks
-One local city; the **build → produce → upgrade** loop with **working adjacency**. No combat, no networking beyond localhost, no other players.
+## Phase 1 — Solo-Prototyp  ·  ~1–2 Wochen
+Eine lokale Stadt; die **Bauen → Produzieren → Ausbauen**-Schleife mit **funktionierender Adjazenz**. Kein Kampf, kein Netzwerk außer localhost, keine anderen Spieler.
 
-**Acceptance criteria**
-- `docker compose up -d db` + one command boots server + client locally.
-- Found a city with fixed terrain nodes; place/upgrade/demolish buildings on the 9×9 grid via UI.
-- Resources accrue **analytically** (rate × elapsed, capped) and the HUD interpolates smoothly; build/upgrade jobs complete on schedule via the server tick.
-- **Adjacency multiplier is computed and visibly affects production** (Fandom model), with a preview before building.
-- `shared/formulas` unit tests pass for adjacency, cost, production, build-time; `data/*.yaml` loads + validates.
+**Akzeptanzkriterien**
+- `docker compose up -d db` + ein Befehl startet Server + Client lokal.
+- Eine Stadt mit fixen Terrain-Knoten gründen; Gebäude auf dem 9×9-Raster per UI platzieren/ausbauen/abreißen.
+- Ressourcen wachsen **analytisch** (Rate × verstrichene Zeit, gedeckelt) und das HUD interpoliert flüssig; Bau-/Ausbau-Jobs schließen planmäßig über den Server-Tick ab.
+- **Der Adjazenz-Multiplikator wird berechnet und beeinflusst die Produktion sichtbar** (Fandom-Modell), mit Vorschau vor dem Bau.
+- `shared/formulas`-Unit-Tests für Adjazenz, Kosten, Produktion, Bauzeit grün; `data/*.yaml` lädt + validiert.
 
-→ **Concrete ticket list below.**
+→ **Konkrete Ticketliste unten.**
 
-## Phase 2 — World Map & Monsters  ·  ~2–3 weeks
-Multiple cities per account; a **world map** view; **PvE** combat against dungeon/monster spawns. Still single-player (no other accounts).
+## Phase 2 — Weltkarte & Monster  ·  ~2–3 Wochen
+Mehrere Städte pro Account; eine **Weltkarten**-Ansicht; **PvE**-Kampf gegen Dungeon-/Monster-Spawns. Weiterhin Single-Player (keine anderen Accounts).
 
-**Acceptance criteria**
-- World map (Canvas) renders tiles/cities/dungeons with pan/zoom + viewport culling.
-- Found additional cities (Marshal + cost + 7-day shield); per-account city cap by title.
-- Train units; send **raids** to dungeons; deterministic combat resolves at arrival; loot returns and is credited (capped by carry).
-- Dungeon completion + loot tables match `GAME-MECHANICS.md` §7.
+**Akzeptanzkriterien**
+- Weltkarte (Canvas) rendert Tiles/Städte/Dungeons mit Pan/Zoom + Viewport-Culling.
+- Weitere Städte gründen (Marshal + Kosten + 7-Tage-Schild); Städte-Cap pro Account je Titel.
+- Einheiten trainieren; **Raids** auf Dungeons senden; deterministischer Kampf löst bei Ankunft auf; Loot kehrt zurück und wird gutgeschrieben (durch Carry gedeckelt).
+- Dungeon-Fertigstellung + Loot-Tabellen entsprechen `GAME-MECHANICS.md` §7.
 
-## Phase 3 — Multiplayer Foundations  ·  ~2–3 weeks
-**Auth, sessions, persistent shared world**, many accounts coexisting. **No PvP yet.**
+## Phase 3 — Multiplayer-Grundlagen  ·  ~2–3 Wochen
+**Auth, Sessions, persistente gemeinsame Welt**, viele koexistierende Accounts. **Noch kein PvP.**
 
-**Acceptance criteria**
-- Register/login (argon2id), session cookies, rate-limited endpoints (minimal — self-hosted).
-- One persistent world; players see each other's cities on the map; WS region rooms deliver map deltas.
-- Server survives restart with no state loss; scheduler resumes due events correctly.
-- Chat (global + city) over WS.
+**Akzeptanzkriterien**
+- Registrieren/Login (argon2id), Session-Cookies, ratenbegrenzte Endpoints (minimal — selbst gehostet).
+- Eine persistente Welt; Spieler sehen die Städte der anderen auf der Karte; WS-Region-Rooms liefern Karten-Deltas.
+- Server übersteht Neustart ohne Zustandsverlust; Scheduler nimmt fällige Events korrekt wieder auf.
+- Chat (global + Stadt) über WS.
 
-## Phase 4 — PvP & Economy  ·  ~3–4 weeks
-**Player-vs-player** combat, the **marketplace**, and **alliances**.
+## Phase 4 — PvP & Wirtschaft  ·  ~3–4 Wochen
+**Spieler-gegen-Spieler**-Kampf, der **Marktplatz** und **Allianzen**.
 
-**Acceptance criteria**
-- Citadel-gated attack types (scout/plunder/assault/siege/support); night protection; walls/towers/traps modifiers; combat reports to both sides.
-- Marketplace listings + cart/ship transfers resolving on travel time.
-- Alliances (≤100, ranks, diplomacy, alliance chat/forum, event log).
+**Akzeptanzkriterien**
+- Citadel-gegatete Angriffstypen (Scout/Plunder/Assault/Siege/Support); Nachtschutz; Wall-/Turm-/Fallen-Modifikatoren; Kampfberichte an beide Seiten.
+- Marktplatz-Inserate + Karren-/Schiff-Transfers, die nach Reisezeit auflösen.
+- Allianzen (≤100, Ränge, Diplomatie, Allianz-Chat/Forum, Event-Log).
 
-## Phase 5 — Endgame  ·  ~2–3 weeks
-**Shrines, Palaces, victory conditions, leaderboards.**
+## Phase 5 — Endgame  ·  ~2–3 Wochen
+**Schreine, Paläste, Siegbedingungen, Bestenlisten.**
 
-**Acceptance criteria**
-- Shrines activate; enlightenment lets castled alliance cities build/upgrade Palaces (1/enlightenment).
-- Alliance **Faith** aggregates per virtue with the documented bonus; **owning a L10 Palace of all 8 virtues wins** and ends the world.
-- Rankings/leaderboards (players + alliances) and a Champions record.
+**Akzeptanzkriterien**
+- Schreine aktivieren; Erleuchtung lässt castled Allianzstädte Paläste bauen/ausbauen (1/Erleuchtung).
+- Allianz-**Faith** aggregiert pro Tugend mit dem dokumentierten Bonus; **Besitz eines L10-Palastes aller 8 Tugenden gewinnt** und beendet die Welt.
+- Ranglisten/Bestenlisten (Spieler + Allianzen) und ein Champions-Eintrag.
 
 ---
 
-## Phase 1 — Ticket list (start here)
+## Phase 1 — Ticketliste (hier starten)
 
-Tickets are vertical where possible. Definition of Done per `CLAUDE.md`. **Begin with #001.**
+Tickets sind wo möglich vertikal. Definition of Done laut `CLAUDE.md`. **Beginne mit #001.**
 
-**#001 — Monorepo & toolchain bootstrap**
-Set up npm workspaces (`server`/`client`/`shared`), `tsconfig.base.json` (strict, path aliases `@server/@client/@shared`), ESLint (`@typescript-eslint` strict) + Prettier, and root scripts (`dev`, `build`, `lint`, `test`, `typecheck`).
-*AC:* `npm install` at root wires all workspaces; `npm run lint && npm run typecheck` pass on empty scaffolding; `@shared/*` imports resolve from both server and client.
+**#001 — Monorepo & Toolchain-Bootstrap**
+npm workspaces (`server`/`client`/`shared`), `tsconfig.base.json` (strict, Pfad-Aliase `@server/@client/@shared`), ESLint (`@typescript-eslint` strict) + Prettier und Root-Skripte (`dev`, `build`, `lint`, `test`, `typecheck`) aufsetzen.
+*AC:* `npm install` im Root verdrahtet alle Workspaces; `npm run lint && npm run typecheck` laufen auf dem leeren Gerüst durch; `@shared/*`-Imports lösen aus Server und Client auf.
 
-**#002 — Local PostgreSQL via Docker Compose**
-`docker-compose.yml` with `postgres:16-alpine`, named volume, env-driven creds; `.env.example`; README snippet.
-*AC:* `docker compose up -d db` yields a reachable DB; documented `DATABASE_URL` connects.
+**#002 — Lokales PostgreSQL via Docker Compose**
+`docker-compose.yml` mit `postgres:16-alpine`, benanntem Volume, env-gesteuerten Credentials; `.env.example`; README-Snippet.
+*AC:* `docker compose up -d db` ergibt eine erreichbare DB; dokumentierte `DATABASE_URL` verbindet.
 
-**#003 — Kysely setup + first migration**
-Wire Kysely + migration runner; migration `0001_core` creating `accounts`, `cities`, `city_tiles`, `city_buildings`, `build_queue`; generate `schema.sql`.
-*AC:* `npm run migrate` is idempotent up/down; types generated; `schema.sql` matches.
+**#003 — Kysely-Setup + erste Migration**
+Kysely + Migration-Runner verdrahten; Migration `0001_core` erstellt `accounts`, `cities`, `city_tiles`, `city_buildings`, `build_queue`; `schema.sql` generieren.
+*AC:* `npm run migrate` ist idempotent up/down; Typen generiert; `schema.sql` passt.
 
-**#004 — Shared data schemas + YAML loader**
-Zod schemas for `buildings`/`units`/`resources`/`titles`; loader validates `data/*.yaml` at boot (array lengths = maxLevel, no dangling refs, no NaN).
-*AC:* valid data loads; a deliberately broken file fails boot with a precise error; loader unit-tested.
+**#004 — Geteilte Daten-Schemas + YAML-Loader**
+Zod-Schemas für `buildings`/`units`/`resources`/`titles`; Loader validiert `data/*.yaml` beim Boot (Array-Längen = maxLevel, keine hängenden Refs, kein NaN).
+*AC:* valide Daten laden; eine absichtlich kaputte Datei lässt den Boot mit präzisem Fehler scheitern; Loader unit-getestet.
 
-**#005 — `data/buildings.yaml` + `data/resources.yaml` (Phase 1 subset)**
-Transcribe the producer family, enhancers, Cottage, Hall, Warehouse from `GAME-MECHANICS.md` with confidence comments.
-*AC:* values match the doc; schema-valid; covers every building needed for the Phase 1 loop.
+**#005 — `data/buildings.yaml` + `data/resources.yaml` (Phase-1-Teilmenge)**
+Produzenten-Familie, Verstärker, Cottage, Hall, Warehouse aus `GAME-MECHANICS.md` mit Confidence-Kommentaren transkribieren.
+*AC:* Werte entsprechen dem Dokument; schema-valide; deckt jedes für die Phase-1-Schleife nötige Gebäude ab.
 
-**#006 — `shared/formulas`: cost, build-time, production**
-Pure functions: `buildingCost(key,toLevel)`, `buildTimeSec(key,toLevel,constructionPct)`, `baseProduction(key,level)`. Deterministic.
-*AC:* unit tests assert exact values from the doc (e.g. Hall L7 = 15,000 timber + 10,000 stone).
+**#006 — `shared/formulas`: Kosten, Bauzeit, Produktion**
+Reine Funktionen: `buildingCost(key,toLevel)`, `buildTimeSec(key,toLevel,constructionPct)`, `baseProduction(key,level)`. Deterministisch.
+*AC:* Unit-Tests prüfen exakte Werte aus dem Dokument (z. B. Hall L7 = 15.000 Timber + 10.000 Stone).
 
-**#007 — `shared/formulas`: adjacency**
-Implement the Fandom model `base×(1+Σnodes+Σcottages)×(1+enhancer)`, max-one-enhancer rule, lakes-for-farms.
-*AC:* the worked example returns 1,522.5/h; counter-cases (2nd enhancer ignored) tested; model swappable for the daydull variant via a flag.
+**#007 — `shared/formulas`: Adjazenz**
+Das Fandom-Modell `base×(1+Σnodes+Σcottages)×(1+enhancer)` implementieren, Max-ein-Verstärker-Regel, Seen-für-Farms.
+*AC:* das Beispiel liefert 1.522,5/h; Gegenfälle (2. Verstärker ignoriert) getestet; Modell per Flag auf die daydull-Variante umschaltbar.
 
-**#008 — City founding + fixed terrain generator**
-Server logic to create a city: place Hall at center, generate `city_tiles` node layout from a seed (deterministic), seed starting resources/caps.
-*AC:* founding a city writes tiles+Hall; same seed → same layout; starting state matches `cities` defaults.
+**#008 — Stadtgründung + fixer Terrain-Generator**
+Server-Logik zum Erstellen einer Stadt: Hall im Zentrum, `city_tiles`-Knoten-Layout aus einem Seed (deterministisch) generieren, Start-Ressourcen/-Caps setzen.
+*AC:* Gründen schreibt Tiles+Hall; gleicher Seed → gleiches Layout; Startzustand entspricht den `cities`-Defaults.
 
-**#009 — Analytic resource model + materialization**
-`shared/formulas/resources.ts` deriving current amounts; server helpers to read (derive) and materialize (write-back on rate change/spend), clamped to cap.
-*AC:* deriving after N hours equals expected capped value; spend/again-derive is consistent; tested.
+**#009 — Analytisches Ressourcenmodell + Materialisierung**
+`shared/formulas/resources.ts` zur Ableitung aktueller Beträge; Server-Helfer zum Lesen (ableiten) und Materialisieren (Rückschreiben bei Ratenänderung/Verbrauch), gedeckelt auf Cap.
+*AC:* Ableitung nach N Stunden ergibt den erwarteten gedeckelten Wert; Verbrauch/erneut-ableiten ist konsistent; getestet.
 
-**#010 — Build queue + scheduler tick**
-1 s scheduler polling `build_queue.resolve_at<=now()`; on resolve: set/raise building level, mark `layout_dirty`, recompute adjacency + production for the city, materialize resources.
-*AC:* a queued L1→L2 completes at the right time; production updates; late tick still resolves deterministically; covered by an integration test against a test DB.
+**#010 — Bau-Queue + Scheduler-Tick**
+1-s-Scheduler, der `build_queue.resolve_at<=now()` pollt; bei Auflösung: Gebäudestufe setzen/erhöhen, `layout_dirty` markieren, Adjazenz + Produktion der Stadt neu berechnen, Ressourcen materialisieren.
+*AC:* ein eingereihter L1→L2 schließt zur richtigen Zeit ab; Produktion aktualisiert; verspäteter Tick löst dennoch deterministisch auf; durch einen Integrationstest gegen eine Test-DB abgedeckt.
 
-**#011 — Adjacency recompute on layout change**
-On place/upgrade/demolish, recompute `adjacency_pct` + `production_h` for affected slots; clear `layout_dirty`.
-*AC:* adding a Sawmill next to two Woodcutters raises both their cached production to the formula's value.
+**#011 — Adjazenz-Neuberechnung bei Layout-Änderung**
+Bei Platzieren/Ausbauen/Abreißen `adjacency_pct` + `production_h` für betroffene Slots neu berechnen; `layout_dirty` löschen.
+*AC:* eine Sawmill neben zwei Woodcuttern hebt deren gecachte Produktion auf den Formelwert.
 
-**#012 — Fastify server + REST: build/upgrade/demolish/city**
-`/api/v1` with auth stub (single dev account), `GET /cities/:id`, `POST build|upgrade|demolish`, `DELETE queue/:id`, `GET /data/manifest`. Zod-validated; integer money.
-*AC:* a client can fetch a city and drive the full loop; invalid commands return typed 4xx; affordability/prereq/slot checks enforced server-side.
+**#012 — Fastify-Server + REST: build/upgrade/demolish/city**
+`/api/v1` mit Auth-Stub (einzelner Dev-Account), `GET /cities/:id`, `POST build|upgrade|demolish`, `DELETE queue/:id`, `GET /data/manifest`. Zod-validiert; ganzzahliges Geld.
+*AC:* ein Client kann eine Stadt abrufen und die volle Schleife fahren; ungültige Befehle liefern typisierte 4xx; Leistbarkeits-/Voraussetzungs-/Slot-Checks server-seitig erzwungen.
 
-**#013 — WebSocket deltas**
-`/ws` with `subscribe city:`, emitting `city.snapshot`, `city.delta`, `queue.resolved`, `resources.rate`.
-*AC:* building in one tab updates another subscribed client within a tick without reload.
+**#013 — WebSocket-Deltas**
+`/ws` mit `subscribe city:`, sendet `city.snapshot`, `city.delta`, `queue.resolved`, `resources.rate`.
+*AC:* Bauen in einem Tab aktualisiert einen anderen abonnierten Client innerhalb eines Ticks ohne Reload.
 
-**#014 — Client shell + design tokens**
-Svelte 5 + Vite app; `tokens.css` synced with `DESIGN-SYSTEM.md`; app shell (resource HUD, sidebar, main, context panel) matching `design-system.html`.
-*AC:* shell renders dark/data-dense; HUD shows live resources with local interpolation; matches the demo's look.
+**#014 — Client-Shell + Design-Tokens**
+Svelte-5-+-Vite-App; `tokens.css` synchron mit `DESIGN-SYSTEM.md`; App-Shell (Ressourcen-HUD, Sidebar, Hauptansicht, Kontext-Panel) passend zu `design-system.html`.
+*AC:* Shell rendert dunkel/datendicht; HUD zeigt Live-Ressourcen mit lokaler Interpolation; entspricht dem Look der Demo.
 
-**#015 — City grid view + build/upgrade UI**
-Render the 9×9 grid from city state; click empty slot → building picker (with cost/time/output **preview** via `shared/formulas`); click built slot → context panel (upgrade/demolish); adjacency highlight on hover.
-*AC:* full build→produce→upgrade loop is playable end-to-end against the server; previews match post-build reality.
+**#015 — Stadtraster-Ansicht + Bau-/Ausbau-UI**
+Das 9×9-Raster aus dem Stadt-Zustand rendern; Klick auf leeren Slot → Gebäude-Auswahl (mit Kosten/Zeit/Output-**Vorschau** via `shared/formulas`); Klick auf bebauten Slot → Kontext-Panel (Ausbauen/Abreißen); Adjazenz-Highlight bei Hover.
+*AC:* die volle Bauen→Produzieren→Ausbauen-Schleife ist end-to-end gegen den Server spielbar; Vorschauen entsprechen der Realität nach dem Bau.
 
-**#016 — Dev seed + "play the prototype" script**
-A `npm run seed` creating a dev account + one city with a believable terrain layout; documented one-command run.
-*AC:* fresh clone → `docker compose up -d db && npm run migrate && npm run seed && npm run dev` → a playable single city in the browser.
+**#016 — Dev-Seed + „Prototyp spielen"-Skript**
+Ein `npm run seed`, das einen Dev-Account + eine Stadt mit glaubwürdigem Terrain-Layout erstellt; dokumentierter Ein-Befehl-Start.
+*AC:* frischer Clone → `docker compose up -d db && npm run migrate && npm run seed && npm run dev` → eine spielbare einzelne Stadt im Browser.
 
-*(16 tickets. Pull in order; #001–#003 are setup, #004–#011 are the engine, #012–#016 make it playable.)*
+*(16 Tickets. In Reihenfolge ziehen; #001–#003 sind Setup, #004–#011 die Engine, #012–#016 machen es spielbar.)*

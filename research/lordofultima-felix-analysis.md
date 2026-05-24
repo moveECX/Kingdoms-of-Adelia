@@ -1,56 +1,56 @@
-# Reference Analysis — LordOfUltima (`FelixLeChat/LordOfUltima`)
+# Referenz-Analyse — LordOfUltima (`FelixLeChat/LordOfUltima`)
 
-> Analyzed 2026-05-24. Local clone: `research/reference-repos/LordOfUltima-master/` (gitignored).
-> Upstream: https://github.com/FelixLeChat/LordOfUltima — branch `master`.
+> Analysiert 2026-05-24. Lokaler Clone: `research/reference-repos/LordOfUltima-master/` (gitignored).
+> Upstream: https://github.com/FelixLeChat/LordOfUltima — Branch `master`.
 
-## Summary verdict
+## Kurz-Urteil
 
-A **C#/.NET WPF Windows desktop** single-player recreation of "LOU 2.0", **with no license** and **30 MB of EA-copyrighted art and audio** that the author openly admits he does not own. It is the **wrong platform** (desktop, not browser), the **wrong language** (C#, not TS), **legally unusable as code** (all-rights-reserved by default), and an **IP hazard** (ripped assets). Value to us is limited to **high-level mechanics cross-reference**. See `REPO-DECISION.md`.
+Eine **C#/.NET-WPF-Windows-Desktop**-Nachbildung von „LOU 2.0", **ohne Lizenz** und mit **30 MB EA-urheberrechtlich geschützter Grafik und Audio**, die der Autor offen als nicht ihm gehörend einräumt. Es ist die **falsche Plattform** (Desktop, kein Browser), die **falsche Sprache** (C#, kein TS), **als Code rechtlich unbrauchbar** (standardmäßig alle Rechte vorbehalten) und eine **IP-Gefahr** (gerippte Assets). Der Wert für uns beschränkt sich auf **High-Level-Mechanik-Abgleich**. Siehe `REPO-DECISION.md`.
 
-## License
+## Lizenz
 
-- **No `LICENSE` / `COPYING` file anywhere in the repo.** Only `README.md` and a 12-byte `contributors.txt`.
-- Under default copyright, "no license" = **all rights reserved**. We may **not** legally copy, adapt, or redistribute its code.
-- README states verbatim: **"I DO NOT OWN ANY OF THE ARTS — They are all property of EA."** This is an explicit admission that bundled assets are EA/Phenomic property.
+- **Keine `LICENSE`/`COPYING`-Datei** im Repo. Nur `README.md` und eine 12-Byte-`contributors.txt`.
+- Bei fehlender Lizenz = **alle Rechte vorbehalten** nach Standard-Urheberrecht. Wir dürfen den Code **nicht** legal kopieren, anpassen oder weiterverbreiten.
+- README sagt wörtlich: **„I DO NOT OWN ANY OF THE ARTS — They are all property of EA."** Ein ausdrückliches Eingeständnis, dass die gebündelten Assets EA/Phenomic-Eigentum sind.
 
-## Completeness
+## Vollständigkeit
 
-Per its README, the desktop app can:
-- Create a game (online or offline), build a first city (wood/stone/iron/food buildings) and military buildings.
-- Play music; switch window skin (light/dark).
-- Do **research** via a research building (confirms LoU had a research/tech mechanic worth modelling later).
-- Recruit troops and fight **dungeons and a boss**.
-- Save locally; chat between app instances.
+Laut README kann die Desktop-App:
+- Ein Spiel erstellen (online oder offline), eine erste Stadt bauen (Holz/Stein/Eisen/Nahrung-Gebäude) und Militärgebäude.
+- Musik abspielen; Fenster-Skin wechseln (hell/dunkel).
+- **Forschung** über ein Forschungsgebäude betreiben (bestätigt, dass LoU eine Forschungs-/Tech-Mechanik hatte, die später modellierenswert ist).
+- Truppen rekrutieren und gegen **Dungeons und einen Boss** kämpfen.
+- Lokal speichern; zwischen App-Instanzen chatten.
 
-Explicitly **missing**: real combat vs dungeons, multiplayer, server-side/offline resource ticking, server-side save. So it is a **client-side prototype**, not a server-authoritative MMO — the opposite of what we need.
+Ausdrücklich **fehlend**: echter Kampf vs Dungeons, Multiplayer, server-seitiges/offline Ressourcen-Ticking, server-seitiges Speichern. Es ist also ein **Client-seitiger Prototyp**, kein server-autoritatives MMO — das Gegenteil dessen, was wir brauchen.
 
-## Tech stack
+## Tech-Stack
 
-| Aspect | Detail |
+| Aspekt | Detail |
 |---|---|
-| Language | C# (112 `.cs` files) |
-| UI | WPF / XAML (6 `.xaml`), Windows-only desktop |
-| Build | Visual Studio solution (`.sln`, `.csproj`), bundled NuGet `.nupkg`, PowerShell scripts (`.ps1`, `.psm1`) |
-| Assets | `Images/` + others: **166 `.PNG`, 2 `.jpg`, 1 `.bmp`, 4 `.mp3`** ≈ **30.3 MB total** |
+| Sprache | C# (112 `.cs`-Dateien) |
+| UI | WPF / XAML (6 `.xaml`), Windows-only Desktop |
+| Build | Visual-Studio-Solution (`.sln`, `.csproj`), gebündelte NuGet-`.nupkg`, PowerShell-Skripte (`.ps1`, `.psm1`) |
+| Assets | `Images/` u. a.: **166 `.PNG`, 2 `.jpg`, 1 `.bmp`, 4 `.mp3`** ≈ **30,3 MB gesamt** |
 | Config | `App.config`, `.settings`, `.resx` |
 
-## Data model
+## Datenmodell
 
-- No database. State is **in-memory + local save file**; building/research/troop definitions are embedded in C# code rather than external data files.
-- Less useful than OpenLoU's externalized JSON for extracting a data model. We do **not** rely on it for schema.
+- Keine Datenbank. Zustand ist **in-memory + lokale Speicherdatei**; Gebäude-/Forschungs-/Truppen-Definitionen sind im C#-Code eingebettet statt in externen Datendateien.
+- Weniger nützlich als OpenLoUs externalisiertes JSON zur Extraktion eines Datenmodells. Wir **verlassen** uns nicht darauf fürs Schema.
 
-## IP hazard — assets are strictly off-limits 🚫
+## IP-Gefahr — Assets strikt tabu 🚫
 
-- The `Images/` tree and `.mp3` files are **ripped Lord of Ultima assets owned by EA**, per the author's own statement.
-- **We will not use, copy, trace, recolor, or derive any asset from this repository.** Not for placeholders, not for "temporary" art, not for reference-while-drawing.
-- The cloned repo stays under `research/reference-repos/` which is **gitignored** — these files must never enter our git history. This is enforced in `.gitignore` and called out in `IP-COMPLIANCE.md`.
+- Der `Images/`-Baum und die `.mp3`-Dateien sind **gerippte Lord-of-Ultima-Assets im EA-Eigentum**, laut Aussage des Autors.
+- **Wir verwenden, kopieren, pausen, umfärben oder leiten kein Asset aus diesem Repo ab.** Weder für Platzhalter noch für „temporäre" Grafik noch als Referenz beim Zeichnen.
+- Das Repo bleibt unter `research/reference-repos/`, das **gitignored** ist — diese Dateien dürfen nie in unsere Git-Historie gelangen. Erzwungen in `.gitignore`, benannt in `IP-COMPLIANCE.md`.
 
-## What we reuse
+## Was wir wiederverwenden
 
-- **High-level mechanics cross-reference only**: confirmation of the building set, presence of a research/tech system, and a dungeon+boss PvE loop. These are *ideas/mechanics* (not copyrightable), corroborated against the wikis — never code or assets.
+- **Nur High-Level-Mechanik-Abgleich**: Bestätigung des Gebäude-Sets, Vorhandensein eines Forschungs-/Tech-Systems und einer Dungeon+Boss-PvE-Schleife. Das sind *Ideen/Mechaniken* (nicht schützbar), gegen die Wikis abgeglichen — nie Code oder Assets.
 
-## What we do NOT take
+## Was wir NICHT übernehmen
 
-- **No code** (no license → all rights reserved).
-- **No assets whatsoever** (EA-owned).
-- **No UI layout pixels** — our UI is an original dark, data-dense admin aesthetic (`DESIGN-SYSTEM.md`), not a reproduction of LoU's skin.
+- **Keinen Code** (keine Lizenz → alle Rechte vorbehalten).
+- **Keinerlei Assets** (EA-Eigentum).
+- **Keine UI-Layout-Pixel** — unsere UI ist eine eigene, dunkle, datendichte Admin-Ästhetik (`DESIGN-SYSTEM.md`), keine Nachbildung des LoU-Skins.

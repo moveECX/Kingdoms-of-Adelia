@@ -1,47 +1,47 @@
-# Repository Decision — Build Fresh vs. Fork
+# Repository-Entscheidung — Neu bauen vs. forken
 
-> Decision date: 2026-05-24. Status: **DECIDED — build fresh in TypeScript.**
+> Entscheidungsdatum: 2026-05-24. Status: **ENTSCHIEDEN — neu in TypeScript bauen.**
 
-## Decision
+## Entscheidung
 
-**Build a clean-room implementation from scratch in TypeScript.** Use the two reference repos and the community wikis as **references for mechanics, balance numbers, and schema shape only** — transcribing facts (which are not copyrightable), never copying code or assets.
+**Eine Clean-Room-Implementierung von Grund auf in TypeScript bauen.** Die zwei Referenz-Repos und die Community-Wikis nur als **Referenz für Mechaniken, Balance-Zahlen und Schema-Form** nutzen — Fakten transkribieren (die nicht schützbar sind), niemals Code oder Assets kopieren.
 
-## Options considered
+## Erwogene Optionen
 
-### Option A — Fork `OpenLoU` (Go + PostgreSQL)
-- ➖ **Language mismatch:** Go, but our locked stack is TypeScript on client + server (`ARCHITECTURE.md`). A fork means abandoning our stack or rewriting anyway.
-- ➖ **GPLv3 copyleft:** deriving from its code forces our whole project to GPLv3. We want to license a self-hosted project on our own terms.
-- ➖ **Immature:** "nothing really works yet"; only scaffolding, one unit, no tick loop, buggy data.
-- ➕ Genuinely useful **PostgreSQL schema** and **externalized JSON building data**.
+### Option A — `OpenLoU` forken (Go + PostgreSQL)
+- ➖ **Sprach-Mismatch:** Go, aber unser gesetzter Stack ist TypeScript auf Client + Server (`ARCHITECTURE.md`). Ein Fork hieße, unseren Stack aufzugeben oder ohnehin neu zu schreiben.
+- ➖ **GPLv3-Copyleft:** Ableiten aus dem Code zwingt unser ganzes Projekt unter GPLv3. (Wir wählen AGPL bewusst selbst — siehe unten.)
+- ➖ **Unreif:** „nichts funktioniert wirklich"; nur Gerüst, eine Einheit, kein Tick-Loop, fehlerhafte Daten.
+- ➕ Wirklich nützliches **PostgreSQL-Schema** und **externe JSON-Gebäudedaten**.
 
-### Option B — Fork `FelixLeChat/LordOfUltima` (C#/.NET WPF)
-- ➖ **Wrong platform:** Windows desktop app, not a browser MMO.
-- ➖ **Wrong language:** C#.
-- ➖ **No license → all rights reserved:** legally cannot reuse the code.
-- ➖ **IP hazard:** 30 MB of EA-owned ripped assets.
-- ➕ Confirms the building set and that LoU had research + dungeon/boss PvE.
+### Option B — `FelixLeChat/LordOfUltima` forken (C#/.NET WPF)
+- ➖ **Falsche Plattform:** Windows-Desktop-App, kein Browser-MMO.
+- ➖ **Falsche Sprache:** C#.
+- ➖ **Keine Lizenz → alle Rechte vorbehalten:** Code rechtlich nicht nutzbar.
+- ➖ **IP-Gefahr:** 30 MB EA-eigene, gerippte Assets.
+- ➕ Bestätigt das Gebäude-Set und dass LoU Forschung + Dungeon/Boss-PvE hatte.
 
-### Option C — Build fresh in TypeScript ✅ (CHOSEN)
-- ➕ Matches the locked stack (TS strict, Vite client, Node/Postgres server) end-to-end.
-- ➕ No license entanglement; we choose our own license.
-- ➕ Server-authoritative tick loop and websocket design tailored to our needs from day one.
-- ➕ Lets us model the data cleanly (typed shared schemas) instead of inheriting buggy data.
-- ➖ More upfront work — mitigated by the heavy weekly time budget and the rich reference material we *can* legally use.
+### Option C — Neu in TypeScript bauen ✅ (GEWÄHLT)
+- ➕ Passt durchgängig zum gesetzten Stack (TS strict, Vite-Client, Node/Postgres-Server).
+- ➕ Keine Lizenz-Verstrickung; wir wählen unsere eigene (**AGPL-3.0-or-later**).
+- ➕ Server-autoritativer Tick-Loop und WebSocket-Design von Tag 1 auf unsere Bedürfnisse zugeschnitten.
+- ➕ Erlaubt sauberes Datenmodell (typisierte geteilte Schemas) statt fehlerhafter Daten zu erben.
+- ➖ Mehr Aufwand vorab — gemildert durch das hohe Wochenbudget und das reiche, legal nutzbare Referenzmaterial.
 
-## What "reference only" means (the legal line)
+## Was „nur Referenz" bedeutet (die rechtliche Linie)
 
-| Allowed ✅ | Not allowed ❌ |
+| Erlaubt ✅ | Nicht erlaubt ❌ |
 |---|---|
-| Reading & transcribing **numeric values** (costs, production curves, level caps) — these are facts | Copying OpenLoU `.go`/`.json` files or FelixLeChat `.cs` files verbatim |
-| Replicating **game mechanics & formulas** (adjacency, combat) — mechanics aren't copyrightable | Reproducing creative **prose** (tooltip/lore text) word-for-word |
-| Learning from **schema shape** and re-deriving our own | Pulling in GPLv3 code (would relicense us) |
-| Confirming the **building/unit roster** | Using **any art/audio asset** from FelixLeChat (EA-owned) |
+| Lesen & Transkribieren **numerischer Werte** (Kosten, Produktionskurven, Stufen-Caps) — das sind Fakten | OpenLoU-`.go`/`.json` oder FelixLeChat-`.cs` wörtlich kopieren |
+| **Spielmechaniken & Formeln** replizieren (Adjazenz, Kampf) — Mechaniken sind nicht schützbar | Kreative **Prosa** (Tooltip-/Lore-Text) Wort für Wort reproduzieren |
+| Von der **Schema-Form** lernen und eigene ableiten | GPLv3-Code einziehen (würde uns relizenzieren) |
+| Das **Gebäude-/Einheiten-Set** bestätigen | **Irgendein Art-/Audio-Asset** aus FelixLeChat (EA-eigen) verwenden |
 
-All transcribed values are tagged `[verified]` / `[approximate]` / `[unknown]` in `GAME-MECHANICS.md`, with OpenLoU-sourced numbers explicitly marked as such and cross-checked against the wikis.
+Alle transkribierten Werte sind in `GAME-MECHANICS.md` `[V]`/`[A]`/`[U]` getaggt, OpenLoU-Zahlen explizit als solche markiert und gegen die Wikis gegengeprüft.
 
-## Consequences
+## Konsequenzen
 
-- Reference repos live under `research/reference-repos/` and are **gitignored** (keeps EA assets and GPLv3 code out of our history).
-- Our schema is defined freshly in `GAME-DATA-SCHEMA.md`, informed by — not copied from — OpenLoU's `db.sql`.
-- Our balance data lives in original `data/*.yaml` files (`GAME-DATA-SCHEMA.md`), seeded with wiki-verified numbers.
-- Project license: **TBD by the user** (recommend MIT for a self-hosted project, or AGPL if we want to keep any future public deployment open). Tracked in `CLAUDE.md` open questions.
+- Referenz-Repos liegen unter `research/reference-repos/` und sind **gitignored** (hält EA-Assets und GPLv3-Code aus unserer Historie).
+- Unser Schema ist frisch in `GAME-DATA-SCHEMA.md` definiert, informiert von — nicht kopiert aus — OpenLoUs `db.sql`.
+- Unsere Balance-Daten leben in eigenen `data/*.yaml`-Dateien, gefüllt mit wiki-verifizierten Zahlen.
+- Projektlizenz: **AGPL-3.0-or-later** (`LICENSE`).

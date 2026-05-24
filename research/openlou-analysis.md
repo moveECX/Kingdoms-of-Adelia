@@ -1,85 +1,83 @@
-# Reference Analysis — OpenLoU (`joaopedrosgs/OpenLoU`)
+# Referenz-Analyse — OpenLoU (`joaopedrosgs/OpenLoU`)
 
-> Analyzed 2026-05-24. Local clone: `research/reference-repos/OpenLoU-master/` (gitignored).
-> Upstream: https://github.com/joaopedrosgs/OpenLoU — branches `master` and `loucore`.
+> Analysiert 2026-05-24. Lokaler Clone: `research/reference-repos/OpenLoU-master/` (gitignored).
+> Upstream: https://github.com/joaopedrosgs/OpenLoU — Branches `master` und `loucore`.
 
-## Summary verdict
+## Kurz-Urteil
 
-A **Go + PostgreSQL** server-side reimplementation of Lord of Ultima, **GPLv3-licensed**, self-described as *"early state, nothing really works yet."* Wrong language for our TypeScript stack and copyleft-encumbered, so **not a fork candidate**. However, its **SQL schema and JSON building data are the single most useful reference we have** for our own (clean-room, re-derived) data model and balance numbers. See `REPO-DECISION.md`.
+Eine **Go + PostgreSQL**-Server-Reimplementierung von Lord of Ultima, **GPLv3-lizenziert**, vom Autor als *„früher Zustand, nichts funktioniert wirklich"* beschrieben. Falsche Sprache für unseren TypeScript-Stack und copyleft-belastet, daher **kein Fork-Kandidat**. Allerdings sind sein **SQL-Schema und seine JSON-Gebäudedaten die nützlichste Referenz, die wir haben** für unser eigenes (clean-room, neu abgeleitetes) Datenmodell und die Balance-Zahlen. Siehe `REPO-DECISION.md`.
 
-## License
+## Lizenz
 
-- **GNU GPL v3** (full text in repo `LICENSE`, 35 KB). Strong copyleft.
-- Implication: copying or creating a derivative work of OpenLoU's **code** would force our entire project under GPLv3. We do **not** want that for a self-hosted project we intend to license on our own terms.
-- **Numeric game values (costs, production rates, level curves) are facts and not copyrightable.** We may read them, verify them against the wikis, and transcribe the *values* into our own original data files. We will **not** copy OpenLoU source files or their JSON files verbatim.
+- **GNU GPL v3** (Volltext im Repo `LICENSE`, 35 KB). Starkes Copyleft.
+- Folge: Kopieren oder Ableiten von OpenLoU-**Code** würde unser ganzes Projekt unter GPLv3 zwingen. Wir wählen für unser Projekt bewusst **AGPL-3.0** (siehe `IP-COMPLIANCE.md`) und leiten daher nichts aus dem OpenLoU-Code ab.
+- **Numerische Spielwerte (Kosten, Produktionsraten, Stufenkurven) sind Fakten und nicht schützbar.** Wir dürfen sie lesen, gegen die Wikis verifizieren und die *Werte* in unsere eigenen Datendateien transkribieren. Wir kopieren **keine** OpenLoU-Quelldateien oder deren JSON wörtlich.
 
-## Completeness
+## Vollständigkeit
 
-- README: *"The project is in early state, nothing really works yet."* Travis CI badge (defunct).
-- Backend scaffolding exists (account/city/map servers, websocket hub, session) but no working game loop.
-- Only **one unit** is defined (`City Guard`); no combat, no tick loop, no migrations framework (single `db.sql`).
-- **Data bugs observed** (treat all OpenLoU numbers as `[approximate]` pending wiki verification):
-  - `citywall.json` and `workshop.json` **both use `id: 28`**.
-  - `quarry.json` labels its stone output `"ironh"` (copy-paste error).
-  - `cityguard.json` `requires` `constructionId 16`, but id 16 is the **Sawmill**, not the City Guard House (id 19).
-  - Production/enhancer buildings declare `"shared": "prod"`/`"inc"` but **no shared cost table exists** in the Go code — those costs are simply unimplemented.
+- README: *„The project is in early state, nothing really works yet."* Travis-CI-Badge (defunkt).
+- Backend-Gerüst existiert (account/city/map-Server, Websocket-Hub, Session), aber keine funktionierende Spielschleife.
+- Nur **eine Einheit** definiert (`City Guard`); kein Kampf, kein Tick-Loop, kein Migrations-Framework (einzelnes `db.sql`).
+- **Beobachtete Datenfehler** (alle OpenLoU-Zahlen als `[approximate]` behandeln bis zur Wiki-Verifikation):
+  - `citywall.json` und `workshop.json` nutzen **beide `id: 28`**.
+  - `quarry.json` beschriftet seinen Stein-Output als `"ironh"` (Copy-Paste-Fehler).
+  - `cityguard.json` `requires` `constructionId 16`, aber id 16 ist die **Sawmill**, nicht das City Guard House (id 19).
+  - Produzenten/Verstärker deklarieren `"shared": "prod"`/`"inc"`, aber **keine geteilte Kostentabelle** existiert im Go-Code — diese Kosten sind schlicht nicht implementiert.
 
-## Tech stack
+## Tech-Stack
 
-| Layer | Choice |
+| Schicht | Wahl |
 |---|---|
-| Language | Go (70 `.go` files) |
-| DB | PostgreSQL (`db.sql`), `sqlboiler` for model codegen (`sqlboiler.toml`) |
+| Sprache | Go (70 `.go`-Dateien) |
+| DB | PostgreSQL (`db.sql`), `sqlboiler` für Modell-Codegen (`sqlboiler.toml`) |
 | Config | `config.toml` |
-| Layout | Service-oriented: `accountserver/`, `cityserver/`, `mapserver/`, `hub/` (websocket), `session/`, `communication/`, `ent/`, `modules/` (game data), `app/`, `server/` |
+| Aufbau | Service-orientiert: `accountserver/`, `cityserver/`, `mapserver/`, `hub/` (Websocket), `session/`, `communication/`, `ent/`, `modules/` (Spieldaten), `app/`, `server/` |
 | Entry | `main.go` (527 B — minimal) |
 
-**Takeaway for us:** the *service decomposition* (separate concerns for accounts, city state, map, and a websocket hub) is a reasonable mental model, but at our self-hosted scale we will collapse it into a single Node process with internal modules (see `ARCHITECTURE.md`).
+**Erkenntnis für uns:** die *Service-Zerlegung* (getrennte Belange für Accounts, Stadt-Zustand, Karte und ein Websocket-Hub) ist ein vernünftiges Mentalmodell, aber in unserer Selbsthosting-Größe kollabieren wir es in einen Node-Prozess mit internen Modulen (siehe `ARCHITECTURE.md`).
 
-## Data model (`db.sql`) — the valuable part
+## Datenmodell (`db.sql`) — der wertvolle Teil
 
-Single-world, coordinate-keyed model. Reproduced here as **reference** (we re-derive our own schema in `GAME-DATA-SCHEMA.md`):
+Single-World-, koordinaten-basiertes Modell. Hier als **Referenz** wiedergegeben (wir leiten unser eigenes Schema in `GAME-DATA-SCHEMA.md` neu ab):
 
-| Table | Key | Notable columns | Interpretation |
+| Tabelle | Key | Bemerkenswerte Spalten | Interpretation |
 |---|---|---|---|
-| `users` | `name` | `email`, `password`, `gold`, `diamonds`, `darkwood`, `runestone`, `veritium`, `trueseed`, `rank`, `alliance_name`, `alliance_rank` | Gold + premium currency (`diamonds`) + 4 **rare resources** held at account level. |
+| `users` | `name` | `email`, `password`, `gold`, `diamonds`, `darkwood`, `runestone`, `veritium`, `trueseed`, `rank`, `alliance_name`, `alliance_rank` | Gold + Premiumwährung (`diamonds`) + 4 **seltene Ressourcen** auf Account-Ebene. |
 | `alliances` | `id` (serial) | `name` | Minimal. |
-| `cities` | **`(x, y)`** | `user_name`, `city_name`, `points`, `{wood,stone,iron,food,gold}_production`, `{wood,stone,iron,food}_stored`, `{...}_limit`, `queue_time`, `construction_speed` | City addressed by **world coordinates**; resources + caps stored per city; gold has production but is pooled on the user. |
-| `constructions` | **`(city_x, city_y, x, y)`** | `level`, `type`, `production`, `modifier`, `need_refresh` | Per-city building grid; each slot has a building `type`, a `level`, a cached `production`, an adjacency **`modifier`**, and a dirty flag (`need_refresh`) to recompute production lazily. |
-| `queue` | `(construction_x, construction_y, city_x, city_y)` | `completion` (timestamp), `action` | Build/upgrade queue keyed to a construction slot, resolved by wall-clock `completion`. |
-| `dungeons` | `(x, y)` | `type`, `level`, `progress` | PvE camps on the world map. |
-| `military_actions` | `id` | `origin_id`, `target_id`, `arrival` (timestamp), `troops` (`json`) | Troop movements resolved at `arrival`; troop composition stored as JSON blob. |
+| `cities` | **`(x, y)`** | `user_name`, `city_name`, `points`, `{wood,stone,iron,food,gold}_production`, `{wood,stone,iron,food}_stored`, `{...}_limit`, `queue_time`, `construction_speed` | Stadt über **Weltkoordinaten** adressiert; Ressourcen + Caps pro Stadt; Gold hat Produktion, ist aber auf dem User gepoolt. |
+| `constructions` | **`(city_x, city_y, x, y)`** | `level`, `type`, `production`, `modifier`, `need_refresh` | Bauraster pro Stadt; jeder Slot hat einen `type`, ein `level`, eine gecachte `production`, einen Adjazenz-**`modifier`** und ein Dirty-Flag (`need_refresh`) zur faulen Neuberechnung. |
+| `queue` | `(construction_x, construction_y, city_x, city_y)` | `completion` (Zeitstempel), `action` | Bau-/Ausbau-Queue an einen Slot gebunden, per Wanduhr-`completion` aufgelöst. |
+| `dungeons` | `(x, y)` | `type`, `level`, `progress` | PvE-Camps auf der Weltkarte. |
+| `military_actions` | `id` | `origin_id`, `target_id`, `arrival` (Zeitstempel), `troops` (`json`) | Truppenbewegungen, bei `arrival` aufgelöst; Truppen-Zusammensetzung als JSON-Blob. |
 
-**Design lessons we adopt:**
-- Cities keyed by world coordinates → confirms a **single shared world** with no `world_id` (matches our scope decision).
-- A per-slot **`modifier`** column = precomputed adjacency multiplier, with a `need_refresh` flag → adjacency is expensive, so **cache it and recompute on change**, not every tick.
-- **Timestamp-driven scheduling** (`queue.completion`, `military_actions.arrival`) rather than counting ticks → the tick loop just polls for "due" rows. We adopt this (see `ARCHITECTURE.md` tick design).
+**Design-Lehren, die wir übernehmen:**
+- Städte über Weltkoordinaten → bestätigt eine **gemeinsame Welt** ohne `world_id` (passt zu unserer Umfang-Entscheidung).
+- Eine `modifier`-Spalte pro Slot = vorberechneter Adjazenz-Multiplikator mit `need_refresh`-Flag → Adjazenz ist teuer, also **cachen und bei Änderung neu berechnen**, nicht pro Tick.
+- **Zeitstempel-getriebenes Scheduling** (`queue.completion`, `military_actions.arrival`) statt Tick-Zählen → der Tick-Loop pollt nur „fällige" Zeilen. Übernehmen wir (siehe `ARCHITECTURE.md`).
 
-**Design lessons we reject / improve:**
-- `password` as plain `varchar(100)` with no hashing note → we hash (argon2/bcrypt).
-- Composite natural keys everywhere → we prefer surrogate `bigint`/`uuid` PKs with coordinate **unique indexes**.
-- JSON troop blobs in a relational column → acceptable for in-flight armies, but we'll type them with shared zod schemas.
+**Design-Lehren, die wir ablehnen / verbessern:**
+- `password` als `varchar(100)` ohne Hashing → wir hashen (argon2id).
+- Überall zusammengesetzte Natural Keys → wir bevorzugen Surrogat-`bigint`-PKs mit Koordinaten-**Unique-Indizes**.
+- JSON-Truppen-Blobs in einer relationalen Spalte → für fliegende Armeen ok, aber wir typisieren sie mit geteilten Zod-Schemas.
 
-## Building data (`modules/constructions/*.json`) — 25 buildings
+## Gebäudedaten (`modules/constructions/*.json`) — 25 Gebäude
 
-Schema per file: `{ id, name, info, bonus[{name, value[]}], adjascent[{builds[], bonus[]}], resourceCost[[wood,stone]...], score[] }`. The values give us a **concrete balance reference**; full extraction lives in `GAME-MECHANICS.md` (flagged `[approximate]` / OpenLoU-sourced). Highlights:
+Schema pro Datei: `{ id, name, info, bonus[{name, value[]}], adjascent[{builds[], bonus[]}], resourceCost[[wood,stone]...], score[] }`. Die Werte geben uns eine **konkrete Balance-Referenz**; die vollständige Extraktion lebt in `GAME-MECHANICS.md` (`[V]`, durch Fandom-Snapshots bestätigt). Highlights:
 
-- **Producers** (`Woodcutter's Hut`, `Quarry`, `Farm`, `Iron mine`): output per level e.g. wood `[5,10,15,20,30,45,75,120,200,300]/h`; costs not implemented in OpenLoU.
-- **Enhancers** (`Sawmill`, `Stonemason`, `Foundry`, `Mill`): grant adjacency `+[30,35,…,75]%` to their matching producer, plus storage bonus to adjacent storage.
-- **Cottage**: `+constructionspeed` and adjacency `+[3,6,…,30]%` to bordering producers.
-- **Townhall**: base storage `[5000…175000]` + base wood `300`; one per city; max-building cap.
-- **Warehouse**: storage `[2500…200000]`; enhanced by bordering Sawmill/Stonemason/Mill/Foundry.
-- Military trainers (`Barracks`, `Training Ground`, `Stable`, `Workshop`, `Shipyard`, `City Guard House`) + caster/blessed buildings + `Castle` (army size + command-queue slots) + `City Wall` (`combatBonus [1,3,…,50]`).
+- **Produzenten** (`Woodcutter's Hut`, `Quarry`, `Farm`, `Iron mine`): Output pro Stufe, z. B. Holz `[5,10,15,20,30,45,75,120,200,300]/h` (OpenLoU-Variante; Fandom-Werte weichen ab und sind maßgeblich).
+- **Verstärker** (`Sawmill`, `Stonemason`, `Foundry`, `Mill`): geben Adjazenz `+[30,35,…,75]%` an ihren Produzenten, plus Lagerbonus an angrenzendes Lager.
+- **Cottage**: `+constructionspeed` und Adjazenz `+[3,6,…,30]%` an angrenzende Produzenten.
+- Militär-Trainer, Caster-/Blessed-Gebäude, `Castle` (Armeegröße + Befehls-Queue) + `City Wall`.
 
-⚠️ **IP flag:** two buildings carry Ultima proper nouns — **"Moonglow Tower"** (casters) and **"Trinsic Temple"** (blessed units/Barons). These names are recorded in our rename map and **must not** appear in our project (see `IP-COMPLIANCE.md`).
+⚠️ **IP-Flag:** zwei Gebäude tragen Ultima-Eigennamen — **„Moonglow Tower"** und **„Trinsic Temple"**. Diese Namen stehen in unserer Umbenennungs-Map und **dürfen** in unserem Projekt nicht erscheinen (siehe `IP-COMPLIANCE.md`).
 
-## What we reuse (as reference only, re-derived)
+## Was wir wiederverwenden (nur als Referenz, neu abgeleitet)
 
-1. **Schema shape** → informs `GAME-DATA-SCHEMA.md` (timestamp-driven queues, cached adjacency modifier, coordinate-keyed cities).
-2. **Building roster + per-level numbers** → seed values for `data/buildings.yaml`, cross-checked against the wikis and tagged for confidence.
-3. **Adjacency relationships** (which enhancer boosts which producer; cottage→producers) → confirms the wiki mechanics.
+1. **Schema-Form** → informiert `GAME-DATA-SCHEMA.md` (zeitstempel-getriebene Queues, gecachter Adjazenz-Modifier, koordinaten-basierte Städte).
+2. **Gebäude-Set + Zahlen pro Stufe** → Startwerte für `data/buildings.yaml`, gegen die Wikis gegengeprüft und confidence-getaggt.
+3. **Adjazenz-Beziehungen** (welcher Verstärker boostet welchen Produzenten; Cottage→Produzenten) → bestätigt die Wiki-Mechanik.
 
-## What we do NOT take
+## Was wir NICHT übernehmen
 
-- No Go source, no `sqlboiler` models, no verbatim JSON files (avoids GPLv3 derivative status).
-- No assumption that OpenLoU's numbers are correct — they are buggy and incomplete; the wikis are the authority.
+- Keinen Go-Code, keine `sqlboiler`-Modelle, keine wörtlichen JSON-Dateien (vermeidet GPLv3-Ableitungsstatus).
+- Keine Annahme, dass OpenLoUs Zahlen korrekt sind — sie sind fehlerhaft und unvollständig; die Wikis sind maßgeblich.

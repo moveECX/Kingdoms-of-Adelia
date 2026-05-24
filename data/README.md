@@ -1,26 +1,26 @@
-# `data/` — Game balance data
+# `data/` — Spiel-Balance-Daten
 
-Game **rules and balance numbers** live here as version-controlled YAML, kept out of both code and database. The server loads and **validates** these against zod schemas in `@aldermark/shared` at boot (ROADMAP ticket #004); the DB stores only *instances* (a specific city's L7 Quarry), never the rules.
+Spiel**regeln und Balance-Zahlen** leben hier als versionierte YAML, getrennt von Code und Datenbank. Der Server lädt und **validiert** diese gegen Zod-Schemas in `@adelia/shared` beim Boot (ROADMAP-Ticket #004); die DB speichert nur *Instanzen* (die konkrete L7-Quarry einer Stadt), nie die Regeln.
 
-## Files
-| File | Contents |
+## Dateien
+| Datei | Inhalt |
 |---|---|
-| `resources.yaml` | The 5 resources + the adjacency model constants. |
-| `buildings.yaml` | Per-level cost / output / build-time / effects for each building. |
-| `units.yaml` | Per-unit stats, trainer/unlock levels, and combat constants. |
-| `titles.yaml` | Title ladder → max cities / citadels / mana. |
+| `resources.yaml` | Die 5 Ressourcen + die Adjazenz-Modell-Konstanten. |
+| `buildings.yaml` | Kosten / Output / Bauzeit / Effekte pro Stufe je Gebäude. |
+| `units.yaml` | Einheiten-Stats, Trainer-/Freischaltstufen und Kampf-Konstanten. |
+| `titles.yaml` | Titel-Leiter → max Städte / Citadels / Mana. |
 
-## Conventions
-- `schemaVersion` (top of each file) bumps on **structural** change; balance edits don't bump it. Exposed via `GET /api/v1/data/manifest` so the client only previews against a matching ruleset (`GAME-DATA-SCHEMA.md` §5).
-- **Keys are stable strings** (`quarry`, `knight`) — referenced by DB rows and code. Renaming a key is a migration.
-- **Level arrays are index 0 → level 1**, length **must equal `maxLevel`** (loader enforces).
-- `cost` entries are `[timber, stone]`; unit `cost` is `{timber, stone, iron, gold}`. All integers.
-- Names follow `IP-COMPLIANCE.md`; the LoU source name is noted in a comment for traceability.
+## Konventionen
+- `schemaVersion` (oben in jeder Datei) erhöht sich bei **struktureller** Änderung; Balance-Edits nicht. Per `GET /api/v1/data/manifest` exponiert, damit der Client nur gegen ein passendes Regelwerk vorschaut (`GAME-DATA-SCHEMA.md` §5).
+- **Keys sind stabile Strings** (`quarry`, `knight`) — von DB-Zeilen und Code referenziert. Einen Key umzubenennen ist eine Migration.
+- **Stufen-Arrays sind Index 0 → Stufe 1**, Länge **muss `maxLevel` entsprechen** (Loader erzwingt es).
+- `cost`-Einträge sind `[timber, stone]`; Einheiten-`cost` ist `{timber, stone, iron, gold}`. Alles ganzzahlig.
+- Namen folgen `IP-COMPLIANCE.md`; der LoU-Quellname steht zur Nachvollziehbarkeit im Kommentar.
 
-## Provenance & confidence
-Values are transcribed from `GAME-MECHANICS.md`, which tags every number `[V]`/`[A]`/`[U]`:
-- Building cost/output/time = **[V]** (Fandom raw-wikitext snapshots in `research/wiki-snapshots/`).
-- Unit numeric stats = **[A]** (community/Ultima Codex) — expect playtest tuning.
-- The adjacency cottage-grouping and a few values are **open conflicts** (`RESEARCH-LOG.md`); the formula lives behind tests in `shared/formulas` so it's re-tunable.
+## Herkunft & Confidence
+Werte sind aus `GAME-MECHANICS.md` transkribiert, das jede Zahl `[V]`/`[A]`/`[U]` taggt:
+- Gebäude-Kosten/-Output/-Zeit = **[V]** (Fandom-Rohwikitext-Snapshots in `research/wiki-snapshots/`).
+- Numerische Einheiten-Stats = **[A]** (Community/Ultima Codex) — Playtest-Tuning erwartet.
+- Die Adjazenz-Cottage-Gruppierung und einige Werte sind **offene Konflikte** (`RESEARCH-LOG.md`); die Formel lebt hinter Tests in `shared/formulas`, ist also nachjustierbar.
 
-When you change a value, update `GAME-MECHANICS.md` and add a dated note to `RESEARCH-LOG.md`.
+Wenn du einen Wert änderst, aktualisiere `GAME-MECHANICS.md` und ergänze eine datierte Notiz in `RESEARCH-LOG.md`.

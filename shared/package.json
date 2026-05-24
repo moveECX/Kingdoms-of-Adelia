@@ -1,7 +1,8 @@
 {
-  "name": "@aldermark/shared",
+  "name": "@adelia/shared",
   "version": "0.0.0",
   "private": true,
+  "license": "AGPL-3.0-or-later",
   "type": "module",
   "description": "Shared zod schemas, constants, domain types, and PURE game formulas. No Node or DOM APIs.",
   "exports": {

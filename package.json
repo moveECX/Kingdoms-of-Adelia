@@ -1,8 +1,9 @@
 {
-  "name": "aldermark",
+  "name": "kingdoms-of-adelia",
   "version": "0.0.0",
   "private": true,
-  "description": "Aldermark — browser MMO city-building strategy game (clean-room, original IP).",
+  "description": "Kingdoms of Adelia — Browser-MMO-Aufbaustrategie (Clean-Room, eigene IP).",
+  "license": "AGPL-3.0-or-later",
   "type": "module",
   "workspaces": [
     "shared",

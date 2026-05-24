@@ -1,7 +1,8 @@
 {
-  "name": "@aldermark/server",
+  "name": "@adelia/server",
   "version": "0.0.0",
   "private": true,
+  "license": "AGPL-3.0-or-later",
   "type": "module",
   "description": "Authoritative game server: Fastify REST + ws + tick scheduler + Kysely/Postgres.",
   "scripts": {
@@ -13,7 +14,7 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@aldermark/shared": "*",
+    "@adelia/shared": "*",
     "fastify": "^5.2.0",
     "@fastify/cookie": "^11.0.0",
     "kysely": "^0.27.4",

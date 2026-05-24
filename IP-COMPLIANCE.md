@@ -1,103 +1,105 @@
-# IP Compliance
+# IP-Compliance
 
-> **Project working title:** *Aldermark* (provisional — centralized in one constant; see `shared/constants/`. Renaming later is a find/replace.)
-> **Theme:** Original-mythology medieval — an invented frontier realm of feuding city-states. No real-world history, no Ultima-series setting.
+> **Projektname:** *Kingdoms of Adelia*. Reichs-/Weltname: **Adelia**. Zentral in einer Konstante (`shared/constants/`).
+> **Thematik:** eigene mittelalterliche Mythologie — ein erfundenes Grenzland-Reich aus rivalisierenden Stadtstaaten. Keine reale Geschichte, kein Ultima-Setting, **kein Tolkien-Setting**.
 
-This project is a **clean-room reimplementation** of the *gameplay* of Lord of Ultima (EA Phenomic) and Crown of the Gods (Gaming Addict Studios). Both are out of active development. We replicate **mechanics**; we invent **everything expressive**.
+Dieses Projekt ist eine **Clean-Room-Reimplementierung** des *Gameplays* von Lord of Ultima (EA Phenomic) und Crown of the Gods (Gaming Addict Studios). Beide werden nicht mehr aktiv betrieben. Wir replizieren **Mechaniken**; wir erfinden **alles Ausdruckshafte**.
 
-## 1. The governing principle
+## 1. Der Leitsatz
 
-- ✅ **Game mechanics, rules, systems, formulas, and balance numbers are NOT copyrightable.** We may freely replicate adjacency math, combat resolution, production curves, build times, and the *behavior* of the game.
-- ❌ **Expression IS copyrightable.** Names, art, sprites, tiles, icons, sounds, music, UI screenshots, story/lore text, and specific tooltip prose are off-limits.
-- ❌ **Trademarks** (game titles, branded proper nouns) must not be used in our code, UI, docs, or marketing.
+- ✅ **Spielmechaniken, Regeln, Systeme, Formeln und Balancing-Zahlen sind NICHT urheberrechtlich schützbar.** Wir dürfen Adjazenz-Mathematik, Kampfauflösung, Produktionskurven, Bauzeiten und das *Verhalten* des Spiels frei replizieren.
+- ❌ **Ausdruck IST geschützt.** Namen, Grafik, Sprites, Tiles, Icons, Sounds, Musik, UI-Screenshots, Story-/Lore-Texte und konkrete Tooltip-Prosa sind tabu.
+- ❌ **Marken** (Spieltitel, geschützte Eigennamen) dürfen nicht in Code, UI, Doku oder Marketing erscheinen.
 
-When in doubt: **reimplement the rule, rewrite the words, redraw the art.**
+Im Zweifel: **Regel neu implementieren, Wörter neu schreiben, Grafik neu zeichnen.**
 
-## 2. Banned proper nouns — never appear anywhere
+## 2. Verbotene Eigennamen — tauchen nirgendwo auf
 
-Do **not** use these in code identifiers, UI, docs, commit messages, asset filenames, or marketing:
+Nicht verwenden in Code-Bezeichnern, UI, Doku, Commit-Messages, Asset-Dateinamen oder Marketing:
 
-- Game titles: **"Lord of Ultima"**, **"Crown of the Gods"**, "LoU", "CotG" (acceptable only inside `research/` analysis when *referring to the source*, never in product).
-- Ultima-series proper nouns: **"Ultima"**, **"Sosaria"**, **"Britannia"**, **"Caledonia"**, **"Moonglow"**, **"Trinsic"**, **"Yew"**, **"Minoc"**, **"Skara Brae"**, **"Vesper"**, **"Magincia"**, **"Jhelom"**, **"Cove"**, and any other Ultima place/character name.
-- Company/brand names in product context: "EA", "Electronic Arts", "Phenomic", "Gaming Addict Studios".
+- Spieltitel: **„Lord of Ultima"**, **„Crown of the Gods"**, „LoU", „CotG" (nur innerhalb von `research/` zulässig, wenn auf die *Quelle* verwiesen wird, nie im Produkt).
+- Ultima-Eigennamen: **„Ultima"**, **„Sosaria"**, **„Britannia"**, **„Caledonia"**, **„Moonglow"**, **„Trinsic"**, **„Yew"**, **„Minoc"**, **„Skara Brae"**, **„Vesper"**, **„Magincia"**, **„Jhelom"**, **„Cove"** und jeder weitere Ultima-Orts-/Figurenname.
+- **Tolkien-Eigennamen**: **„Arda"**, „Mittelerde"/„Middle-earth", „Valinor", „Gondor", „Shire" usw. (siehe Entscheidungs-Log).
+- Firmen-/Markennamen im Produktkontext: „EA", „Electronic Arts", „Phenomic", „Gaming Addict Studios".
 
-⚠️ **Two banned names appear in the OpenLoU reference data** and have been mapped below: **"Moonglow Tower"** and **"Trinsic Temple"**. They must be renamed in all our data and code.
+⚠️ **Zwei verbotene Namen tauchen in den OpenLoU-Referenzdaten auf** und sind unten gemappt: **„Moonglow Tower"** und **„Trinsic Temple"**. Sie müssen in all unseren Daten und Code umbenannt sein.
 
-## 3. Assets — strictly original
+## 3. Assets — strikt eigen
 
-- **Zero assets from `FelixLeChat/LordOfUltima`.** Its README admits the art is *"property of EA."* Its 30 MB of `.PNG`/`.mp3` are off-limits for any purpose — not even as placeholders or drawing references. The repo stays gitignored under `research/reference-repos/`.
-- **No screenshots** of the original games used as texture, trace source, or "reference while drawing."
-- All art (even greybox/placeholder) is **authored originally** for this project: SVG UI icons, original PNG/WebP tiles. Placeholder art = simple original colored shapes, never derived.
-- Audio (if any) is original or properly licensed (CC0/CC-BY with attribution), never ripped.
+- **Null Assets aus `FelixLeChat/LordOfUltima`.** Dessen README gibt zu, die Grafik sei *„Eigentum von EA"*. Die 30 MB `.PNG`/`.mp3` sind für jeden Zweck tabu — auch nicht als Platzhalter oder Zeichenvorlage. Das Repo bleibt gitignored unter `research/reference-repos/`.
+- **Keine Screenshots** der Originalspiele als Textur, Pausvorlage oder „Referenz beim Zeichnen".
+- Alle Grafik (auch Greybox/Platzhalter) wird **eigens erstellt**: SVG-UI-Icons, eigene PNG/WebP-Tiles. Platzhalter = einfache eigene farbige Formen, nie abgeleitet.
+- Audio (falls vorhanden) ist eigen oder ordentlich lizenziert (CC0/CC-BY mit Attribution), nie gerippt.
 
-## 4. Code licensing boundary
+## 4. Code-Lizenzgrenze
 
-- **OpenLoU is GPLv3 (copyleft).** We do **not** copy or derive from its Go source or JSON files — that would relicense us. We only transcribe **numeric values** (facts) after verifying them against the wikis.
-- **FelixLeChat has no license → all rights reserved.** We do **not** reuse any of its code.
-- Our own project license: **TBD by user** (recommended: MIT for self-hosted, or AGPLv3 if any future public deployment should stay open). Tracked in `CLAUDE.md`.
+- **OpenLoU ist GPLv3 (Copyleft).** Wir kopieren/ableiten **nicht** aus seinem Go-Code oder seinen JSON-Dateien. Wir transkribieren nur **numerische Werte** (Fakten), nachdem wir sie gegen die Wikis verifiziert haben.
+- **FelixLeChat hat keine Lizenz → alle Rechte vorbehalten.** Wir verwenden keinen seiner Code.
+- **Unsere Projektlizenz: AGPL-3.0-or-later** (`LICENSE`, © 2026 moveECX). Hinweis: AGPL ist selbst Copyleft — passt zu einem offenen Selbsthosting-Projekt; eine etwaige öffentliche Bereitstellung müsste den Quellcode anbieten. (Mit GPLv3 ist AGPLv3 kompatibel, falls wir je verifizierte Mechanik-Konzepte gegenprüfen — wir kopieren aber ohnehin keinen Code.)
 
-## 5. Rename map — LoU/OpenLoU → Aldermark
+## 5. Umbenennungs-Map — LoU/OpenLoU → Adelia
 
-Canonical names live in `shared/constants/`. `[REQUIRED]` = renaming a banned/IP noun; others are theme polish.
+Kanonische Namen in `shared/constants/`. `[ERFORDERLICH]` = Umbenennung eines verbotenen/IP-Namens; übrige sind thematische Politur. *(Anzeigenamen sind aktuell englisch; Eindeutschung ist spätere Inhalts-Arbeit.)*
 
-### Resources (1:1 with LoU, generic medieval terms — safe)
-| LoU | Aldermark |
+### Ressourcen (1:1 zu LoU, generische mittelalterliche Begriffe — unbedenklich)
+| LoU | Adelia |
 |---|---|
-| Wood | **Timber** |
-| Stone | **Stone** |
-| Iron / Ore | **Iron** |
-| Food | **Grain** |
+| Wood | **Timber** (Holz) |
+| Stone | **Stone** (Stein) |
+| Iron / Ore | **Iron** (Eisen) |
+| Food | **Grain** (Getreide) |
 | Gold | **Gold** |
-| (rare resources) | **Heartwood**, **Wardstone**, **Starsteel**, **Truegrain** *(provisional; confirm real LoU rare-resource set via research)* |
-| Premium currency (OpenLoU "diamonds") | **Crowns** *(premium currency is optional/deferred for a self-hosted build)* |
+| (seltene Ressourcen) | **Heartwood**, **Wardstone**, **Starsteel**, **Truegrain** *(vorläufig)* |
+| Premiumwährung (OpenLoU „diamonds") | **Crowns** *(optional/zurückgestellt für Selbsthosting)* |
 
-### Buildings
-| LoU / OpenLoU | Aldermark | Note |
+### Gebäude
+| LoU / OpenLoU | Adelia | Hinweis |
 |---|---|---|
-| Town Hall | **Hall** | core building |
-| Woodcutter's Hut | **Woodcutter's Lodge** | timber producer |
-| Sawmill | **Sawmill** | timber enhancer |
-| Quarry | **Quarry** | stone producer |
-| Stonemason | **Stonemason** | stone enhancer |
-| Iron / Ore Mine | **Iron Mine** | iron producer |
-| Foundry | **Foundry** | iron enhancer |
-| Farm | **Farm** | grain producer |
-| Mill | **Mill** | grain enhancer |
-| Cottage | **Cottage** | construction speed + producer adjacency |
-| Townhouse | **Townhouse** | tax/gold income |
-| Warehouse | **Warehouse** | resource storage |
-| Hideout | **Cellar** | hidden (un-plunderable) storage |
-| Marketplace | **Market** | land trade + tax |
-| Harbor | **Harbor** | sea trade + tax |
-| City Guard House | **Watch House** | trains defensive guards |
-| Barracks | **Barracks** | army-size cap + recruit-speed adjacency |
-| Training Ground | **Training Yard** | infantry |
-| Stable | **Stable** | cavalry |
-| Workshop | **Siege Workshop** | siege engines |
-| Shipyard | **Shipyard** | naval |
-| **Moonglow Tower** | **Mage Tower** | casters — **[REQUIRED]** (Moonglow = Ultima) |
-| **Trinsic Temple** | **Sanctuary** | blessed units/leaders — **[REQUIRED]** (Trinsic = Ultima) |
-| Castle | **Citadel** | plunder/siege/capture + command queue |
-| City Wall | **City Wall** | defense bonus |
-| Palace (endgame) | **Seat of Power** | *confirm via research* |
-| Temple (endgame) | **Wardstone Shrine** | *confirm via research* |
+| Town Hall | **Hall** | Kerngebäude |
+| Woodcutter's Hut | **Woodcutter's Lodge** | Holz-Produzent |
+| Sawmill | **Sawmill** | Holz-Verstärker |
+| Quarry | **Quarry** | Stein-Produzent |
+| Stonemason | **Stonemason** | Stein-Verstärker |
+| Iron / Ore Mine | **Iron Mine** | Eisen-Produzent |
+| Foundry | **Foundry** | Eisen-Verstärker |
+| Farm | **Farm** | Getreide-Produzent |
+| Mill | **Mill** | Getreide-Verstärker |
+| Cottage | **Cottage** | Bautempo + Produzenten-Adjazenz |
+| Townhouse | **Townhouse** | Steuer/Gold |
+| Warehouse | **Warehouse** | Ressourcenlager |
+| Hideout | **Cellar** | verstecktes (unplünderbares) Lager |
+| Marketplace | **Market** | Landhandel + Steuer |
+| Harbor | **Harbor** | Seehandel + Steuer |
+| City Guard House | **Watch House** | bildet Verteidigungs-Wachen aus |
+| Barracks | **Barracks** | Armeegrößen-Cap + Rekrutier-Adjazenz |
+| Training Ground | **Training Yard** | Infanterie |
+| Stable | **Stable** | Kavallerie |
+| Workshop | **Siege Workshop** | Belagerungsgerät |
+| Shipyard | **Shipyard** | Marine |
+| **Moonglow Tower** | **Mage Tower** | Magier — **[ERFORDERLICH]** (Moonglow = Ultima) |
+| **Trinsic Temple** | **Sanctuary** | gesegnete Einheiten/Anführer — **[ERFORDERLICH]** (Trinsic = Ultima) |
+| Castle | **Citadel** | Plündern/Belagern/Erobern + Befehls-Queue |
+| City Wall | **City Wall** | Verteidigungsbonus |
+| Palace (Endgame) | **Seat of Power** | *via Recherche bestätigen* |
+| Temple (Endgame) | **Wardstone Shrine** | *via Recherche bestätigen* |
 
-### Units & endgame
-Unit and victory-structure names are finalized in `GAME-MECHANICS.md` once the unit/endgame research lands. Proposed neutral scheme (no IP nouns): Militia, Spearman, Swordsman, Archer, Crossbowman, Light/Heavy Cavalry, Battering Ram, Catapult, Ballista, Mage, Warlock, Templar (blessed), Marshal (leader), Scout, Cog/Galley/Warship (naval). None of these are Ultima nouns; safe to use.
+### Einheiten & Endgame
+Einheiten- und Sieg-Bauwerksnamen werden in `GAME-MECHANICS.md` finalisiert. Vorgeschlagenes neutrales Schema (keine IP-Namen): Militia, Spearman, Swordsman, Archer, Crossbowman, Light/Heavy Cavalry, Battering Ram, Catapult, Ballista, Mage, Warlock, Templar (gesegnet), Marshal (Anführer), Scout, Cog/Galley/Warship (Marine). Keiner davon ist ein Ultima-Name; unbedenklich.
 
-## 6. Theme & setting (original)
+## 6. Thematik & Setting (eigen)
 
-*Aldermark* is a fractured continent of independent holdings emerging from a long collapse. Players are **Wardens** who found and grow city-states by laying out buildings to exploit **adjacency**, raid monster-held **ruins** for rare materials, trade along land and sea routes, and contest ancient **Wardstone shrines** for dominion. The tone is grounded low-fantasy medieval — original mythology, not Arthurian or Ultima lore. All lore text is written fresh; no source prose is reused.
+*Adelia* ist ein zerfallener Kontinent unabhängiger Herrschaften, der aus einem langen Kollaps erwacht. Spieler sind **Wächter (Wardens)**, die Stadtstaaten gründen und ausbauen, indem sie Gebäude zur Ausnutzung der **Adjazenz** anlegen, monsterbesetzte **Ruinen** nach seltenen Materialien plündern, über Land- und Seerouten handeln und mit ihrer Allianz um uralte **Wardstone-Schreine** ringen. Der Ton ist geerdete Low-Fantasy — eigene Mythologie, nicht Artus, nicht Ultima, nicht Tolkien. Alle Lore-Texte werden neu geschrieben; keine Quell-Prosa wird wiederverwendet.
 
-## 7. Borderline-decision log
+## 7. Log der Grenzfall-Entscheidungen
 
-| Decision | Ruling | Reasoning |
+| Entscheidung | Urteil | Begründung |
 |---|---|---|
-| Keep generic building names ("Barracks", "Quarry", "Harbor") | ✅ Allowed | Common English words / generic medieval functions; not protectable as marks. |
-| Replicate LoU's exact adjacency percentages & cost curves | ✅ Allowed | Numbers/mechanics are facts, not expression. |
-| Use OpenLoU's `db.sql`/JSON files directly | ❌ Avoided | GPLv3 derivative risk; we re-derive our own schema/data. |
-| Reuse any FelixLeChat image/sound | ❌ Banned | EA-owned, author-admitted. |
-| Reproduce LoU tooltip text verbatim | ❌ Banned | Copyrightable prose; we write original copy. |
-| Use the word "Ultima" in product | ❌ Banned | Trademarked franchise. OK only in `research/` when citing the source. |
+| Projektname „Kingdoms of Arda" | ❌ Abgelehnt → „Kingdoms of Adelia" | „Arda" ist Tolkiens Weltname (Mittelerde-Legendarium) und ein existierender Bannerlord-Mod-Titel — würde das Ultima-Problem gegen ein Tolkien-Problem tauschen. „Adelia" ist ein realer Vorname, IP-frei. |
+| Generische Gebäudenamen behalten („Barracks", „Quarry", „Harbor") | ✅ Erlaubt | Allgemeine Begriffe / generische mittelalterliche Funktionen; nicht als Marke schützbar. |
+| LoUs exakte Adjazenz-Prozente & Kostenkurven replizieren | ✅ Erlaubt | Zahlen/Mechaniken sind Fakten, kein Ausdruck. |
+| OpenLoUs `db.sql`/JSON direkt verwenden | ❌ Vermieden | GPLv3-Ableitungsrisiko; wir leiten Schema/Daten selbst neu ab. |
+| Ein FelixLeChat-Bild/-Sound wiederverwenden | ❌ Verboten | EA-Eigentum, vom Autor zugegeben. |
+| LoU-Tooltip-Text wörtlich reproduzieren | ❌ Verboten | Schützbare Prosa; wir schreiben eigene Texte. |
+| Das Wort „Ultima" im Produkt | ❌ Verboten | Geschützte Marke. Nur in `research/` zulässig, wenn die Quelle zitiert wird. |
 
-Append any new borderline calls here as they arise.
+Neue Grenzfälle hier ergänzen, sobald sie auftreten.

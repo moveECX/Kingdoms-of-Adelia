@@ -1,169 +1,169 @@
-# Game Mechanics — Aldermark
+# Spielmechaniken — Kingdoms of Adelia
 
-> Distilled from the Lord of Ultima wikis + reference implementations. **Mechanics and numbers are facts (not copyrightable); we replicate them.** Names are rebranded per `IP-COMPLIANCE.md` — tables show **Aldermark name (LoU source name)**.
+> Destilliert aus den Lord-of-Ultima-Wikis + Referenz-Implementierungen. **Mechaniken und Zahlen sind Fakten (nicht urheberrechtlich schützbar); wir replizieren sie.** Namen sind gemäß `IP-COMPLIANCE.md` umbenannt — Tabellen zeigen **Adelia-Name (LoU-Quellname)**.
 >
-> **Confidence tags** on every value:
-> `[V]` verified — from a directly fetched primary source (Fandom raw wikitext snapshot in `research/wiki-snapshots/fandom/`, or the LoU `Combat_Mechanics`/`Resources` pages).
-> `[A]` approximate — community guide / secondary source (Ultima Codex, strategy blogs) or implied.
-> `[U]` unknown — not found; flagged for playtest calibration.
+> **Confidence-Tags** an jedem Wert:
+> `[V]` verified — aus einer direkt geladenen Primärquelle (Fandom-Rohwikitext-Snapshot in `research/wiki-snapshots/fandom/` bzw. die LoU-Seiten `Combat_Mechanics`/`Resources`).
+> `[A]` approximate — Community-Guide / Sekundärquelle (Ultima Codex, Strategie-Blogs) oder impliziert.
+> `[U]` unknown — nicht gefunden; für Playtest-Kalibrierung markiert.
 >
-> Primary sources: `research/wiki-snapshots/fandom/*.wikitext` (mirrored 2026-05-24). Unit numeric stats are `[A]` (Ultima Codex `monster_data`); building cost/output/time tables are `[V]` (Fandom per-building pages); the combat formula is `[V]` (Fandom `Combat_Mechanics`).
+> Primärquellen: `research/wiki-snapshots/fandom/*.wikitext` (gespiegelt 2026-05-24). Numerische Einheiten-Stats sind `[A]` (Ultima Codex `monster_data`); Gebäude-Kosten/-Output/-Zeit-Tabellen sind `[V]` (Fandom-Gebäudeseiten); die Kampfformel ist `[V]` (Fandom `Combat_Mechanics`).
 
 ---
 
-## 1. Resources `[V]`
+## 1. Ressourcen `[V]`
 
-Four **harvested** resources (city-local, capped by storage) + one **pooled** currency:
+Vier **geerntete** Ressourcen (stadt-lokal, durch Lager gedeckelt) + eine **gepoolte** Währung:
 
-| Aldermark | LoU | Producer | Enhancer | Node terrain | Notes |
+| Adelia | LoU | Produzent | Verstärker | Knoten-Terrain | Hinweise |
 |---|---|---|---|---|---|
-| **Timber** | Wood | Woodcutter's Lodge | Sawmill | woods | also +300/h base from the Hall `[V]` |
-| **Stone** | Stone | Quarry | Stonemason | rock/hills | |
-| **Iron** | Iron | Iron Mine | Foundry | ore deposits/mountains | |
-| **Grain** | Food | Farm | Mill | free land (50/40) + **lakes (+50% each)** `[V]` | feeds unit upkeep |
-| **Gold** | Gold | Townhouse (tax) | Market/Harbor (tax %) | — | **empire-wide pooled, no cap, not transported** `[V]` |
+| **Timber** (Holz) | Wood | Woodcutter's Lodge | Sawmill | Wälder | zusätzlich +300/h Basis aus der Hall `[V]` |
+| **Stone** | Stone | Quarry | Stonemason | Fels/Hügel | |
+| **Iron** | Iron | Iron Mine | Foundry | Erzvorkommen/Berge | |
+| **Grain** | Food | Farm | Mill | freies Land (50/40) + **Seen (+50% je)** `[V]` | speist Einheiten-Unterhalt |
+| **Gold** | Gold | Townhouse (Steuer) | Market/Harbor (Steuer-%) | — | **reichsweit gepoolt, kein Cap, nicht transportiert** `[V]` |
 
-- Storage cap = Hall + Warehouses (per-resource, see §3). **Gold has no cap.** `[V]`
-- **Cellar (Hideout)** stores a protected amount immune to plunder/scouting. `[V]`
-- **Magical resource nodes**: one premium node per city, sold in packs — deferred/optional for a self-hosted build. `[V]`
-- **Purified/rare resources** (LoU: darkwood/runestone/veritium/trueseed; ours: Heartwood/Wardstone/Starsteel/Truegrain) come from late-game research + **Fame** (≈1 of each per 4,000 Fame `[A]`); gate top-tier units (Barons). Deferred to Phase 5.
+- Lager-Cap = Hall + Warehouses (pro Ressource, siehe §3). **Gold hat kein Cap.** `[V]`
+- **Cellar (Hideout)** lagert einen geschützten, vor Plünderung/Spähung sicheren Betrag. `[V]`
+- **Magische Ressourcen-Knoten**: ein Premium-Knoten pro Stadt, im Paket verkauft — für Selbsthosting zurückgestellt/optional. `[V]`
+- **Veredelte/seltene Ressourcen** (LoU: darkwood/runestone/veritium/trueseed; bei uns: Heartwood/Wardstone/Starsteel/Truegrain) stammen aus Spätspiel-Forschung + **Fame** (≈1 je Typ pro 4.000 Fame `[A]`); gaten Top-Einheiten (Barone). Auf Phase 5 zurückgestellt.
 
 ---
 
-## 2. Adjacency system — the signature mechanic `[V]`
+## 2. Adjazenz-System — die Signatur-Mechanik `[V]`
 
-Each city is a grid; a producer is boosted by its up-to-8 neighbors (orthogonal **and** diagonal). The **verified** Fandom `Resources` rule:
+Jede Stadt ist ein Raster; ein Produzent wird von seinen bis zu 8 Nachbarn verstärkt (orthogonal **und** diagonal). Die **verifizierte** Fandom-`Resources`-Regel:
 
 ```
 production = base(level)
-           × (1 + Σ node_bonus + Σ cottage_bonus)   ← additive group
-           × (1 + enhancer_bonus)                    ← applied AFTER, multiplicative
+           × (1 + Σ node_bonus + Σ cottage_bonus)   ← additive Gruppe
+           × (1 + enhancer_bonus)                     ← danach angewandt, multiplikativ
 ```
 
-- **node_bonus**: first adjacent matching node **+50%**, each additional node **+40%**. `[V]`
-- **cottage_bonus**: each adjacent Cottage adds its *Manpower Bonus* — L1 **+3%** … L10 **+30%**. `[V]`
-- **enhancer_bonus**: at most **one** adjacent enhancer (Sawmill/Stonemason/Mill/Foundry), its *Efficiency Bonus* — L1 **+30%** … L10 **+75%**. A 2nd enhancer on the same producer does nothing. `[V]`
-- Lakes boost Farms **+50% each with no diminishing**. `[V]`
-- How many nodes a city has is fixed at founding by surrounding region terrain (N/S/E/W tile = +8 nodes, diagonal tile = +4 nodes; mountains→iron, hills→stone, woods→wood, open→lakes). `[V]`
+- **node_bonus**: erster angrenzender passender Knoten **+50%**, jeder weitere Knoten **+40%**. `[V]`
+- **cottage_bonus**: jede angrenzende Cottage addiert ihren *Manpower-Bonus* — L1 **+3%** … L10 **+30%**. `[V]`
+- **enhancer_bonus**: höchstens **ein** angrenzender Verstärker (Sawmill/Stonemason/Mill/Foundry), dessen *Efficiency-Bonus* — L1 **+30%** … L10 **+75%**. Ein 2. Verstärker am selben Produzenten bringt nichts. `[V]`
+- Seen verstärken Farms **+50% je, ohne Abschwächung**. `[V]`
+- Wie viele Knoten eine Stadt hat, ist bei Gründung durch das umliegende Regionsterrain fixiert (N/S/O/W-Tile = +8 Knoten, Diagonal-Tile = +4 Knoten; Berge→Eisen, Hügel→Stein, Wald→Holz, offen→Seen). `[V]`
 
-**Worked example** — L10 Woodcutter's Lodge, 3 adjacent wood nodes, 2× L10 Cottage, 1× L10 Sawmill:
+**Durchgerechnetes Beispiel** — L10 Woodcutter's Lodge, 3 angrenzende Holzknoten, 2× L10 Cottage, 1× L10 Sawmill:
 ```
 = 300 × (1 + [0.50+0.40+0.40] + [0.30+0.30]) × (1 + 0.75)
 = 300 × (1 + 1.30 + 0.60) × 1.75
-= 300 × 2.90 × 1.75  =  1,522.5 timber/h
+= 300 × 2.90 × 1.75  =  1.522,5 Holz/h
 ```
 
-> ⚠️ **Conflict to calibrate `[A]`:** a popular community guide (daydull) treats cottages as a *separate* multiplicative group → `300×2.30×1.75×1.60 = 2,100`. We implement the **Fandom additive-then-multiplicative** model above as canonical, but the formula lives in `shared/formulas/adjacency.ts` behind unit tests so it's trivially re-tunable during playtest.
+> ⚠️ **Zu kalibrierender Konflikt `[A]`:** ein populärer Community-Guide (daydull) behandelt Cottages als *separate* multiplikative Gruppe → `300×2.30×1.75×1.60 = 2.100`. Wir implementieren das **Fandom-Modell „additiv-dann-multiplikativ"** als kanonisch, aber die Formel lebt in `shared/formulas/adjacency.ts` hinter Unit-Tests, ist also trivial nachjustierbar.
 
-**Rules of thumb (from the wiki) for layout AI/UX hints:** every producer should touch one enhancer + ≥75% worth of nodes; every enhancer should touch ≥2–3 producers; every cottage should touch ≥3 producers; push Cottages until construction speed is very high. `[V]`
+**Faustregeln (aus dem Wiki) für Layout-Hilfen/UX:** jeder Produzent sollte einen Verstärker + ≥75% an Knoten berühren; jeder Verstärker ≥2–3 Produzenten; jede Cottage ≥3 Produzenten; Cottages hochziehen, bis das Bautempo sehr hoch ist. `[V]`
 
 ---
 
-## 3. Buildings — full roster + per-level tables
+## 3. Gebäude — vollständige Liste + Tabellen pro Stufe
 
-All buildings cap at **level 10**. Costs are `[V]` from Fandom snapshots. "Score" = rank points. Build times shown for the producer/enhancer families; others in their snapshot.
+Alle Gebäude enden bei **Stufe 10**. Kosten sind `[V]` aus den Fandom-Snapshots. „Score" = Rangpunkte. Bauzeiten für die Produzenten-/Verstärker-Familien gezeigt; übrige im jeweiligen Snapshot.
 
-### 3.1 Roster (25 core + towers/traps)
+### 3.1 Liste (25 Kern + Türme/Fallen)
 
-| Aldermark (LoU) | Category | Effect | Prereq (Hall lvl) |
+| Adelia (LoU) | Kategorie | Effekt | Voraussetzung (Hall-Stufe) |
 |---|---|---|---|
-| Hall (Town Hall) | core | +10 build slots/lvl (max 100); +300 timber/h; storage; 1/city; indestructible | start |
-| Woodcutter's Lodge (Woodcutter's Hut) | producer | timber | 1 |
-| Cottage | civic | build-speed + producer adjacency | 1 |
-| Warehouse | storage | +cap all resources | 1 |
-| Quarry | producer | stone | 2 |
-| Cellar (Hideout) | storage | hidden, un-plunderable storage | 2 |
-| City Wall | defense | +% defense to ground units; indestructible | 2 |
-| Farm | producer | grain | 3 |
-| Watch House (City Guard House) | military | trains City Guards | 3 |
-| Iron Mine | producer | iron | 4 |
-| Barracks | military | +army-size cap; +recruit speed to adjacent trainers | 4 |
-| Training Yard (Training Ground) | military | infantry | 4 |
-| Townhouse | gold | enables tax (gold/h) | 5 |
-| Market (Marketplace) | trade | carts (land trade) + tax % | 5 |
-| Sawmill | enhancer | +timber producer & storage | 6 |
-| Stable (Stables) | military | cavalry | 6 |
-| Stonemason | enhancer | +stone producer & storage | 7 |
-| Mage Tower (**Moonglow Tower**) | military | casters; resource purification | 7 |
-| Mill | enhancer | +grain producer & storage | 8 |
-| Citadel (Castle) | special | plunder/assault/siege; +command queue; +army size; 1/city; indestructible | 8 |
-| Sanctuary (**Trinsic Temple**) | military | blessed units + leaders (Baron) | 8 |
-| Foundry | enhancer | +iron producer & storage | 9 |
-| Siege Workshop (Workshop) | military | siege engines | 9 |
-| Harbor | trade | ships (sea trade) + tax % | 10 |
-| Shipyard | military | naval units | 10 |
-| **Towers** (Lookout/Guardian/Ranger/Templar/Ballista) | defense | double matched-unit defense; don't count to build cap | — |
-| **Traps** (Pitfall/Barricade/Arcane/Camouflage) | defense | neutralize ≤50% of matched attacker type; outer ring; don't count to cap | — |
+| Hall (Town Hall) | Kern | +10 Bauslots/Stufe (max 100); +300 Holz/h; Lager; 1/Stadt; unzerstörbar | Start |
+| Woodcutter's Lodge (Woodcutter's Hut) | Produzent | Holz | 1 |
+| Cottage | Zivil | Bautempo + Produzenten-Adjazenz | 1 |
+| Warehouse | Lager | +Cap alle Ressourcen | 1 |
+| Quarry | Produzent | Stein | 2 |
+| Cellar (Hideout) | Lager | verstecktes, unplünderbares Lager | 2 |
+| City Wall | Verteidigung | +% Verteidigung für Bodeneinheiten; unzerstörbar | 2 |
+| Farm | Produzent | Getreide | 3 |
+| Watch House (City Guard House) | Militär | bildet City Guards aus | 3 |
+| Iron Mine | Produzent | Eisen | 4 |
+| Barracks | Militär | +Armeegrößen-Cap; +Rekrutiertempo angrenzender Trainer | 4 |
+| Training Yard (Training Ground) | Militär | Infanterie | 4 |
+| Townhouse | Gold | ermöglicht Steuer (Gold/h) | 5 |
+| Market (Marketplace) | Handel | Karren (Landhandel) + Steuer-% | 5 |
+| Sawmill | Verstärker | +Holz-Produzent & -Lager | 6 |
+| Stable (Stables) | Militär | Kavallerie | 6 |
+| Stonemason | Verstärker | +Stein-Produzent & -Lager | 7 |
+| Mage Tower (**Moonglow Tower**) | Militär | Magier; Ressourcen-Veredelung | 7 |
+| Mill | Verstärker | +Getreide-Produzent & -Lager | 8 |
+| Citadel (Castle) | Spezial | Plündern/Belagern; +Befehls-Queue; +Armeegröße; 1/Stadt; unzerstörbar | 8 |
+| Sanctuary (**Trinsic Temple**) | Militär | gesegnete Einheiten + Anführer (Baron) | 8 |
+| Foundry | Verstärker | +Eisen-Produzent & -Lager | 9 |
+| Siege Workshop (Workshop) | Militär | Belagerungsgerät | 9 |
+| Harbor | Handel | Schiffe (Seehandel) + Steuer-% | 10 |
+| Shipyard | Militär | Marine-Einheiten | 10 |
+| **Türme** (Lookout/Guardian/Ranger/Templar/Ballista) | Verteidigung | verdoppeln Verteidigung der passenden Einheit; zählen nicht zum Baulimit | — |
+| **Fallen** (Pitfall/Barricade/Arcane/Camouflage) | Verteidigung | neutralisieren ≤50% des passenden Angreifertyps; Außenring; zählen nicht zum Limit | — |
 
 ### 3.2 Hall (Town Hall) `[V]`
-| Lvl | Slots | Timber/h | Storage | Cost T | Cost S | Build |
+| Stufe | Slots | Holz/h | Lager | Kosten T | Kosten S | Bauzeit |
 |--:|--:|--:|--:|--:|--:|--|
-|1|10|300|5,000|–|–|–|
-|2|20|300|7,000|200|–|25 s|
-|3|30|300|10,000|500|100|40 s|
-|4|40|300|15,000|1,000|300|1 m 40 s|
-|5|50|300|24,000|3,000|1,500|30 m|
-|6|60|300|35,000|8,000|4,000|2 h 30 m|
-|7|70|300|50,000|15,000|10,000|8 h 20 m|
-|8|80|300|80,000|30,000|25,000|16 h 40 m|
-|9|90|300|125,000|60,000|60,000|26 h|
-|10|100|300|175,000|120,000|120,000|37 h 20 m|
+|1|10|300|5.000|–|–|–|
+|2|20|300|7.000|200|–|25 s|
+|3|30|300|10.000|500|100|40 s|
+|4|40|300|15.000|1.000|300|1 m 40 s|
+|5|50|300|24.000|3.000|1.500|30 m|
+|6|60|300|35.000|8.000|4.000|2 h 30 m|
+|7|70|300|50.000|15.000|10.000|8 h 20 m|
+|8|80|300|80.000|30.000|25.000|16 h 40 m|
+|9|90|300|125.000|60.000|60.000|26 h|
+|10|100|300|175.000|120.000|120.000|37 h 20 m|
 
-### 3.3 Producer family — Woodcutter's Lodge / Quarry / Iron Mine `[V]`
-Identical cost/output/time across all three (output is timber/stone/iron respectively):
-| Lvl | Output/h | Cost T | Cost S | Build |
+### 3.3 Produzenten-Familie — Woodcutter's Lodge / Quarry / Iron Mine `[V]`
+Identische Kosten/Output/Zeit über alle drei (Output ist Holz/Stein/Eisen):
+| Stufe | Output/h | Kosten T | Kosten S | Bauzeit |
 |--:|--:|--:|--:|--|
 |1|20|50|–|15 s|
 |2|40|200|–|54 s|
 |3|60|400|200|6 m|
-|4|85|1,400|600|45 m|
-|5|110|3,500|1,500|1 h 41 m|
-|6|140|6,000|3,000|3 h 23 m|
-|7|175|10,000|5,000|6 h 15 m|
-|8|210|16,000|8,000|9 h 57 m|
-|9|250|25,000|13,000|14 h 58 m|
-|10|300|38,000|20,000|22 h 42 m|
+|4|85|1.400|600|45 m|
+|5|110|3.500|1.500|1 h 41 m|
+|6|140|6.000|3.000|3 h 23 m|
+|7|175|10.000|5.000|6 h 15 m|
+|8|210|16.000|8.000|9 h 57 m|
+|9|250|25.000|13.000|14 h 58 m|
+|10|300|38.000|20.000|22 h 42 m|
 
-### 3.4 Farm `[V]` (same costs/times as §3.3; different output curve)
-Grain/h by level: **5, 8, 15, 20, 30, 45, 75, 120, 200, 300**.
+### 3.4 Farm `[V]` (gleiche Kosten/Zeiten wie §3.3; andere Output-Kurve)
+Getreide/h pro Stufe: **5, 8, 15, 20, 30, 45, 75, 120, 200, 300**.
 
-### 3.5 Enhancer family — Sawmill / Stonemason / Mill / Foundry `[V]`
-Identical across all four (efficiency → matched producer; storage → matched resource):
-| Lvl | Efficiency | Storage bonus | Cost T | Cost S | Build |
+### 3.5 Verstärker-Familie — Sawmill / Stonemason / Mill / Foundry `[V]`
+Identisch über alle vier (Effizienz → passender Produzent; Lager → passende Ressource):
+| Stufe | Effizienz | Lager-Bonus | Kosten T | Kosten S | Bauzeit |
 |--:|--:|--:|--:|--:|--|
 |1|+30%|+20%|60|60|20 s|
 |2|+35%|+40%|150|150|1 m 48 s|
 |3|+40%|+60%|350|350|12 m|
-|4|+45%|+80%|1,100|1,100|1 h 30 m|
-|5|+50%|+100%|2,700|2,700|3 h 23 m|
-|6|+55%|+120%|5,000|5,000|6 h 45 m|
-|7|+60%|+140%|8,500|8,500|12 h 18 m|
-|8|+65%|+160%|13,500|13,500|19 h 53 m|
-|9|+70%|+180%|21,500|21,500|29 h 56 m|
-|10|+75%|+200%|33,000|33,000|45 h 23 m|
+|4|+45%|+80%|1.100|1.100|1 h 30 m|
+|5|+50%|+100%|2.700|2.700|3 h 23 m|
+|6|+55%|+120%|5.000|5.000|6 h 45 m|
+|7|+60%|+140%|8.500|8.500|12 h 18 m|
+|8|+65%|+160%|13.500|13.500|19 h 53 m|
+|9|+70%|+180%|21.500|21.500|29 h 56 m|
+|10|+75%|+200%|33.000|33.000|45 h 23 m|
 
 ### 3.6 Cottage `[V]`
-| Lvl | Build speed | Manpower (adj. producer bonus) | Cost T | Cost S |
+| Stufe | Bautempo | Manpower (Produzenten-Bonus) | Kosten T | Kosten S |
 |--:|--:|--:|--:|--:|
 |1|+4%|+3%|–|50|
-|5|+35%|+15%|200|1,000|
-|10|+100%|+30%|12,000|17,000|
+|5|+35%|+15%|200|1.000|
+|10|+100%|+30%|12.000|17.000|
 
-(Full curve in snapshot. Build-speed is **city-wide and additive across cottages**; manpower is the per-adjacency producer bonus used in §2.)
+(Volle Kurve im Snapshot. Bautempo ist **stadtweit und additiv über Cottages**; Manpower ist der Adjazenz-Bonus pro Produzent aus §2.)
 
-### 3.7 Storage, gold, trade, defense (key per-level values) `[V]`
-- **Warehouse** storage: 2.5k,5k,9k,16k,26k,42k,65k,100k,145k,**200k**. Cost (T/S) 60/– … 20,000/13,000.
-- **Cellar (Hideout)** hidden storage: 500 … **15,000** (stone-only cost 50 … 8,000).
-- **Townhouse** gold/h: 25,50,75,100,130,170,210,260,320,**400**. Cost ramps to 29k/29k.
-- **Market** carts: 1,4,10,20,30,50,70,105,145,**200**; tax +2%…**+20%**.
-- **Harbor** ships: 1,2,4,6,9,12,15,19,24,**30**; tax +5%…**+50%**.
-- **City Wall** combat bonus: +1,+3,+6,+10,+15,+20,+26,+33,+41,**+50%** (stone-only cost to 200,000).
-- **Barracks** army-size: +10,+30,+60,+100,+160,+240,+350,+500,+700,**+1000**; recruit speed +1%…**+25%**.
-- **Citadel (Castle)** command queue: **+1 per level (max +10)**; max army size +20%…**+300%**; stone-only cost 20,000…200,000 (total **835,000**).
+### 3.7 Lager, Gold, Handel, Verteidigung (zentrale Werte pro Stufe) `[V]`
+- **Warehouse**-Lager: 2.500, 5.000, 9.000, 16.000, 26.000, 42.000, 65.000, 100.000, 145.000, **200.000**. Kosten (T/S) 60/– … 20.000/13.000.
+- **Cellar (Hideout)** verstecktes Lager: 500 … **15.000** (nur Stein-Kosten 50 … 8.000).
+- **Townhouse** Gold/h: 25, 50, 75, 100, 130, 170, 210, 260, 320, **400**. Kosten bis 29k/29k.
+- **Market** Karren: 1, 4, 10, 20, 30, 50, 70, 105, 145, **200**; Steuer +2%…**+20%**.
+- **Harbor** Schiffe: 1, 2, 4, 6, 9, 12, 15, 19, 24, **30**; Steuer +5%…**+50%**.
+- **City Wall** Kampfbonus: +1, +3, +6, +10, +15, +20, +26, +33, +41, **+50%** (nur Stein-Kosten bis 200.000).
+- **Barracks** Armeegröße: +10, +30, +60, +100, +160, +240, +350, +500, +700, **+1000**; Rekrutiertempo +1%…**+25%**.
+- **Citadel (Castle)** Befehls-Queue: **+1 pro Stufe (max +10)**; max Armeegröße +20%…**+300%**; nur Stein-Kosten 20.000…200.000 (gesamt **835.000**).
 
-### 3.8 Trainers — unit unlocks by level `[V]`
-Recruit-speed scales +5%→+150% (L1→L10) for all; **adjacent Barracks adds speed** (Watch House excepted). Unit unlock levels:
-| Building | L1 | mid | L10 |
+### 3.8 Trainer — Einheiten-Freischaltungen nach Stufe `[V]`
+Rekrutiertempo skaliert +5%→+150% (L1→L10) für alle; **angrenzende Barracks erhöht Tempo** (Watch House ausgenommen). Freischalt-Stufen:
+| Gebäude | L1 | Mitte | L10 |
 |---|---|---|---|
 | Watch House | City Guard | — | — |
 | Training Yard | Berserker | Ranger (L4) | Guardian |
@@ -173,115 +173,115 @@ Recruit-speed scales +5%→+150% (L1→L10) for all; **adjacent Barracks adds sp
 | Siege Workshop | Ram | Ballista (L6) | Catapult |
 | Shipyard | Sloop | Frigate (L6) | War Galleon |
 
-### 3.9 Towers & traps `[V]`
-- **Towers** (built inside city, don't count toward the 100-building cap) **double** the defense of up to their capacity of one matched unit type; City Guards fill empty capacity. L10 capacity: Ranger/Guardian/Templar Tower **2,000 TS**; **Ballista Tower 2,500**; **Lookout Tower 500 scouts + 10 h attack warning**. Stone-only cost to 58,000.
-- **Traps** (outer wall ring, don't count to cap) **neutralize** up to their capacity of one matched attacker type (neutralized = deals no damage), max **50%** of that type. L10 capacity **1,000 TS** (Camouflage vs naval ≈ 2 War Galleons). All four share cost (T/S to 16,000/48,000): Pitfall→infantry, Barricade→cavalry, Arcane→magic, Camouflage→naval.
+### 3.9 Türme & Fallen `[V]`
+- **Türme** (in der Stadt gebaut, zählen nicht zum 100-Gebäude-Limit) **verdoppeln** die Verteidigung von bis zu ihrer Kapazität eines passenden Einheitentyps; City Guards füllen freie Kapazität. L10-Kapazität: Ranger/Guardian/Templar Tower **2.000 TS**; **Ballista Tower 2.500**; **Lookout Tower 500 Scouts + 10 h Angriffswarnung**. Nur Stein-Kosten bis 58.000.
+- **Fallen** (Außen-Mauerring, zählen nicht zum Limit) **neutralisieren** bis zu ihrer Kapazität eines passenden Angreifertyps (neutralisiert = richtet keinen Schaden an), max **50%** dieses Typs. L10-Kapazität **1.000 TS** (Camouflage vs Marine ≈ 2 War Galleons). Alle vier teilen Kosten (T/S bis 16.000/48.000): Pitfall→Infanterie, Barricade→Kavallerie, Arcane→Magie, Camouflage→Marine.
 
 ---
 
-## 4. Units `[A]` (stats), `[V]` (unlocks/roles)
+## 4. Einheiten `[A]` (Stats), `[V]` (Freischaltungen/Rollen)
 
-Defense is **type-specific**, ordered **vs Infantry / Cavalry / Magic / Artillery**. Carry = plunder capacity. Upkeep is grain/day. Stats from Ultima Codex `monster_data` (community), so `[A]`; cross-checked against the combat example which uses Ranger def-vs-inf 40 / def-vs-cav 10 and Guardian def-vs-cav 50 — consistent.
+Verteidigung ist **typ-spezifisch**, geordnet **vs Infanterie / Kavallerie / Magie / Artillerie**. Carry = Plünder-Kapazität. Unterhalt ist Getreide/Tag. Stats aus Ultima Codex `monster_data` (Community), daher `[A]`; gegengeprüft am Kampfbeispiel (nutzt Ranger Def-vs-Inf 40 / Def-vs-Kav 10 und Guardian Def-vs-Kav 50 — konsistent).
 
-| Unit | Role/type | Atk | Def I/C/M/A | Upkeep | Carry | Trainer | Cost (T/S/Fe/G) |
+| Einheit | Rolle/Typ | Atk | Def I/K/M/A | Unterhalt | Carry | Trainer | Kosten (T/S/Fe/G) |
 |---|---|--:|---|--:|--:|---|---|
-| City Guard | defensive special | 10 | 10/10/10/10 | 2 | – | Watch House | 100/–/–/– |
-| Berserker | offensive infantry | 50 | 15/12/10/15 | 6 | 10 | Training Yard | –/–/150/– |
-| Ranger | defensive infantry/missile | 30 | 40/10/25/15 | 3 | – | Training Yard | 160/–/–/– |
-| Guardian | defensive infantry (anti-cav) | 10 | 30/50/20/15 | 3 | 20 | Training Yard | –/–/140/40 |
-| Scout | recon cavalry | 10 | 10/10/10/10 | 5 | – | Stable | –/–/40/120 |
-| Crossbowman | defensive (anti-cav) | 40 | 40/90/30/40 | – | – | Stable | 150/–/–/200 |
-| Knight | offensive cavalry | 90 | 40/30/20/40 | 25 | 15–20 | Stable | –/–/250/100 |
-| Mage | offensive caster | 70 | 15/10/30/15 | 5 | 5 | Mage Tower | –/–/50/150 |
-| Warlock | offensive caster | 120 | 30/20/50/40 | 20 | 5 | Mage Tower | –/–/100/350 |
-| Templar | defensive blessed (anti-magic) | 25 | 20/30/50/15 | – | – | Sanctuary | –/–/90/100 |
-| Paladin | defensive blessed cavalry | 60 | 50/20/90/40 | – | – | Sanctuary | –/–/200/160 |
-| Marshal (Baron) | leader (founds/captures cities) | 10 | 100/50/20/10 | – | – | Sanctuary L10 | –/–/50k/100k |
-| Ram | siege | 50 (250 vs structures) | 20/20/20/50 | – | – | Siege Workshop | 500/–/300/– |
-| Ballista | defensive siege (anti-artillery) | 50 | 200/100/200/400 | – | – | Siege Workshop | 400/–/600/– |
-| Catapult | siege (anti-building) | 150 (250 vs buildings) | 100/100/200/50 | – | – | Siege Workshop | 300/600/200/– |
-| Sloop | defensive naval | 1,200 | 4500/4500/2000/6000 | – | – | Shipyard | 6000/–/4000/2000 |
-| Frigate | naval transport (≤500 TS) | 3,000 | 4000/4000/2000/2000 | – | troops | Shipyard L6 | 15000/–/5000/5000 |
-| War Galleon | offensive naval (=400 TS) | 12,000 (4,000 vs structures) | 5000/5000/2500/6000 | 2,500 | 3,000 | Shipyard L10 | 30000/–/10000/20000 |
-| Dragon | epic (20 TS) | 700,000 | huge | 75,000 | – | Dragon's Lair (egg) | rare |
+| City Guard | defensiv spezial | 10 | 10/10/10/10 | 2 | – | Watch House | 100/–/–/– |
+| Berserker | offensiv Infanterie | 50 | 15/12/10/15 | 6 | 10 | Training Yard | –/–/150/– |
+| Ranger | defensiv Inf/Fernkampf | 30 | 40/10/25/15 | 3 | – | Training Yard | 160/–/–/– |
+| Guardian | defensiv Inf (anti-Kav) | 10 | 30/50/20/15 | 3 | 20 | Training Yard | –/–/140/40 |
+| Scout | Aufklärung Kav | 10 | 10/10/10/10 | 5 | – | Stable | –/–/40/120 |
+| Crossbowman | defensiv (anti-Kav) | 40 | 40/90/30/40 | – | – | Stable | 150/–/–/200 |
+| Knight | offensiv Kavallerie | 90 | 40/30/20/40 | 25 | 15–20 | Stable | –/–/250/100 |
+| Mage | offensiv Magier | 70 | 15/10/30/15 | 5 | 5 | Mage Tower | –/–/50/150 |
+| Warlock | offensiv Magier | 120 | 30/20/50/40 | 20 | 5 | Mage Tower | –/–/100/350 |
+| Templar | defensiv gesegnet (anti-Magie) | 25 | 20/30/50/15 | – | – | Sanctuary | –/–/90/100 |
+| Paladin | defensiv gesegnet Kav | 60 | 50/20/90/40 | – | – | Sanctuary | –/–/200/160 |
+| Marshal (Baron) | Anführer (gründet/erobert Städte) | 10 | 100/50/20/10 | – | – | Sanctuary L10 | –/–/50k/100k |
+| Ram | Belagerung | 50 (250 vs Bauwerke) | 20/20/20/50 | – | – | Siege Workshop | 500/–/300/– |
+| Ballista | defensiv Belagerung (anti-Art) | 50 | 200/100/200/400 | – | – | Siege Workshop | 400/–/600/– |
+| Catapult | Belagerung (anti-Gebäude) | 150 (250 vs Gebäude) | 100/100/200/50 | – | – | Siege Workshop | 300/600/200/– |
+| Sloop | defensiv Marine | 1.200 | 4500/4500/2000/6000 | – | – | Shipyard | 6000/–/4000/2000 |
+| Frigate | Marine-Transport (≤500 TS) | 3.000 | 4000/4000/2000/2000 | – | Truppen | Shipyard L6 | 15000/–/5000/5000 |
+| War Galleon | offensiv Marine (=400 TS) | 12.000 (4.000 vs Bauwerke) | 5000/5000/2500/6000 | 2.500 | 3.000 | Shipyard L10 | 30000/–/10000/20000 |
+| Dragon | episch (20 TS) | 700.000 | riesig | 75.000 | – | Dragon's Lair (Ei) | selten |
 
-**Counters** (from defense columns): Rangers/Ballistae vs infantry; Guardians/Crossbowmen vs cavalry; Templars/Paladins/Ballistae vs magic; Ballistae vs artillery. `[A]`
-
----
-
-## 5. Combat resolution `[V]`
-
-From Fandom `Combat_Mechanics` (snapshot). Deterministic; lives in `shared/formulas/combat.ts`.
-
-1. **Attack power** `a_tot = Σ(atk_i × qty_i)`.
-2. **Attention split**: defenders distribute across attacker types **proportionally to each type's attack share** `a_i / a_tot`.
-3. **Defense power** per attacker type `d_i = Σ(def_of_defender_vs_that_type × defenders_assigned)`; `d_tot = Σ d_i`. (Defense column chosen by the *attacker's* type.)
-4. **Victor**: attacker wins iff `a_tot > d_tot`.
-5. **Casualties** (× battle intensity `I`):
-   - **Loser** side loses `√(ratio) × I`; **winner** side loses `ratio × I`.
-   - Defenders (uniform %): win→`(a_tot/d_tot)·I`, lose→`√(a_tot/d_tot)·I`.
-   - Attackers (per type): win→`(d_i/a_i)·I`, lose→`√(d_i/a_i)·I`.
-6. **Battle intensity `I`**: assault/scout/boss = **0.50**; attacker if boss dies = 0.10; **defender of a plunder = 0.01**; siege wave / others ≈ **0.10**. `[V]` (the "10% for the rest" wording is `[A]`).
-
-**Verified worked example** — 1,000 Berserkers (atk 50) + 1,000 Knights (atk 90) vs 1,400 Rangers + 1,400 Guardians, assault:
-`a_tot=140,000`; `d_tot=89,000` → attacker wins. Defenders lose `0.5·√(140/89)=62.7%`. Berserkers lose `0.5·(35,000/50,000)=35%`; Knights lose `0.5·(54,000/90,000)=30%`.
-
-**Modifiers:**
-- **City Wall** +1…**+50%** defense to ground units (not naval). `[V]`
-- **Towers** double matched-unit defense (capacity-limited). **Traps** neutralize ≤50% of a matched attacker type. `[V]`
-- **Night protection** (10pm–10am server): attacker offense **−40%**; siege claim capped 6%/wave (vs 10% day); excludes PvE. `[A]`
-
-**Attack types** (need a Citadel): Scout, Plunder (loot = min(available, surviving carry capacity); buildings unharmed), Assault (1 wave, 5× a siege wave's damage), Siege (hourly waves; a **Marshal/Baron** claims **10%/wave day, 6%/night**; 100% = capture; Marshal death resets to 0), Support. Rams bust walls; Catapults & War Galleons reduce building levels. `[V]/[A]`
+**Konter** (aus den Verteidigungsspalten): Rangers/Ballistae vs Infanterie; Guardians/Crossbowmen vs Kavallerie; Templars/Paladins/Ballistae vs Magie; Ballistae vs Artillerie. `[A]`
 
 ---
 
-## 6. World map & cities
+## 5. Kampfauflösung `[V]`
 
-- **World** `[V]`: 6×6 = **36 continents**, each **100×100** squares (incl. ocean) → ~600×600 global; coordinates `x:y` (000:000–599:599). Continents open as population grows. *(Aldermark uses a single shared world; we keep the continent/coordinate model but one world.)*
-- **City grid** `[V]`: 9×9 with the Hall in the center; **10 slots/Hall level, max 100 buildings**; Palace needs a free **3×3** block; 1 each of Hall/Citadel/City Wall per city. Internal node terrain fixed at founding.
-- **Founding a city** `[A]`: send a **Marshal (Baron)** to an empty/lawless slot; cost ≈ **100k timber + 100k stone + 25k iron + 25k grain + 250 carts (or 25 ships)**; new cities get a **7-day protection** shield.
-- **Titles → max cities** `[V]`: Sir/Knight/Baron = 1 · Earl = 2 · Marquess = 4 · Prince = 8 · Duke = 16 · King = 40 · Emperor = 80 (scales via research). Each Citadel ≈ 4 title levels; titles also set a **Mana** pool/regen (special actions).
-- **Travel** `[V]`: carts 10 min/tile (cap 1,000); ships 5 min/tile + 1 h load each way (cap 10,000). Troop travel ≈ 10–20 min/tile by type `[A]`. Inter-continental via **Moongates/Portals** (one activates ~weekly for 24 h) `[V]`.
+Aus Fandom `Combat_Mechanics` (Snapshot). Deterministisch; lebt in `shared/formulas/combat.ts`.
 
----
+1. **Angriffskraft** `a_tot = Σ(atk_i × qty_i)`.
+2. **Aufmerksamkeits-Aufteilung**: Verteidiger verteilen sich auf die Angreifertypen **proportional zum Angriffsanteil** `a_i / a_tot`.
+3. **Verteidigungskraft** pro Angreifertyp `d_i = Σ(Def_des_Verteidigers_vs_diesen_Typ × zugewiesene_Verteidiger)`; `d_tot = Σ d_i`. (Die Verteidigungsspalte richtet sich nach dem *Angreifer*-Typ.)
+4. **Sieger**: Angreifer gewinnt, wenn `a_tot > d_tot`.
+5. **Verluste** (× Kampfintensität `I`):
+   - **Verlierer**-Seite verliert `√(ratio) × I`; **Sieger**-Seite verliert `ratio × I`.
+   - Verteidiger (einheitliches %): Sieg→`(a_tot/d_tot)·I`, Niederlage→`√(a_tot/d_tot)·I`.
+   - Angreifer (pro Typ): Sieg→`(d_i/a_i)·I`, Niederlage→`√(d_i/a_i)·I`.
+6. **Kampfintensität `I`**: Assault/Scout/Boss = **0,50**; Angreifer wenn Boss stirbt = 0,10; **Verteidiger einer Plünderung = 0,01**; Belagerungswelle / sonstiges ≈ **0,10**. `[V]` (die Formulierung „10% für den Rest" ist `[A]`).
 
-## 7. PvE — dungeons & bosses `[V]`
+**Verifiziertes Beispiel** — 1.000 Berserker (Atk 50) + 1.000 Knights (Atk 90) vs 1.400 Rangers + 1.400 Guardians, Assault:
+`a_tot=140.000`; `d_tot=89.000` → Angreifer gewinnt. Verteidiger verlieren `0,5·√(140/89)=62,7%`. Berserker verlieren `0,5·(35.000/50.000)=35%`; Knights `0,5·(54.000/90.000)=30%`.
 
-- **Dungeons** by terrain: Forest (Spiders→Thieves→Centaurs→Trolls), Hill (Skeletons→Ghouls→Gargoyles→Daemons), Mountain (Orcs→Troglodytes→Ettins→Minotaurs), Sea (Pirate ships). Fill 0→100% over ~2 weeks; higher completion = more tiers + more loot.
-- **Loot cap by level (L1→L10)**: 320, 977, 2,000, 15,488, 30,000, 56,850, 117,175, 198,205, 356,970, **441,375**. Completion multiplier 50%→×1.5, 75%→×2, 100%→×3. Gold = % of loot, 200% (L1) → 25% (L10).
-- **Bosses** (Dragon/Hydra/Moloch/Kraken, 10 levels): loot 500→**600,000**; artifacts only on kill; **not killing the boss = 5× losses**. ~1 h prep + travel + 1 h unload.
+**Modifikatoren:**
+- **City Wall** +1…**+50%** Verteidigung für Bodeneinheiten (nicht Marine). `[V]`
+- **Türme** verdoppeln Verteidigung passender Einheiten (kapazitätsbegrenzt). **Fallen** neutralisieren ≤50% eines passenden Angreifertyps. `[V]`
+- **Nachtschutz** (22–10 Uhr Serverzeit): Angreifer-Offensive **−40%**; Belagerungsanspruch gedeckelt auf 6%/Welle (statt 10% tags); PvE ausgenommen. `[A]`
 
-*(Aldermark renames creatures to original mythology; mechanics identical.)*
-
----
-
-## 8. Trade & alliances
-
-- **Trade** `[V]`: see §6 travel. Market enables land trade + boosts adjacent Townhouse tax; Harbor enables sea trade + tax. Player marketplace for resource↔gold exchange.
-- **Alliances** `[V]`: max **100** members; ranks (Leader/Officer/.../Novice) with graded permissions; diplomacy = Allied / NAP / Enemy; private forum + announcements + event log. Alliance-wide **Faith** bonuses (§9).
-
----
-
-## 9. Endgame & victory `[V]`
-
-- **Eight Virtues** (LoU): Compassion, Honesty, Honor, Humility, Justice, Sacrifice, Spirituality, Valor — each gives an alliance-wide combat/speed/economy bonus. *(Aldermark renames to original mythology; keeps 8.)*
-- **Shrines** (8/continent) activate over time; an active shrine **enlightens** nearby **castled cities of an alliance member**, letting that city **build/upgrade one Palace per enlightenment**.
-- **Palace**: 3×3 footprint, 1/city, max L10, of the enlightening shrine's virtue. Palaces feed the alliance's **Faith** per virtue; **bonus = Faith ÷ 2, capped 100% (at 200 Faith)** `[A]`. Active shrine also grants +10% army damage to its controlling alliance.
-- **Victory (LoU, our model)**: **an alliance wins when it collectively owns a level-10 Palace of all eight virtues** → world ends; binary first-to-complete. `[V]`
-- **CotG variant** (reference): Temples-of-8-Gods instead of Palaces; gold/silver/bronze **crowns** for 1st/2nd/3rd; world stays open 30 days after 3rd. We adopt the simpler **LoU single-winner** model for Phase 5, noting the crown variant as a possible tweak.
+**Angriffstypen** (brauchen eine Citadel): Scout, Plünderung (Loot = min(verfügbar, überlebende Carry-Kapazität); Gebäude unversehrt), Assault (1 Welle, 5× Schaden einer Belagerungswelle), Belagerung (stündliche Wellen; ein **Marshal/Baron** beansprucht **10%/Welle tags, 6%/nachts**; 100% = Eroberung; Marshal-Tod setzt auf 0 zurück), Support. Rams brechen Mauern; Catapults & War Galleons senken Gebäudestufen. `[V]/[A]`
 
 ---
 
-## 10. Source & confidence summary
+## 6. Weltkarte & Städte
 
-| Area | Confidence | Source |
+- **Welt** `[V]`: 6×6 = **36 Kontinente**, je **100×100** Felder (inkl. Ozean) → ~600×600 global; Koordinaten `x:y` (000:000–599:599). Kontinente öffnen mit wachsender Bevölkerung. *(Adelia nutzt eine gemeinsame Welt; wir behalten das Kontinent-/Koordinatenmodell, aber nur eine Welt.)*
+- **Stadtraster** `[V]`: 9×9 mit der Hall im Zentrum; **10 Slots/Hall-Stufe, max 100 Gebäude**; Palace braucht freien **3×3**-Block; je 1 Hall/Citadel/City Wall pro Stadt. Internes Knoten-Terrain bei Gründung fixiert.
+- **Stadt gründen** `[A]`: einen **Marshal (Baron)** auf einen leeren/herrenlosen Slot senden; Kosten ≈ **100k Timber + 100k Stone + 25k Iron + 25k Grain + 250 Karren (oder 25 Schiffe)**; neue Städte erhalten **7 Tage Schutz**.
+- **Titel → max Städte** `[V]`: Sir/Knight/Baron = 1 · Earl = 2 · Marquess = 4 · Prince = 8 · Duke = 16 · King = 40 · Emperor = 80 (skaliert via Forschung). Jede Citadel ≈ 4 Titel-Stufen; Titel setzen auch einen **Mana**-Pool/-Regen (Spezialaktionen).
+- **Reise** `[V]`: Karren 10 min/Tile (Cap 1.000); Schiffe 5 min/Tile + 1 h Laden je Richtung (Cap 10.000). Truppenreise ≈ 10–20 min/Tile je Typ `[A]`. Interkontinental via **Moongates/Portale** (eines aktiviert ~wöchentlich für 24 h) `[V]`.
+
+---
+
+## 7. PvE — Dungeons & Bosse `[V]`
+
+- **Dungeons** nach Terrain: Forest (Spinnen→Diebe→Zentauren→Trolle), Hill (Skelette→Ghule→Gargoyles→Dämonen), Mountain (Orks→Troglodyten→Ettins→Minotauren), Sea (Piratenschiffe). Füllen sich über ~2 Wochen von 0→100%; höhere Fertigstellung = mehr Stufen + mehr Loot.
+- **Loot-Cap pro Stufe (L1→L10)**: 320, 977, 2.000, 15.488, 30.000, 56.850, 117.175, 198.205, 356.970, **441.375**. Fertigstellungs-Multiplikator 50%→×1,5, 75%→×2, 100%→×3. Gold = % des Loots, 200% (L1) → 25% (L10).
+- **Bosse** (Dragon/Hydra/Moloch/Kraken, 10 Stufen): Loot 500→**600.000**; Artefakte nur bei Tötung; **Boss nicht töten = 5× Verluste**. ~1 h Vorbereitung + Reise + 1 h Entladen.
+
+*(Adelia benennt Kreaturen in eigene Mythologie um; Mechanik identisch.)*
+
+---
+
+## 8. Handel & Allianzen
+
+- **Handel** `[V]`: siehe §6 Reise. Market ermöglicht Landhandel + erhöht angrenzende Townhouse-Steuer; Harbor ermöglicht Seehandel + Steuer. Spieler-Marktplatz für Ressource↔Gold-Tausch.
+- **Allianzen** `[V]`: max **100** Mitglieder; Ränge (Leader/Officer/.../Novice) mit gestaffelten Rechten; Diplomatie = Allied / NAP / Enemy; privates Forum + Ankündigungen + Event-Log. Allianzweite **Faith**-Boni (§9).
+
+---
+
+## 9. Endgame & Sieg `[V]`
+
+- **Acht Tugenden** (LoU): Compassion, Honesty, Honor, Humility, Justice, Sacrifice, Spirituality, Valor — jede gibt einen allianzweiten Kampf-/Tempo-/Wirtschaftsbonus. *(Adelia benennt in eigene Mythologie um; behält 8.)*
+- **Schreine** (8/Kontinent) aktivieren mit der Zeit; ein aktiver Schrein **erleuchtet** nahe **castled Städte eines Allianzmitglieds** und lässt sie **pro Erleuchtung einen Palace bauen/ausbauen**.
+- **Palace**: 3×3-Fläche, 1/Stadt, max L10, der Tugend des erleuchtenden Schreins. Paläste speisen die allianzweite **Faith** pro Tugend; **Bonus = Faith ÷ 2, gedeckelt 100% (bei 200 Faith)** `[A]`. Ein aktiver Schrein gibt zudem +10% Armee-Schaden für die kontrollierende Allianz.
+- **Sieg (LoU, unser Modell)**: **eine Allianz gewinnt, wenn sie gemeinsam einen Stufe-10-Palace aller acht Tugenden besitzt** → die Welt endet; binäres First-to-complete. `[V]`
+- **CotG-Variante** (Referenz): Tempel-der-8-Götter statt Paläste; Gold/Silber/Bronze-**Crowns** für 1./2./3.; Welt bleibt 30 Tage nach der 3. offen. Wir übernehmen für Phase 5 das einfachere **LoU-Einzelsieger**-Modell, notieren die Crown-Variante als mögliche Anpassung.
+
+---
+
+## 10. Quellen- & Confidence-Zusammenfassung
+
+| Bereich | Confidence | Quelle |
 |---|---|---|
-| Building cost/output/build-time per level | **[V]** | Fandom per-building wikitext snapshots |
-| Adjacency formula & node/cottage/enhancer % | **[V]** | Fandom `Resources` |
-| Combat formula + intensity + worked example | **[V]** | Fandom `Combat_Mechanics` |
-| Map size, city grid, titles, victory, trade, dungeons | **[V]** | Fandom `World_Setup`/`Cities`/`Palaces`/`Shrine`/`Dungeons` + Ultima Codex |
-| Unit numeric stats (atk/def/upkeep/carry) | **[A]** | Ultima Codex `monster_data` + strategy blogs |
-| Exact unit training times; some carry capacities | **[U]** | not found — calibrate in playtest |
-| Adjacency cottage grouping (additive vs multiplicative) | **[A]** | Fandom vs daydull conflict — model behind tests |
+| Gebäude-Kosten/-Output/-Bauzeit pro Stufe | **[V]** | Fandom-Gebäude-Wikitext-Snapshots |
+| Adjazenzformel & Knoten/Cottage/Verstärker-% | **[V]** | Fandom `Resources` |
+| Kampfformel + Intensität + Beispiel | **[V]** | Fandom `Combat_Mechanics` |
+| Kartengröße, Stadtraster, Titel, Sieg, Handel, Dungeons | **[V]** | Fandom `World_Setup`/`Cities`/`Palaces`/`Shrine`/`Dungeons` + Ultima Codex |
+| Numerische Einheiten-Stats (Atk/Def/Unterhalt/Carry) | **[A]** | Ultima Codex `monster_data` + Strategie-Blogs |
+| Exakte Einheiten-Trainingszeiten; einige Carry-Kapazitäten | **[U]** | nicht gefunden — im Playtest kalibrieren |
+| Adjazenz-Cottage-Gruppierung (additiv vs multiplikativ) | **[A]** | Fandom-vs-daydull-Konflikt — Modell hinter Tests |
 
-Append newly verified/overturned values to `RESEARCH-LOG.md` with date + source.
+Neu verifizierte/widerlegte Werte mit Datum + Quelle in `RESEARCH-LOG.md` ergänzen.

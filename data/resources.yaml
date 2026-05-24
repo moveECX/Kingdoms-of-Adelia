@@ -1,4 +1,4 @@
-# Resource definitions. Validated by @aldermark/shared schemas at server boot.
+# Resource definitions. Validated by @adelia/shared schemas at server boot.
 # Values/mechanics: see GAME-MECHANICS.md §1–2 (all [verified] from Fandom snapshots).
 schemaVersion: 1
 

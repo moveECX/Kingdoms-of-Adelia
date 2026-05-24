@@ -1,85 +1,92 @@
-# CLAUDE.md — Master Handoff
+# CLAUDE.md — Zentrale Übergabe
 
-> **Read this first, every session.** It is the map; the other docs are the territory. Keep the **Active Context** section (bottom) current at the end of every session.
+> **Zuerst lesen, in jeder Session.** Dies ist die Karte; die anderen Dokumente sind das Gelände. Halte den Abschnitt **Aktueller Kontext** (unten) am Ende jeder Session aktuell.
+>
+> **Projektsprache: Deutsch.** Alle `.md`-Dokumente werden auf Deutsch geführt. Code, Bezeichner, SQL-/YAML-Keys und (vorerst) die Gebäude-/Einheiten-Anzeigenamen bleiben englisch.
 
-## Mission & scope
-Aldermark is a browser-based, server-authoritative **MMO city-building strategy game** — a clean-room reimplementation of *Lord of Ultima* / *Crown of the Gods* gameplay with **entirely original** branding, theme (original-mythology medieval), art, and lore. The signature mechanic is **city-grid adjacency** optimization; the long game is alliance conquest and shrine/Palace victory. Target deployment is **self-hosted, single shared world**. We replicate mechanics and balance numbers (facts, not copyrightable) while inventing all expression — see `IP-COMPLIANCE.md`.
+## Mission & Umfang
+Kingdoms of Adelia ist ein browserbasiertes, server-autoritatives **MMO-Aufbaustrategiespiel** — eine Clean-Room-Reimplementierung des Gameplays von *Lord of Ultima* / *Crown of the Gods* mit **vollständig eigener** Marke, Thematik (eigene mittelalterliche Mythologie), Grafik und Lore. Die Kernmechanik ist die **Optimierung der Stadtraster-Nachbarschaft (Adjazenz)**; das Endgame ist Allianz-Eroberung und der Sieg über Schreine/Paläste. Ziel-Deployment ist **selbst gehostet, eine gemeinsame Welt**. Wir replizieren Mechaniken und Balancing-Zahlen (Fakten, nicht urheberrechtlich schützbar) und erfinden alles Ausdruckshafte — siehe `IP-COMPLIANCE.md`.
 
-## Tech stack (detail in `ARCHITECTURE.md`)
-- **TypeScript strict** on client + server + shared. No `any`; no `@ts-ignore` without a reason.
-- **Client:** Svelte 5 (runes) + Vite; plain CSS + design tokens; city grid = CSS/SVG, world map = Canvas 2D.
-- **Server:** Node + Fastify (REST) + `ws` (live deltas) + a 1 s **tick scheduler**; authoritative.
-- **DB:** PostgreSQL 16 + Kysely (typed query builder + migrations). **No SQLite, ever.**
-- **Shared:** Zod schemas (REST/WS/data contracts) + **pure formulas** (adjacency, cost, production, combat) used by the server for truth and the client for previews.
+## Tech-Stack (Details in `ARCHITECTURE.md`)
+- **TypeScript strict** auf Client + Server + Shared. Kein `any`; kein `@ts-ignore` ohne Begründung.
+- **Client:** Svelte 5 (Runes) + Vite; reines CSS + Design-Tokens; Stadtraster = CSS/SVG, Weltkarte = Canvas 2D.
+- **Server:** Node + Fastify (REST) + `ws` (Live-Deltas) + 1-s-**Tick-Scheduler**; autoritativ.
+- **DB:** PostgreSQL 16 + Kysely (typsicherer Query-Builder + Migrationen). **Kein SQLite, niemals.**
+- **Shared:** Zod-Schemas (REST/WS/Daten-Verträge) + **reine Formeln** (Adjazenz, Kosten, Produktion, Kampf), die der Server als Wahrheit und der Client für Vorschauen nutzt.
 
-## Repository layout
+## Repository-Aufbau
 ```
 CLAUDE.md ARCHITECTURE.md GAME-MECHANICS.md GAME-DATA-SCHEMA.md
-DESIGN-SYSTEM.md ROADMAP.md IP-COMPLIANCE.md RESEARCH-LOG.md README.md
+DESIGN-SYSTEM.md ROADMAP.md IP-COMPLIANCE.md RESEARCH-LOG.md README.md LICENSE
 package.json tsconfig.base.json docker-compose.yml .env.example eslint.config.js
-shared/   schemas/ constants/ types/ formulas/         # env-agnostic; no fs/window
+shared/   schemas/ constants/ types/ formulas/         # umgebungsneutral; kein fs/window
 server/   src/ db/{migrations,schema.sql} game/ routes/ ws/
-client/   src/ public/ assets/ design-system.html      # ORIGINAL assets only
+client/   src/ public/ assets/ design-system.html      # NUR eigene Assets
 data/     buildings.yaml units.yaml resources.yaml titles.yaml README.md
 research/ REPO-DECISION.md openlou-analysis.md lordofultima-felix-analysis.md
-          wiki-snapshots/        (committed mirror)
-          reference-repos/       (GITIGNORED — GPLv3 code + EA assets)
+          wiki-snapshots/        (committeter Mirror)
+          reference-repos/       (GITIGNORED — GPLv3-Code + EA-Assets)
 ```
 
-## Commands
-| Task | Command |
+## Befehle
+| Aufgabe | Befehl |
 |---|---|
-| Start DB | `docker compose up -d db` |
-| Install | `npm install` (root; wires all workspaces) |
-| Migrate / seed | `npm run migrate` · `npm run seed` |
-| Dev (server+client) | `npm run dev` |
-| Typecheck / lint / format | `npm run typecheck` · `npm run lint` · `npm run format` |
-| Test | `npm test` (Vitest) |
+| DB starten | `docker compose up -d db` |
+| Installieren | `npm install` (Root; verdrahtet alle Workspaces) |
+| Migrieren / Seed | `npm run migrate` · `npm run seed` |
+| Dev (Server+Client) | `npm run dev` |
+| Typecheck / Lint / Format | `npm run typecheck` · `npm run lint` · `npm run format` |
+| Tests | `npm test` (Vitest) |
 
-## Coding standards (full rationale in this section + `ARCHITECTURE.md`)
-- **Strict TS**, no `any`; every escape hatch gets a comment explaining why.
-- **Files < 300 lines** preferred, **hard cap 500** — split aggressively.
-- **No barrel `index.ts`** re-export hubs that hide structure.
-- **No premature abstraction** — no `Manager`/`Helper`/`Service`/`Util` classes without concrete need.
-- **Test what matters**: formulas, combat, tick/scheduler resolution, schema validation. Skip UI minutiae.
-- **Comments explain *why***, not what. Self-documenting code first.
-- **Imports via path aliases** (`@shared/...`, `@server/...`, `@client/...`), not deep relatives.
-- **Conventional commits**: `feat: fix: chore: docs: refactor: test:`.
-- **Determinism**: all game math is pure functions of `(state, data, timestamps)` — reproducible, DB-free to test.
+## Coding-Standards
+- **Strict TS**, kein `any`; jede Ausnahme bekommt einen Kommentar, der das Warum erklärt.
+- **Dateien < 300 Zeilen** bevorzugt, **harte Grenze 500** — konsequent aufteilen.
+- **Keine Barrel-`index.ts`**, die die Struktur verschleiern.
+- **Keine verfrühte Abstraktion** — keine `Manager`/`Helper`/`Service`/`Util`-Klassen ohne konkreten Bedarf.
+- **Testen, was zählt**: Formeln, Kampf, Tick-/Scheduler-Auflösung, Schema-Validierung. UI-Kleinkram auslassen.
+- **Kommentare erklären das *Warum***, nicht das Was. Zuerst selbsterklärender Code.
+- **Imports über Pfad-Aliase** (`@shared/...`, `@server/...`, `@client/...`), nicht über tiefe relative Pfade.
+- **Conventional Commits**: `feat: fix: chore: docs: refactor: test:`.
+- **Determinismus**: alle Spiel-Mathematik sind reine Funktionen von `(state, data, timestamps)` — reproduzierbar, ohne DB testbar.
 
-## Which doc covers what
-| Need | Doc |
+## Welches Dokument deckt was ab
+| Bedarf | Dokument |
 |---|---|
-| Why a tech choice; tick loop; data flows | `ARCHITECTURE.md` |
-| A formula / cost / unit stat / victory rule | `GAME-MECHANICS.md` (every value tagged `[V]`/`[A]`/`[U]`) |
-| A table/column; API or WS message; data-file shape | `GAME-DATA-SCHEMA.md` |
-| A color/spacing token or component | `DESIGN-SYSTEM.md` (+ `client/design-system.html`) |
-| What to build next; acceptance criteria | `ROADMAP.md` |
-| Can I use this name/asset? | `IP-COMPLIANCE.md` |
-| Where did a number come from? | `RESEARCH-LOG.md` |
-| Why not fork the OSS repos? | `research/REPO-DECISION.md` |
+| Warum eine Tech-Entscheidung; Tick-Loop; Datenflüsse | `ARCHITECTURE.md` |
+| Eine Formel / Kosten / Einheiten-Stat / Siegregel | `GAME-MECHANICS.md` (jeder Wert mit `[V]`/`[A]`/`[U]` getaggt) |
+| Eine Tabelle/Spalte; API- oder WS-Nachricht; Datendatei-Form | `GAME-DATA-SCHEMA.md` |
+| Ein Farb-/Abstands-Token oder eine Komponente | `DESIGN-SYSTEM.md` (+ `client/design-system.html`) |
+| Was als Nächstes zu bauen ist; Akzeptanzkriterien | `ROADMAP.md` |
+| Darf ich diesen Namen/dieses Asset verwenden? | `IP-COMPLIANCE.md` |
+| Woher stammt eine Zahl? | `RESEARCH-LOG.md` |
+| Warum die OSS-Repos nicht forken? | `research/REPO-DECISION.md` |
 
-## Definition of Done (a feature)
-1. Behavior matches `GAME-MECHANICS.md` (or the doc is updated + `RESEARCH-LOG.md` noted).
-2. Server-authoritative; client cannot fabricate state (previews via `shared/formulas` only).
-3. Inputs validated by shared zod schemas; errors are typed.
-4. Tests for the logic that can be wrong (formulas/scheduler/validation) pass.
-5. `npm run typecheck && npm run lint && npm test` clean; files within size limits.
-6. Acceptance criteria of the relevant ROADMAP ticket met.
+## Definition of Done (ein Feature)
+1. Verhalten entspricht `GAME-MECHANICS.md` (oder das Dokument wird aktualisiert + `RESEARCH-LOG.md` ergänzt).
+2. Server-autoritativ; der Client kann keinen Zustand erfinden (Vorschauen nur über `shared/formulas`).
+3. Eingaben durch geteilte Zod-Schemas validiert; Fehler sind typisiert.
+4. Tests für die Logik, die falsch sein kann (Formeln/Scheduler/Validierung), sind grün.
+5. `npm run typecheck && npm run lint && npm test` sauber; Dateien innerhalb der Größengrenzen.
+6. Akzeptanzkriterien des zugehörigen ROADMAP-Tickets erfüllt.
 
-## Open questions for the user
-- **Project name**: `Aldermark` is provisional (centralized in `shared/constants/`; renaming is a find/replace). Override anytime.
-- **License**: TBD — recommend **MIT** (self-hosted) or **AGPLv3** (if ever public). Not yet chosen.
-- **Rare resources / premium currency**: kept minimal/deferred for a self-hosted build; revisit at Phase 4–5.
+## Offene Fragen / Entscheidungen
+- **Gebäude-/Einheiten-Anzeigenamen** sind aktuell englisch (LoU-nahe Umbenennung). Eindeutschung ist eine spätere **Inhalts**-Aufgabe (laut Wunsch: „erst Stand übernehmen, später anpassen").
+- **Seltene Ressourcen / Premiumwährung**: für ein selbst gehostetes Spiel minimal/zurückgestellt; in Phase 4–5 erneut prüfen.
+
+## Bereits entschieden (nicht erneut fragen)
+- **Name:** Kingdoms of Adelia (Reich/Welt = „Adelia"). Zentral in `shared/constants/`.
+- **Lizenz:** **AGPL-3.0-or-later** (`LICENSE`). © 2026 moveECX.
+- **Mechaniken:** LoU-Baseline wie dokumentiert übernehmen; Inhalte später anpassen.
+- Locked aus dem Bootstrap: TypeScript strict, kein React/Next, PostgreSQL (kein SQLite).
 
 ---
 
-## Active Context
-**Last worked on (2026-05-24):** Bootstrap session — all planning docs written; both reference repos analyzed (build-fresh decision); LoU mechanics researched + the key Fandom pages mirrored to `research/wiki-snapshots/` (per-level building tables, adjacency, and the combat formula are `[verified]`); repo skeleton + workspace configs + `data/*.yaml` seeded; initial git commit made. **No gameplay code.**
+## Aktueller Kontext
+**Zuletzt bearbeitet (2026-05-24):** Bootstrap-Session — alle Planungsdokumente geschrieben; beide Referenz-Repos analysiert (Entscheidung: neu in TS bauen); LoU-Mechaniken recherchiert und die wichtigsten Fandom-Seiten nach `research/wiki-snapshots/` gespiegelt (Gebäude-Tabellen pro Stufe, Adjazenz und Kampfformel sind `[verified]`); Repo-Gerüst + Workspace-Configs + `data/*.yaml` mit verifizierten Zahlen angelegt; Initial-Commit. Danach **Rebrand auf „Kingdoms of Adelia"**, **AGPL-3.0** ergänzt, **alle Docs ins Deutsche** übersetzt und nach **GitHub** (`moveECX/Kingdoms-of-Adelia`) gepusht. **Kein Gameplay-Code.**
 
-**Next up → Phase 1, Ticket #001** (`ROADMAP.md`): *Monorepo & toolchain bootstrap* — `npm install` at root, confirm `@shared/*` resolves from server & client, `lint`/`typecheck` pass on the scaffolding. Then #002 (Docker Postgres) and #003 (Kysely + first migration).
+**Als Nächstes → Phase 1, Ticket #001** (`ROADMAP.md`): *Monorepo & Toolchain-Bootstrap* — `npm install` im Root, prüfen dass `@shared/*` aus Server & Client auflöst, `lint`/`typecheck` laufen auf dem Gerüst durch. Danach #002 (Docker-Postgres) und #003 (Kysely + erste Migration).
 
-**Watch-outs for the next session:**
-- Implement the **Fandom adjacency model** (`base×(1+Σnodes+Σcottages)×(1+enhancer)`) behind tests; the daydull variant is a flagged alternative (`RESEARCH-LOG.md` open conflict #1).
-- Fill `[U]` gaps (unit training times, some carry capacities) via the Fandom `?action=raw` + browser-UA trick that worked this session.
-- Never trust OpenLoU's numbers over the Fandom wikitext (it has data bugs).
+**Achtung in der nächsten Session:**
+- Das **Fandom-Adjazenzmodell** (`base×(1+Σnodes+Σcottages)×(1+enhancer)`) hinter Tests implementieren; die daydull-Variante ist eine geflaggte Alternative (`RESEARCH-LOG.md`, offener Konflikt #1).
+- `[U]`-Lücken (Trainingszeiten, einige Tragekapazitäten) über den Fandom-`?action=raw`-+-Browser-UA-Trick füllen, der diese Session funktioniert hat.
+- OpenLoU-Zahlen niemals über den Fandom-Wikitext stellen (OpenLoU hat Datenfehler).

@@ -1,46 +1,46 @@
-# Research Log
+# Recherche-Log
 
-> Running, date-stamped record of what we learned and from where. **Confirmed knowledge is separated from guesses.** Future sessions append a new dated section as mechanics are uncovered, verified, or overturned. Confidence tags `[V]`/`[A]`/`[U]` match `GAME-MECHANICS.md`.
+> Laufende, datierte Aufzeichnung dessen, was wir gelernt haben und woher. **Gesichertes Wissen ist von Vermutungen getrennt.** Künftige Sessions hängen einen neuen datierten Abschnitt an, wenn Mechaniken aufgedeckt, verifiziert oder widerlegt werden. Confidence-Tags `[V]`/`[A]`/`[U]` wie in `GAME-MECHANICS.md`.
 
 ---
 
-## 2026-05-24 — Bootstrap research session
+## 2026-05-24 — Bootstrap-Recherche-Session
 
-### Sources accessed
-- **Reference repos** (pre-downloaded into `re/`, relocated to `research/reference-repos/`):
-  - `joaopedrosgs/OpenLoU` — Go + PostgreSQL, **GPLv3**, "early state". Useful: `db.sql` schema + `modules/constructions/*.json` building data. → `research/openlou-analysis.md`.
-  - `FelixLeChat/LordOfUltima` — C#/.NET WPF desktop, **no license**, **EA-owned assets** (author-admitted). Reference for mechanics only. → `research/lordofultima-felix-analysis.md`.
-- **Wikis** (mirrored to `research/wiki-snapshots/`): LoU Fandom (raw wikitext, fetched with a browser UA — direct bot fetch is 403 but UA-spoofed `?action=raw` returns 200), Ultima Codex, Crown of the Gods official site, en/de Wikipedia.
-- **3 parallel research agents** swept buildings/adjacency, units/combat, and map/alliance/endgame; their secondary-source numbers were then **upgraded to `[V]`** wherever the Fandom raw wikitext confirmed them.
+### Genutzte Quellen
+- **Referenz-Repos** (vorab in `re/` heruntergeladen, verschoben nach `research/reference-repos/`):
+  - `joaopedrosgs/OpenLoU` — Go + PostgreSQL, **GPLv3**, „früher Zustand". Nützlich: `db.sql`-Schema + `modules/constructions/*.json`-Gebäudedaten. → `research/openlou-analysis.md`.
+  - `FelixLeChat/LordOfUltima` — C#/.NET-WPF-Desktop, **keine Lizenz**, **EA-eigene Assets** (vom Autor zugegeben). Nur Mechanik-Referenz. → `research/lordofultima-felix-analysis.md`.
+- **Wikis** (gespiegelt nach `research/wiki-snapshots/`): LoU-Fandom (Rohwikitext, mit Browser-UA geladen — direkter Bot-Fetch ist 403, aber UA-gespoofter `?action=raw` liefert 200), Ultima Codex, Crown-of-the-Gods-Website, en/de-Wikipedia.
+- **3 parallele Recherche-Agenten** deckten Gebäude/Adjazenz, Einheiten/Kampf und Karte/Allianz/Endgame ab; ihre Sekundärquellen-Zahlen wurden dann auf `[V]` **hochgestuft**, wo der Fandom-Rohwikitext sie bestätigte.
 
-### Confirmed `[V]` (primary source: Fandom raw wikitext snapshots)
-- **All building per-level tables**: cost (timber/stone), output/effect, build time, rank points, max level 10. Producer trio (Woodcutter/Quarry/Iron Mine) share one curve (output `20…300/h`, cost `50…38,000` timber); **Farm has a distinct, lower early curve** (`5,8,15,20,30,45,75,120,200,300`). The four enhancers share one curve (`+30%…+75%` efficiency, `+20%…+200%` storage). The four traps share one curve.
-- **Adjacency formula**: `prod = base × (1 + Σnodes + Σcottages) × (1 + enhancer)`; node = +50% first / +40% each more; cottage = +3%…+30% (its "manpower" stat); enhancer = +30%…+75%, **max one**, applied *after*. (Fandom `Resources`.)
-- **Combat formula**: attention split by attack share; per-type defense columns (Inf/Cav/Magic/Arty); attacker wins if `a_tot>d_tot`; losses = `ratio×I` (winner) / `√ratio×I` (loser); intensity `I` = .5 assault/scout/boss, .01 plunder-defender, ≈.1 else. Worked example reproduces 62.7% defender loss. (Fandom `Combat_Mechanics`.)
-- **City**: 9×9 grid, Hall in center, **10 slots/Hall level → 100 buildings max**; Palace needs free 3×3; one Hall/Citadel/City Wall per city.
-- **World**: 6×6 = 36 continents × 100×100 squares; coords `x:y`. **LoU world was named "Caledonia"** → confirms it's on our banned-noun list.
-- **Titles → max cities**: Sir/Knight/Baron 1, Earl 2, Marquess 4, Prince 8, Duke 16, King 40, Emperor 80(+). Citadel ≈ 4 title levels; titles set Mana pool/regen.
-- **Trade**: carts 1,000 cap @ 10 min/tile (200 @ Market L10); ships 10,000 cap @ 5 min/tile +1 h load (30 @ Harbor L10).
-- **PvE loot caps** by dungeon level (320 → 441,375) and boss level (500 → 600,000); completion ×1.5/×2/×3 at 50/75/100%; **boss not killed = 5× losses**.
-- **Endgame/victory**: 8 virtues; shrines enlighten castled alliance cities to build Palaces (3×3, L10); **alliance wins by owning a L10 Palace of all 8 virtues** → world ends. Faith bonus = Faith/2 capped at 100% (`[A]` on the /2).
-- **Unit unlock levels** by trainer building level (e.g. Stable: Scout L1 / Crossbowman L5 / Knight L10).
-- **History**: EA Phenomic (Volker Wertich), pure JS, Bigpoint; open beta **2010-04-20**, shutdown **2014-05-12**. CotG by Gaming Addict Studios (Gordon Tunstall), Kickstarter funded in 17 min, open beta **2016-01-23**.
+### Gesichert `[V]` (Primärquelle: Fandom-Rohwikitext-Snapshots)
+- **Alle Gebäude-Tabellen pro Stufe**: Kosten (Timber/Stone), Output/Effekt, Bauzeit, Rangpunkte, max Stufe 10. Produzenten-Trio (Woodcutter/Quarry/Iron Mine) teilt eine Kurve (Output `20…300/h`, Kosten `50…38.000` Timber); **Farm hat eine eigene, frühzeitig niedrigere Kurve** (`5,8,15,20,30,45,75,120,200,300`). Die vier Verstärker teilen eine Kurve (`+30%…+75%` Effizienz, `+20%…+200%` Lager). Die vier Fallen teilen eine Kurve.
+- **Adjazenzformel**: `prod = base × (1 + Σnodes + Σcottages) × (1 + enhancer)`; Knoten = +50% erster / +40% je weiterer; Cottage = +3%…+30% (ihr „Manpower"-Stat); Verstärker = +30%…+75%, **max einer**, danach angewandt. (Fandom `Resources`.)
+- **Kampfformel**: Aufmerksamkeit nach Angriffsanteil verteilt; typ-spezifische Verteidigungsspalten (Inf/Kav/Magie/Art); Angreifer gewinnt bei `a_tot>d_tot`; Verluste = `ratio×I` (Sieger) / `√ratio×I` (Verlierer); Intensität `I` = .5 Assault/Scout/Boss, .01 Plünder-Verteidiger, ≈.1 sonst. Beispiel reproduziert 62,7% Verteidiger-Verlust. (Fandom `Combat_Mechanics`.)
+- **Stadt**: 9×9-Raster, Hall im Zentrum, **10 Slots/Hall-Stufe → max 100 Gebäude**; Palace braucht freies 3×3; je ein Hall/Citadel/City Wall pro Stadt.
+- **Welt**: 6×6 = 36 Kontinente × 100×100 Felder; Koordinaten `x:y`. **LoUs Welt hieß „Caledonia"** → bestätigt, dass es auf unserer Verbotsliste steht.
+- **Titel → max Städte**: Sir/Knight/Baron 1, Earl 2, Marquess 4, Prince 8, Duke 16, King 40, Emperor 80(+). Citadel ≈ 4 Titel-Stufen; Titel setzen Mana-Pool/-Regen.
+- **Handel**: Karren 1.000 Cap @ 10 min/Tile (200 @ Market L10); Schiffe 10.000 Cap @ 5 min/Tile +1 h Laden (30 @ Harbor L10).
+- **PvE-Loot-Caps** nach Dungeon-Stufe (320 → 441.375) und Boss-Stufe (500 → 600.000); Fertigstellung ×1,5/×2/×3 bei 50/75/100%; **Boss nicht getötet = 5× Verluste**.
+- **Endgame/Sieg**: 8 Tugenden; Schreine erleuchten castled Allianzstädte zum Bau von Palästen (3×3, L10); **Allianz gewinnt mit einem L10-Palast aller 8 Tugenden** → Welt endet. Faith-Bonus = Faith/2 gedeckelt 100% (`[A]` auf das /2).
+- **Einheiten-Freischaltstufen** nach Trainer-Gebäudestufe (z. B. Stable: Scout L1 / Crossbowman L5 / Knight L10).
+- **Historie**: EA Phenomic (Volker Wertich), pures JS, Bigpoint; Open Beta **2010-04-20**, Abschaltung **2014-05-12**. CotG von Gaming Addict Studios (Gordon Tunstall), Kickstarter in 17 min finanziert, Open Beta **2016-01-23**.
 
-### Educated guesses / approximate `[A]`
-- **Unit numeric stats** (attack, the four defense values, upkeep, carry) — from Ultima Codex `monster_data` + strategy blogs; internally consistent with the verified combat example but not from a primary Fandom table.
-- Faith→bonus divisor (/2 vs cap-at-100) — sources conflict.
-- Exact troop travel-time formula per tile (≈10–20 min/tile by unit).
+### Vermutungen / approximativ `[A]`
+- **Numerische Einheiten-Stats** (Angriff, die vier Verteidigungswerte, Unterhalt, Carry) — aus Ultima Codex `monster_data` + Strategie-Blogs; konsistent mit dem verifizierten Kampfbeispiel, aber nicht aus einer Fandom-Primärtabelle.
+- Faith→Bonus-Divisor (/2 vs Cap-bei-100) — Quellen widersprechen sich.
+- Exakte Truppen-Reisezeit-Formel pro Tile (≈10–20 min/Tile je Einheit).
 
-### Open conflicts (calibrate in playtest; isolate behind `shared/formulas` + tests)
-1. **Adjacency cottage grouping**: Fandom = cottages additive with nodes, enhancer multiplicative after (→1,522/h in our worked example); daydull community guide = cottages a separate multiplicative group (→2,100/h). **Decision: implement the Fandom model as canonical.**
-2. **Producer base output at L10**: Fandom `300` `[V]` vs OpenLoU JSON `300` vs an agent secondary snippet `250`. → use `300`.
-3. **Battle intensity "10% for the rest"**: literal 0.10 vs 0.10×0.50. → use 0.10, flag.
+### Offene Konflikte (im Playtest kalibrieren; hinter `shared/formulas` + Tests isolieren)
+1. **Adjazenz-Cottage-Gruppierung**: Fandom = Cottages additiv mit Knoten, Verstärker danach multiplikativ (→1.522/h im Beispiel); daydull-Community-Guide = Cottages separate multiplikative Gruppe (→2.100/h). **Entscheidung: das Fandom-Modell kanonisch implementieren.**
+2. **Produzenten-Basis-Output bei L10**: Fandom `300` `[V]` vs OpenLoU-JSON `300` vs ein Agenten-Sekundär-Snippet `250`. → `300` verwenden.
+3. **Kampfintensität „10% für den Rest"**: wörtlich 0,10 vs 0,10×0,50. → 0,10 verwenden, geflaggt.
 
-### Data gaps `[U]`
-- Exact per-unit **training times** (only recruit-speed % per building level is known).
-- Several units' **carry capacities** (Ranger/Crossbowman/Templar/Paladin/Sloop/Frigate).
-- Palace per-level cost table; precise enlightenment radius/interval for LoU (CotG's 20-tile / 72→36 h is `[V]` but is a CotG figure).
+### Datenlücken `[U]`
+- Exakte **Trainingszeiten** pro Einheit (nur Rekrutiertempo-% pro Gebäudestufe bekannt).
+- **Carry-Kapazitäten** einiger Einheiten (Ranger/Crossbowman/Templar/Paladin/Sloop/Frigate).
+- Palace-Kostentabelle pro Stufe; präziser Erleuchtungs-Radius/-Intervall für LoU (CotGs 20-Tile / 72→36 h ist `[V]`, aber eine CotG-Zahl).
 
-### Notes for next session
-- The Fandom `?action=raw` + browser-UA trick is the reliable way to pull exact tables; use it to fill `[U]` gaps (e.g. fetch `Palace`/individual unit pages if they exist under other titles).
-- OpenLoU data has bugs (duplicate ids, mislabeled fields) — never trust it over the Fandom wikitext.
+### Notizen für die nächste Session
+- Der Fandom-`?action=raw`-+-Browser-UA-Trick ist der zuverlässige Weg, exakte Tabellen zu ziehen; damit `[U]`-Lücken füllen (z. B. `Palace`/einzelne Einheiten-Seiten unter anderen Titeln laden).
+- OpenLoU-Daten haben Fehler (doppelte IDs, fehlbeschriftete Felder) — nie über den Fandom-Wikitext stellen.

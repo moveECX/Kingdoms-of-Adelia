@@ -1,24 +1,23 @@
-# Wiki snapshots — local mirror & attribution
+# Wiki-Snapshots — lokaler Mirror & Attribution
 
-Local copies of community wiki source for **reference**, so the project doesn't depend on these sites staying online. We extract **facts and numbers** (game mechanics — not copyrightable) into `GAME-MECHANICS.md`; these snapshots are the provenance trail.
+Lokale Kopien von Community-Wiki-Quellen als **Referenz**, damit das Projekt nicht davon abhängt, dass diese Seiten online bleiben. Wir extrahieren **Fakten und Zahlen** (Spielmechaniken — nicht schützbar) nach `GAME-MECHANICS.md`; diese Snapshots sind die Belegspur.
 
-Fetched **2026-05-24** via `curl` with a browser User-Agent + MediaWiki `?action=raw` (clean wikitext; direct bot fetches to Fandom return HTTP 403).
+Geladen am **2026-05-24** via `curl` mit Browser-User-Agent + MediaWiki-`?action=raw` (sauberer Wikitext; direkte Bot-Fetches an Fandom liefern HTTP 403).
 
-## Contents
-| Folder | Source | Format | License |
+## Inhalt
+| Ordner | Quelle | Format | Lizenz |
 |---|---|---|---|
-| `fandom/` | Lord of Ultima Wiki — `lordofultima.fandom.com` | raw wikitext | **CC BY-SA 3.0** |
-| `ultimacodex/` | The Ultima Codex — `wiki.ultimacodex.com` | raw wikitext | **CC BY-SA** |
-| `wikipedia/` | Wikipedia (EN + DE) — `*.wikipedia.org` | raw wikitext | **CC BY-SA 4.0** |
-| `cotg/` | *(see note)* | — | — |
+| `fandom/` | Lord of Ultima Wiki — `lordofultima.fandom.com` | Rohwikitext | **CC BY-SA 3.0** |
+| `ultimacodex/` | The Ultima Codex — `wiki.ultimacodex.com` | Rohwikitext | **CC BY-SA** |
+| `wikipedia/` | Wikipedia (EN + DE) — `*.wikipedia.org` | Rohwikitext | **CC BY-SA 4.0** |
 
-`fandom/` is the bulk: per-building per-level tables (cost/output/build-time), `Resources` (adjacency), `Combat_Mechanics`, `Units`, `Cities`, `World_Setup`, `Continents`, `Alliances`, `Palaces`, `Shrine`, `Dungeons`, `Trade`, towers/traps, etc. `ultimacodex/` includes `Lord_of_Ultima_monster_data` (the unit-stat source) + `Raiding`/`Construction`/`Titles`.
+`fandom/` ist der Großteil: Gebäude-Tabellen pro Stufe (Kosten/Output/Bauzeit), `Resources` (Adjazenz), `Combat_Mechanics`, `Units`, `Cities`, `World_Setup`, `Continents`, `Alliances`, `Palaces`, `Shrine`, `Dungeons`, `Trade`, Türme/Fallen usw. `ultimacodex/` enthält `Lord_of_Ultima_monster_data` (die Einheiten-Stat-Quelle) + `Raiding`/`Construction`/`Titles`.
 
 ## Attribution
-These reference files remain under their **original CC BY-SA licenses**; they are unmodified source captures, attributed to the respective wikis and their contributors. They are kept separate from our own (independently licensed) code and assets. Reuse of any prose from them must preserve CC BY-SA attribution + share-alike.
+Diese Referenzdateien bleiben unter ihren **ursprünglichen CC-BY-SA-Lizenzen**; es sind unveränderte Quell-Kopien, den jeweiligen Wikis und ihren Mitwirkenden zugeschrieben. Sie sind getrennt von unserem eigenen (eigenständig lizenzierten, AGPL-3.0) Code und unseren Assets. Wiederverwendung von Prosa daraus muss CC-BY-SA-Attribution + Share-Alike wahren.
 
-## Note on Crown of the Gods
-CotG mechanics were researched from the official site (`crownofthegods.com/about/*`) and the community wiki, and the **facts** were transcribed into `GAME-MECHANICS.md` / `RESEARCH-LOG.md`. Those pages are **© Gaming Addict Studios** (not CC-licensed), so their full HTML is **not redistributed** here. Live references are listed in `RESEARCH-LOG.md`.
+## Hinweis zu Crown of the Gods
+CotG-Mechaniken wurden von der offiziellen Seite (`crownofthegods.com/about/*`) und dem Community-Wiki recherchiert, und die **Fakten** wurden nach `GAME-MECHANICS.md` / `RESEARCH-LOG.md` transkribiert. Jene Seiten sind **© Gaming Addict Studios** (nicht CC-lizenziert), daher wird ihr voller HTML **nicht** hier weiterverbreitet. Live-Verweise stehen in `RESEARCH-LOG.md`.
 
-## Reminder
-This folder holds **CC BY-SA reference material**, not our content. Our game uses only the non-copyrightable facts extracted from it, with original names/art/lore per `IP-COMPLIANCE.md`. (The separate `research/reference-repos/` — GPLv3 OpenLoU code + EA-owned FelixLeChat assets — is **gitignored** and never committed.)
+## Erinnerung
+Dieser Ordner enthält **CC-BY-SA-Referenzmaterial**, nicht unseren Inhalt. Unser Spiel nutzt nur die nicht schützbaren Fakten daraus, mit eigenen Namen/Grafik/Lore laut `IP-COMPLIANCE.md`. (Das separate `research/reference-repos/` — GPLv3-OpenLoU-Code + EA-eigene FelixLeChat-Assets — ist **gitignored** und wird nie committet.)
