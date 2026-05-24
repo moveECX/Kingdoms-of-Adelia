@@ -1,0 +1,39 @@
+[[File:Cottage_256.png|right]]The '''Cottage''' is a building in [[Lord of Ultima]]. It increases the construction speed of all build orders in a city. Also increases productivity of bordering resource buildings.
+
+'''Requirements:''' [[Town Hall]] Level 1
+
+{| class="wikitable" width="100%"
+|-
+! Level
+! Construction Speed
+! Manpower Bonus
+! Resource Cost Wood
+! Resource Cost Stone
+! Build Time
+! City Score
+|-
+| 1 || +4% || +3% || - ||50 ||15 sec ||1
+|-
+| 2 || +10% || +6% || - ||150 ||54 sec || 2
+|-
+| 3 || +16% || +9% || - ||300 ||6 min ||5
+|-
+| 4 || +25% || +12% || - ||600 ||45 min ||10
+|-
+| 5 || +35% || +15% ||200 ||1000 ||1 h 41.25 min ||16
+|-
+| 6 || +46% || +18% ||500 ||2000 ||3 h 22.5 min ||24
+|-
+| 7 || +58% || +21% ||1000 ||4000 ||6 h 15 min ||34
+|-
+| 8 || +71% || +24% ||2000 ||7500 ||9 h 57 min ||46
+|-
+| 9 || +85% || +27% ||5000 ||14000 ||14 h 58 min ||60
+|-
+| 10 || +100% || +30% ||12000 ||17000 ||22 h 42 min ||80
+|-
+| Total || +100% || +30% ||20700 ||46600 ||2 d 11 h 48 min ||80
+|}
+
+{{ConSpd}}
+[[Category:Buildings]]

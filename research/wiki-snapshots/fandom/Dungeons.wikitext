@@ -1,0 +1,439 @@
+{{Q|Hello 50kBTU, from WilliamLc (W100 EC)|[[User:WilliamLazycat|William]] ([[User_talk:WilliamLazycat|Talk]]), Bureaucrat of the [[w:c:lordofultima|Lord of Ultima Wiki]]}}
+
+{{Cleanup}}
+
+= Dungeons =
+
+[[Image:npccamp_woods_active_decal.png|Forest]] [[Image:npccamp_hill_active_decal.png|Hill]] [[Image:npccamp_mountains_active_decal.png|Mountain]] [[Image:npccamp_sea_active_decal.png|Sea]]
+
+[[Image:Npccamp_woods_inactive_decal.png|Forest]][[Image:npccamp_hill_inactive_decal.png|Hill]] [[Image:npccamp_mountains_inactive_decal.png|Mountain]] [[Image:npccamp_sea_inactive_decal.png|Sea]]
+
+
+Throughout the game there are dungeons, noticeable by a lit entrance on the side of mountain, hill, or forest. If the dungeon is available to raid it will appear open with a blue (mountain), red (hill), yellow (forest) glow coming out of the entrance. If the dungeon is abandoned (fully plundered), it will look as if the door has been sealed off. It is worth noting that pirate ships do not have a glow but when they are abandoned the image changes to a semi-destroyed pirate ship.
+
+== Finding ==
+
+To locate a nearby dungeon, scroll around the regional map searching for a lit dungeon entrance. When one is found, note the coordinates so you can easily return later.
+
+== Dungeon Lifecycle ==
+[[File:Lou_loot_table.png|center]]Dungeons always appear untouched:  at a completion rate of 0%.  There are two ways that a dungeon disappears:  either all of the monsters within the dungeon are killed or the dungeon is abandoned due to neglect.  
+
+The rule for a dungeon disappearing due to non-use is very strict.  As soon as a dungeon goes 24 hours without a single troop attacking it, it disappears.  This goes for any dungeon of any level at any completion rate.  
+
+Each dungeon, depending on its type and level, has a pre-set number of monsters.  In turn, each monster has a predefined amount of dropable loot.  The key here is to understand that as a dungeon progresses the amount of loot available increases (at least until the death knells of the dungeon starting at around 98% - the monsters begin to taper off dramatically until the dungeon finally is completed) .  This is the only constant.  Accordingly, you need to send more troops to collect the loot.  
+
+The thing that confuses new players is the manner in which the loot is increased.  A mid-level mountain dungeon, for example, will start with orcs which carry 30 loot (+ gold) each and end with a mix of troglodytes and ettins.  Although fewer in number, these enemies carry loot per foe.  The only consistent thing is that there will be more loot available at every percentage point.  
+
+Each dungeon starts with its type's weakest foe. This is true for a level 1 dungeon or a level 10 dungeon.  There is a slight difference in how monsters evolve within a dungeon's lifecycle depending on the dungeon level.  We are providing an example for illustrative purposes only:  you should be more concerned with matching your raids to collect all the loot rather than trying to figure out when the monsters will change.
+
+A level one mountain starts with orcs which carry 30 loot.  At some point there is a mix of orcs and troglodytes, and that ratio of troglodytes to orcs increases throughout the dungeon lifecycle until the dungeon is completed.
+
+A level ten mountain dungeon also starts with orcs.  However, much earlier on, the dungeon will cycle to orcs and troglodytes, and then at some point it will turn into troglodytes and ettins, and it will end with ettins and minotaurs.
+
+Why is this not particularly important?  Because the difficulty of the monsters varies.  The difficulty of a monster is based on how much troop strength do you need to send at it to recover the loot and this difficulty is not linear.  In the case of most dungeons, it is actually the 2nd monster that appears that is the most challenging, not the last monsters.  So don't avoid level 10 dungeons for fear of diminishing returns: as long as you send the appropriate number of troops of a suitable type you should actually see improvements in returns when the 2nd monster cycles into the 3rd monster.
+
+Lastly, there is a few percentage points of variability in each individual encounter.  Do not sweat over this:  if you are calculating how many troops to send and are worried that your last raid was a "low sample count" I would predict that the number you calculate will be off, at most, by 5%.  If you are really that concerned, simply send a healthy buffer: dungeon loot increases over time so those extra troops will be utilized shortly (assuming war minister use and that you are looping your raids).
+
+Although not perfectly accurate, the amount of loot increases approximately 300% over its life cycle (from 0-98%).
+
+== Loot per foe ==
+The available loot that you can gain from a raid is calculated with a very simple formula.  
+
+Each monster has a certain amount of loot.  The amount of that loot is listed below.  Each time you raid a dungeon, the loot available is simply adding up how many monsters there are in the dungeon multiplied by how much they carry.  You don't even need to kill them to get it.  However, you only get to carry the amount your surviving troops can carry. 
+
+Calculating loot per foe is the main way dungeon raid charts are developed.   
+
+Here are the three NON-INTUITIVE concepts related to "loot per monster":
+
+1) Gold is not included in the loot number for each monster. Gold takes up no room either with your troops or the monsters.  Gold is simply a percentage of the loot attainable. 
+
+2) Dungeons are automatically refilled with monsters everytime you arrive there with a new raid.  Sending more troops to "clear it out" does nothing.  
+
+3) Although it is true that sending more troops can help your combat percentages, the reality is the benefit from "overstacking a raid" is never equal to the loot you potentially lost due to overcapacity.  
+
+'''LOOT PER MONSTER CHART'''
+
+{| class="wikitable"
+!Dungeon Type
+!colspan="2"|Forest
+!colspan="2"|Hill
+!colspan="2"|Mountain
+!colspan="2"|Sea
+|-
+!Monster Level 1
+| style="text-align: right;"|25
+| style="text-align: center;"|spider
+| style="text-align: right;"|25
+| style="text-align: center;"|skeleton
+| style="text-align: right;"|30
+| style="text-align: center;"|orc
+| style="text-align: right;"|75
+| style="text-align: center;"|pirate dhow
+|-
+!Monster Level 2
+| style="text-align: right;"|33
+| style="text-align: center;"|thief
+| style="text-align: right;"|33
+| style="text-align: center;"|ghoul
+| style="text-align: right;"|40
+| style="text-align: center;"|troglodyte
+| style="text-align: right;"|250
+| style="text-align: center;"|pirate sloop
+|-
+!Monster Level 3
+| style="text-align: right;"|70
+| style="text-align: center;"|centaur
+| style="text-align: right;"|135
+| style="text-align: center;"|gargoyle
+| style="text-align: right;"|120
+| style="text-align: center;"|ettin
+| style="text-align: right;"|650
+| style="text-align: center;"|pirate frigate
+|-
+!Monster Level 4
+| style="text-align: right;"|290
+| style="text-align: center;"|troll
+| style="text-align: right;"|340
+| style="text-align: center;"|daemon
+| style="text-align: right;"|250
+| style="text-align: center;"|minotaur
+| style="text-align: right;"|1400
+| style="text-align: center;"|pirate war galleon
+|}
+<span style="line-height:20px;">EXAMPLE (to hopefully synthesize a few concepts, the combat numbers are fictional but analogous)</span>
+
+You have a castle with 10,000 berserkers.  You run into a level 5 mountain dungeon that is 0% complete, so it is brand new.  
+
+You send a test raid out of 2,000 berserkers.  Berserkers hold 10 loot each.  Your loot capacity, if every berserker lives, is 20,000 plus gold.
+
+You encounter 500 orcs at the dungeon.  Orcs hold 30 loot.  Your maximum loot is 15000 (500 x 30).
+
+The battle ensues:  You kill 138 orcs and you lose 50 berserkers.  Despite not killing all the orcs, you still get the maximum loot: 15,000.  You still have 1,950 berserkers left, with a capacity of 19,500.  So you gain the full 15,000 in loot (a mixture of wood/stone/iron/food).  The gold is calculated as 30% of the loot, so you gain 4,500 gold as well, which is immediately deposited into your gold count.  
+
+You get back to your castle and think "I want to lose less berserkers because I'm trying to build an army".  So you think that by sending 10,000 berserkers next time you will lose less troops.  But when the second raid returns it is very likely that you will again have lost 50 berserkers.  No benefit at all.  
+
+== Damage Per Foe ==
+
+'''Summary:  This particular section is not that important:  If you attack dungeons where:'''
+
+'''a) The dungeon monsters are weak to your troop type (zerkers on mountains for example), AND'''
+
+'''b) You use troops with over 30 attack power per HEAD (knights/paladins count as 2, war galleons as 400, so learn your numbers), AND'''
+
+'''c) you raid with enough troops to take all the loot home.'''
+
+'''YOU WILL GENERALLY BE FINE.  However, for those of you who want a bit more information, read below.'''
+
+As explained throughout the dungeon wiki, simply throwing more troops at a dungeon does not automatically improve your returns.   Having strong attacking troops is the key to reducing the casualties you take.  Although technically sending in more weak attack power will kill more monsters, it also gets more of your troops killed, because combat deaths are treated as percentages and not as raw figures.
+
+And most importantly, you are under no obligation to kill the monsters:  you can take home their loot regardless if you kill the monster or not: you just need enough carrying capacity to drag it home.  The surplus loot you bring home is your profit, and your surplus will not be as great if you need to use a ton of resources to replace the dead.
+
+For example:  Guardians have terrible attack power: 10 (unresearched).  They can carry 20 loot back.  You send 1,000 guardians to kill 500 orcs (loot: 30 each, 15,000 total).   Your attack power is 10,000 (1,000 guardians x 10).
+
+You have 200 guardians die in the battle.  This means your remaining 800 guardians can bring back 16,000 loot, so you have enough to bring it all home.  
+
+The next time you send 5,000 guardians with a total attack power of 50,000.  You still only get 15,000 loot.  You kill more orcs than you did last time.  But you lose 600 guardians.  There is no reason to do it.
+
+== Loot Percentages ==
+
+Here is a small chart that shows the percentages of loot that you will receive from dungeon raiding based on the dungeon type (not including gold, stats need to be recieved).
+
+These percentages may not be accurate, so caveat "emptor". 
+
+{| class="wikitable"
+!Dungeon type!!wood!!stone!!iron!!food
+|-
+!Forest
+| style="text-align: right;"|40%
+| style="text-align: right;"|16%
+| style="text-align: right;"|24%
+| style="text-align: right;"|20%
+|-
+!Hill
+| style="text-align: right;"|20%
+| style="text-align: right;"|36%
+| style="text-align: right;"|24%
+| style="text-align: right;"|20%
+|-
+!Mountain
+| style="text-align: right;"|16.7%
+| style="text-align: right;"|10%
+| style="text-align: right;"|56.7%
+| style="text-align: right;"|16.7%
+|-
+!Sea
+| style="text-align: right;"|30%
+| style="text-align: right;"|15%
+| style="text-align: right;"|30%
+| style="text-align: right;"|25%
+|}
+Example:  An orc holds 30 loot.  Orcs are only found at mountains, so out of that loot you will receive 5 wood, 3 stone, 5 food, and 17 iron.  
+
+== Dungeon Raiding Strategy ==
+
+Dungeon Types
+
+{| class="wikitable"
+!Type!!Active Dungeon!!Inactive Dungeon!!Boss!!Weakness
+|-
+!Forest
+|[[Image:npccamp_woods_active_decal.png|Active Forest]]||[[Image:Npccamp_woods_inactive_decal.png|Inactive Forest]]||[[Image:npccamp_woods_boss_active.png|Dragon]]||Cavalry
+|-
+!Hill
+|[[Image:npccamp_hill_active_decal.png|Active Hill]]||[[Image:npccamp_hill_inactive_decal.png|Inactive Hill]]||[[Image:npccamp_hills_boss_active.png|Moloch]]||Magic
+|-
+!Mountain
+|[[Image:npccamp_mountains_active_decal.png|Active Mountain]]||[[Image:npccamp_mountains_inactive_decal.png|Inactive Mountain]]||[[Image:npccamp_mountains_boss_active.png|Hydra]]||Infantry
+|-
+!Sea
+|[[Image:npccamp_sea_active_decal.png|Active Sea]]||[[Image:npccamp_sea_inactive_decal.png|Inactive Sea]]||[[Image:npccamp_sea_boss_active.png|Octopus]]||Artillery
+|}
+
+Effective dungeon raiding is not difficult.  This strategy page is divided into two sections:  a basic strategy section for beginners and an advanced strategy section for more experienced players.
+
+Why raid?  Raid castles, and even raid cities, produce more resources per hour than resource cities.  Just as important, raiding dungeons is without question the most efficient way to earn gold.  Resource cities are just not good at producing gold and without dungeon raiding you will likely be short.
+
+Although your mileage will vary considerable depending on a variety of factors (your discipline at making sure all your troops are raiding, replacing dead troops, dungeon locations, etc.) I doubt any experienced raider would balk at the idea that raid castles make even bad players 300,000-400,000 resources per hour, whereas resource cities cap out at about 45,000/hour for gold, 75,000-90,000/hour for wood/stone/iron, and 150,000/hour for food.  
+
+The peak productivity of raid castles is particularly inviting:  Imagine a level 8-10 mountain dungeon spawning right beside your raid castle (i.e. one square to the left) holding 250,000 berserkers that is completely built and well supplied.  The trip without research takes 2 hours and 40 minutes.  Over a single day that is 10 trips that can be completed by 250,000 zerkers who can hold 2.5 million in loot plus gold EACH trip.  That is 25 million in food/iron/stone/wood plus a huge amount of gold.  Of course, you don't get ALL of that: you will have casualties, so you don't return with all of it, and you have to use a lot of iron to re-recruit the dead.  But it still ends up being, with gold included, over 1 million an hour in profit.  
+
+=== Basic Raiding Strategy ===
+
+You are officially dungeon raiding when you first send a single troop to a dungeon on the map in hopes of recovering loot.  Here is a quick list of the fundamentals:
+
+1. Raids take at least two hours.  There is a one hour "cost" when you launch a raid.  Once the troops arrive at the dungeon, there is another one hour "cost" coming back.  Generally it is another 10-20 minutes per map square on top of that.
+
+2.  Some troops raid well and some troops do not raid well.  Raiding well is a mixture of attack power and loot capacity.  Both elements are needed.  As this is the beginner section, recognize that the most common raiding troop in the game is berserkers.  They carry 10 loot each and they attack (unresearched) at 50.  This allows them to attack, with appropriate numbers, all of the 3 land dungeons (hills, forests, mountains) effectively.  
+
+As a beginning raider, troops that are also considered good at raiding (with their corresponding weakness)
+
+a)  Paladins (just be careful when using them, especially unresearched, against mountain and hill dungeons)
+
+b) Knights (a strong troop but they only carry 7.5 loot per TS)
+
+c) Rangers (be careful raiding hills and forests with rangers as the monsters there hit infantry hard:  berserkers have enough attack strength to overcome this)
+
+d) Mages and Warlocks (very strong attackers but they only carry 5 loot per TS and they are much slower to recruit than other troops types generally.  It is hard to raid routinely with mages and warlocks and have your army in that city/castle grow at a reasonable pace.)
+
+e) War Galleons and Frigates (be careful sea raiding:  ships take a long time to build and there are limited options to speed that process up)
+
+When you become more advanced there are uses for other troops as well.  See the advanced section.
+
+3.  Each dungeon type has a specific troop type it is susceptible to.  Infantry (berserkers, rangers, templars, guardians) are strong against mountain dungeons.  Cavalry (knights, crossbowmen, paladins) are strong against forest dungeons.  Magic units (mages, warlocks) are strong against hill dungeons.  Whenever possible, match these combinations up.  
+
+4. It is important to remember that as dungeons progress percentagewise the amount of loot available increases.  The reason for this is "more" monsters in the dungeon.  This isn't a perfectly accurate description but it is all you need to know for now.  So IF you are using a war minister and if you set your raid to "loop" your troops will increasingly face more difficult encounters and more of your troops will die.  Dead troops need to be replaced, this costs resources, and diminishes your return on investment.  There are two ways to handle this:
+
+a) SET AND FORGET strategy:  From the chart below, if you have a dungeon that is at 20%, send the number of troops required for 60%.  That way two days later the dungeon might be at 60%, and you can essentially let the dungeon run until completion.
+
+b) MICROMANAGE strategy:  On a daily basis you cancel all of your raids set to loop, wait for the troops to get back, and readjust your raid number.  Micromanaging becomes progressively more work as a server progresses.  
+
+5.  If you are not using a war minister, please follow the chart as accurately as possible, as the game forces you to micromanage and calculate each raid separately. 
+
+<p style="text-align:center;"><u>'''Basic Raid Chart'''</u></p>
+
+Use the following chart to figure out what to send.  
+
+NOTE:  This chart gives ideal raid numbers for a certain percentage.  If you do not want to reset raids, please follow the 'set and forget" strategy listed above.   These charts are compiled for berserkers only.  Please use the adjustment calculations below the last chart to make adjustments for the various troop types.  If your dungeon is in between these percentages (like 30%) feel free to pick a number in between those percentages.  If you really hate thinking and feel obligated to pick a number, always round up to the higher percentage (never down).
+
+Numbers were extracted from Merc Tools 3.0, which obviously used some parse tool for the loot and then relied on an (admittedly errant) formula when data was not available.  I've done my best to clean up those errors with common sense.
+
+{| border="0" cellpadding="2" cellspacing="2" class="article-table" style="float: left; width: 500px;"
+|+Mountain Dungeons
+|-
+! scope="col"|Mountain Level
+! scope="col"|0%
+! scope="col"|20%
+! scope="col"|40%
+! scope="col"|60%
+! scope="col"|80%
+|-
+|1
+|10
+|15
+|20
+|25
+|30
+|-
+|2
+|70
+|100
+|125
+|150
+|180
+|-
+|3
+|300
+|400
+|500
+|600
+|710
+|-
+|4
+|1000
+|1325
+|1625
+|2000
+|2250
+|-
+|5
+|3150
+|3700
+|4700
+|5800
+|7000
+|-
+|6
+|7250
+|8700
+|10800
+|13300
+|16000
+|-
+|7
+|14600
+|16800
+|22800
+|28800
+|33200
+|-
+|8
+|25900
+|30700
+|41800
+|54800
+|59400
+|-
+|9
+|42900
+|53200
+|67400
+|84400
+|99500
+|-
+|10
+|65700
+|82900
+|109000
+|128000
+|151000
+|}
+
+
+{| border="0" cellpadding="2" cellspacing="2" class="article-table article-table-selected" style="width: 500px;"
+|+Forest and Hill and Sea Dungeons
+|-
+! scope="col"|Dungeon Level
+! scope="col"|0%
+! scope="col"|20%
+! scope="col"|40%
+! scope="col"|60%
+! scope="col"|80%
+|-
+|1
+|10
+|15
+|20
+|25
+|30
+|-
+|2
+|60
+|90
+|110
+|130
+|160
+|-
+|3
+|240
+|330
+|440
+|530
+|630
+|-
+|4
+|850
+|1100
+|1325
+|1600
+|1950
+|-
+|5
+|2600
+|3150
+|4200
+|5100
+|6000
+|-
+|6
+|6100
+|7200
+|9400
+|11500
+|13300
+|-
+|7
+|12000
+|14600
+|19100
+|23000
+|27000
+|-
+|8
+|21500
+|26000
+|32000
+|44000
+|51000
+|-
+|9
+|35000
+|45000
+|56000
+|71000
+|84000
+|-
+|10
+|54000
+|65000
+|87000
+|105000
+|119000
+|}
+DIVIDERS (please please if you are new to raiding read the cautions listed above...)
+
+These numbers can be accurately used to achieve full loot by WARLOCKS and RANGERS.  It can also be used to raid with TEMPLARS but please read the advanced section before you attempt this.
+
+These numbers need to be DIVIDED BY TWO to achieve full loot with PALADINS.  Dividing by two will also achieve full loot with CROSSBOWMEN and GUARDIANS, but read the advanced section before you attempt this.
+
+These numbers need to be DOUBLED to achive full loot with MAGES.  
+
+These numbers need to be DIVIDED BY 1.5 to achieve full loot with KNIGHTS.  
+
+=== Advanced Strategies ===
+
+To be expanded later on.  For those looking for a sneak peek on advanced strategy, here are the general topics that will be expanded upon soon:
+
+1)  Guardians carry 20 loot per TS.  They cannot raid alone, but need to be combined with Training Ground units. The most common and profitable combination are Berserkers:Guardians, or Ranger:Guardians. A ratio of 70:30 is recommended.
+
+2) Some troops, with research and shrine bonuses, become more viable to raid as a server progresses.  Because shrine bonuses are iffy and can fluctuate, focus on researching the unit's Combat Strength.  For example, rangers with 50% research attack at 45: that is 90% of the efficacy of a berserker.  This allows them to raid all types of dungeons later on with more robust returns. Similarly, troops like templars are poor raiders in the beginning but when researched become sufficient enough to raid dungeons where they have an advantage (mountain dungeons).  
+
+3)  When recruitment limit is reached and your city/castle is nearly complete, it is recommended that those troops raid at replacement levels.  For example, a castle with 100,000 mages may only be able to raid with half that number because raiding with all of the mages may kill them off faster than you can replace them.  
+
+4)  Replacement rate templates based on your playstyle
+
+5) Food networking, hub networking, storage issues
+
+6) Raiding methodology factoring in less thought of variables (food research, troop research, etc.).  ''One example off the top of my head is berserker troop research:  if you start a server off with only berserker raid castles, and you have to use almost all of your iron to replace the troops, how do you find enough iron to research berserker upgrades, which is the most important element of improving pure berserker efficiency as well as a cornerstone of berserker/guardian raiding?  ''
+
+7) 3rd party scripts (benefits and cons)
+
+8) Even more advanced stuff than this (real life time constraints, buffer allowances, war balancing (in an optional environment, do you use your raid troops to kill the enemy or do you not?), server cycling, etc.
+
+=== Examples of Dungeon Raids ===
+
+{{Stub}}
+
+Raiding low-level dungeons is a nice way to rake in a little bit of extra resources, but the primary focus is to test the strength of your army. To see how your army fared against the vile dungeon dwellers, open the reports tab to see the run down of your recent battles.
+
+At higher levels - level six and above - dungeons can provide a significant amount of resources. A castled city next to a high level dungeon can produce more resources per hour than even the best-designed resource city. For low-level dungeons, you won't be able to set up enough attack commands to retrieve high volumes of resources. For high-level dungeons, a small number of attack commands can be lucrative. A level seven dungeon provides about 25k gold and a total of more than 100K resources.
+[[Category:Dungeons]]

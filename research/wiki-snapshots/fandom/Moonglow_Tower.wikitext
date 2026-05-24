@@ -1,0 +1,106 @@
+[[File:Mage_tower_repaint_256.png|right]]The '''Moonglow Tower''' is a building in [[Lord of Ultima]]. It allows recruitment of caster units and, if upgraded, increases their recruitment speed. Also enables purification of resources for research, vital when recruiting Barons. Placing a Barracks beside a Moonglow Tower will also increase recruitment speed.
+
+'''Requirements:''' [[Town Hall]] Level 7
+
+{| border="1" class="article-table"
+|-
+! scope="col"|Level
+! scope="col"|Recruiting Speed
+! scope="col"|Recruiting Unit Type
+! scope="col"|Resource Cost Wood
+! scope="col"|Resource Cost Stone
+! scope="col"|Build Time
+! scope="col"|Rank Points
+|-
+|1
+| +5%
+|Mage
+|30
+|60
+|22sec
+|1
+|-
+|2
+| +10%
+| -
+|60
+|120
+|2min, 24sec
+|4
+|-
+|3
+| +16%
+| -
+|120
+|240
+|16min
+|7
+|-
+|4
+| +24%
+| -
+|300
+|600
+|2hr
+|14
+|-
+|5
+| +35%
+| -
+|900
+|1800
+|4hr, 30min
+|24
+|-
+|6
+| +50%
+| -
+|2100
+|4200
+|9hr
+|36
+|-
+|7
+| +68%
+|Warlock
+|4200
+|8400
+|16hr, 24min
+|50
+|-
+|8
+| +90%
+| -
+|7200
+|14,400
+|1d, 2hr, 30min
+|68
+|-
+|9
+| +115%
+| -
+|11,400
+|22,800
+|1d, 15hr, 54min
+|90
+|-
+|10
+| +150%
+| -
+|17,400
+|34,800
+|2d, 12hr, 30min
+|120
+|-
+|Total
+| +150%
+|Mage, Warlock
+|43,710
+|87,420
+|6d, 15hr, 6min, 46sec
+|120
+|}
+
+{{ConSpd}}
+[[Category:Buildings]]
+[[Category:Pages to be moved to the new wiki]]

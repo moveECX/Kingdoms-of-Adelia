@@ -1,0 +1,109 @@
+[[File:Shipyard_256.png|right]]The '''Shipyard''' enables recruitment of naval units and, if upgraded, increases their recruitment speed. Placing a Barracks nearby further increases recruitment speed.
+
+
+
+'''Requirements:''' [[Town Hall]] Level 10
+<br /><br /><br /><br /><br /><br /><br /><br /><br />
+{| class="article-table article-table-selected" width="100%"
+|-
+! scope="row"|Level
+! scope="col"|Recruiting Speed
+! scope="col"|Recruiting Unit Type
+! scope="col"|Resource Cost Wood
+! scope="col"|Resource Cost Stone
+! scope="col"|Build Time
+! scope="col"|Rank Points
+|-
+|1
+| +5%
+|Sloop
+|50
+|100
+|27sec
+|2
+|-
+|2
+| +10%
+| -
+|100
+|200
+|3min, 36sec
+|5
+|-
+|3
+| +16%
+| -
+|200
+|400
+|24min
+|10
+|-
+|4
+| +24%
+| -
+|500
+|1000
+|3hr
+|19
+|-
+|5
+| +35%
+| -
+|1500
+|3000
+|6hr, 45min
+|32
+|-
+|6
+| +50%
+|Frigate
+|3500
+|7000
+|13hr, 30min
+|48
+|-
+|7
+| +68%
+| -
+|7000
+|14,000
+|1d, 36min
+|67
+|-
+|8
+| +90%
+| -
+|12,000
+|24,000
+|1d, 15hr, 45min
+|91
+|-
+|9
+| +115%
+| -
+|19,000
+|38,000
+|2d, 11hr, 51min
+|120
+|-
+|10
+| +150%
+|War Galleon
+|29,000
+|58,000
+|3d, 18hr, 45min
+|160
+|-
+|'''Total'''
+| '''+150%'''
+|'''Sloop, Frigate, War Galleon'''
+|'''72,850'''
+|'''145,700'''
+|'''9d, 22hr, 40min, 3sec'''
+|'''160'''
+|}
+
+{{ConSpd}}
+[[Category:Buildings]]
+[[Category:Combat]]
+[[Category:Pages to be moved to the new wiki]]

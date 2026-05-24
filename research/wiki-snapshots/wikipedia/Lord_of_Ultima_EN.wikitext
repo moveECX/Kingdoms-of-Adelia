@@ -1,0 +1,62 @@
+{{cleanup-rewrite|date=September 2014}}
+{{refimprove|date=October 2017}}
+
+{{Infobox video game
+|title = Lord of Ultima
+|image = Lord of Ultima Logo.png
+|developer = [[EA Phenomic]]
+|released = {{Start date|2010|04|20}} (Open Beta)
+|genre = [[Real-time strategy|Real-time]] [[Real-time tactics|military strategy]]<br />[[City-building game|City-building]]
+|modes =
+|platforms = 
+}}
+
+'''''Lord of Ultima''''' is a defunct [[free-to-play]], [[Web browser|browser-based]], [[Massively multiplayer online game|massively multiplayer]] [[real-time strategy]] (MMORTS) [[video game]] by [[Electronic Arts]]. The game started a beta test on April 20, 2010 and was developed by [[EA Phenomic]].<ref>{{cite web|url=https://www.engadget.com/2010/04/20/ea-launches-free-to-play-lord-of-ultima-browser-based-game/|title=EA launches free-to-play 'Lord of Ultima' browser-based game|last=Sliwinski|first=Alexander|date=2010-04-20|publisher=Joystiq|accessdate=2012-08-17}}</ref><ref>{{cite web|last=Reahard |first=Jef |url=http://www.massively.com/2010/04/20/ea-launches-lord-of-ultima-browser-game/ |title=EA launches Lord of Ultima browser game |publisher=Massively |date=2010-04-20 |accessdate=2012-08-17}}</ref> While it is, technically, part of the [[Ultima (series)|Ultima]] series of games, there was very little actual connection to the other games in the series.<ref name="mmohut1">{{cite web|url=http://mmohut.com/browser-games/lord-of-ultima|title=MMOHut|accessdate=20 June 2017|url-status=dead|archiveurl=https://web.archive.org/web/20100809144645/http://mmohut.com/browser-games/lord-of-ultima|archivedate=9 August 2010}}</ref>
+
+The game was a [[2D computer graphics|2D]] strategy game similar to [[Evony]]. Though the game was nominally free, players could purchase "Funds" for [[reality|real-world]] money, providing the game with its [[revenue stream]]. The "Funds" could be used for three types of enhancements: improved user-interface features through the purchase of "ministers" which reduce micro-management of resources; "artifacts" which provide increased resources and can speed completion of commands; and protection from player attacks.
+
+The game used pure [[JavaScript]] Web technology, and was not based on [[Adobe Flash]], unlike many other browser-based games.
+
+[[EA]] announced that all servers would be turned off on May 12, 2014. On March 1, 2014 EA no longer offered support through their official LOU forum. User reports suggest most servers had already been turned off as of March 5, 2014 well in advance of the May 12th closure, prompting anger among remaining players who were told days earlier by EA to spend their remaining funds as no refund would be issued. A number of websites had urged players to seek refunds via PayPal for recently bought game funds.<ref name="eol">{{cite web|url=https://www.ea.com/1/service-updates|title=Service Updates|website=www.ea.com|accessdate=20 June 2017}}</ref>
+
+Lord of Ultima shut down on May 12, 2014 at 07:00 UTC.
+
+Fans of Lord of Ultima supported a KickStarter campaign to recreate the game. This Kickstarter campaign was fully funded in just 17 minutes.<ref>{{cite web|url=https://www.kickstarter.com/projects/1160729494/crown-of-the-gods|title=Crown of the Gods|website=Kickstarter|accessdate=20 June 2017}}</ref> The remake was released as "Crown of the Gods" which focused on emulating the gameplay while using different artwork and lore to avoid copyright infraction.<ref>{{cite web|url=https://www.crownofthegods.com|title=Crown of the Gods - An empire-building strategy game|website=Crown of the Gods|accessdate=20 June 2017}}</ref> 
+
+==Gameplay==
+
+In Lord of Ultima, game-play primarily revolved around collecting resources to develop cities and armies and then battle against each other for power and prestige.
+
+Players started off with a single city, which was protected from attack for seven days. A player could choose to settle inactive cities or create new cities after the required prerequisites have been met. A player can also build a castle enabling them to conquer other cities with castles and vice versa. It was a common mistake for new players to "castle their first city", resulting in their elimination. Players without castles could raid dungeons (PvE battles) but cannot plunder other players' cities. Joining an alliance was crucial in this game for both protection and economic support.
+
+The objective of the game was to attain the title "Lord of Ultima", which can only be done with the support of an alliance by jointly completing and holding a level 10 alliance palace of each of 8 in-game faiths.  
+
+Several third party tools were commonly used to support the player. City planning tools help to design a city layout by displaying the potential resource gain per hour. City design was crucial for the player to rank highly on the in-game leaderboards.{{citation needed|date=July 2022}}
+
+==Reception==
+According to GameRankings, ''PC Gamer'' magazine in the UK gave it a score of 75%, and Game Vortex awarded it 82%.<ref>{{cite web|url=http://www.gamerankings.com/pc/995426-lord-of-ultima/index.html|title=Lord of Ultima for PC - GameRankings|website=www.gamerankings.com|accessdate=20 June 2017}}</ref>
+
+MMOHut cited the game's positive points as an "original strategy script", and the fact that "city layouts take thought." It criticised Lord of Ultima's "slow paced gameplay" and "very weak connection with the Ultima franchise."<ref name="mmohut1"/>
+
+IT Reviews concluded: "Ultimately... this browser-based strategy affair proved rather too slow paced for our liking." However, the reviewer noted that: "If you're the sort of player who can happily dip in and out of a game very casually, it's worth checking out. There's considerable depth in the town planning, a decent guild system, and after all, it's free to play."<ref>{{cite web|url=http://www.itreviews.co.uk/games/g694.htm|title=IT Reviews|accessdate=20 June 2017|url-status=dead|archiveurl=https://web.archive.org/web/20110127021315/http://www.itreviews.co.uk/games/g694.htm|archivedate=27 January 2011}}</ref>
+
+==References==
+
+<references/>
+
+==External links==
+*{{Official website|https://web.archive.org/web/20100426001139/http://www.lordofultima.com/en}}
+* [https://www.crownofthegods.com/ Crown of the Gods]
+
+{{Play4Free}}
+{{Ultima}}
+
+[[Category:2010 video games]]
+[[Category:Browser games]]
+[[Category:EA Phenomic games]]
+[[Category:Free-to-play video games]]
+[[Category:Inactive massively multiplayer online games]]
+[[Category:Massively multiplayer online real-time strategy games]]
+[[Category:Online games shut down in 2014]]
+[[Category:Ultima (series)]]
+[[Category:Video games developed in Germany]]

@@ -1,0 +1,114 @@
+[[File:Casern_256.png|right]]Allows recruitment of infantry units and, if upgraded, increases their recruitment speed. Placing a Barracks beside a Training Ground will also increase recruitment speed.
+
+
+
+Requirements: [[Town Hall]] Level 4
+
+
+
+
+
+
+
+
+{| border="1" class="article-table article-table-selected"
+|-
+! scope="col"|Level
+! scope="col"|Recruiting Speed
+! scope="col"|Recruiting Unit Type
+! scope="col"|Resource Cost Wood
+! scope="col"|Resource Cost Stone
+! scope="col"|Build Time
+! scope="col"|Rank Points
+|-
+|1
+| +5%
+|Berserker
+|20
+|40
+|20sec
+|1
+|-
+|2
+| +10%
+| -
+|40
+|80
+|1min, 48sec
+|2
+|-
+|3
+| +16%
+| -
+|80
+|160
+|12min
+|5
+|-
+|4
+| +24%
+|Ranger
+|200
+|400
+|1hr 30min
+|10
+|-
+|5
+| +35%
+| -
+|600
+|1200
+|3hr, 22min, 30sec
+|16
+|-
+|6
+| +50%
+| -
+|1400
+|2800
+|6hr, 45min
+|24
+|-
+|7
+| +68%
+| -
+|2800
+|5600
+|12hr, 18min
+|34
+|-
+|8
+| +90%
+| -
+|4800
+|9600
+|19hr, 52min, 30sec
+|46
+|-
+|9
+| +115%
+| -
+|7500
+|15,000
+|1d, 5hr, 55min, 30sec
+|60
+|-
+|10
+| +150%
+|Guardian
+|11,500
+|23,000
+|1d, 21hr, 22min, 30sec
+|80
+|-
+|Total
+| +150%
+|Berserker, Ranger, Guardian
+|28,940
+|57,880
+|4d, 23hr, 17min, 8sec
+|80
+|}
+[[Category:Buildings]]
+[[Category:Combat]]
+[[Category:Pages to be moved to the new wiki]]

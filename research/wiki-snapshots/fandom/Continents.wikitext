@@ -1,0 +1,48 @@
+= The World =
+
+''For more see: [[World Setup]]''
+
+The world is divided into a 7x7 Grid of islands. Each island is home to 100x100 squares which have either forest, hills, mountains, plains and rivers or other player cities on them.
+
+The top left most island is referred to as 0:0, which is 0-99 X and 0-99 Y.<br />The island bottom right of that one is 6:6, or simply 600-699 X and 600-699 Y.
+
+==Continents==
+
+'''UPDATE TO TERMINOLOGY/GRID LAYOUT INFORMATION :'''
+<br />Each world is divided into a 5x5 grid of continents. World 25 , for instance, is laid out with continents 00-44.
+
+{| class="wikitable"
+!First row
+|00||01||02||03||04
+|-
+!Second row
+|10||11||12||13||14
+|-
+!Third row
+|20||21||22||23||24
+|-
+!Fourth row
+|30||31||32||33||34
+|-
+!Fifth row
+|40||41||42||43||44
+|}
+
+Most players in each world refer to their location by continent and coordinates. For Example, on World 25: Continent 21, coordinates 154:296 is a tile on the southern coast. Hovering your cursor over any tile in world will reveal its continent and coordinates.
+
+Moving from one continent to the next requires you to have access to a ship. Merchant ships for settling new cities. Sloops, frigates and war galleons for assults or sieges.
+
+== Monsters ==
+
+[[Bosses]] will randomly spawn in the form of dragons and other [[Bestiarum|creatures]]. These large creatures can drop [[Artifacts]] for you to use.
+
+[[Dungeons]] also randomly spawn and close over time as they are conquered.
+
+== Shrines and Moongates ==
+
+{{Main|Shrine}}
+{{Main|Moongate}}
+
+Every Continent has a 8 [[Shrines]] and a couple of [[Moongates]]. It has not yet been announced what Moongates are for, but Shrines (when Active) provides the Alliance that holds them with a bonus such as +10% damage by all armies in the alliance.
+[[Category:Continent]]
+[[Category:Gameplay]]

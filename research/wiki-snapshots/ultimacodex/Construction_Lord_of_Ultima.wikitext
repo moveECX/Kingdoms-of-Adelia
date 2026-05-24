@@ -1,0 +1,3065 @@
+The following Building Construction Data is taken from the [[The Great Libraries of Caledonia]]<ref>{{RefWeb
+| author=Phenomic
+| moreAuthors=
+| webSite=The Great Libraries of Caledonia
+| accessDate=December 2012
+}}</ref>:
+
+[[Image:Friendly_city.jpg|right|600px]]
+==Buildings==
+Players use [[Resources (LoU)|resources]] to construct and improve buildings. Each building improves their Score, which determines their Ranking and can provide Titles. Each building also has a special function; a Town Hall, for instance, determines the maximum number of buildings that can exist within a city, provides workers to produce wood, and provides storage. Some are limited; each city can only have one Town Hall, Castle, or City Wall, for example.
+
+===Town Hall===
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| colspan="2" | [[Image: Lou_building_townhall.png|center]]
+| colspan="6" | Provides basic storage and wood production. Also determines the maximum number of buildings in a city. Only one can be built in each city. Cannot be totally demolished or destroyed.
+|}
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| '''Level'''
+| '''Max Buildings'''
+| '''Wood/hr'''
+| '''Storage'''
+| '''Resource Cost'''
+| '''Build Time'''
+| '''Max Commands'''
+| '''Score'''
+|-
+| 1
+| 10
+| 300
+| 5000 ea
+| n/a
+| n/a
+| 5
+| 3
+|-
+| 2
+| 20
+| 300
+| 7000 ea
+| 200 wood
+| 25 sec
+| 5
+| 9
+|-
+| 3
+| 30
+| 300
+| 10,000 ea
+| 500 wood, 100 stone
+| 40 sec
+| 5
+| 18
+|-
+| 4
+| 40
+| 300
+| 15,000 ea
+| 1000 wood, 300 stone
+| 1 min, 40 sec
+| 5
+| 36
+|-
+| 5
+| 50
+| 300
+| 24,000 ea
+| 3000 wood, 1500 stone
+| 30 min
+| 5
+| 60
+|-
+| 6
+| 60
+| 300
+| 35,000 ea
+| 8000 wood, 4000 stone
+| 2 hr, 30 min
+| 5
+| 90
+|-
+| 7
+| 70
+| 300
+| 50,000 ea
+| 15,000 wood, 10,000 stone
+| 8 hr, 20 min
+| 5
+| 126
+|-
+| 8
+| 80
+| 300
+| 80,000 ea
+| 30,000 wood, 25,000 stone
+| 16 hr, 40 min
+| 5
+| 171
+|-
+| 9
+| 90
+| 300
+| 125,000 ea
+| 60,000 wood, 60,000 stone
+| 1 day, 2 hr
+| 5
+| 225
+|-
+| 10
+| 100
+| 300
+| 175,000 ea
+| 120,000 wood, 120,000 stone
+| 1 day, 13 hr, 20 min
+| 5
+| 300
+|- style="background-color:lightgray;"
+| Total
+| 100
+| 300
+| 175,000 ea
+| 237,700 wood, 220,900 stone
+| 3 days, 19 hr, 22 min, 45 sec
+| 5
+| 300
+|}
+
+===Woodcutter’s Hut===
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| colspan="2" | [[Image: Lou_building_hut.png|center]]
+| colspan="2" | Produces wood. Any bordering woods, Cottages and a maximum of one Sawmill will increase productivity.
+| '''Requirements'''<br>Town Hall<br>Level 1
+|}
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| '''Level'''
+| '''Wood/hr'''
+| '''Resource Cost'''
+| '''Build Time'''
+| '''Score'''
+|-
+| 1
+| 20
+| 50 wood
+| 15 sec
+| 1
+|-
+| 2
+| 40
+| 200 wood
+| 54 sec
+| 3
+|-
+| 3
+| 60
+| 400 wood, 200 stone
+| 6 min
+| 6
+|-
+| 4
+| 85
+| 1,400 wood, 600 stone
+| 45 min
+| 12
+|-
+| 5
+| 110
+| 3,500 wood, 1,500 stone
+| 1 hr, 41 min, 15 sec
+| 20
+|-
+| 6
+| 140
+| 6,000 wood, 3,000 stone
+| 3 hr, 22 min, 30 sec
+| 30
+|-
+| 7
+| 175
+| 10,000 wood, 5,000 stone
+| 6 hr, 15 min
+| 42
+|-
+| 8
+| 210
+| 16,000 wood, 8,000 stone
+| 9 hr, 57 min
+| 57
+|-
+| 9
+| 250
+| 25,000 wood, 13,000 stone
+| 14 hr, 58 min
+| 75
+|-
+| 10
+| 300
+| 38,000 wood, 20,000 stone
+| 22 hr, 42 min
+| 100
+|- style="background-color:lightgray;"
+| Total
+| 300
+| 100,550 wood, 51,300 stone
+| 2 days, 11 hr, 47 min, 39 sec
+| 100
+|}
+
+===Cottage===
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| colspan="2" | [[Image: Lou_building_cottage.png|center]]
+| colspan="3" | Increases the construction speed of all build orders in a city. Also increases productivity of bordering resource buildings.
+| '''Requirements'''<br>Town Hall<br>Level 1
+|}
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| '''Level'''
+| '''Construction Speed'''
+| '''Manpower Bonus'''
+| '''Resource Cost'''
+| '''Build Time'''
+| '''Score'''
+|-
+| 1
+| +4%
+| +3%
+| 50 stone
+| 15 sec
+| 1
+|-
+| 2
+| +10%
+| +6%
+| 150 stone
+| 54 sec
+| 2
+|-
+| 3
+| +16%
+| +9%
+| 300 stone
+| 6 min
+| 5
+|-
+| 4
+| +25%
+| +12%
+| 600 stone
+| 45 min
+| 10
+|-
+| 5
+| +35%
+| +15%
+| 200 wood, 1,000 stone
+| 1 hr, 41 min, 15sec
+| 16
+|-
+| 6
+| +46%
+| +18%
+| 500 wood, 2,000 stone
+| 3 hr, 22 min, 30 sec
+| 24
+|-
+| 7
+| +58%
+| +21%
+| 1,000 wood, 4,000 stone
+| 6 hr, 15 min
+| 34
+|-
+| 8
+| +71%
+| +24%
+| 2,000 wood, 7,500 stone
+| 9 hr, 57 min
+| 46
+|-
+| 9
+| +85%
+| +27%
+| 5,000 wood, 14,000 stone
+| 14 hr, 58 min
+| 60
+|-
+| 10
+| +100%
+| +30%
+| 12,000 wood, 17,000 stone
+| 22 hr, 42 min
+| 80
+|- style="background-color:lightgray;"
+| Total
+| +100%
+| +30%
+| 20,700 wood, 46,600 stone
+| 2 days, 11 hr, 47 min, 54 sec
+| 80
+|}
+
+===Warehouse===
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| colspan="2" | [[Image: Lou_building_storage.png|center]]
+| colspan="2" | Increases the storage capacity for all resources. Enhanced by any bordering Sawmill, Stonemason, Mill or Foundry.
+| '''Requirements'''<br>Town Hall<br>Level 1
+|}
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| '''Level'''
+| '''Storage'''
+| '''Resource Cost'''
+| '''Build Time'''
+| '''Score'''
+|-
+| 1
+| 2,500 ea
+| 60 wood
+| 15 sec
+| 1
+|-
+| 2
+| 5,000 ea
+| 150 wood
+| 36 sec
+| 2
+|-
+| 3
+| 9,000 ea
+| 250 wood, 50 stone
+| 4 min
+| 5
+|-
+| 4
+| 16,000 ea
+| 500 wood, 150 stone
+| 30 min
+| 10
+|-
+| 5
+| 26,000 ea
+| 1,600 wood, 400 stone
+| 1 hr, 7 min, 30 sec
+| 16
+|-
+| 6
+| 42,000 ea
+| 3,000 wood, 1,000 stone
+| 2 hr, 15 min
+| 24
+|-
+| 7
+| 65,000 ea
+| 6,000 wood, 2,000 stone
+| 4 hr, 6 min
+| 34
+|-
+| 8
+| 100,000 ea
+| 9,600 wood, 4,800 stone
+| 6 hr, 37 min, 30 sec
+| 46
+|-
+| 9
+| 145,000 ea
+| 15,000 wood, 9,000 stone
+| 9 hr, 58 min, 30 sec
+| 60
+|-
+| 10
+| 200,000 ea
+| 20,000 wood, 13,000 stone
+| 15 hr, 7 min, 30 sec
+| 80
+|- style="background-color:lightgray;"
+| Total
+| 200,000 ea
+| 56,160 wood, 30,400 stone
+| 1 day, 15 hr, 46 min, 51 sec
+| 80
+|}
+
+===Quarry===
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| colspan="2" | [[Image: Lou_building_stone_quarry.png|center]]
+| colspan="2" | Produces Stone. Productivity can be increased by bordering Rocks, Cottages and a maximum of one Stonemason.
+| '''Requirements'''<br>Town Hall<br>Level 2
+|}
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| '''Level'''
+| '''Stone/hr'''
+| '''Resource Cost'''
+| '''Build Time'''
+| '''Score'''
+|-
+| 1
+| 20
+| 50 wood
+| 15 sec
+| 1
+|-
+| 2
+| 40
+| 200 wood
+| 54 sec
+| 3
+|-
+| 3
+| 60
+| 400 wood, 200 stone
+| 6 min
+| 6
+|-
+| 4
+| 85
+| 1,400 wood, 600 stone
+| 45 min
+| 12
+|-
+| 5
+| 110
+| 3,500 wood, 1,500 stone
+| 1 hr, 41 min, 15 sec
+| 20
+|-
+| 6
+| 140
+| 6,000 wood, 3,000 stone
+| 3 hr, 22 min, 30 sec
+| 30
+|-
+| 7
+| 175
+| 10,000 wood, 5,000 stone
+| 6 hr, 15 min
+| 42
+|-
+| 8
+| 210
+| 16,000 wood, 8,000 stone
+| 9 hr, 57 min
+| 57
+|-
+| 9
+| 250
+| 25,000 wood, 13,000 stone
+| 14 hr, 58 min
+| 75
+|-
+| 10
+| 300
+| 38,000 wood, 20,000 stone
+| 22 hr, 42 min
+| 100
+|- style="background-color:lightgray;"
+| Total
+| 300
+| 100,550 wood, 51,300 stone
+| 2 days, 11 hr, 47 min, 39 sec
+| 100
+|}
+
+===Hideout===
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| colspan="2" | [[Image: Lou_building_hideout.png|center]]
+| colspan="2" | Allows safe storage of resources, preventing them from being reported by Scouts or plundered. Its capacity can be increased if built beside woods.
+| '''Requirements'''<br>Town Hall<br>Level 2
+|}
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| '''Level'''
+| '''Hidden Storage'''
+| '''Resource Cost'''
+| '''Build Time'''
+| '''Score'''
+|-
+| 1
+| 500 ea
+| 50 stone
+| 15 sec
+| 1
+|-
+| 2
+| 1,000 ea
+| 200 stone
+| 36 sec
+| 2
+|-
+| 3
+| 2,000 ea
+| 600 stone
+| 4 min
+| 3
+|-
+| 4
+| 3,000 ea
+| 1,000 stone
+| 30 min
+| 5
+|-
+| 5
+| 4,500 ea
+| 1,500 stone
+| 1 hr, 7 min, 30 sec
+| 8
+|-
+| 6
+| 6,000 ea
+| 2,200 stone
+| 2 hr, 15 min
+| 12
+|-
+| 7
+| 8,000 ea
+| 3,500 stone
+| 4 hr, 6 min
+| 17
+|-
+| 8
+| 10,000 ea
+| 4,500 stone
+| 6 hr, 37 min, 30 sec
+| 23
+|-
+| 9
+| 12,000 ea
+| 6,000 stone
+| 9 hr, 58 min, 30 sec
+| 30
+|-
+| 10
+| 15,000 ea
+| 8,000 stone
+| 15 hr, 7 min, 30 sec
+| 40
+|- style="background-color:lightgray;"
+| Total
+| 15,000 ea
+| 27,550 stone
+| 1 day, 15 hr, 46 min, 51 sec
+| 40
+|}
+
+===Farm===
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| colspan="2" | [[Image: Lou_building_farm.png|center]]
+| colspan="2" | Produces food. Any bordering grassland, lakes, Cottages and Mills will increase productivity.
+| '''Requirements'''<br>Town Hall<br>Level 3
+|}
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| '''Level'''
+| '''Food/hr'''
+| '''Resource Cost'''
+| '''Build Time'''
+| '''Score'''
+|-
+| 1
+| 5
+| 50 wood
+| 15 sec
+| 1
+|-
+| 2
+| 10
+| 200 wood
+| 54 sec
+| 3
+|-
+| 3
+| 15
+| 400 wood, 200 stone
+| 6 min
+| 6
+|-
+| 4
+| 20
+| 1,400 wood, 600 stone
+| 45 min
+| 12
+|-
+| 5
+| 30
+| 3,500 wood, 1,500 stone
+| 1 hr, 41 min, 15 sec
+| 20
+|-
+| 6
+| 45
+| 6,000 wood, 3,000 stone
+| 3 hr, 22 min, 30 sec
+| 30
+|-
+| 7
+| 75
+| 10,000 wood, 5,000 stone
+| 6 hr, 15 min
+| 42
+|-
+| 8
+| 120
+| 16,000 wood, 8,000 stone
+| 9 hr, 57 min
+| 57
+|-
+| 9
+| 200
+| 25,000 wood, 13,000 stone
+| 14 hr, 58 min
+| 75
+|-
+| 10
+| 300
+| 38,000 wood, 20,000 stone
+| 22 hr, 42 min
+| 100
+|- style="background-color:lightgray;"
+| Total
+| 300
+| 100,550 wood, 51,300 stone
+| 2 days, 11 hr, 47 min, 39 sec
+| 100
+|}
+
+===Iron Mine===
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| colspan="2" | [[Image: Lou_building_mine.png|center]]
+| colspan="2" | '''Iron Mine'''<br>Produces iron. Any bordering ore deposits, Cottages and a maximum of one Foundry will increase productivity.
+| '''Requirements'''<br>Town Hall<br>Level 4
+|}
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| '''Level'''
+| '''Iron/hr'''
+| '''Resource Cost'''
+| '''Build Time'''
+| '''Score'''
+|-
+| 1
+| 20
+| 50 wood
+| 15 sec
+| 1
+|-
+| 2
+| 40
+| 200 wood
+| 54 sec
+| 3
+|-
+| 3
+| 60
+| 400 wood, 200 stone
+| 6 min
+| 6
+|-
+| 4
+| 85
+| 1,400 wood, 600 stone
+| 45 min
+| 12
+|-
+| 5
+| 110
+| 3,500 wood, 1,500 stone
+| 1 hr, 41 min, 15 sec
+| 20
+|-
+| 6
+| 140
+| 6,000 wood, 3,000 stone
+| 3 hr, 22 min, 30 sec
+| 30
+|-
+| 7
+| 175
+| 10,000 wood, 5,000 stone
+| 6 hr, 15 min
+| 42
+|-
+| 8
+| 210
+| 16,000 wood, 8,000 stone
+| 9 hr, 57 min
+| 57
+|-
+| 9
+| 250
+| 25,000 wood, 13,000 stone
+| 14 hr, 58 min
+| 75
+|-
+| 10
+| 300
+| 38,000 wood, 20,000 stone
+| 22 hr, 42 min
+| 100
+|- style="background-color:lightgray;"
+| Total
+| 300
+| 100,550 wood, 51,300 stone
+| 2 days, 11 hr, 47 min, 39 sec
+| 100
+|}
+
+===Townhouse===
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| colspan="2" | [[Image: Lou_building_townhouse.png|center]]
+| colspan="2" | Enables taxation. Income from tax can be increased by connecting Marketplaces and Harbors.
+| '''Requirements'''<br>Town Hall<br>Level 5
+|}
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| '''Level'''
+| '''Gold/hr'''
+| '''Resource Cost'''
+| '''Build Time'''
+| '''Score'''
+|-
+| 1
+| 25
+| 100 stone
+| 17 sec
+| 1
+|-
+| 2
+| 50
+| 300 stone
+| 1 min, 17 sec
+| 3
+|-
+| 3
+| 75
+| 600 stone
+| 8 min
+| 6
+|-
+| 4
+| 100
+| 2,000 stone
+| 1 hr
+| 12
+|-
+| 5
+| 130
+| 1,000 wood, 4,000 stone
+| 2 hr, 15 min
+| 20
+|-
+| 6
+| 170
+| 2,000 wood, 7,000 stone
+| 4 hr, 30 min
+| 30
+|-
+| 7
+| 210
+| 3,500 wood, 11,500 stone
+| 8 hr, 12 min
+| 42
+|-
+| 8
+| 260
+| 7,000 wood, 17,000 stone
+| 13 hr, 15 min
+| 57
+|-
+| 9
+| 320
+| 14,000 wood, 20,000 stone
+| 19 hr, 57 min
+| 75
+|-
+| 10
+| 400
+| 29,000 wood, 29,000 stone
+| 1 day, 6 hr, 15 min
+| 100
+|- style="background-color:lightgray;"
+| Total
+| 400
+| 56,500 wood, 91,500 stone
+| 3 days, 7 hr, 33 min, 34 sec
+| 100
+|}
+
+===Marketplace===
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| colspan="2" | [[Image: Lou_building_market_place.png|center]]
+| colspan="3" | Allows transport of resources between cities and enables trade with other players by land. Also increases the tax income of connected buildings.
+| '''Requirements'''<br>Town Hall<br>Level 5
+|}
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| '''Level'''
+| '''Merchant Carts'''
+| '''Tax Bonus'''
+| '''Resource Cost'''
+| '''Build Time'''
+| '''Score'''
+|-
+| 1
+| 1
+| +2%
+| 40 wood, 20 stone
+| 20 sec
+| 1
+|-
+| 2
+| 4
+| +4%
+| 80 wood, 40 stone
+| 1 min, 48 sec
+| 2
+|-
+| 3
+| 10
+| +6%
+| 160 wood, 80 stone
+| 12 min
+| 5
+|-
+| 4
+| 20
+| +8%
+| 400 wood, 200 stone
+| 1 hr, 30 min
+| 10
+|-
+| 5
+| 30
+| +10%
+| 1,200 wood, 600 stone
+| 3 hr, 22 min, 30 sec
+| 16
+|-
+| 6
+| 50
+| +12%
+| 2,800 wood, 1,400 stone
+| 6 hr, 45 min
+| 24
+|-
+| 7
+| 70
+| +14%
+| 5,600 wood, 2,800 stone
+| 12 hr, 18 min
+| 34
+|-
+| 8
+| 105
+| +16%
+| 9,600 wood, 4,800 stone
+| 19 hr, 52 min, 30 sec
+| 46
+|-
+| 9
+| 145
+| +18%
+| 15,200 wood, 7,600 stone
+| 1 day, 5 hr, 55 min, 30 sec
+| 60
+|-
+| 10
+| 200
+| +20%
+| 23,200 wood, 11,600 stone
+| 1 day, 21 hr, 22 min, 30 sec
+| 80
+|- style="background-color:lightgray;"
+| Total
+| 200
+| +20%
+| 58,280 wood, 29,140 stone
+| 4 days, 23 hr, 20 min, 8 sec
+| 80
+|}
+
+===Harbor===
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| colspan="2" | [[Image: Lou_building_harbour.png|center]]
+| colspan="3" | Allows for the transport of resources between cities and enables you to trade with other players by sea. Also increases the tax income of connected Townhouses.
+| '''Requirements'''<br>Town Hall<br>Level 10, Port city
+|}
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| '''Level'''
+| '''Merchant Ships'''
+| '''Tax Bonus'''
+| '''Resource Cost'''
+| '''Build Time'''
+| '''Score'''
+|-
+| 1
+| 1
+| +5%
+| 80 wood, 40 stone
+| 22 sec
+| 1
+|-
+| 2
+| 2
+| +10%
+| 160 wood, 80 stone
+| 2 min, 24 sec
+| 3
+|-
+| 3
+| 4
+| +15%
+| 320 wood, 160 stone
+| 16 min
+| 6
+|-
+| 4
+| 6
+| +20%
+| 800 wood, 400 stone
+| 2 hr
+| 12
+|-
+| 5
+| 9
+| +25%
+| 2,400 wood, 1,200 stone
+| 4 hr, 30 min
+| 20
+|-
+| 6
+| 12
+| +30%
+| 5,600 wood, 2,800 stone
+| 9 hr
+| 30
+|-
+| 7
+| 15
+| +35%
+| 11,200 wood, 5,600 stone
+| 16 hr, 24 min
+| 42
+|-
+| 8
+| 19
+| +40%
+| 19,200 wood, 9,600 stone
+| 1 day, 2 hr, 30 min
+| 57
+|-
+| 9
+| 24
+| +45%
+| 30,400 wood, 15,200 stone
+| 1 day, 15 hr, 54 min
+| 75
+|-
+| 10
+| 30
+| +50%
+| 46,400 wood, 23,200 stone
+| 2 days, 12 hr, 30 min
+| 100
+|- style="background-color:lightgray;"
+| Total
+| 30
+| +50%
+| 116,560 wood, 58,280 stone
+| 6 days, 12 hr, 6 min, 46 sec
+| 100
+|}
+
+===Sawmill===
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| colspan="2" | [[Image: Lou_building_lumber_mill.png|center]]
+| colspan="3" | Increases the efficiency of bordering Woodcutter’s Huts and wood storage capacity of any bordering Storage.
+| '''Requirements'''<br>Town Hall<br>Level 6
+|}
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| '''Level'''
+| '''Efficiency Bonus'''
+| '''Wood Storage'''
+| '''Resource Cost'''
+| '''Build Time'''
+| '''Score'''
+|-
+| 1
+| +30%
+| +20%
+| 60 wood, 60 stone
+| 20 sec
+| 1
+|-
+| 2
+| +35%
+| +40%
+| 150 wood, 150 stone
+| 1 min, 48 sec
+| 4
+|-
+| 3
+| +40%
+| +60%
+| 350 wood, 350 stone
+| 12 min
+| 7
+|-
+| 4
+| +45%
+| +80%
+| 1,100 wood, 1,100 stone
+| 1 hr, 30 min
+| 14
+|-
+| 5
+| +50%
+| +100%
+| 2,700 wood, 2,700 stone
+| 3 hr, 22 min, 30 sec
+| 24
+|-
+| 6
+| +55%
+| +120%
+| 5,000 wood, 5,000 stone
+| 6 hr, 45 min
+| 36
+|-
+| 7
+| +60%
+| +140%
+| 8,500 wood, 8,500 stone
+| 12 hr, 18 min
+| 50
+|-
+| 8
+| +65%
+| +160%
+| 13,500 wood, 13,500 stone
+| 19 hr, 52 min, 30 sec
+| 68
+|-
+| 9
+| +70%
+| +180%
+| 21,500 wood, 21,500 stone
+| 1 day, 5 hr, 55 min, 30 sec
+| 90
+|-
+| 10
+| +75%
+| +200%
+| 33,000 wood, 33,000 stone
+| 1 day, 21 hr, 22 min, 30 sec
+| 120
+|- style="background-color:lightgray;"
+| Total
+| +75%
+| +200%
+| 85,860 wood, 85,860 stone
+| 4 days, 23 hr, 20 min, 8 sec
+| 120
+|}
+
+===Stonemason===
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| colspan="2" | [[Image: Lou_building_stonecutter.png|center]]
+| colspan="3" | Increases the efficiency of bordering Quarries and stone storage capacity of any bordering Storage.
+| '''Requirements'''<br>Town Hall<br>Level 7
+|}
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| '''Level'''
+| '''Efficiency Bonus'''
+| '''Stone Storage'''
+| '''Resource Cost'''
+| '''Build Time'''
+| '''Score'''
+|-
+| 1
+| +30%
+| +20%
+| 60 wood, 60 stone
+| 20 sec
+| 1
+|-
+| 2
+| +35%
+| +40%
+| 150 wood, 150 stone
+| 1 min, 48 sec
+| 4
+|-
+| 3
+| +40%
+| +60%
+| 350 wood, 350 stone
+| 12 min
+| 7
+|-
+| 4
+| +45%
+| +80%
+| 1,100 wood, 1,100 stone
+| 90 min
+| 14
+|-
+| 5
+| +50%
+| +100%
+| 2,700 wood, 2,700 stone
+| 3 hr, 22 min, 30 sec
+| 24
+|-
+| 6
+| +55%
+| +120%
+| 5,000 wood, 5,000 stone
+| 6 hr, 45 min
+| 36
+|-
+| 7
+| +60%
+| +140%
+| 8,500 wood, 8,500 stone
+| 12 hr, 18 min
+| 50
+|-
+| 8
+| +65%
+| +160%
+| 13,500 wood, 13,500 stone
+| 19 hr, 52 min, 30 sec
+| 68
+|-
+| 9
+| +70%
+| +180%
+| 21,500 wood, 21,500 stone
+| 1 day, 5 hr, 55 min, 30 sec
+| 90
+|-
+| 10
+| +75%
+| +200%
+| 33,000 wood, 33,000 stone
+| 1 day, 21 hr, 22 min, 30 sec
+| 120
+|- style="background-color:lightgray;"
+| Total
+| +75%
+| +200%
+| 85,860 wood, 85,860 stone
+| 4 days, 23 hr, 20 min, 8 sec
+| 120
+|}
+
+===Mill===
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| colspan="2" | [[Image: Lou_building_mill.png|center]]
+| colspan="3" | Increases the efficiency of bordering Farms and food storage capacity of any bordering Storage.
+| '''Requirements'''<br>Town Hall<br>Level 8
+|}
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| '''Level'''
+| '''Efficiency Bonus'''
+| '''Food Storage'''
+| '''Resource Cost'''
+| '''Build Time'''
+| '''Score'''
+|-
+| 1
+| +30%
+| +20%
+| 60 wood, 60 stone
+| 20 sec
+| 1
+|-
+| 2
+| +35%
+| +40%
+| 150 wood, 150 stone
+| 108 sec
+| 4
+|-
+| 3
+| +40%
+| +60%
+| 350 wood, 350 stone
+| 12 min
+| 7
+|-
+| 4
+| +45%
+| +80%
+| 1,100 wood, 1,100 stone
+| 90 min
+| 14
+|-
+| 5
+| +50%
+| +100%
+| 2,700 wood, 2,700 stone
+| 3 hr, 22 min, 30 sec
+| 24
+|-
+| 6
+| +55%
+| +120%
+| 5,000 wood, 5,000 stone
+| 6 hr, 45 min
+| 36
+|-
+| 7
+| +60%
+| +140%
+| 8,500 wood, 8,500 stone
+| 12 hr, 18 min
+| 50
+|-
+| 8
+| +65%
+| +160%
+| 13,500 wood, 13,500 stone
+| 19 hr, 52 min, 30 sec
+| 68
+|-
+| 9
+| +70%
+| +180%
+| 21,500 wood, 21,500 stone
+| 1 day, 5 hr, 55 min, 30 sec
+| 90
+|-
+| 10
+| +75%
+| +200%
+| 33,000 wood, 33,000 stone
+| 1 day, 21 hr, 22 min, 30 sec
+| 120
+|- style="background-color:lightgray;"
+| Total
+| +75%
+| +200%
+| 85,860 wood, 85,860 stone
+| 4 days, 23 hr, 20 min, 8 sec
+| 120
+|}
+
+===Foundry===
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| colspan="2" | [[Image: Lou_building_iron_furnace.png|center]]
+| colspan="3" | Increases the efficiency of bordering Ore Mines and iron storage capacity of bordering Storage.
+| '''Requirements'''<br>Town Hall<br>Level 9
+|}
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| '''Level'''
+| '''Efficiency Bonus'''
+| '''Iron Storage'''
+| '''Resource Cost'''
+| '''Build Time'''
+| '''Score'''
+|-
+| 1
+| +30%
+| +20%
+| 60 wood, 60 stone
+| 20 sec
+| 1
+|-
+| 2
+| +35%
+| +40%
+| 150 wood, 150 stone
+| 1 min, 48 sec
+| 4
+|-
+| 3
+| +40%	
+| +60%
+| 350 wood, 350 stone
+| 12 min
+| 7
+|-
+| 4
+| +45%
+| +80%
+| 1,100 wood, 1,100 stone
+| 1 hr, 30 min	
+| 14
+|-
+| 5
+| +50%
+| +100%
+| 2,700 wood, 2,700 stone
+| 3 hr, 22 min, 30 sec
+| 24
+|-
+| 6
+| +55%
+| +120%
+| 5,000 wood, 5,000 stone
+| 6 hr, 45 min	
+| 36
+|-
+| 7
+| +60%
+| +140%
+| 8,500 wood, 8,500 stone
+| 12 hr, 18 min
+| 50
+|-
+| 8
+| +65%
+| +160%
+| 13,500 wood, 13,500 stone
+| 19 hr, 52 min, 30 sec
+| 68
+|-
+| 9
+| +70%
+| +180%
+| 21,500 wood, 21,500 stone
+| 1 day, 5 hr, 55 min, 30 sec
+| 90
+|-
+| 10
+| +75%	
+| +200%
+| 33,000 wood, 33,000 stone	
+| 1 day, 21 hr, 22 min, 30 sec
+| 120
+|- style="background-color:lightgray;"
+| Total
+| +75%
+| +200%
+| 85,860 wood, 85,860 stone
+| 4 days, 23 hr, 20 min, 8 sec
+| 120
+|}
+
+===City Wall===
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| colspan="2" | [[Image: Lou_units_wall.png|center]]
+| colspan="2" | Increases the defense of all units, except naval units, against all attacks. Cannot be totally demolished or destroyed.
+| '''Requirements'''<br>Town Hall<br>Level 2
+|}
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| '''Level'''
+| '''Combat Bonus'''
+| '''Resource Cost'''
+| '''Build Time'''
+| '''Score'''
+|-
+| 0 (Pallisade)
+| n/a
+| n/a
+| n/a
+| 0
+|-
+| 1
+| +1%
+| 200 stone
+| 30 sec
+| 2
+|-
+| 2
+| +3%
+| 2,000 stone
+| 20 min
+| 6
+|-
+| 3
+| +6%
+| 8,000 stone
+| 1 hr
+| 12
+|-
+| 4
+| +10%
+| 20,000 stone
+| 3 hr
+| 24
+|-
+| 5
+| +15%
+| 30,000 stone
+| 5 hr
+| 40
+|-
+| 6
+| +20%
+| 45,000 stone
+| 8 hr
+| 60
+|-
+| 7
+| +26%
+| 70,000 stone
+| 12 hr
+| 84
+|-
+| 8
+| +33%
+| 100,000 stone
+| 18 hr
+| 114
+|-
+| 9
+| +41%
+| 140,000 stone
+| 1 day, 1 hr
+| 150
+|-
+| 10
+| +50%
+| 200,000 stone
+| 1 day, 11 hr
+| 200
+|- style="background-color:lightgray;"
+| Total
+| +50%
+| 615,200 stone
+| 4 days, 11 hr, 20 min, 30 sec
+| 200
+|}
+
+===City Guard House===
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| colspan="2" | [[Image: Lou_building_cityguard_house.png|center]]
+| colspan="2" | Allows recruitment of City Guards and, if upgraded, increases their recruitment speed.
+| '''Requirements'''<br>Town Hall<br>Level 3
+|}
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| '''Level'''
+| '''Recruit Speed'''
+| '''Resource Cost'''
+| '''Build Time'''
+| '''Score'''
+|-
+| 1
+| +5%
+| 15 wood, 30 stone
+| 17 sec
+| 1
+|-
+| 2
+| +10%
+| 30 wood, 60 stone
+| 1 min 12 sec
+| 2
+|-
+| 3
+| +16%
+| 55 wood, 110 stone
+| 8 min
+| 4
+|-
+| 4
+| +24%
+| 140 wood, 280 stone
+| 1 hr
+| 7
+|-
+| 5
+| +35%
+| 400 wood, 800 stone
+| 2 hr, 15 min
+| 12
+|-
+| 6
+| +50%
+| 1,000 wood, 2,000 stone
+| 4 hr, 30 min
+| 18
+|-
+| 7
+| +68%
+| 1,900 wood, 3,800 stone
+| 8 hr, 12 min
+| 25
+|-
+| 8
+| +90%
+| 3,200 wood, 6,400 stone
+| 13 hr, 15 min
+| 34
+|-
+| 9
+| +115%
+| 5,100 wood, 10,200 stone
+| 19 hr, 57 min
+| 45
+|-
+| 10
+| +150%
+| 8,000 wood, 16,000 stone
+| 1 day, 6 hr, 20 min
+| 60
+|- style="background-color:lightgray;"
+| Total
+| +150%
+| 19,840 wood, 39,680 stone
+| 3 days, 7 hr, 38 min, 29 sec
+| 60
+|}
+
+===Lookout Tower===
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| colspan="2" | [[Image: Lou_units_wall_tower_lookout.png|center]]
+| colspan="3" | Enables incoming attacks to be seen sooner. (Time without Lookout Tower: 1 Hour). Increases the Defensive Value of a limited amount of Scouts by 100%. If there are not enough Scouts in the city, 2 city guards can take each slot and gain the same bonus. Lookout Towers don’t count towards a city’s building number limit.
+| '''Requirements'''<br>Town Hall<br>Level 2
+|}
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| '''Level'''
+| '''Time Bonus'''
+| '''Unit Count'''<br>(Scouts/City Guard)
+| '''Resource Cost'''
+| '''Build Time'''
+| '''Score'''
+|-
+| 1
+| +30 min
+| 4/8
+| 200 stone
+| 25 sec
+| 1
+|-
+| 2
+| +1 hr
+| 8/16
+| 400 stone
+| 5 min
+| 2
+|-
+| 3
+| +2 hr
+| 15/30
+| 600 stone
+| 13 min, 30 sec
+| 3
+|-
+| 4
+| +3 hr
+| 25/50
+| 1,000 stone
+| 25 min
+| 5
+|-
+| 5
+| +4 hr
+| 40/80
+| 1,500 stone
+| 40 min
+| 8
+|-
+| 6
+| +5 hr
+| 60/120
+| 2,200 stone
+| 1 hr
+| 12
+|-
+| 7
+| +6 hr
+| 88/176
+| 3,500 stone
+| 1 hr, 22 min
+| 17
+|-
+| 8
+| +7 hr
+| 125/250
+| 5,000 stone
+| 1 hr, 50 min
+| 23
+|-
+| 9
+| +8 hr
+| 175/350
+| 7,000 stone
+| 2 hr, 25 min
+| 30
+|-
+| 10
+| +10 hr
+| 250/500
+| 10,000 stone
+| 3 hr, 20 min
+| 40
+|- style="background-color:lightgray;"
+| Total
+| +10 hr
+| 250/500
+| 31,400 stone
+| 11 hr, 20 min, 55 sec
+| 40
+|}
+
+===Ranger Tower===
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| colspan="2" | [[Image: Lou_units_wall_tower_ranger.png|center]]
+| colspan="2" | Increases the Defensive Value of a limited number of Rangers by 100%. If there are not enough Rangers in the city, City Guards can take their place and gain the same bonus. These towers don’t count towards a city’s building number limit.
+| '''Requirements'''<br>Town Hall<br>Level 3
+|}
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| '''Level'''
+| '''Unit Count'''
+| '''Resource Cost'''
+| '''Build Time'''
+| '''Score'''
+|-
+| 1
+| 30
+| 100 stone
+| 25 sec
+| 1
+|-
+| 2
+| 60
+| 200 stone
+| 5 min
+| 2
+|-
+| 3
+| 120
+| 400 stone
+| 13 min, 30 sec
+| 5
+|-
+| 4
+| 200
+| 1,000 stone
+| 25 min
+| 10
+|-
+| 5
+| 320
+| 3,000 stone
+| 40 min
+| 16
+|-
+| 6
+| 480
+| 7,000 stone
+| 1 hr
+| 24
+|-
+| 7
+| 700
+| 14,000 stone
+| 1 hr, 22 min
+| 34
+|-
+| 8
+| 1,000
+| 24,000 stone
+| 1 hr, 50 min
+| 46
+|-
+| 9
+| 1,400
+| 38,000 stone
+| 2 hr, 25 min
+| 60
+|-
+| 10
+| 2,000
+| 58,000 stone
+| 3 hr, 20 min
+| 80
+|- style="background-color:lightgray;"
+| Total
+| 2,000
+| 145,700 stone
+| 11 hr, 20 min, 55 sec
+| 80
+|}
+
+===Barracks===
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| colspan="2" | [[Image: Lou_building_barracks.png|center]]
+| colspan="3" | Increases the maximum army size of a city. Also increases the recruitment speed of all bordering Training Grounds, Stables, Moonglow Towers, Trinsic Temples, Workshops and Shipyards.
+| '''Requirements'''<br>Town Hall<br>Level 4
+|}
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| '''Level'''
+| '''Army Size'''
+| '''Recruit Speed'''
+| '''Resource Cost'''
+| '''Build Time'''
+| '''Score'''
+|-
+| 1
+| +10
+| +1%
+| 50 stone
+| 15 sec
+| 1
+|-
+| 2
+| +30
+| +2%
+| 150 stone
+| 36 sec
+| 2
+|-
+| 3
+| +60
+| +4%
+| 300 stone
+| 4 min
+| 4
+|-
+| 4
+| +100
+| +6%
+| 600 stone
+| 30 min
+| 7
+|-
+| 5
+| +160
+| +8%
+| 1,200 stone
+| 1 hr, 7 min, 30 sec
+| 12
+|-
+| 6
+| +240
+| +10%
+| 2,500 stone
+| 2 hr, 15 min
+| 18
+|-
+| 7
+| +350
+| +13%
+| 4,000
+| 4 hr, 6 min
+| 25
+|-
+| 8
+| +500
+| +16%
+| 7,000 stone
+| 6 hr, 37 min, 30 sec
+| 34
+|-
+| 9
+| +700
+| +20%
+| 11,500 stone
+| 9 hr, 58 min, 30 sec
+| 45
+|-
+| 10
+| +1,000
+| +25%
+| 17,500 stone
+| 15 hr, 7 min, 30 sec
+| 60
+|- style="background-color:lightgray;"
+| Total
+| +1,000
+| +25%
+| 44,800 stone
+| 1 day, 15 hr, 46 min, 51 sec
+| 60
+|}
+
+===Training Ground===
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| colspan="2" | [[Image: Lou_building_casern.png|center]]
+| colspan="3" | Allows recruitment of infantry units and, if upgraded, increases their recruitment speed. Placing a Barracks beside a Training Ground will also increase recruitment speed.
+| '''Requirements'''<br>Town Hall<br>Level 4
+|}
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| '''Level'''
+| '''Recruit Speed'''
+| '''Unit Type'''
+| '''Resource Cost'''
+| '''Build Time'''
+| '''Score'''
+|-
+| 1
+| +5%
+| Berserker
+| 20 wood, 40 stone
+| 20 sec
+| 1
+|-
+| 2
+| +10%
+| -
+| 40 wood, 80 stone
+| 1 min, 48 sec
+| 2
+|-
+| 3
+| +16%
+| -
+| 80 wood, 160 stone
+| 12 min
+| 5
+|-
+| 4
+| +24%
+| Ranger
+| 200 wood, 400 stone
+| 1 hr, 30 min
+| 10
+|-
+| 5
+| +35%
+| -
+| 600 wood, 1,200 stone
+| 3 hr, 22 min, 30 sec	
+| 16
+|-
+| 6
+| +50%
+| -
+| 1,400 wood, 2,800 stone
+| 6 hr, 45 min
+| 24
+|-
+| 7
+| +68%
+| -
+| 2,800 wood, 5,600 stone
+| 12 hr, 18 min
+| 34
+|-
+| 8
+| +90%
+| -
+| 4,800 wood, 9,600 stone
+| 19 hr, 52 min, 30 sec
+| 46
+|-
+| 9
+| +115%
+| -
+| 7,500 wood, 15,000 stone
+| 1 day, 5 hr, 55 min, 30 sec
+| 60
+|-
+| 10
+| +150%
+| Guardian
+| 11,500 wood, 23,000 stone
+| 1 day, 21 hr, 22 min, 30 sec
+| 80
+|- style="background-color:lightgray;"
+| Total
+| +150%
+| Berserker, Ranger, Guardian
+| 28,940 wood, 57,880 stone
+| 4 days, 23 hr, 17 min, 8 sec
+| 80
+|}
+
+===Pitfall Trap===
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| colspan="2" | [[Image: Lou_units_wall_tower_fallgrube.png|center]]
+| colspan="2" | Pitfall Traps neutralize the troop strength of a limited number of enemy infantry units. Neutralized attackers will not deal damage to defenders. A maximum of 50% of infantry attackers will be affected. Pitfall Traps can only be built on the outer ring of the City Wall, and don’t count towards a city’s building number limit.
+| '''Requirements'''<br>Town Hall<br>Level 5
+|}
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| '''Level'''
+| '''Unit Count'''
+| '''Resource Cost'''
+| '''Build Time'''
+| '''Score'''
+|-
+| 1
+| 16
+| 30 wood, 90 stone
+| 25 sec
+| 1
+|-
+| 2
+| 26
+| 60 wood, 180 stone
+| 5 min
+| 2
+|-
+| 3
+| 50
+| 110 wood, 330 stone
+| 13 min, 30 sec
+| 5
+|-
+| 4
+| 100
+| 280 wood, 840 stone
+| 25 min
+| 10
+|-
+| 5
+| 160
+| 830 wood, 2,490 stone
+| 40 min
+| 16
+|-
+| 6
+| 240
+| 1,930 wood, 5,790 stone
+| 1 hr
+| 24
+|-
+| 7
+| 350
+| 3,850 wood, 11,550 stone
+| 1 hr, 22 min
+| 34
+|-
+| 8
+| 500
+| 6,600 wood, 19,800 stone
+| 1 hr, 50 min
+| 46
+|-
+| 9
+| 700
+| 10,500 wood, 31,500 stone
+| 2 hr, 25 min
+| 60
+|-
+| 10
+| 1,000
+| 16,000 wood, 48,000 stone
+| 3 hr, 20 min
+| 80
+|- style="background-color:lightgray;"
+| Total
+| 1,000
+| 40,190 wood, 120,570 stone
+| 11 hr, 20 min, 55 sec
+| 80
+|}
+
+===Stables===
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| colspan="2" | [[Image: Lou_building_stables.png|center]]
+| colspan="3" | Allows recruitment of cavalry units and, if upgraded, increases their recruitment speed. Placing a Barracks beside a Stable will also increase recruitment speed.
+| '''Requirements'''<br>Town Hall<br>Level 6
+|}
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| '''Level'''
+| '''Recruit Speed'''
+| '''Unit Type'''
+| '''Resource Cost'''
+| '''Build Time'''
+| '''Score'''
+|-
+| 1
+| +5%
+| Scout
+| 25 wood, 50 stone
+| 22 sec
+| 1
+|-
+| 2
+| +10%	
+| -
+| 55 wood, 110 stone
+| 2 min, 24 sec
+| 3
+|-
+| 3
+| +16%
+| -
+| 110 wood, 220 stone
+| 16 min
+| 6
+|-
+| 4
+| +24%
+| -
+| 275 wood, 550 stone
+| 2 hr
+| 12
+|-
+| 5
+| +35%
+| Crossbowman
+| 800 wood, 1,600 stone
+| 4 hr, 30 min
+| 20
+|-
+| 6
+| +50%
+| -
+| 1,900 wood, 3,800 stone
+| 9 hr
+| 30
+|-
+| 7
+| +68%
+| -
+| 3,750 wood, 7,500 stone
+| 16 hr, 24 min
+| 42
+|-
+| 8
+| +90%
+| -
+| 6,500 wood, 13,000 stone
+| 1 day, 2 hr, 30 min
+| 57
+|-
+| 9
+| +115%
+| -
+| 10,200 wood, 20,400 stone
+| 1 day, 15 hr, 54 min
+| 75
+|-
+| 10
+| +150%
+| Knight
+| 15,500 wood, 31,000 stone
+| 2 days, 12 hr, 30 min
+| 100
+|- style="background-color:lightgray;"
+| Total
+| 150%
+| Scout, Crossbowman, Knight
+| 39,115 wood, 78,230 stone
+| 6 days, 15 hr, 6 min, 46 sec
+| 100
+|}
+
+===Guardian Tower===
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| colspan="2" | [[Image: Lou_units_wall_tower_guardians.png|center]]
+| colspan="2" | Increases the Defensive Value of a limited number of Guardians by 100%. If there are not enough Guardians in the city, City Guards can take their place and gain the same bonus. These towers don’t count towards a city’s building number limit.
+| '''Requirements'''<br>Town Hall<br>Level 6
+|}
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| '''Level'''
+| '''Unit Count'''
+| '''Resource Cost'''
+| '''Build Time'''
+| '''Score'''
+|-
+| 1
+| 30
+| 100 stone
+| 25 sec
+| 1
+|-
+| 2
+| 60
+| 200 stone
+| 5 min
+| 2
+|-
+| 3
+| 120
+| 400 stone
+| 13 min, 30 sec
+| 5
+|-
+| 4
+| 200
+| 1,000 stone
+| 25 min
+| 10
+|-
+| 5
+| 320
+| 3,000 stone
+| 40 min
+| 16
+|-
+| 6
+| 480
+| 7,000 stone
+| 1 hr
+| 24
+|-
+| 7
+| 700
+| 14,000 stone
+| 1 hr, 22 min
+| 34
+|-
+| 8
+| 1,000
+| 24,000 stone
+| 1 hr, 50 min
+| 46
+|-
+| 9
+| 1,400
+| 38,000 stone
+| 2 hr, 25 min
+| 60
+|-
+| 10
+| 2,000
+| 58,000 stone
+| 3 hr, 20 min
+| 80
+|- style="background-color:lightgray;"
+| Total
+| 2,000
+| 145,700 stone
+| 11 hr, 20 min, 55 sec	
+| 80
+|}
+
+===Moonglow Tower===
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| colspan="2" | [[Image: Lou_building_mage_tower_large.png|center]]
+| colspan="3" | Allows recruitment of caster units and, if upgraded, increases their recruitment speed. Also enables purification of resources for research, vital when recruiting Barons. Placing a Barracks beside a Moonglow Tower will also increase recruitment speed.
+| '''Requirements'''<br>Town Hall<br>Level 7
+|}
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| '''Level'''
+| '''Recruit Speed'''
+| '''Unit Type'''
+| '''Resource Cost'''
+| '''Build Time'''
+| '''Score'''
+|-
+| 1
+| +5%
+| Mage
+| 30 wood, 60 stone
+| 22 sec
+| 1
+|-
+| 2
+| +10%
+| -
+| 60 wood, 120 stone
+| 2 min, 24 sec
+| 4
+|-
+| 3
+| +16%
+| -
+| 120 wood, 240 stone
+| 16 min
+| 7
+|-
+| 4
+| +24%
+| -
+| 300 wood, 600 stone
+| 2 hr
+| 14
+|-
+| 5
+| +35%
+| -
+| 900 wood, 1,800 stone
+| 4 hr, 30 min
+| 24
+|-
+| 6
+| +50%
+| -
+| 2,100 wood, 4,200 stone
+| 9 hr
+| 36
+|-
+| 7
+| +68%
+| Warlock
+| 4,200 wood, 8,400 stone
+| 16 hr, 24 min
+| 50
+|-
+| 8
+| +90%	
+| -
+| 7,200 wood, 14,400 stone
+| 1 day, 2 hr, 30 min
+| 68
+|-
+| 9
+| +115%
+| -
+| 11,400 wood, 22,800 stone
+| 1 day, 15 hr, 54 min
+| 90
+|-
+| 10
+| +150%
+| -
+| 17,400 wood, 34,800 stone
+| 2 days, 12 hr, 30 min
+| 120
+|- style="background-color:lightgray;"
+| Total
+| +150%
+| Mage, Warlock
+| 43,710 wood, 87,420 stone
+| 6 days, 15 hr, 6 min, 46 sec
+| 120
+|}
+
+===Barricade===
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| colspan="2" | [[Image: Lou_units_wall_tower_barricade.png|center]]
+| colspan="2" | Barricades neutralize the troop strength of a limited number of enemy cavalry units. Neutralized attackers will not deal damage to defenders. A maximum of 50% of cavalry attackers will be affected. Barricades can only be built on the outer ring of the City Wall, and don’t count towards a city’s building number limit.
+| '''Requirements'''<br>Town Hall<br>Level 7
+|}
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| '''Level'''
+| '''Unit Count'''
+| '''Resource Cost'''
+| '''Build Time'''
+| '''Score'''
+|-
+| 1
+| 16
+| 30 wood, 90 stone
+| 25 sec
+| 1
+|-
+| 2
+| 26
+| 60 wood, 180 stone
+| 5 min
+| 2
+|-
+| 3
+| 50
+| 110 wood, 330 stone
+| 13 min, 30 sec
+| 5
+|-
+| 4
+| 100
+| 280 wood, 840 stone
+| 25 min
+| 10
+|-
+| 5
+| 160
+| 830 wood, 2,490 stone
+| 40 min
+| 16
+|-
+| 6
+| 240
+| 1,930 wood, 5,790 stone
+| 1 hr
+| 24
+|-
+| 7
+| 350
+| 3,850 wood, 11,550 stone
+| 1 hr, 22 min
+| 34
+|-
+| 8
+| 500
+| 6,600 wood, 19,800 stone
+| 1 hr, 50 min
+| 46
+|-
+| 9
+| 700
+| 10,500 wood, 31,500 stone
+| 2 hr, 25 min	
+| 60
+|-
+| 10
+| 1,000
+| 16,000 wood, 48,000 stone
+| 3 hr, 20 min
+| 80
+|- style="background-color:lightgray;"
+| Total
+| 1,000
+| 40,190 wood, 120,570 stone
+| 11 hr, 20 min, 55 sec
+| 80
+|}
+
+===Castle===
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| colspan="2" | [[Image: Lou_building_stronghold.png|center]]
+| colspan="3" | Construction of the Castle allows a lord to plunder cities (castled or not) and assault or siege castled cities. Each level of the Castle increases your maximum army size and expands your command queue by one. Only one Castle can be built in each city. Cannot be totally demolished or destroyed. Once built a Castle cannot be removed. Every 4th title starting with Marquess is available free with an extra castle. Note: Building a Castle allows the castled city to be assaulted, sieged and/or captured.
+| '''Requirements'''<br>Town Hall<br>Level 8
+|}
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| '''Level'''
+| '''Max Commands'''
+| '''Max Army Size'''
+| '''Resource Cost'''
+| '''Build Time'''
+| '''Score'''
+|-
+| 1
+| +1
+| +20%
+| 20,000 stone
+| 20 hr
+| 4
+|-
+| 2
+| +2
+| +40%
+| 25,000 stone
+| 23 hr, 20 min
+| 12
+|-
+| 3
+| +3
+| +60%
+| 30,000 stone
+| 1 day, 2 hr, 40 min
+| 24
+|-
+| 4
+| +4
+| +80%
+| 40,000 stone
+| 1 day, 6 hr
+| 48
+|-
+| 5
+| +5
+| +100%
+| 55,000 stone
+| 1 day, 9 hr, 20 min
+| 80
+|-
+| 6
+| +6
+| +130%
+| 75,000 stone
+| 1 day, 12 hr, 40 min
+| 120
+|-
+| 7
+| +7
+| +160%
+| 100,000 stone
+| 1 day, 16 hr
+| 168
+|-
+| 8
+| +8
+| +200%
+| 130,000 stone
+| 1 day, 19 hr, 20 min
+| 228
+|-
+| 9
+| +9
+| +250%
+| 160,000 stone
+| 1 day, 22 hr, 40 min
+| 300
+|-
+| 10
+| +10
+| +300%
+| 200,000 stone
+| 2 days, 2 hr
+| 400
+|- style="background-color:lightgray;"
+| Total
+| +10
+| +300%
+| 835,000 stone
+| 14 days, 14 hr
+| 400
+|}
+
+===Trinsic Temple===
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| colspan="2" | [[Image: Lou_building_temple.png|center]]
+| colspan="3" | Allows recruitment of blessed units and Barons and, if upgraded, increases their recruitment speed. Placing a Barracks beside a Trinsic Temple will also increase recruitment speed.
+| '''Requirements'''<br>Town Hall<br>Level 8
+|}
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| '''Level'''
+| '''Recruit Speed'''
+| '''Unit Type'''
+| '''Resource Cost'''
+| '''Build Time'''
+| '''Score'''
+|-
+| 1
+| +5%
+| Templar
+| 35 wood, 70 stone
+| 22 sec	
+| 1
+|-
+| 2
+| +10%
+| -
+| 70 wood, 140 stone
+| 2 min, 44 sec
+| 4
+|-
+| 3
+| +16%
+| -
+| 135 wood, 270 stone
+| 16 min
+| 7
+|-
+| 4
+| +24%
+| -
+| 335 wood, 670 stone
+| 2 hr
+| 14
+|-
+| 5
+| +35%
+| -
+| 1,000 wood, 2,000 stone
+| 4 hr, 30 min
+| 24
+|-
+| 6
+| +50%
+| Paladin
+| 2,350 wood, 4,700 stone
+| 9 hr
+| 36
+|-
+| 7	
+| +68%
+| -
+| 4,650 wood, 9,300 stone
+| 16 hr, 24 min
+| 50
+|-
+| 8
+| +90%
+| -
+| 8,000 wood, 16,000 stone
+| 1 day, 2 hr, 30 min
+| 68
+|-
+| 9
+| +115%
+| -
+| 12,700 wood, 25,400 stone
+| 1 day, 15 hr, 54 min
+| 90
+|-
+| 10
+| +150%
+| Baron*
+| 19,500 wood, 39,000 stone
+| 2 days, 12 hr, 30 min
+| 120
+|- style="background-color:lightgray;"
+| Total
+| +150%
+| Templar, Paladin, Baron*
+| 48,775 wood, 97,550 stone
+| 6 days, 15 hr, 7 min, 6 sec
+| 120
+|}
+
+===Templar Tower===
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| colspan="2" | [[Image: Lou_units_wall_tower_templar.png|center]]
+| colspan="2" | Increases the Defensive Value of a limited number of Templars by 100%. If there are not enough Templars in the city, City Guards can take their place and gain the same bonus. These towers don’t count towards a city’s building number limit.
+| '''Requirements'''<br>Town Hall<br>Level 8
+|}
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| '''Level'''
+| '''Unit Count'''
+| '''Resource Cost'''
+| '''Build Time'''
+| '''Score'''
+|-
+| 1
+| 30
+| 100 stone
+| 25 sec
+| 1
+|-
+| 2
+| 60
+| 200 stone
+| 5 min
+| 2
+|-
+| 3
+| 120
+| 400 stone
+| 13 min, 30 sec
+| 5
+|-
+| 4
+| 200
+| 1,000 stone
+| 25 min
+| 10
+|-
+| 5
+| 320
+| 3,000 stone
+| 40 min
+| 16
+|-
+| 6
+| 480
+| 7,000 stone
+| 1 hr
+| 24
+|-
+| 7
+| 700
+| 14,000 stone
+| 1 hr, 22 min
+| 34
+|-
+| 8
+| 1,000
+| 24,000 stone
+| 1 hr, 50 min
+| 46
+|-
+| 9
+| 1,400
+| 38,000 stone
+| 2 hr, 25 min
+| 60
+|-
+| 10
+| 2,000
+| 58,000 stone
+| 3 hr, 20 min
+| 80
+|- style="background-color:lightgray;"
+| Total
+| 2,000
+| 145,700 stone
+| 11 hr, 20 min, 55 sec
+| 80
+|}
+
+===Arcane Trap===
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| colspan="2" | [[Image: Lou_units_wall_tower_antimagie.png|center]]
+| colspan="2" | Arcane Traps neutralize the troop strength of a limited number of enemy magic user units. Neutralized attackers will not deal damage to defenders. A maximum of 50% of magic using attackers will be affected. Arcane Traps can only be built on the outer ring of the City Wall, and don’t count towards a city’s building number limit.
+| '''Requirements'''<br>Town Hall<br>Level 8
+|}
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| '''Level'''
+| '''Unit Count'''
+| '''Resource Cost'''
+| '''Build Time'''
+| '''Score'''
+|-
+| 1
+| 16
+| 30 wood, 90 stone
+| 25 sec
+| 1
+|-
+| 2
+| 26
+| 60 wood, 180 stone
+| 5 min
+| 2
+|-
+| 3
+| 50
+| 110 wood, 330 stone
+| 13 min, 30 sec
+| 5
+|-
+| 4
+| 100
+| 280 wood, 840 stone
+| 25 min
+| 10
+|-
+| 5
+| 160
+| 830 wood, 2,490 stone
+| 40 min
+| 16
+|-
+| 6
+| 240
+| 1,930 wood, 5,790 stone
+| 1 hr
+| 24
+|-
+| 7
+| 350
+| 3,850 wood, 11,550 stone
+| 1 hr, 22 min
+| 34
+|-
+| 8
+| 500
+| 6,600 wood, 19,800 stone
+| 1 hr, 50 min
+| 46
+|-
+| 9
+| 700
+| 10,500 wood, 31,500 stone
+| 2 hr, 25 min
+| 60
+|-
+| 10
+| 1,000
+| 16,000 wood, 48,000 stone
+| 3 hr, 20 min
+| 80
+|- style="background-color:lightgray;"
+| Total
+| 1,000
+| 40,190 wood, 120,570 stone
+| 11 hr, 20 min, 55 sec
+| 80
+|}
+
+===Ballista Tower===
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| colspan="2" | [[Image: Lou_units_wall_tower_cannon.png|center]]
+| colspan="2" | Increases the Defensive Value of a limited number of Ballistae by 100%. If there are not enough Ballistae in the city, 10 City Guards can take each allotted slot and gain the same bonus. These towers don’t count towards a city’s building number limit.
+| '''Requirements'''<br>Town Hall<br>Level 9
+|}
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| '''Level
+| '''Unit Count'''<br>(Ballista/City Guard)
+| '''Resource Cost'''
+| '''Build Time'''
+| '''Score'''
+|-
+| 1
+| 4/40
+| 100 stone
+| 25 sec
+| 1
+|-
+| 2
+| 8/80
+| 200 stone
+| 5 min
+| 2
+|-
+| 3
+| 15/150
+| 400 stone
+| 13 min, 30 sec
+| 5
+|-
+| 4
+| 25/250
+| 1,000 stone
+| 25 min
+| 10
+|-
+| 5
+| 40/400
+| 3,000 stone
+| 40 min
+| 16
+|-
+| 6
+| 60/600
+| 7,000 stone
+| 1 hr
+| 24
+|-
+| 7
+| 88/880
+| 14,000 stone
+| 1 hr, 22 min
+| 34
+|-
+| 8
+| 125/1250
+| 24,000 stone
+| 1 hr, 50 min
+| 46
+|-
+| 9
+| 175/1750
+| 38,000 stone
+| 2 hr, 25 min
+| 60
+|-
+| 10
+| 250/2500
+| 58,000 stone
+| 3 hr, 20 min
+| 80
+|- style="background-color:lightgray;"
+| Total
+| 250/2500
+| 145,700 stone
+| 11 hr, 20 min, 55 sec
+| 80
+|}
+
+===Workshop===
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| colspan="2" | [[Image: Lou_building_weapon_factory.png|center]]
+| colspan="3" | Allows construction of siege engines and, if upgraded, increases their construction speed. Placing a Barracks beside a Workshop will also increase recruitment speed.
+| '''Requirements'''<br>Town Hall<br>Level 9
+|}
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| '''Level'''
+| '''Recruit Speed'''
+| '''Unit Type'''
+| '''Resource Cost'''
+| '''Build Time'''
+| '''Score'''
+|-
+| 1
+| +5%
+| Ram
+| 40 wood, 80 stone
+| 25 sec
+| 1
+|-
+| 2
+| +10%
+| -
+| 75 wood, 150 stone
+| 3 min
+| 4
+|-
+| 3
+| +16%
+| -
+| 150 wood, 300 stone
+| 20 min
+| 8
+|-
+| 4
+| +24%
+| -
+| 370 wood, 740 stone
+| 2 hr, 30 min
+| 17
+|-
+| 5
+| +35%
+| -
+| 1,100 wood, 2,200 stone
+| 5 hr, 37 min, 30 sec
+| 28
+|-
+| 6
+| +50%
+| Ballista
+| 2,600 wood, 5,200 stone
+| 11 hr, 15 min
+| 42
+|-
+| 7
+| +68%
+| -
+| 5,200 wood, 10,400 stone
+| 20 hr, 30 min
+| 59
+|-
+| 8
+| +90%
+| -
+| 8,900 wood, 17,800 stone
+| 1 day, 9 hr, 7 min, 30 sec
+| 80
+|-
+| 9
+| +115%
+| -
+| 14,000 wood, 28,000 stone
+| 2 days, 1 hr, 52 min, 30 sec
+| 105
+|-
+| 10
+| +150%
+| Catapult
+| 21,500 wood, 43,000 stone
+| 3 days, 3 hr, 37 min, 30 sec
+| 140
+|- style="background-color:lightgray;"
+| Total
+| +150%
+| Ram, Ballista, Catapult
+| 53,935 wood, 107,870 stone
+| 8 days, 6 hr, 53 min, 25 sec
+| 140
+|}
+
+===Shipyard===
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| colspan="2" | [[Image: Lou_building_shipyard.png|center]]
+| colspan="3" | Enables recruitment of naval units and, if upgraded, increases their recruitment speed. Placing a Barracks nearby further increases recruitment speed.
+| '''Requirements'''<br>Town Hall<br>Level 10, Port city
+|}
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| '''Level'''
+| '''Recruit Speed'''
+| '''Unit Type'''
+| '''Resource Cost'''
+| '''Build Time'''
+| '''Score'''
+|-
+| 1
+| +5%
+| Sloop
+| 50 wood, 100 stone
+| 27 sec
+| 2
+|-
+| 2
+| +10%
+| -
+| 100 wood, 200 stone
+| 3 min, 36 sec
+| 5
+|-
+| 3
+| +16%
+| -
+| 200 wood, 400 stone
+| 24 min
+| 10
+|-
+| 4
+| +24%
+| -
+| 500 wood, 1000 stone
+| 3 hr
+| 19
+|-
+| 5
+| +35%
+| -
+| 1,500 wood, 3,000 stone
+| 6 hr, 45 min
+| 32
+|-
+| 6
+| +50%
+| Frigate
+| 3,500 wood, 7,000 stone
+| 13 hr, 30 min
+| 48
+|-
+| 7
+| +68%
+| -
+| 7,000 wood, 14,000 stone
+| 1 day, 36 min
+| 67
+|-
+| 8
+| +90%
+| -
+| 12,000 wood, 24,000 stone
+| 1 day, 15 hr, 45 min
+| 91
+|-
+| 9
+| +115%
+| -
+| 19,000 wood, 38,000 stone
+| 2 days, 11 hr, 51 min
+| 120
+|-
+| 10
+| +150%
+| War Galleon
+| 29,000 wood, 58,000 stone
+| 3 days, 18 hr, 45 min
+| 160
+|- style="background-color:lightgray;"
+| Total
+| +150%
+| Sloop, Frigate, War Galleon
+| 72,850 wood, 145,700 stone
+| 9 days, 22 hr, 40 min, 3 sec
+| 120
+|}
+
+===Camouflage Trap===
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| colspan="2" | [[Image: Lou_units_wall_tower_nebel.png|center]]
+| colspan="2" | Camouflage Trap neutralize the troop strength of a limited number of enemy artillery units. Neutralized attackers will not deal damage to defenders, fortifications and buildings. A maximum of 50% of artillery units will be affected. Camouflage Traps can only be built on the outer ring of the City Wall, and don’t count towards a city’s building number limit.
+| '''Requirements'''<br>Town Hall<br>Level 10
+|}
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| '''Level'''
+| '''Unit Count'''
+| '''Resource Cost'''
+| '''Build Time'''
+| '''Score'''
+|-
+| 1
+| 20
+| 30 wood, 90 stone
+| 25 sec
+| 1
+|-
+| 2
+| 30
+| 60 wood, 180 stone
+| 5 min
+| 2
+|-
+| 3
+| 50
+| 110 wood, 330 stone
+| 13 min, 30 sec
+| 5
+|-
+| 4
+| 100
+| 280 wood, 840 stone
+| 25 min
+| 10
+|-
+| 5
+| 160
+| 830 wood, 2,490 stone
+| 40 min
+| 16
+|-
+| 6
+| 240
+| 1,930 wood, 5,790 stone
+| 1 hr
+| 24
+|-
+| 7
+| 350
+| 3,850 wood, 11,550 stone
+| 1 hr, 22 min
+| 34
+|-
+| 8
+| 500
+| 6,600 wood, 19,800 stone
+| 1 hr, 50 min
+| 46
+|-
+| 9
+| 700
+| 10,500 wood, 31,500 stone
+| 2 hr, 25 min
+| 60
+|-
+| 10
+| 1,000
+| 16,000 wood, 48,000 stone
+| 3 hr, 20 min
+| 80
+|- style="background-color:lightgray;"
+| Total
+| 1,000
+| 40,190 wood, 120,570 stone
+| 11 hr, 20 min, 55 sec
+| 80
+|}
+
+===Palace===
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| colspan="2" | [[Image: Lou_building_palace.png|center]]
+| colspan="3" | Once a city has been enlightened it can begin dedicating resources towards the construction of a palace. Palaces require large amounts of wood and stone to build. Once the palace has been built, the enlightenment period ends, no matter how much time is left in the enlightenment period.
+| '''Requirements'''<br>Castle<br>Level 1
+|}
+{| class="wikitable" border="0" cellpadding="4" width="800"
+| '''Level'''
+| '''Faith Required'''
+| '''Faith Gain Rate'''
+| '''Resource Cost'''
+| '''Build Time'''
+| '''Score'''
+|-
+| 1
+| 0%
+| 1%
+| 10,000,000 wood, 10,000,000 stone
+| 10 days
+| ?
+|-
+| 2
+| 0%
+| 2%
+| 30,000,000 wood, 30,000,000 stone
+| 30 days
+| ?
+|-
+| 3
+| 0%
+| 3%
+| 60,000,000 wood, 60,000,000 stone
+| 60 days
+| ?
+|-
+| 4
+| 5%
+| 4%
+| 100,000,000 wood, 100,000,000 stone
+| 100 days
+| ?
+|-
+| 5
+| 10%
+| 6%
+| 250,000,000 wood, 250,000,000 stone
+| 150 days
+| ?
+|-
+| 6
+| 20%
+| 8%
+| 350,000,000 wood, 350,000,000 stone
+| 220 days
+| ?
+|-
+| 7
+| 35%
+| 10%
+| 500,000,000 wood, 500,000,000 stone
+| 300 days
+| ?
+|-
+| 8
+| 50%
+| 13%
+| 800,000,000 wood, 800,000,000 stone
+| 450 days
+| ?
+|-
+| 9
+| 70%
+| 16%
+| 1,000,000,000 wood, 1,000,000,000 stone
+| 600 days
+| ?
+|-
+| 10
+| 96%
+| 20%
+| 1,500,000,000 wood, 1,500,000,000 stone
+| 900 days
+| ?
+|- style="background-color:lightgray;"
+| Total
+| 96%
+| 20%
+| 4,600,000,000 wood, 4,600,000,000 stone
+| 2,820 days
+| ?
+|}
+[[Category:Lord of Ultima]]
+
+==Special Buildings==
+''Under Construction''
+
+==Downgrading and Demolishing==
+Downgrading takes half the time and refunds half of the resources of the corresponding upgrade. Demolishing will completely remove the building.
+
+==References==
+<references/>

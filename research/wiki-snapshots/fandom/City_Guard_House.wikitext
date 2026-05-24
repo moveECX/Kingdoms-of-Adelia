@@ -1,0 +1,41 @@
+[[File:Cityguard_house_256.png|right]]
+The '''City Guard House''' is a building in [[Lord of Ultima]]. It allows recruitment of City Guards and, if upgraded, increases their recruitment speed. Placing a [[Barracks]] beside a City Guard House will NOT increase recruitment speed.
+
+'''Requirements:''' [[Town Hall]] Level 3
+
+<br />
+
+{| class="wikitable" width="100%"
+|-
+! Level
+! Recruiting Speed City Guards
+! Recruiting Unit Type
+! Resource Cost Wood
+! Resource Cost Stone
+! Build Time
+! Rank Points
+|-
+| 1 || +5% ||City Guard ||15 ||30 ||17 sec ||1
+|-
+| 2 || +10% || - ||30 ||60 ||1 min 12 sec ||2
+|-
+| 3 || +16% || - ||55 ||110 ||8 min ||4
+|-
+| 4 || +24% || - ||140 ||280 ||1 h ||7
+|-
+| 5 || +35% || - ||400 ||800 ||2 h 15 min ||12
+|-
+| 6 || +50% || - ||1000 ||2000 || 4 h 30 min ||18
+|-
+| 7 || +68% || - ||1900 ||3800 ||8 h 12 min ||25
+|-
+| 8 || +90% || - ||3200 ||6400 ||13 h 15 min ||34
+|-
+| 9 || +115% || - ||5100 ||10200 ||19 h 57 min ||45
+|-
+| 10 || +150% || - ||8000 ||16000 ||30 h 15 min ||60
+|}
+
+{{ConSpd}}
+[[Category:Buildings]]
+[[Category:Pages to be moved to the new wiki]]

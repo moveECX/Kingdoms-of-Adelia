@@ -1,0 +1,90 @@
+'''[[File:Wall_tower_barrikade.png|right]]Barricades''' neutralize the troop strength of a limited number of enemy cavalry units. Neutralized attackers will not deal damage to defenders. A maximum of 50% of cavalry attackers will be affected. Barricades can only be built on the outer ring of the City Wall, and don’t count towards a city’s building number limit.
+
+'''Requires:''' [http://lordofultima.wikia.com/wiki/Town_Hall Town Hall] Level 7
+{| class="wikitable" width="100%"
+|-
+! scope="col"|Level
+! scope="col"|Unit Count
+! scope="col"|Resource Cost Wood
+! scope="col"|Resource Cost Stone
+! scope="col"|Build Time
+! scope="col"|Rank Points
+|-
+|1
+|16
+|30
+|90
+|25sec
+|1
+|-
+|2
+|26
+|60
+|180
+|5min
+|2
+|-
+|3
+|50
+|110
+|330
+|13min, 30sec
+|5
+|-
+|4
+|100
+|280
+|840
+|25min
+|10
+|-
+|5
+|160
+|830
+|2490
+|40min
+|16
+|-
+|6
+|240
+|1930
+|5790
+|1hr
+|24
+|-
+|7
+|350
+|3850
+|11,550
+|1hr, 22min
+|34
+|-
+|8
+|500
+|6600
+|19,800
+|1hr, 50min
+|46
+|-
+|9
+|700
+|10,500
+|31,500
+|2hr, 25min
+|60
+|-
+|10
+|1000
+|16,000
+|48,000
+|3hr, 20min
+|80
+|-
+|'''Totals'''
+|'''1000'''
+|'''40,190'''
+|'''120,570'''
+|'''11hr, 20min, 55sec'''
+|'''80'''
+|}
+[[Category:Pages to be moved to the new wiki]]

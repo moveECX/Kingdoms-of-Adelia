@@ -1,0 +1,48 @@
+{{Infobox Computer- und Videospiel
+|Titel           = Lord of Ultima
+|Bild            = 
+|Entwickler      = [[Phenomic|EA Phenomic]]
+|Publisher       = [[Electronic Arts]]
+|Designer        = [[Volker Wertich]]
+|Release         = 20. April 2010 (Open Beta)
+|AktuelleVersion = 
+|Plattform       = [[Webbrowser]]
+|Genre           = [[Strategiespiel]]
+|Spielmodi       = [[Massively Multiplayer Online Role-Playing Game|MMORPG]]
+|Bedienung       = Maus, Tastatur
+|Medien          = 
+|Sprache         = Deutsch, Englisch
+|USK             = 
+|Info            = Einstellung des Betriebs am 12. Mai 2014
+}}
+'''Lord of Ultima''' war ein [[Browserspiel|Browser]]-[[Strategiespiel]] von [[Electronic Arts]], das von 2010 bis 2014 existierte.
+
+== Spielprinzip ==
+Wie in vielen Online-Strategiespielen war der Spielinhalt von Lord of Ultima, Ressourcen zu managen, mit Hilfe dieser Ressourcen eine Armee aufzubauen und mit Hilfe dieser Armee andere Spieler zu besiegen. Spielziel war es, zusammen mit seiner Allianz der ''Lord of Ultima'' zu werden.<ref name="gamestar" /> Dazu versuchten alle Spieler einer Allianz, Paläste in ihren Burgen zu bauen und diese dann stufenweise auszubauen. Für acht Tugenden musste eine Allianz je einen Palast der zehnten Stufe besitzen, damit die Allianz in der entsprechenden Welt gewinnen konnte. Es wurde ausschließlich gegen menschliche Spieler gekämpft, computergenerierte Figuren kamen nicht zum Einsatz.<ref name="gamestar" />
+
+Das Spiel gehörte zur [[Ultima (Computerspielreihe)|''Ultima''-Reihe]].<ref name="golem">[http://www.golem.de/1001/72617.html Lord of Ultima: Rollenspielklassiker als Browsergame-Beta], golem.de, abgerufen am 26. Mai 2011</ref> Es war aber vom Gameplay her nicht mit den anderen Spielen der Ultima-Reihe zu vergleichen,<ref name="gamestar" /><ref name="golem" /> es erinnerte eher an ''[[Die Siedler]]'' oder an die ''[[Anno (Computerspielreihe)|Anno]]''-Spieleserie.<ref>{{Webarchiv |url=http://www.pcgames.de/Lord-of-Ultima-PC-234691/News/Lord-of-Ultima-Preview-Rollenspiel-Welt-trifft-Anno-Siedelei-Live-aus-dem-Beta-Test-Tage-3-5-744593/ |wayback=20141218193433 |text=Lord of Ultima Preview: Rollenspiel-Welt trifft Anno-Siedelei - Live aus dem Beta-Test (Tage 3 - 5)}}, pcgames.de, abgerufen am 26. Mai 2011</ref>
+
+== Entwicklung und Veröffentlichung ==
+Das deutsche Entwicklerstudio [[Phenomic]] war für die Entwicklung von ''Lord of Ultima'' verantwortlich. Herausgeber war [[Electronic Arts]]. Am Spiel mitgewirkt hat der geistige Vater der ''Siedler''-Reihe, [[Volker Wertich]].<ref name="gamestar">[http://www.gamestar.de/spiele/lord-of-ultima/test/lord_of_ultima,46507,2322207.html Baust Du noch oder kämpfst Du schon?], gamestar.de, abgerufen am 26. Mai 2011</ref> Das Spiel lief als [[Free-to-play]]-Spiel unter anderem auf der Plattform [[Bigpoint]]<ref>EA.com: {{Webarchiv | url=http://www.ea.com/de/news/lord-of-ultima-bei-bigpoint-spielbar | wayback=20110716194726 | text=''Browserspiel Lord of Ultima jetzt bei Bigpoint spielbar''}}</ref>, wo es im Mai 2011 zu den Top-10-Spielen gehörte.<ref>Bigpoint.com: {{Webarchiv | url=http://de.bigpoint.com/all-games/ | wayback=20110517031849 | text=''Browser Games''}}</ref> Die grundlegenden Funktionen waren kostenlos erhältlich; um das Gameplay zu vereinfachen, waren kostenpflichtige Zusätze erhältlich.<ref name="gamestar" /> Laut Aussage von Phenomic soll das Spiel im Vergleich zu anderen Browserspielen gut aufgenommen worden sein.<ref>{{Webarchiv | url=http://galaxynews.de/content/lord_of_ultima/7764_play4free_erlaubt_es_vielen_spielern_erstmal_einen_blick_auf_ein_spiel_zu_werfen_und_zu_evaluieren_ob_man_sich_darauf_einlassen_will | wayback=20110814093949 | text=„Play4Free erlaubt es vielen Spielern erstmal einen Blick auf ein Spiel zu werfen und zu evaluieren, ob man sich darauf einlassen will.“}}, galaxynews.de, abgerufen am 26. Mai 2011</ref>
+
+Im Juli 2013 wurde das Entwicklungsstudio Phenomic überraschend geschlossen. Das operative Geschäft mit ''Lord of Ultima'' wurde an das zu Electronic Arts gehörende, schwedische Studio Easy Games übertragen.<ref>{{Internetquelle | url=http://lasttokengaming.com/silent-execution-ea-and-lord-of-ultima/ | titel=LastTokenGaming.com: Silent Execution - EA and Lord of Ultima | abruf=2016-01-24}}</ref> Im Februar 2014 gab Electronic Arts die Einstellung des Spiels am 12. Mai 2014 bekannt.<ref>{{Internetquelle |autor=Tobias Münster |url=https://www.gamestar.de/artikel/lord_of_ultima,3032638.html |titel=Lord of Ultima - Browserspiel wird im Mai eingestellt |werk=gamestar.de |datum=2014-02-12 |abruf=2025-08-30}}</ref>
+
+Im Januar 2016 veröffentlichte das unabhängige Studio Gaming Addict Studios mit ''Crown of the Gods'' ein Browserspiel, das die Spielmechanik von ''Lord of Ultima'' detailliert nachbildet.<ref>{{Internetquelle | url=http://hacki.moe/crown-of-the-gods-das-neue-lord-of-ultima/ | titel=Hacki.moe: Crown Of The Gods – Das neue Lord of Ultima | abruf=2016-01-24}}</ref>
+
+== Rezeption ==
+Aus Sicht des Online-Portals von [[GameStar]] ist das Spiel für ein Browserspiel sehr aufwändig entwickelt worden.<ref name="gamestar" /> 2011 gewann ''Lord of Ultima'' beim "MMO of the Year"-Wettbewerb den Audience Award in den Kategorien "Most Innovative Game Design" und "Technical Achievement"; EA Phenomic errang außerdem den Audience Award als "Best Studio".<ref>{{Internetquelle | url=http://www.mmooftheyear.com/hall-of-fame/2010-2011 | titel=MMOoftheYear.com: Browser Game of the Year 2010-2011 Winners | abruf=2016-01-31}}</ref>
+
+== Weblinks ==
+* {{MobyGames|game/lord-of-ultima|Lord of Ultima}}
+
+== Einzelnachweise ==
+<references />
+
+{{Navigationsleiste Ultima}}
+
+[[Kategorie:Browserspiel]]
+[[Kategorie:Computerspiel 2010]]
+[[Kategorie:Echtzeit-Strategiespiel]]
+[[Kategorie:Fantasy-Computerspiel]]
+[[Kategorie:Free-to-play-Spiel]]
+[[Kategorie:Electronic Arts]]

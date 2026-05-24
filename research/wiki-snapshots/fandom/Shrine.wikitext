@@ -1,0 +1,144 @@
+[[Image:icon_shrine.png|Shrine]] [[Image:icon_shrine_decal.png|Decal]]
+
+== Shrine Images ==
+
+<gallery spacing="small" widths="150" orientation="none" position="center" captionalign="center" bordersize="none" bordercolor="transparent">
+shrine_compassion.png|Compassion
+shrine_honesty.png|Honesty
+shrine_honor.png|Honor
+shrine_humility.png|Humility
+shrine_justice.png|Justice
+shrine_sacrifice.png|Sacrifice
+shrine_spirituality.png|Spirituality
+shrine_valor.png|Valor
+</gallery>
+
+== Shrine Costs ==
+
+{| class="wikitable"
+!Level
+!Cost in millions
+!Required alliance faith
+|-
+|1
+|10 wood &amp; 10 stone
+|0%
+|-
+|2
+|30 wood &amp; 30 stone
+|1%
+|-
+|3
+|60 wood &amp; 60 stone
+|2%
+|-
+|4
+|100 wood &amp; 100 stone
+|5%
+|-
+|5
+|250 wood &amp; 250 stone
+|10%
+|-
+|6
+|350 wood &amp; 350 stone
+|20%
+|-
+|7
+|500 wood &amp; 500 stone
+|35%
+|-
+|8
+|800 wood &amp; 800 stone
+|50%
+|-
+|9
+|1,000 wood &amp; 1,000 stone
+|70%
+|-
+|10
+|1,500 wood &amp; 1,500 stone
+|96%
+|}
+
+== Shrines ==
+
+The circles of monoliths placed on each continent in Lord of Ultima will activate over time and become Shrines dedicated to one of the eight Virtues.
+
+* The 8 Virtues are: Honor, Compassion, Valor, Sacrifice, Spirituality, Justice, Humility and Honesty.
+* Once a world has been live for a few weeks, Shrines will begin to light at ruinous locations which look somewhat like Stonehenge.
+* Each continent has 8 Shrines and will own a Shrine of each type (once all Shrines become active).
+* All continents, active or inactive, will have 1 Shrine before the first continent receives its second (this practice continues until all continents have 8 Shrines).
+* All continents activate their 2nd shrine roughly at the same date, but expect a few days variation.
+* The Virtues are chosen in a random order on each continent.
+* The gap between shrine activations will be about 25 days for older servers and up to 40 days on new servers. Finally, there is a slight random factor in it, which can cause the shrine to activate a few days sooner or later.
+* Shrines will not activate on unpopulated continents. To allow continents with relatively new populations to compete with continents that have been active from day 1 on any given world, the delay between Shrine activations will be reduced.
+* Once a Shrine becomes active, it will enlighten nearby cities. A countdown will be displayed detailing when the next city will be enlightened.
+
+== Enlightenment ==
+
+Active Shrines will regularly enlighten nearby cities for a limited time. Only while a city is enlightened can the owner build or upgrade a Palace.
+
+* Only cities with a Castle can be enlightened. The owner also needs to be a member of an alliance to gain and keep enlightenment.
+* The chance for a city to become enlightened primarily depends on the distance to the Shrine. The closer the city is to the Shrine, the greater the likelihood that it will become enlightened.
+* A city will only be enlightened for a certain amount of time. While the common delay between enlightenments will start with 3 days and reduce over time, the first enlightenment will take place within 24 hours of the shrine becoming active.
+* Because there is some variability in when a Shrine activates, it is possible for two cities on a continent to be enlightened by the same Shrine while one enlightenment ends and the next begins.
+* Palace storage is only open during the city's enlightenment. Palace deliveries started before enlightenment ends are still delivered to the palace storage.
+* It is entirely possible for a continent to have no castles within range of a shrine (particularly occurs on a mostly abandoned world).  If this happens, the shrine will go through with it's normal enlightenment process but when the time comes for a castle to become enlghtened, nothing happens and it basically skips that enlightenment period. 
+
+== Enlightenment Chance ==
+
+* If the city is right next to the shrine, the chance for enlightenment is twice as great compared to a city which is 4 fields away and four times as great compared to a city which is 10 fields away. Don't be surprised if a more distant city becomes enlightened first; the cities close to the shrine will be enlightened more often over time.
+* The score of the city also matters, but since most finished cities have a somewhat similar score, it has much less impact. The palace building itself has high score value, therefore it will somewhat increase the chance for the city to become enlightened again.
+* For those who want to calculate it in detail: EnlightenmentScore = CityScore / (DistanceToShrine + 2).
+* Considering the chances for enlightenment, one of the 16 closest cities with castles which are not excluded will get enlightened. The distance is limited to 20 fields and it is a circle, not a square.
+* The rate that a shrine enlightens cities is not dependent on the number of castles near it.
+* Since some castle cities are excluded (e.g. cities which do not belong to an alliance, cities with a palace level 10, cities currently upgrading a palace, cities with a palace from a different shrine, and cities currently enlightened by a different shrine), more than 16 different cities around a shrine can be enlightened over time.<br />Please keep in mind that those rules may be tuned at some point in the future.
+* A palace CAN get enlightened back to back '''ONLY''' if it is the only castle within 20 fields of the shrine. If there is more than one castle within 20 fields, a castle CANNOT get back to back enlightenment.
+* A shrine where the nearest castles consist of 2 palace castles and fifteen 7 pt castles will make the enlightenment alternate between the 2 palace castles because the eligible palace castle will have roughly a 99 chance of enlightenment.
+
+Q: What is the schedule for activating the 2nd, 3rd, etc, shrines on each continent? How is it determined?<br />
+A: If you just look at a single continent, the shrines will become active with a gap of up to 40 days on new servers. On old servers, this gap will be a lot shorter, about 25 days. On newer servers and those which start in the future, the gap will also decrease if the continent was populated later to &quot;catch up&quot; with the early populated continents over time (Since the first shrine activation will not happen until the continent was populated). Finally, there is a slight random factor in it, which can cause the shrine to activate a few days sooner or later.
+
+== Palaces ==
+
+Building or upgrading a Palace requires preparation and a combined effort from an alliance.
+
+* Building or upgrading a Palace takes vast amounts of wood and stone, becoming more expensive with each level. Common storage buildings will not be able to hold anywhere near enough resources to upgrade a higher level Palace.
+* During the initial enlightenment, the city will gain a permanent and unlimited amount of storage for resources dedicated to build or upgrade its Palace.
+* Every trade transport heading to the city while it is enlightened can choose to dedicate its resources to Palace construction. Those resources will not use the common storage space and cannot be used for anything else once they arrived.
+* A ranking table only visible to alliance members will show which members (and other players) are supporting your alliance by sending resources dedicated to Palace construction.
+* Once enough resources become available (both dedicated resources and standard resources count), the player can build or upgrade a Palace if the city is still enlightened.
+* The Palace will be of the same type as the Shrine which enlightened the city. Only one Palace can be built per city and it requires 3 * 3 tiles of unused land.
+* In the event that an enlightened city cannot acquire enough resources to begin production prior to losing its enlightenment, the resources dedicated for the Palace will remain in the previously enlightened city until it becomes enlightened once again.
+* To upgrade a Palace beyond a certain level, the alliance must have a minimum amount of faith (see below) in the same Virtue.
+* A Palace can only be built or upgraded once during an enlightenment. Further upgrades will have to wait until the next enlightenment.
+
+== Faith ==
+
+Each Palace will increase the faith of the alliance for that Virtue, granting multiple beneficial effects which are similar to those of research (they will stack) to every member of the alliance.
+
+* An alliance can have more than 100 faith in a Virtue, but the bonus effect will reach a cap at 100 faith.
+* A new public ranking table will show the current highest Palace level and faith values for each alliance and Virtue.
+* Cities with a Palace look different in the region view, and the level of the Palace is public, available for all to see, as is the level of damage sustained by the Palace.
+
+== War ==
+
+Palaces can be damaged or destroyed by enemies. The Palace will be removed if the city moves from one alliance or player to another since they are built as a team effort of the alliance, but the palace can be rebuilt since the refunded resources stay with the city.
+
+*Catapults and war galleons can damage or destroy Palaces. The Palace is the only building where the highest level can be damaged partially. It is not possible to repair a Palace, but of course a level lost can be rebuilt at the next enlightenment.
+
+*If a city with a Palace is taken over by another player or becomes lawless, the Palace will be removed. All resources contributed towards the construction of the Palace will be refunded as dedicated palace resources of that city. If the Palace was damaged, the refund will be lowered accordingly.
+
+*In general, that means the new owner will be able to rebuild the Palace to its previous level (or one level less, depending on damage) without the need for any additional resources, but it will take time since the player has to wait for one enlightenment per level to rebuild the Palace.
+*If a castle (or palace) is enligthtened and gets conquered by another player that is in an alliance as well, it will keep it's enlightenment status.  If the player that conquers the castle is not in an alliance, the enlightenment will end. 
+
+== Victory ==
+
+* As soon as an alliance manages to own a level 10 Palace of each of the eight Virtues, the alliance has won.
+* The World will not reset! The World will remain online without any stat resetting after an alliance has won. If we plan to take a World offline for good, we guarantee an announcement time of at least 3 months.
+* The winning alliance gets the first position permanently in the Lord-of-Ultima rankings for that server. Other alliances can continue to fight for the second position and so on...
+
+[[File:Palaces_&_shrines.png|left|650px]]
+[[Category:Gameplay]]
+[[Category:Location]]

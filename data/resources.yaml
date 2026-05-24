@@ -1,0 +1,19 @@
+# Resource definitions. Validated by @aldermark/shared schemas at server boot.
+# Values/mechanics: see GAME-MECHANICS.md §1–2 (all [verified] from Fandom snapshots).
+schemaVersion: 1
+
+resources:
+  timber: { kind: harvested, producer: woodcutter_lodge, enhancer: sawmill }
+  stone: { kind: harvested, producer: quarry, enhancer: stonemason }
+  iron: { kind: harvested, producer: iron_mine, enhancer: foundry }
+  grain: { kind: harvested, producer: farm, enhancer: mill }
+  gold: { kind: pooled, producer: townhouse, capped: false }
+
+# Adjacency model (signature mechanic). production =
+#   base(level) * (1 + sumNodes + sumCottages) * (1 + enhancer)
+adjacency:
+  model: additive_then_enhancer # canonical (Fandom). Alt: 'separate_multiplicative' (daydull)
+  nodeFirstPct: 50
+  nodeAdditionalPct: 40
+  lakeForFarmPct: 50 # lakes do not diminish
+  maxEnhancersPerProducer: 1

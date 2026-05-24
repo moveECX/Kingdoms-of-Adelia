@@ -1,0 +1,18 @@
+'''Lord of Ultima:'''
+
+= The Ultima Bestiarum Vocabulum =
+
+
+
+
+[[File:Dragon_region_256.png|left|128px]]''Dragon By Drakoiren''
+
+Powerful, dangerous and highly intelligent, Dragons command respect from all but the most foolhardy.
+
+Primary drop type is wood.
+
+The best counter unit is Cavalry units.
+
+[[Image:dragonlvl3.jpg|dragonlvl3.jpg]]
+[[Category:Bestiarum]]
+[[Category:Gameplay]]

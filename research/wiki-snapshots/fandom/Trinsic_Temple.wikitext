@@ -1,0 +1,42 @@
+[[File:Temple_256.png|right]]The '''Trinsic Temple''' is a building in [[Lord of Ultima]]. It allows recruitment of blessed units and Barons and, if upgraded, increases their recruitment speed. Placing a [[Barracks]] beside a Trinsic Temple will also increase recruitment speed.
+
+'''Requirements:''' [[Town Hall]] Level 8
+
+{| class="wikitable" width="100%"
+|-
+!
+Level
+! Recruiting Speed
+! Recruiting Unit Type
+! Resource Cost Wood
+! Resource Cost Stone
+! Build Time
+! Rank Points
+|-
+| 1 || +5% ||[[Templar]] ||35 ||70 ||22sec ||1
+|-
+| 2 || +10% || - ||70 ||140 ||2min, 44sec ||4
+|-
+| 3 || +16% || - ||135 ||270 ||16min ||7
+|-
+| 4 || +24% || - ||335 ||670 ||2hr ||14
+|-
+| 5 || +35% || - ||1000 ||2000 ||4hr, 30min ||24
+|-
+| 6 || +50% ||[[Paladin]] ||2350 ||4700 ||9hr ||36
+|-
+| 7 || +68% || - ||4650 ||9300 ||16hr, 24min ||50
+|-
+| 8 || +90% || - ||8000 ||16000 ||26hr, 30min ||68
+|-
+| 9 || +115% || - ||12700 ||25400 ||39hr, 54min ||90
+|-
+| 10 || +150% ||[[Baron]] ||19500 ||39000 ||60hr, 30min ||120
+|-
+| Total || +150% || - ||48775 ||97550 ||6d, 15hr, 7min, 6sec ||120
+|}
+
+{{ConSpd}}
+[[Category:Buildings]]
+[[Category:Combat]]
+[[Category:Pages to be moved to the new wiki]]

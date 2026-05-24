@@ -1,0 +1,20 @@
+{
+  "name": "@aldermark/shared",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Shared zod schemas, constants, domain types, and PURE game formulas. No Node or DOM APIs.",
+  "exports": {
+    "./schemas/*": "./schemas/*.ts",
+    "./constants/*": "./constants/*.ts",
+    "./types/*": "./types/*.ts",
+    "./formulas/*": "./formulas/*.ts"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "zod": "^3.24.0"
+  }
+}

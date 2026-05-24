@@ -1,0 +1,77 @@
+: ''For Purified Resources see: '''[[Purified resources]]'''''
+
+= Natural resources =
+
+There are four types of natural resources which can be harvested:
+
+{| class="wikitable"
+!Symbol!!Resource!!Natural resource!!Magical resource!!Natural resource effect
+|-
+|[[Image:icons_ressource_wood.png|Wood]]
+|Wood
+|[[Image:forrest_mid_01.png|Wood]]
+|[[File:Wood_magic_resource.png|left]]
+|Each [[Woodcutter's Hut]] gains 50% production efficiency from the first adjacent wood node, then 40% for each after that. The Woodcutter's Hut production efficiency can then be further increased up to 75% by an adjacent [[Sawmill]], and up to 30% by each adjacent [[Cottage]].
+|-
+|[[Image:icons_ressource_stone.png|Stone]]
+|Stone
+|[[Image:stone_m_1x1_01.png|Stone]]
+|[[File:Stone_magic_resource.png|left]]
+|Each [[Quarry]] gains 50% for the first adjacent stone node, then 40% for each after that. The [[Quarry]]'s production efficiency can then be increased up to 75% by an adjacent [[Stonemason]], and up to 30% by each adjacent [[Cottage]].
+|-
+|[[Image:icons_ressource_iron.png|Iron]]
+|Iron
+|[[Image:iron_m_1x1_01.png|Iron]]
+|[[File:Iron_magic_resource.png|left]]
+|Each [[Iron Mine]] gains 50% for the first adjacent iron node, then 40% for each after that. The Iron Mine's production efficiency can then be increased up to 75% by an adjacent [[Foundry]], and up to 30% by each adjacent [[Cottage]].
+|-
+|[[Image:icons_ressource_grain.png|Food]]
+|Food
+|[[Image:corn_1x1_01.png|Grainfield]]
+|
+|Each [[Farm]] gains 50% for the first adjacent free land space, then 40% for each after that. The Farm's production efficiency can then be increased up to 75% by an adjacent [[Mill]], and up to 30% by each adjacent [[Cottage]].
+|-
+|[[Image:icons_ressource_grain.png|Food]]
+|Food
+|[[Image:lake_m_1x1_01.png|Lake]]
+|''No image available''
+|Increases the food production efficiency of adjacent [[Farm]]s by 50%
+|}
+
+Gold is also a resource, though it is generated through taxation rather than harvesting, thus none of the natural features of land are involved.
+
+Please note: Only one magical node can be in one city at a time. They can only be bought in a pack, not seperatly.
+
+== Harvesting resources ==
+
+For harvesting wood you need to build a &quot;Woodcutter's Hut&quot;, for stone you need a &quot;Quarry&quot;, for iron an &quot;Iron Mine&quot;, and for food a &quot;Farm&quot;. If you want to benefit from natural resources build a harvesting (production) building in a space adjacent to the natural resource (either horizontally, vertically or diagonally).
+
+You don't have to worry about resources becoming depleted, so harvest them as much as possible. In addition, the same resource can be harvested equally by multiple production buildings. You could, for instance, build eight quarries around a single instance of stone, and all would have the same production efficiency.
+
+The efficiency of harvesting buildings is calculated via three factors:
+* The number of resources adjacent to the building
+* The level of the building (upgrading makes a large difference but is increasingly more expensive)
+* The number, type and level of support structures adjacent to the buildings (processing buildings or cottages).
+
+Cottages will help any production buildings to which they are adjacent. In addition, there are &quot;processing&quot; buildings for each resource type, which when placed adjacent to the harvesting buildings increase their production efficiency. Quarries, for example, benefit from a connected Stonemason, iron mines benefit from a foundry, etc. It is important to note that the bonus from processing buildings is applied _after_ the other bonuses from the resource nodes or the cottages. This means that if your processing building confers a 30 bonus, that percentage will be applied to the harvester's output after it has been increased by the bonuses from natural resources and cottages. This results in additional gain.
+<br />The layout of natural resources is randomly set when the city is created. The number and variety of resources found within a city is determined by the terrain in the area around the city on the region map. The terrain directly North, South, East or West of the city location provides 8 additional resource nodes while the terrain located diagonally from the city provides 4 additional nodes to the base amount which every city have. Mountains give more iron nodes, Hills more stone, Woods more woods and open space more lakes. Resources can be destroyed, but not moved or created (except if using special rare artifact). New resource buildings increase the percentage to 50 for first node and 40 for every other node therefore the nodes are to be used when looking for optimal layout. A level 10 processing building gives a 75 increase, so you may want to destroy some nodes only after the processing buildings are available.
+
+== Rules of thumb for efficient building ==
+
+1. Every production building (Woodcutter, Quarry, Iron Mine, Farm) must touch one processing building (Sawmill, Stonemason, Foundry, and Mill respectively). No exceptions.<br />
+2. Every processing building needs to touch at least two production buildings.<br />
+3. Every production building needs to touch at least 75 worth of bonuses - that means either two natural resource spots, or a natural resource spot and a cottage.<br />4. Every cottage needs to touch at least three production buildings.<br />
+<br />Another guide with the update of Ascension may be seen as follows;<br />PENDING THOUGHT, This is not confirmed.<br />First look<br />Production Buildings are to be built nearby a minimum of two Resource Nodes and must have a Processing Building adjacent to them.<br />A Processing Building ought to have a minimum of three adjacent Production Buildings that can benefit from it.<br />Cottages are mandatory in any spot in which they will offer bonuses to 3'' Production Buildings (excluding Farms) and not to be placed in a location which has only 2- connections.''
+
+After this, you may want to try concentrating on resource transport (Marketplaces give you Merchants Carts, Harbors give you Merchants Ships), or gold (Townhouses enable taxation and give you gold, their efficiency is increased by adjacent Marketplaces or Harbors), etc.
+
+Second look<br />Begin placing Resource Production Buildings at spots which may have only 1 Resource Node while attempting not to make more Processing Buildings than necessary. Check for new locations which may hold three cottage spots (which may not have before) and play around to get everything fit! During this time, also attempt to build cottages especially in spots adjacent to at least 2 Resource Production Buildings, and upgrade your Cottages until you have 2000% Construction speed.
+
+Follow all these rules, and you'll wind up with reasonably efficient production. Note that they ALL need to be followed.
+
+== Transport ==
+
+Once collected, natural resources (wood, stone, iron, and food) may be transported around your empire through the use of carts (managed by the Marketplace) or trading ships (managed by the Harbor). Gold, however, is considered an empire-wide resource, and therefore does not need to be moved between cities. Also, warehouses do not benefit the extra storage for gold, thus gold has no maximum amount. You can accumulate Gold forever and beyond.
+[[Category:Resources]]
+[[Category:Gameplay]]
+[[Category:Pages to be moved to the new wiki]]

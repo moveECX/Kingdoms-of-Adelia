@@ -1,0 +1,45 @@
+[[File:Ore_mine_256.png|right]]The '''Iron Mine''' is a building in [[Lord of Ultima]]. It produces iron. Any bordering ore deposits, [[Cottage]]s and a maximum of one [[Foundry]] will increase productivity.
+
+'''Requirements:''' [[Town Hall]] Level 4
+
+{| class="wikitable" width="100%"
+|-
+! Level
+! [[File:Icons_ressource_iron.png|28px]] Iron Production/hr
+! Resource Cost Wood
+! Resource Cost Stone
+! Build Time
+! Rank Points
+|-
+| 1 ||20 ||50 || - ||15 sec || 1
+|-
+| 2 ||40 ||200 || - ||54 sec ||3
+|-
+| 3 ||60 ||400 ||200 ||6 min ||6
+|-
+| 4 ||85 ||1400 ||600 ||45 min ||12
+|-
+| 5 ||110 ||3500 ||1500 ||1 h 41,25 min ||20
+|-
+| 6 ||140 ||6000 ||3000 ||3 h 22,5 min ||30
+|-
+| 7 ||175 ||10000 ||5000 ||6 h 15 min ||42
+|-
+| 8 ||210 ||16000 ||8000 ||9 h 57 min ||57
+|-
+| 9 ||250 ||25000 ||13000 ||14 h 58 min ||75
+|-
+| 10 ||300 ||38000 ||20000 ||22 h 42 min ||100
+|-
+| Total ||300 ||100550 ||51300 ||2 d 11 h 48 min ||100
+|}
+
+{{ConSpd}}
+
+==Gallery==
+<gallery>
+Building_mine.PNG|Old iron mine
+Ore_mine_new.png|New iron mine
+</gallery>
+[[Category:Buildings]]
+[[Category:Pages to be moved to the new wiki]]

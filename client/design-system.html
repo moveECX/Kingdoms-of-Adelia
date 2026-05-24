@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Aldermark — Design System</title>
+<style>
+  :root {
+    /* surfaces */
+    --bg-base:#0d0f12; --bg-elevated:#15181d; --bg-raised:#1c2027;
+    --bg-row-alt:#121519; --bg-hover:#1f242b; --bg-selected:rgba(217,164,65,.14);
+    --backdrop:rgba(6,8,10,.66);
+    /* borders */
+    --border-subtle:#262b33; --border-strong:#353c46; --border-focus:#d9a441;
+    /* text */
+    --text-primary:#e6e9ee; --text-secondary:#aab2bd; --text-muted:#6b7480;
+    --text-disabled:#4a515b; --text-inverse:#0d0f12;
+    /* accent */
+    --accent-primary:#d9a441; --accent-hover:#e8b65a; --accent-active:#c08f30;
+    --accent-soft:rgba(217,164,65,.12);
+    /* status */
+    --status-success:#4a9e5c; --status-success-soft:rgba(74,158,92,.14);
+    --status-warn:#d0982f; --status-warn-soft:rgba(208,152,47,.14);
+    --status-error:#cf5b43; --status-error-soft:rgba(207,91,67,.14);
+    --status-info:#4f86a8; --status-info-soft:rgba(79,134,168,.14);
+    /* resources */
+    --res-timber:#6f9d57; --res-stone:#9aa0a8; --res-iron:#6f8fa8;
+    --res-grain:#c8923a; --res-gold:#e6c84f;
+    /* type */
+    --font-ui:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    --font-mono:"JetBrains Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+    --fs-xs:11px; --fs-sm:12px; --fs-base:13px; --fs-md:14px; --fs-lg:16px; --fs-xl:20px;
+    --lh-tight:1.25; --lh-normal:1.45;
+    --fw-regular:400; --fw-medium:500; --fw-semibold:600;
+    /* spacing / radius */
+    --sp-1:4px; --sp-2:8px; --sp-3:12px; --sp-4:16px; --sp-5:24px; --sp-6:32px; --sp-8:48px;
+    --radius-sm:2px; --radius-md:4px;
+    /* elevation / motion */
+    --shadow-popover:0 4px 14px rgba(0,0,0,.45); --shadow-modal:0 8px 28px rgba(0,0,0,.55);
+    --dur-fast:90ms; --dur-base:140ms;
+  }
+  * { box-sizing:border-box; }
+  html,body { margin:0; }
+  body {
+    background:var(--bg-base); color:var(--text-primary);
+    font-family:var(--font-ui); font-size:var(--fs-base); line-height:var(--lh-normal);
+    -webkit-font-smoothing:antialiased;
+  }
+  .mono { font-family:var(--font-mono); font-variant-numeric:tabular-nums; }
+  .num { font-family:var(--font-mono); font-variant-numeric:tabular-nums; text-align:right; }
+  h1,h2,h3 { margin:0; font-weight:var(--fw-semibold); line-height:var(--lh-tight); }
+  h1 { font-size:var(--fs-xl); }
+  h2 { font-size:var(--fs-md); color:var(--text-secondary); text-transform:uppercase; letter-spacing:.04em; margin:var(--sp-5) 0 var(--sp-2); }
+  a { color:var(--accent-primary); }
+
+  /* ---------- resource HUD ---------- */
+  .hud { display:flex; align-items:center; gap:var(--sp-4); height:32px; padding:0 var(--sp-3);
+    background:var(--bg-elevated); border-bottom:1px solid var(--border-strong); position:sticky; top:0; z-index:10; }
+  .hud .brand { font-weight:var(--fw-semibold); color:var(--accent-primary); letter-spacing:.02em; }
+  .res { display:inline-flex; align-items:center; gap:var(--sp-2); font-size:var(--fs-sm); }
+  .res .dot { width:8px; height:8px; border-radius:var(--radius-sm); }
+  .res .amt { font-family:var(--font-mono); font-variant-numeric:tabular-nums; }
+  .res .rate { color:var(--text-muted); font-size:var(--fs-xs); font-family:var(--font-mono); }
+  .res.warn .amt { color:var(--status-warn); }
+
+  /* ---------- shell ---------- */
+  .shell { display:grid; grid-template-columns:200px 1fr 300px; min-height:calc(100vh - 32px); }
+  .sidebar { background:var(--bg-elevated); border-right:1px solid var(--border-subtle); padding:var(--sp-2); }
+  .nav-item { display:flex; align-items:center; gap:var(--sp-2); padding:6px var(--sp-2); border-radius:var(--radius-md);
+    color:var(--text-secondary); font-size:var(--fs-sm); cursor:pointer; }
+  .nav-item:hover { background:var(--bg-hover); color:var(--text-primary); }
+  .nav-item.active { background:var(--accent-soft); color:var(--text-primary); box-shadow:inset 2px 0 0 var(--accent-primary); }
+  .nav-item .ico { width:16px; text-align:center; opacity:.85; }
+  .main { padding:var(--sp-4); overflow:auto; }
+  .context { background:var(--bg-elevated); border-left:1px solid var(--border-subtle); padding:var(--sp-3); }
+
+  /* ---------- panel ---------- */
+  .panel { background:var(--bg-elevated); border:1px solid var(--border-subtle); border-radius:var(--radius-md); margin-bottom:var(--sp-4); }
+  .panel > header { display:flex; align-items:center; justify-content:space-between;
+    padding:var(--sp-2) var(--sp-3); border-bottom:1px solid var(--border-subtle); }
+  .panel > header h3 { font-size:var(--fs-md); }
+  .panel .body { padding:var(--sp-3); }
+  .row { display:flex; gap:var(--sp-2); flex-wrap:wrap; align-items:center; }
+
+  /* ---------- buttons ---------- */
+  .btn { font-family:var(--font-ui); font-size:var(--fs-sm); font-weight:var(--fw-medium);
+    height:28px; padding:0 var(--sp-3); border-radius:var(--radius-md); border:1px solid var(--border-strong);
+    background:var(--bg-raised); color:var(--text-primary); cursor:pointer; transition:background var(--dur-fast) ease-out,border-color var(--dur-fast); }
+  .btn:hover { background:var(--bg-hover); }
+  .btn:focus-visible { outline:none; border-color:var(--border-focus); box-shadow:0 0 0 2px var(--accent-soft); }
+  .btn.sm { height:24px; padding:0 var(--sp-2); font-size:var(--fs-xs); }
+  .btn.primary { background:var(--accent-primary); border-color:var(--accent-primary); color:var(--text-inverse); font-weight:var(--fw-semibold); }
+  .btn.primary:hover { background:var(--accent-hover); border-color:var(--accent-hover); }
+  .btn.primary:active { background:var(--accent-active); }
+  .btn.ghost { background:transparent; border-color:transparent; color:var(--text-secondary); }
+  .btn.ghost:hover { border-color:var(--border-strong); color:var(--text-primary); }
+  .btn.danger { background:transparent; border-color:var(--status-error); color:var(--status-error); }
+  .btn.danger:hover { background:var(--status-error-soft); }
+  .btn:disabled { color:var(--text-disabled); border-color:var(--border-subtle); background:var(--bg-raised); cursor:not-allowed; }
+  .btn.icon { width:28px; padding:0; }
+
+  /* ---------- inputs ---------- */
+  label.field { display:flex; flex-direction:column; gap:var(--sp-1); font-size:var(--fs-xs); color:var(--text-secondary); }
+  .input, select.input { height:28px; padding:0 var(--sp-2); background:var(--bg-raised);
+    border:1px solid var(--border-strong); border-radius:var(--radius-md); color:var(--text-primary);
+    font-family:var(--font-ui); font-size:var(--fs-sm); }
+  .input.num { font-family:var(--font-mono); text-align:right; }
+  .input:focus, select.input:focus { outline:none; border-color:var(--border-focus); box-shadow:0 0 0 2px var(--accent-soft); }
+  .input::placeholder { color:var(--text-muted); }
+  .input.invalid { border-color:var(--status-error); }
+  .help { font-size:var(--fs-xs); color:var(--text-muted); }
+  .help.error { color:var(--status-error); }
+  .search { position:relative; }
+  .search .kbd { position:absolute; right:6px; top:6px; }
+  .kbd { font-family:var(--font-mono); font-size:10px; color:var(--text-muted); border:1px solid var(--border-strong);
+    border-radius:var(--radius-sm); padding:0 4px; background:var(--bg-base); }
+  /* toggle */
+  .toggle { width:34px; height:18px; background:var(--bg-raised); border:1px solid var(--border-strong);
+    border-radius:9px; position:relative; cursor:pointer; }
+  .toggle::after { content:""; position:absolute; width:12px; height:12px; border-radius:50%; background:var(--text-muted); top:2px; left:2px; transition:all var(--dur-base) ease-out; }
+  .toggle.on { background:var(--accent-soft); border-color:var(--accent-primary); }
+  .toggle.on::after { left:18px; background:var(--accent-primary); }
+
+  /* ---------- table ---------- */
+  table.data { width:100%; border-collapse:collapse; font-size:var(--fs-sm); }
+  table.data thead th { position:sticky; top:0; background:var(--bg-elevated); text-align:left;
+    color:var(--text-secondary); font-weight:var(--fw-medium); font-size:var(--fs-xs); text-transform:uppercase; letter-spacing:.03em;
+    padding:6px var(--sp-2); border-bottom:1px solid var(--border-strong); cursor:pointer; white-space:nowrap; z-index:10; }
+  table.data thead th.num { text-align:right; }
+  table.data thead th .sort { color:var(--accent-primary); }
+  table.data tbody td { padding:5px var(--sp-2); border-bottom:1px solid var(--border-subtle); height:26px; }
+  table.data tbody tr:nth-child(even) { background:var(--bg-row-alt); }
+  table.data tbody tr:hover { background:var(--bg-hover); }
+  table.data tbody tr.selected { background:var(--bg-selected); box-shadow:inset 2px 0 0 var(--accent-primary); }
+  td.num, th.num { font-family:var(--font-mono); font-variant-numeric:tabular-nums; text-align:right; }
+
+  /* ---------- badges ---------- */
+  .badge { display:inline-flex; align-items:center; gap:4px; font-size:var(--fs-xs); font-weight:var(--fw-medium);
+    padding:1px 6px; border-radius:var(--radius-sm); line-height:1.6; }
+  .badge.success { background:var(--status-success-soft); color:var(--status-success); }
+  .badge.warn { background:var(--status-warn-soft); color:var(--status-warn); }
+  .badge.error { background:var(--status-error-soft); color:var(--status-error); }
+  .badge.info { background:var(--status-info-soft); color:var(--status-info); }
+  .badge.res { background:var(--bg-raised); color:var(--text-secondary); font-family:var(--font-mono); }
+  .badge .dot { width:7px; height:7px; border-radius:var(--radius-sm); }
+
+  /* ---------- tabs ---------- */
+  .tabs { display:flex; gap:var(--sp-3); border-bottom:1px solid var(--border-subtle); margin-bottom:var(--sp-3); }
+  .tab { padding:var(--sp-2) 0; font-size:var(--fs-sm); color:var(--text-muted); cursor:pointer; border-bottom:2px solid transparent; margin-bottom:-1px; }
+  .tab .k { font-size:10px; color:var(--text-disabled); }
+  .tab.active { color:var(--text-primary); border-bottom-color:var(--accent-primary); }
+  .tab:hover { color:var(--text-secondary); }
+
+  /* ---------- progress / queue ---------- */
+  .track { height:6px; background:var(--bg-raised); border-radius:var(--radius-sm); overflow:hidden; }
+  .track > .fill { height:100%; background:var(--accent-primary); }
+  .track > .fill.success { background:var(--status-success); }
+  .queue-row { display:grid; grid-template-columns:1fr 70px; gap:var(--sp-2); align-items:center; margin-bottom:var(--sp-2); }
+  .queue-row .lab { display:flex; justify-content:space-between; font-size:var(--fs-sm); margin-bottom:3px; }
+  .queue-row .eta { font-family:var(--font-mono); font-size:var(--fs-xs); color:var(--text-muted); text-align:right; }
+
+  /* ---------- tooltip ---------- */
+  .tip { position:relative; border-bottom:1px dotted var(--text-muted); cursor:help; }
+  .tip .tipbox { visibility:hidden; opacity:0; position:absolute; bottom:140%; left:0; z-index:200;
+    background:var(--bg-raised); border:1px solid var(--border-strong); border-radius:var(--radius-md);
+    padding:var(--sp-2); font-size:var(--fs-xs); width:220px; box-shadow:var(--shadow-popover); transition:opacity var(--dur-fast) ease-out; }
+  .tip:hover .tipbox, .tip:focus-within .tipbox { visibility:visible; opacity:1; }
+
+  /* ---------- city grid ---------- */
+  .citygrid { display:grid; grid-template-columns:repeat(5,40px); grid-auto-rows:40px; gap:3px; }
+  .cell { border:1px dashed var(--border-subtle); border-radius:var(--radius-sm); display:flex; flex-direction:column;
+    align-items:center; justify-content:center; font-size:var(--fs-xs); color:var(--text-muted); }
+  .cell.built { border-style:solid; border-color:var(--border-strong); background:var(--bg-raised); color:var(--text-primary); }
+  .cell.producer { box-shadow:inset 0 0 0 1px var(--res-timber); }
+  .cell.enhancer { box-shadow:inset 0 0 0 1px var(--accent-primary); background:var(--accent-soft); }
+  .cell.adj { background:var(--accent-soft); }
+  .cell .lvl { font-family:var(--font-mono); font-size:9px; color:var(--accent-primary); }
+
+  /* ---------- modal (shown inline as if open) ---------- */
+  .modal-demo { position:relative; height:240px; border:1px solid var(--border-subtle); border-radius:var(--radius-md); overflow:hidden; }
+  .modal-demo .backdrop { position:absolute; inset:0; background:var(--backdrop); }
+  .modal { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:360px;
+    background:var(--bg-elevated); border:1px solid var(--border-strong); border-radius:var(--radius-md); box-shadow:var(--shadow-modal); }
+  .modal header { display:flex; justify-content:space-between; align-items:center; padding:var(--sp-2) var(--sp-3); border-bottom:1px solid var(--border-subtle); }
+  .modal .body { padding:var(--sp-3); font-size:var(--fs-sm); color:var(--text-secondary); }
+  .modal footer { display:flex; justify-content:flex-end; gap:var(--sp-2); padding:var(--sp-2) var(--sp-3); border-top:1px solid var(--border-subtle); }
+
+  .swatches { display:grid; grid-template-columns:repeat(auto-fill,minmax(120px,1fr)); gap:var(--sp-2); }
+  .sw { border:1px solid var(--border-subtle); border-radius:var(--radius-md); overflow:hidden; font-size:var(--fs-xs); }
+  .sw .chip { height:40px; } .sw .lab { padding:4px 6px; color:var(--text-secondary); } .sw .hex { color:var(--text-muted); font-family:var(--font-mono); }
+  .wrap { padding:var(--sp-4); max-width:1100px; }
+</style>
+</head>
+<body>
+
+<!-- Resource HUD -->
+<div class="hud">
+  <span class="brand">⛬ ALDERMARK</span>
+  <span class="res"><span class="dot" style="background:var(--res-timber)"></span><span class="amt">48,210</span><span class="rate">+1,610/h</span></span>
+  <span class="res"><span class="dot" style="background:var(--res-stone)"></span><span class="amt">31,884</span><span class="rate">+788/h</span></span>
+  <span class="res"><span class="dot" style="background:var(--res-iron)"></span><span class="amt">9,540</span><span class="rate">+300/h</span></span>
+  <span class="res warn"><span class="dot" style="background:var(--res-grain)"></span><span class="amt">2,790</span><span class="rate">+0/h ▲cap</span></span>
+  <span class="res"><span class="dot" style="background:var(--res-gold)"></span><span class="amt">14,025</span><span class="rate">+412/h</span></span>
+</div>
+
+<!-- App shell -->
+<div class="shell">
+  <nav class="sidebar">
+    <div class="nav-item active"><span class="ico">▦</span> City <span class="k"></span></div>
+    <div class="nav-item"><span class="ico">🜨</span> World Map</div>
+    <div class="nav-item"><span class="ico">⚔</span> Military</div>
+    <div class="nav-item"><span class="ico">⇄</span> Market</div>
+    <div class="nav-item"><span class="ico">⚑</span> Alliance</div>
+    <div class="nav-item"><span class="ico">≣</span> Reports</div>
+    <div class="nav-item"><span class="ico">⚙</span> Settings</div>
+  </nav>
+
+  <main class="main">
+    <h1>Design System — component reference</h1>
+    <p class="help">Dark-first, data-dense admin aesthetic. Open this file directly in a browser. Tokens mirror <span class="mono">DESIGN-SYSTEM.md</span> / <span class="mono">tokens.css</span>.</p>
+
+    <h2>Buttons</h2>
+    <div class="panel"><div class="body row">
+      <button class="btn primary">Build</button>
+      <button class="btn">Cancel</button>
+      <button class="btn ghost">Details</button>
+      <button class="btn danger">Demolish</button>
+      <button class="btn sm">sm</button>
+      <button class="btn primary sm">sm primary</button>
+      <button class="btn icon" title="Add">＋</button>
+      <button class="btn" disabled>Disabled</button>
+    </div></div>
+
+    <h2>Inputs</h2>
+    <div class="panel"><div class="body row" style="align-items:flex-end">
+      <label class="field">City name<input class="input" value="Northwatch" /></label>
+      <label class="field">Quantity<input class="input num" value="1,000" /></label>
+      <label class="field">Building
+        <select class="input"><option>Woodcutter's Lodge</option><option>Quarry</option><option>Sawmill</option></select></label>
+      <label class="field">Search <span class="search"><input class="input" placeholder="Find unit…" /><span class="kbd" style="position:static">/</span></span></label>
+      <label class="field">Invalid<input class="input invalid" value="-5" /><span class="help error">Must be ≥ 0</span></label>
+      <label class="field">Auto-tax <span class="toggle on"></span></label>
+      <label class="field">Night mode <span class="toggle"></span></label>
+    </div></div>
+
+    <h2>Data table — buildings (sortable, zebra, sticky header, mono numbers)</h2>
+    <div class="panel"><div class="body" style="max-height:230px; overflow:auto; padding:0">
+      <table class="data">
+        <thead><tr>
+          <th>Building <span class="sort">▲</span></th><th>Type</th>
+          <th class="num">Lvl</th><th class="num">Timber</th><th class="num">Stone</th>
+          <th class="num">Build</th><th class="num">Output/h</th><th>Status</th>
+        </tr></thead>
+        <tbody>
+          <tr class="selected"><td>Woodcutter's Lodge</td><td>producer</td><td class="num">10</td><td class="num">0</td><td class="num">0</td><td class="num">—</td><td class="num">1,610</td><td><span class="badge success">▲ active</span></td></tr>
+          <tr><td>Quarry</td><td>producer</td><td class="num">9</td><td class="num">0</td><td class="num">0</td><td class="num">—</td><td class="num">788</td><td><span class="badge success">▲ active</span></td></tr>
+          <tr><td>Sawmill</td><td>enhancer</td><td class="num">10</td><td class="num">0</td><td class="num">0</td><td class="num">—</td><td class="num">+75%</td><td><span class="badge info">aura</span></td></tr>
+          <tr><td>Cottage</td><td>civic</td><td class="num">8</td><td class="num">5,000</td><td class="num">14,000</td><td class="num">2h11m</td><td class="num">+24%</td><td><span class="badge warn">⏳ upgrading</span></td></tr>
+          <tr><td>Hall</td><td>core</td><td class="num">7</td><td class="num">15,000</td><td class="num">10,000</td><td class="num">—</td><td class="num">300</td><td><span class="badge">locked</span></td></tr>
+          <tr><td>Warehouse</td><td>storage</td><td class="num">6</td><td class="num">3,000</td><td class="num">1,000</td><td class="num">—</td><td class="num">42,000</td><td><span class="badge error">▼ full</span></td></tr>
+        </tbody>
+      </table>
+    </div></div>
+
+    <h2>Tabs + build queue</h2>
+    <div class="panel"><div class="body">
+      <div class="tabs">
+        <span class="tab active">Queue <span class="k">1</span></span>
+        <span class="tab">Recruit <span class="k">2</span></span>
+        <span class="tab">Research <span class="k">3</span></span>
+      </div>
+      <div class="queue-row"><div><div class="lab"><span>Cottage → Lvl 9</span><span class="badge success">building</span></div><div class="track"><div class="fill" style="width:64%"></div></div></div><span class="eta">1h 02m</span></div>
+      <div class="queue-row"><div><div class="lab"><span>Warehouse → Lvl 7</span><span class="badge">queued</span></div><div class="track"><div class="fill" style="width:0%"></div></div></div><span class="eta">3h 40m</span></div>
+      <div class="queue-row"><div><div class="lab"><span>40 × Berserker</span><span class="badge success">recruiting</span></div><div class="track"><div class="fill success" style="width:30%"></div></div></div><span class="eta">22m</span></div>
+    </div></div>
+
+    <h2>Badges &amp; tooltip</h2>
+    <div class="panel"><div class="body row">
+      <span class="badge success">success</span><span class="badge warn">warn</span><span class="badge error">error</span><span class="badge info">info</span>
+      <span class="badge res"><span class="dot" style="background:var(--res-timber)"></span>1,610</span>
+      <span class="badge res"><span class="dot" style="background:var(--res-gold)"></span>14,025</span>
+      <span class="tip" tabindex="0">adjacency
+        <span class="tipbox"><b>Adjacency</b><br>Output = Base × (1+Σterrain) × (1+enhancer) × (1+Σcottage). All 8 neighbors count.</span>
+      </span>
+    </div></div>
+
+    <h2>City grid (adjacency preview)</h2>
+    <div class="panel"><div class="body">
+      <div class="citygrid">
+        <div class="cell">forest</div>
+        <div class="cell producer built">🪵<span class="lvl">L10</span></div>
+        <div class="cell">forest</div>
+        <div class="cell adj">cottage</div>
+        <div class="cell"></div>
+        <div class="cell producer built">🪵<span class="lvl">L10</span></div>
+        <div class="cell enhancer built">⚙<span class="lvl">L10</span></div>
+        <div class="cell producer built">🪵<span class="lvl">L9</span></div>
+        <div class="cell">forest</div>
+        <div class="cell"></div>
+        <div class="cell">forest</div>
+        <div class="cell producer built">🪵<span class="lvl">L8</span></div>
+        <div class="cell adj">cottage</div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+      </div>
+      <p class="help" style="margin-top:var(--sp-2)">Green ring = producer · amber ring = enhancer (Sawmill) · amber fill = adjacency contributor.</p>
+    </div></div>
+
+    <h2>Modal (shown open)</h2>
+    <div class="modal-demo">
+      <div class="backdrop"></div>
+      <div class="modal">
+        <header><h3>Demolish Warehouse?</h3><button class="btn ghost icon">✕</button></header>
+        <div class="body">This permanently removes the Lvl 6 Warehouse and reduces storage by 42,000. Stored resources above the new cap are lost.</div>
+        <footer><button class="btn ghost">Cancel <span class="kbd">Esc</span></button><button class="btn danger">Demolish</button></footer>
+      </div>
+    </div>
+
+    <h2>Color tokens</h2>
+    <div class="panel"><div class="body">
+      <div class="swatches">
+        <div class="sw"><div class="chip" style="background:var(--bg-base)"></div><div class="lab">bg-base <span class="hex">#0d0f12</span></div></div>
+        <div class="sw"><div class="chip" style="background:var(--bg-elevated)"></div><div class="lab">bg-elevated <span class="hex">#15181d</span></div></div>
+        <div class="sw"><div class="chip" style="background:var(--bg-raised)"></div><div class="lab">bg-raised <span class="hex">#1c2027</span></div></div>
+        <div class="sw"><div class="chip" style="background:var(--accent-primary)"></div><div class="lab">accent <span class="hex">#d9a441</span></div></div>
+        <div class="sw"><div class="chip" style="background:var(--status-success)"></div><div class="lab">success <span class="hex">#4a9e5c</span></div></div>
+        <div class="sw"><div class="chip" style="background:var(--status-warn)"></div><div class="lab">warn <span class="hex">#d0982f</span></div></div>
+        <div class="sw"><div class="chip" style="background:var(--status-error)"></div><div class="lab">error <span class="hex">#cf5b43</span></div></div>
+        <div class="sw"><div class="chip" style="background:var(--status-info)"></div><div class="lab">info <span class="hex">#4f86a8</span></div></div>
+        <div class="sw"><div class="chip" style="background:var(--res-timber)"></div><div class="lab">timber <span class="hex">#6f9d57</span></div></div>
+        <div class="sw"><div class="chip" style="background:var(--res-stone)"></div><div class="lab">stone <span class="hex">#9aa0a8</span></div></div>
+        <div class="sw"><div class="chip" style="background:var(--res-iron)"></div><div class="lab">iron <span class="hex">#6f8fa8</span></div></div>
+        <div class="sw"><div class="chip" style="background:var(--res-grain)"></div><div class="lab">grain <span class="hex">#c8923a</span></div></div>
+        <div class="sw"><div class="chip" style="background:var(--res-gold)"></div><div class="lab">gold <span class="hex">#e6c84f</span></div></div>
+      </div>
+    </div></div>
+  </main>
+
+  <!-- right context panel -->
+  <aside class="context">
+    <h3 style="font-size:var(--fs-md)">Woodcutter's Lodge</h3>
+    <p class="help" style="margin:var(--sp-1) 0 var(--sp-3)">Lvl 10 · producer</p>
+    <table class="data"><tbody>
+      <tr><td>Base output</td><td class="num">250/h</td></tr>
+      <tr><td>Terrain ×</td><td class="num">2.30</td></tr>
+      <tr><td>Enhancer ×</td><td class="num">1.75</td></tr>
+      <tr><td>Cottage ×</td><td class="num">1.60</td></tr>
+      <tr class="selected"><td>Total</td><td class="num">1,610/h</td></tr>
+    </tbody></table>
+    <div class="row" style="margin-top:var(--sp-3)">
+      <button class="btn primary sm">Upgrade</button>
+      <button class="btn ghost sm">Move</button>
+      <button class="btn danger sm">Demolish</button>
+    </div>
+  </aside>
+</div>
+</body>
+</html>

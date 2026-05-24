@@ -1,0 +1,105 @@
+[[File:Stronghold_big_256.png|right]]Construction of the '''Castle''' allows a lord to plunder cities (castled or not) and assault or siege castled cities. Each level of the Castle increases your maximum army size and expands your command queue by one. Only one Castle can be built in each city. Castles cannot be totally demolished or destroyed. Once built, a Castle cannot be removed. Every 4th [[Title|title]] starting with Marquess is available free with an extra castle. Note: Building a Castle allows the castled city to be assaulted, sieged and/or captured.
+
+'''Requirements:''' [[Town Hall]] Level 8
+
+{| border="1" class="article-table"
+|-
+! scope="col"|Level
+! scope="col"|Maximum Commands
+! scope="col"|Max Army Size
+! scope="col"|Resource Cost Wood
+! scope="col"|Resource Cost Stone
+! scope="col"|Build Time
+! scope="col"|Rank Points
+|-
+|1
+| +1
+| +20%
+| -
+|20,000
+|20hr
+|4
+|-
+|2
+| +2
+| +40%
+| -
+|25,000
+|23hr, 20min
+|12
+|-
+|3
+| +3
+| +60%
+| -
+|30,000
+|1d, 2hr, 40min
+|24
+|-
+|4
+| +4
+| +80%
+| -
+|40,000
+|1d, 6hr
+|48
+|-
+|5
+| +5
+| +100%
+| -
+|55,000
+|1d, 9hr, 20min
+|80
+|-
+|6
+| +6
+| +130%
+| -
+|75,000
+|1d, 12hr, 40min
+|120
+|-
+|7
+| +7
+| +160%
+| -
+|100,000
+|1d, 16hr
+|168
+|-
+|8
+| +8
+| +200%
+| -
+|130,000
+|1d, 19hr, 20min
+|228
+|-
+|9
+| +9
+| +250%
+| -
+|160,000
+|1d, 22hr, 40min
+|300
+|-
+|10
+| +10
+| +300%
+| -
+|200,000
+|2d, 2hr
+|400
+|-
+|Total
+| +10
+| +300%
+| -
+|835,000
+|14d, 14hr
+|400
+|}
+{{ConSpd}}
+[[Category:Buildings]]
+[[Category:Pages to be moved to the new wiki]]

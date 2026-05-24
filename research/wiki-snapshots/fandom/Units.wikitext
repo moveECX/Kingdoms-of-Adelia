@@ -1,0 +1,94 @@
+Here are the various units that can be recruited:
+
+==Troops==
+{| class="wikitable" border="0" cellpadding="4"
+| [[File:Icon_units_cityguard.png|center]]
+| '''City Guards'''<br />''Special''
+| Enforcers of law and order, these stalwart fighters are trained to deal with any threat within a city’s walls.
+|-
+| [[File:Icon_units_berserker.png|center]]
+| '''Berserkers'''<br />''Infantry''
+| Unshakable warriors they may be, berserker are also untrained and unarmored, which means they are among the first to fall in combat.
+|-
+| [[File:Icon_units_ranger.png|center]]
+| '''Rangers'''<br />''Infantry''
+| Skilled bowmen are deadly against ranks of infantry, which makes rangers essential for defending a city under siege.
+|-
+| [[File:Icon_units_guardian.png|center]]
+| '''Guardians'''<br />''Infantry''
+| Defensive soldiers, guardians are trained to unhorse cavalry with their deadly pikes.
+|-
+| [[File:Icon_units_scout.png|center]]
+| '''Scouts'''<br />''Cavalry''
+| Scouts are able to survey an enemy from afar, and return to provide vital intelligence on enemy cities. Use larger groups of Scouts are able to obtain more detailed reports.
+|-
+| [[File:Icon_units_crossbow.png|center]]
+| '''Crossbowmen'''<br />''Cavalry''
+| The crossbow is an anti-cavalry weapon, but can be used with impunity against most any foe. This makes trained crossbowmen worth their weight in gold.
+|-
+| [[File:Icon_units_knight.png|center]]
+| '''Knights'''<br />''Cavalry''
+| The heavy arms of a knight allows them to excel at siegecraft. Knights are notorious looters as well, able to carry more than their share of spoils.
+|-
+| [[File:Icon_units_mage.png|center]]
+| '''Mages'''<br />''Infantry, Magic-User''
+| Arcane magic is a great equalizer, allowing a single mage to be a powerful combatant. Once the quarters are close, however, their benefit dissipates, for they are weak defensively.
+|-
+| [[File:Icon_units_warlock.png|center]]
+| '''Warlocks'''<br />''Cavalry, Magic-User''
+| Mages with war training, a warlock is a potent ally, and devastating enemy.
+|-
+| [[File:templar.png|center]]
+| '''Templars'''<br />''Infantry, Blessed''
+| Soldiers of the temple possess powerful defenses against magic, and can lead others against such foes.
+|-
+| [[File:Paladin.png|center]]
+| '''Paladin'''<br />''Cavalry, Blessed''
+| Combining the power of a knight with the blessing of a templar, the paladin is a potent foe. Paladins are specially trained in combating spellcasters, and can protect many allies against magic.
+|}
+==Siege Weapons==
+{| class="wikitable" border="0" cellpadding="4"
+| [[File:Icon_units_ram.png|center]]
+| '''Rams''' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+| Although slow, a heavy ram is quite powerful. No city gate can withstand it's brute force for long.
+|-
+| [[File:Icon_units_ballista.png|center]]
+| '''Ballista'''
+| Ballistae are powerful defensive weapons, deterring many armies from besieging the city. However, they can also be effective in the battlefield.
+|-
+| [[File:Icon_units_catapult.png|center]]
+| '''Catapults'''
+| Hurling massive stones, catapults are especially powerful weapons for besieging enemy cities.
+|}
+==Ships==
+{| class="wikitable" border="0" cellpadding="4"
+| [[File:Icon_units_barge.png|center]]
+| '''Sloops''' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+| The small stature of the sloop defies its powerful array of defensive weapons. It is especially useful for escorting larger ships against enemy coastal cities.
+|-
+| [[File:Icon_units_frigate.png|center]]
+| '''Frigates'''
+| In addition to ferrying troops to combat overseas, a frigate can bring a small amount of artillery to bear during a siege.
+|-
+| [[File:Icon_units_wargalleon.png|center]]
+| '''War Galleons'''
+| The mighty galleon rules the seas. Dangerous to all foes, they are especially effective during a siege.
+|}
+==Dignitaries==
+{| class="wikitable" border="0" cellpadding="4"
+| [[File:Icon_units_baron.png]]
+| '''Barons''' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+| While not combatants, baron are essential to a kingdom for only they can take control of defeated enemy castles, found new cities, and capture lawless cities.
+|}
+
+==Special Units==
+{| class="wikitable" border="0" cellpadding="4"
+| [[File:Dragon.png]]
+| '''Dragons''' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+| Strong offensive unit. Avoid attacking Guardians or Crossbowmen.<br />Dragons can be raised by obtaining Dragon Eggs and converting them using a Dragon's Lair.
+|}
+''This content is from the [http://wiki.ultimacodex.com/ The Codex of Editable Wisdom], A.K.A. The Ultima Codex. Fair use of this content is allowed under CC-by-SA license agreement.''
+[[Category:Units]]
+[[Category:Bestiarum]]
+[[Category:Combat]]
+[[Category:Boss]]

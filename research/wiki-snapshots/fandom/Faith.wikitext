@@ -1,0 +1,48 @@
+''Also see [[Shrines]]''
+
+How do you get '''Faith'''? Faith for each virtue is acquired as you build [[Palaces]] at each [[Shrine]] type. Each palace level grants a certain amount of faith. As the palace levels increase, so do the amount of faith acquired.
+
+As Faith increases in a Virtue, so do the bonuses you and your alliance mates receive.
+
+The Bonuses are based across the board, from Building Durability increased by Honesty, to Combat values of beserkers increased by honour.
+
+However, even if you get 150 level 1 palaces, 1*150 = 150 faith, the bonus value is capped at 100.
+
+''1 Faith = .5 bonus, the max bonus is 100, {twice the bonus from research (resource bonus maxes at 50)} 200 faith will give you the max bonus of 100 (stacks with resources bonus)''
+
+{| class="wikitable" width="100%"
+!Virtue!!Type of Bonus!!Bonuses
+|-
+!Compassion
+|Mixed
+|Travel speed of Infantry, Scouts, and Cavalry Bonus to base construction speed of all cities
+|-
+!Honesty
+|Mixed
+|Durability of Towers/Buildings and travel speed of siege engines and ships
+|-
+!Honor
+|Offensive Combat
+|Increased Combat Value of Beserks, Mages, Scouts, Knights and Warlocks
+|-
+!Humility
+|Production/Logistics
+|Increased travel speed of carts and merchant ships, increased production speed of Sloops, Frigates and War Galleons
+|-
+!Justice
+|Defensive Combat
+|Increased combat values of City Guards, Ballistas, Sloops and Frigates.
+|-
+!Sacrifice
+|Defensive Combat
+|Increased combat values of Rangers, Guards, Templars, Crossbows and Paladins
+|-
+!Spirituality
+|Barons/Mana
+|Travel speed,claim power, and production speed of barons, increased mana regeneration/hour
+|-
+!Valor
+|Siege Combat
+|Combat Values of Rams, Catapults and War Galleons
+|}
+[[Category:Gameplay]]

@@ -1,0 +1,39 @@
+[[File:Farm_256.png|right]]The '''Farm''' is a building in [[Lord of Ultima]]. It produces food. Any bordering grassland, lakes, [[Cottage]]s and [[Mill]]s will increase productivity.
+
+'''Requirements:''' [[Town Hall]] Level 3
+
+{| class="wikitable" width="100%"
+|-
+! Level
+! [[File:Icons_ressource_grain.png|28px]] Food Production/hr
+! Resource Cost Wood
+! Resource Cost Stone
+! Build Time
+! Rank Points
+|-
+| 1 ||5 ||50 || - ||15 sec ||1
+|-
+| 2 ||8 ||200 || - ||54 sec ||3
+|-
+| 3 ||15 ||400 ||200 ||6 min ||6
+|-
+| 4 ||20 ||1400 ||600 ||45 min ||12
+|-
+| 5 ||30 ||3500 ||1500 ||1 h 41.25 min ||20
+|-
+| 6 ||45 ||6000 ||3000 ||3 h 22.5 min ||30
+|-
+| 7 ||75 ||10000 ||5000 ||6 h 15 min ||42
+|-
+| 8 ||120 ||16000 ||8000 ||9 h 57 min ||57
+|-
+| 9 ||200 ||25000 ||13000 ||14 h 58 min ||75
+|-
+| 10 ||300 ||38000 ||20000 ||22 h 42 min ||100
+|-
+| Total ||300 ||100550 ||51300 ||2 d 11 h 48 min ||100
+|}
+
+{{ConSpd}}
+[[Category:Buildings]]
+[[Category:Pages to be moved to the new wiki]]

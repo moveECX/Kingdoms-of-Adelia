@@ -1,0 +1,42 @@
+<div align="left"> </div>
+
+== Introduction ==
+
+In Lord of Ultima, it is possible to trade with other players. A trade can be carried out by the sale of resources or by direct delivery in a city. The resources are transported by land or sea.
+
+== Transport ==
+
+=== [[File:Icon_cart_city_info.png]] Trade Carts ===
+
+Carts are used to transport goods on a continent. The number of carts is based on the number of [[Marketplace|market places]] and their level. A Level 10 Marketplace has 200 carts. One Cart can carry up to 1000 resources. Carts move at 10 minutes per field.
+
+=== [[File:Icon_ship_city_info.png]]Trade Ships ===
+
+Trade Ships are used to transport resources by sea. The number of Trade Ships depends on the number of [[Harbor|harbors]] and their level. A Level 10 Harbour has 30 Trade Ships. A Trade Ship can carry 10,000 resources. A Trade Ship moves at 5 minutes per field; they also require one hour loading time. The return trip also requires this extra one hour of time, presumably for unloading.
+
+Harbours can only be built in Cities that have water access, i.e., Cities that are located on the coast or next to a river. However, a City located on the corner where a river changes compass direction away from a city (i.e., on the outside corner of a river bend), ''doesn't'' have water access. If a City does have water access, building spots for Harbours are in the bottom, right-hand corner of the City. Harbours are built in water spots next to the coast and there are a maximum of eight slots.
+
+== Trade View ==
+
+
+
+=== Send Resources ===
+Sending reesources to a city of another player selected via Region view or entered coordinates.
+
+===<span style="font-size:16px;">Own Offers</span>===
+
+Market offers placed by you.
+
+===<span style="font-size:16px;">Other Offers</span>===
+
+Market offers placed by others, sortable by resource or available offers.
+
+=== Request Resources ===
+Shows resources available in your cities and allows you to request themn to be shipped to your currently selected city.
+==Gallery==
+<gallery widths="256" position="center" spacing="large" columns="2" navigation="true">
+Market place 256.png|Marketplace|link=Marketplace
+Harbour 256.png|Harbor|link=Harbor
+</gallery>
+[[Category:Gameplay]]
+[[Category:Trading]]

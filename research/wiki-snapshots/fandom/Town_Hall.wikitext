@@ -1,0 +1,40 @@
+[[File:Townhall_256.png|right]]The '''Town Hall''' is a building in [[Lord of Ultima]]. It provides basic storage and wood production. Also determines the maximum number of buildings in a city. Only one can be built in each city. Cannot be totally demolished or destroyed.
+
+{| class="wikitable" width="100%"
+|-
+! Level
+! Total Building Slots
+! Wood Production/h
+! Storage
+! Resource Cost Wood
+! Resource Cost Stone
+! Build Time
+! Command Points
+! Rank Points
+|-
+| 1 || 10 || 300 || 5000 || - || - || - || 5 || 3
+|-
+| 2 || 20 || 300 || 7000 || 200 || - || 25 sec || 5 || 9
+|-
+| 3 || 30 || 300 || 10000 || 500 || 100 || 40 sec || 5 || 9
+|-
+| 4 || 40 || 300 || 15000 || 1000 || 300 || 1 min 40 sec || 5 || 36
+|-
+| 5 || 50 || 300 || 24000 || 3000 || 1500 || 30 min || 5 || 60
+|-
+| 6 || 60 || 300 || 35000 || 8000 || 4000 || 2 h 30 min || 5 || 90
+|-
+| 7 || 70 || 300 || 50000 || 15000 || 10000 || 8 h 20 min || 5 || 126
+|-
+| 8 || 80 || 300 || 80000 || 30000 || 25000 || 16 h 40 min || 5 || 171
+|-
+| 9 || 90 || 300 || 125000 || 60000 || 60000 || 26 h || 5 || 225
+|-
+| 10 || 100 || 300 || 175000 || 120000 || 120000 || 37 h 20 min || 5 || 300
+|-
+| '''Total''' || '''100''' || '''300''' || '''175000''' || '''237700''' || '''220900''' || '''3 d 19 h 23 min''' || '''5''' || '''300'''
+|}
+
+{{ConSpd}}
+[[de:Rathaus]]
+[[Category:Buildings]]

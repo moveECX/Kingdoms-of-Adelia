@@ -1,0 +1,30 @@
+[[File:Moongates.png|center|680px]]
+Moongates have recently been activated by producers. When Moongates become activated on a World, one Moongate on each active continent will be enlightened. When this occurs, land based troops will be able to attack targets on any other continents where an active Moongate exists. Attacks (and defense support) may continue to take action on other continents for as long as the enlightenment lasts. Moongate enlightenment will last for 24 hours and will occur every 144 to 192 hours (6 to 8 days).
+
+Attacking troops will receive a penalty dependent on the distance troops must travel (both from the source castle to that continent's Moongate AND from the target continent's Moongate and the target castle). Defense support is not penalized for travel distance.
+
+The penalties are as follows:
+
+*Up to 5 fields: No weakening
+
+*10 fields: 93 - Means 7 less than the origin attack power.
+
+*50 fields: 61 - Means 39 less than the origin attack power.
+
+*100 fields: 42 - Means 58 less than the origin attack power.
+
+When the enlightenment is about to end, besieging and supporting troops will automatically cease their current siege/support activities to return home, to ensure that they will be back before the enlightenment ends and the Moongate closes. The Moongates will be closed for some time until a new enlightenment cycle starts.
+
+Note: While older continents will start immediately with active Moongates that can be enlightened, new continents will be protected for some time after the first cities are founded there.
+
+== Inactive Moongate ==
+
+[[Image:icon_moongate_inactive.png|Moongate Inactive]] [[Image:icon_moongate_inactive_decal.png|Decal]]
+
+== Active Moongate ==
+
+[[Image:icon_moongate.png|Moongate active]] [[Image:icon_moongate_decal.png|Decal]]
+[[Category:Gameplay]]
+[[Category:Location]]
+[[Category:World]]
+[[Category:Pages to be moved to the new wiki]]

@@ -1,0 +1,43 @@
+[[File:Stables_256.png|right]]The '''Stable''' is a building in [[Lord of Ultima]]. It allows recruitment of cavalry units and, if upgraded, increases their recruitment speed. Placing a [[Barracks]] beside a Stable will also increase recruitment speed.
+
+'''Requirements:''' [[Town Hall]] Level 6
+
+
+
+
+<br />
+
+{| class="wikitable" width="100%"
+|-
+! Level
+! Recruiting Speed
+! Recruiting Unit Type
+! Resource Cost Wood
+! Resource Cost Stone
+! Build Time
+! Rank Points
+|-
+| 1 || +5% ||[[Scout]] ||25 ||50 ||22 sec ||1
+|-
+| 2 || +10% || - ||55 ||110 ||2 min 24 sec ||3
+|-
+| 3 || +16% || - ||110 ||220 ||16 min ||6
+|-
+| 4 || +24% || - ||275 ||550 ||2 h ||12
+|-
+| 5 || +35% ||[[Units|Crossbowman]] ||800 ||1600 ||4 h 30 min ||20
+|-
+| 6 || +50% || - ||1900 ||3800 ||9 h ||30
+|-
+| 7 || +68% || - ||3750 ||7500 ||16 h 24 min ||42
+|-
+| 8 || +90% || - ||6500 ||13000 ||26 h 30 min ||57
+|-
+| 9 || +115% || - ||10200 ||20400 ||39 h 54 min ||75
+|-
+| 10 || +150% ||[[Units|Knight]] ||15500 ||31000 ||60 h 30 min ||100
+|}
+
+{{ConSpd}}
+[[Category:Combat]]
+[[Category:Pages to be moved to the new wiki]]

@@ -1,0 +1,19 @@
+Night Protection is a feature which has been added to this game so that you won't have to play it 24/7 (although by all means feel free to do so if you wish) ;), and it works as follows:
+
+* From midnight to 08:00 night protection reduces the power of attack by 40.
+
+* From 08:00 to 10:00 morning protection penalties are gradually decreased from 40 to 0 (at the rate of 1 every 3 minutes).
+
+* From 22:00 to midnight night protection penalties are increased from 0 to 40 in the same manner.
+
+* During these periods, the damage to buildings and fortifications will be reduced by the same value.
+
+* During these periods, the growth of Barons' power to claim a sieged city will be reduced by the same value.
+
+* The protection is in effect for any attack against players: Assault, Siege, Plunder and Scout.
+
+* The protection only matters for player-owned cities. Dungeons and lawless cities will not get any protection.
+
+* The protection is counted in servertime.
+* Night Protection does not apply to the [[Battle of Lords]] (Europe) server.
+[[Category:Gameplay]]

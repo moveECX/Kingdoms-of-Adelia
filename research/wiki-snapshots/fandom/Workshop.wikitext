@@ -1,0 +1,112 @@
+[[File:Weapon_factory_256.png|right]]The '''Workshop''' is a building in [[Lord of Ultima]]. It allows the construction of siege engines and, if upgraded, increases their construction speed. Placing a Barracks beside a Workshop will also increase recruitment speed.
+
+'''Requirements:''' [[Town Hall]] Level 9
+
+
+
+
+
+
+
+
+{| class="wikitable" width="100%"
+|-
+! scope="col"|Level
+! scope="col"|Recruiting Speed
+! scope="col"|Recruiting Unit Type
+! scope="col"|Resource Cost Wood
+! scope="col"|Resource Cost Stone
+! scope="col"|Build Time
+! scope="col"|Rank Points
+|-
+|1
+| +5%
+|Ram
+|40
+|80
+|25sec
+|1
+|-
+|2
+| +10%
+| -
+|75
+|150
+|3min
+|4
+|-
+|3
+| +16%
+| -
+|150
+|300
+|20min
+|8
+|-
+|4
+| +24%
+| -
+|370
+|740
+|2hr, 30min
+|17
+|-
+|5
+| +35%
+| -
+|1100
+|2200
+|5hr, 37min, 30sec
+|28
+|-
+|6
+| +50%
+|Ballista
+|2600
+|5200
+|11hr, 15min
+|42
+|-
+|7
+| +68%
+| -
+|5200
+|10,400
+|20hr, 30min
+|59
+|-
+|8
+| +90%
+| -
+|8900
+|17,800
+|1d, 9hr, 7min, 30sec
+|80
+|-
+|9
+| +115%
+| -
+|14,000
+|28,000
+|2d, 1hr, 52min, 30sec
+|105
+|-
+|10
+| +150%
+|Catapult
+|21,500
+|43,000
+|3d, 3hr, 37min, 30sec
+|140
+|-
+|'''Totals'''
+| '''+150%'''
+|'''Ram, Ballista, Catapult'''
+|'''53,935'''
+|'''107,870'''
+|'''8d, 6hr, 53min, 25sec'''
+|'''140'''
+|}
+[[Category:Buildings]]
+[[Category:Combat]]
+[[Category:Pages to be moved to the new wiki]]

@@ -1,0 +1,40 @@
+[[File:Stonecutter_256.png|right]]The '''Stonemason''' is a building in [[Lord of Ultima]]. It increases the efficiency of bordering [[Quarry|Quarries]] and stone storage capacity of any bordering [[Storage]].
+
+'''Requirements:''' [[Town Hall]] Level 7
+
+{| class="wikitable" width="100%"
+|-
+! Level
+! Efficiency Bonus
+! Stone Storage Bonus
+! Resource Cost Wood
+! Resource Cost Stone
+! Build Time
+! Rank Points
+|-
+| 1 || +30% || +20% || 60 || 60 || 20 sec || 1
+|-
+| 2 || +35% || +40% || 150 || 150 || 1 min 48 sec || 4
+|-
+| 3 || +40% || +60% || 350 || 350 || 12 min || 7
+|-
+| 4 || +45% || +80% || 1100 || 1100 || 1 h 30 min || 14
+|-
+| 5 || +50% || +100% || 2700 || 2700 || 3 h 22.5 min || 24
+|-
+| 6 || +55% || +120% || 5000 || 5000 || 6 h 45 min || 36
+|-
+| 7 || +60% || +140% || 8500 || 7800 || 12 h 18 min || 50
+|-
+| 8 || +65% || +160% || 13500 || 13500 || 19 h 52.5 min || 68
+|-
+| 9 || +70% || +180% || 21500 || 21500 || 29 h 55.5 min || 90
+|-
+| 10 || +75% || +200% || 33000 || 33000 || 45 h 22.5 min || 120
+|-
+| Total || +75% || +200% || 85860 || 85860 || 4 d 23 h 20 min || 120
+|}
+
+{{ConSpd}}
+[[Category:Buildings]]
+[[Category:Pages to be moved to the new wiki]]

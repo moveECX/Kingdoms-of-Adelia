@@ -1,0 +1,61 @@
+= The World of Caledonia =
+
+The world of Caledonia has 36 continents. '''They are numbered as such:'''
+
+c00 c01 c02 c03 c04 c05<br />c10 c11 c12 c13 c14 c15<br />c20 c21 c22 c23 c24 c25<br />c30 c31 c32 c33 c34 c35<br />c40 c41 c42 c43 c44 c45<br />c50 c51 c52 c53 c54 c55<br />
+
+Though technically there are areas at the bottom and right edge of the map that suggest the world has 49 continents and is a 7x7 grid, it is really only a 6x6 grid with a small overflow at the bottom and right that contains 36 continents.  Continents do not occupy a whole 100x100 area, a lot of the area is ocean and the shape of the continent is random. 
+==Co-ordinates==
+
+The continent area a space is listed as depends on it's coordinates.  The coordinate system in Lord of Ultima is a standard x,y coordinate system with x being horizontal alignment and y being vertical alignment.<br />
+
+This is an easy way to determine which continent a city is on by looking at the coordinates:
+{| border="0" cellpadding="1" cellspacing="1" class="article-table"
+|-
+! scope="col"|Coordinates
+! scope="col"|Continent area coordinates point to
+|-
+|000-100:yyy
+|c00, c10, c20, c30, c40, and c50
+|-
+|101-200:yyy
+|c01, c11, c21, c31, c41, and c51
+|-
+|201-300:yyy
+|c02, c12, c22, c32, c42, and c52
+|-
+|301-400:yyy
+|c03, c13, c23, c33, c43, and c53
+|-
+|401-500:yyy
+|c04, c14, c24, c34, c44, and c54
+|-
+|
+501-600:yyy
+|c05, c15, c25, c35, c45, and c55
+|-
+|xxx:000-100
+|c00, c01, c02, c03, c04, and c05
+|-
+|xxx:101-200
+|c10, c11, c12, c13, c14, and c15
+|-
+|xxx:201-300
+|c20, c21, c22, c23, c24, and c25
+|-
+|xxx:301-400
+|c30, c31, c32, c33, c34, and c35
+|-
+|xxx:401-500
+|c40, c41, c42, c43, c44, and c45
+|-
+|xxx:501-600
+|c50, c51, c52, c53, c54, and c55
+|}
+
+==Continent Grids==
+
+Each continent area is a 100x100 grid. Part of the 100x100 area is made up of ocean.  The actual continent contains cities, forests, mountains etc... Continents have rivers running through them which connect them to the sea which surrounds every continent.
+<br />'''An exception to the world of Caledonia exists on world 13 (West Coast Server) in which the world is composed into a 5x5 grid instead of the usual 6x6 grid. Thus this world contains 11 fewer continents than all other servers.'''
+[[Category:World]]
+[[Category:Gameplay]]

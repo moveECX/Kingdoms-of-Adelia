@@ -1,0 +1,30 @@
+# dependencies / build output
+node_modules/
+dist/
+build/
+.svelte-kit/
+coverage/
+*.tsbuildinfo
+
+# env & secrets
+.env
+.env.local
+.env.*.local
+
+# logs / os
+*.log
+npm-debug.log*
+.DS_Store
+Thumbs.db
+
+# ---------------------------------------------------------------------------
+# Reference repos & their archives — NEVER COMMIT.
+# OpenLoU is GPLv3 (would relicense us); FelixLeChat bundles EA-owned assets.
+# See IP-COMPLIANCE.md and research/REPO-DECISION.md.
+# ---------------------------------------------------------------------------
+research/reference-repos/
+re/
+*.zip
+
+# generated DB artifacts (keep schema.sql; ignore generated types)
+server/db/*.generated.ts

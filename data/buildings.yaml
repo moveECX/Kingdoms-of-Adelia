@@ -1,0 +1,135 @@
+# Building rules (Phase 1 economic core). Arrays index 0..9 = levels 1..10.
+# cost entries are [timber, stone]. All values [verified] from Fandom wikitext snapshots
+# (research/wiki-snapshots/fandom/). Full roster (military/trade/endgame) = ROADMAP ticket #005.
+# Names follow IP-COMPLIANCE.md rename map; LoU source name in comments.
+schemaVersion: 1
+
+buildings:
+  hall: # LoU: Town Hall
+    name: 'Hall'
+    category: core
+    maxLevel: 10
+    onePerCity: true
+    indestructible: true
+    buildSlotsPerLevel: 10 # 10..100
+    baseTimberPerH: 300
+    storage: [5000, 7000, 10000, 15000, 24000, 35000, 50000, 80000, 125000, 175000]
+    cost: [[0, 0], [200, 0], [500, 100], [1000, 300], [3000, 1500], [8000, 4000], [15000, 10000], [30000, 25000], [60000, 60000], [120000, 120000]]
+    buildTimeSec: [0, 25, 40, 100, 1800, 9000, 30000, 60000, 93600, 134400]
+
+  # --- Producer family (timber/stone/iron share one curve) ---
+  woodcutter_lodge: # LoU: Woodcutter's Hut
+    name: "Woodcutter's Lodge"
+    category: producer
+    produces: timber
+    prereq: { hall: 1 }
+    maxLevel: 10
+    outputPerH: [20, 40, 60, 85, 110, 140, 175, 210, 250, 300]
+    cost: [[50, 0], [200, 0], [400, 200], [1400, 600], [3500, 1500], [6000, 3000], [10000, 5000], [16000, 8000], [25000, 13000], [38000, 20000]]
+    buildTimeSec: [15, 54, 360, 2700, 6075, 12150, 22500, 35820, 53880, 81720]
+  quarry:
+    name: 'Quarry'
+    category: producer
+    produces: stone
+    prereq: { hall: 2 }
+    maxLevel: 10
+    outputPerH: [20, 40, 60, 85, 110, 140, 175, 210, 250, 300]
+    cost: [[50, 0], [200, 0], [400, 200], [1400, 600], [3500, 1500], [6000, 3000], [10000, 5000], [16000, 8000], [25000, 13000], [38000, 20000]]
+    buildTimeSec: [15, 54, 360, 2700, 6075, 12150, 22500, 35820, 53880, 81720]
+  iron_mine: # LoU: Iron Mine
+    name: 'Iron Mine'
+    category: producer
+    produces: iron
+    prereq: { hall: 4 }
+    maxLevel: 10
+    outputPerH: [20, 40, 60, 85, 110, 140, 175, 210, 250, 300]
+    cost: [[50, 0], [200, 0], [400, 200], [1400, 600], [3500, 1500], [6000, 3000], [10000, 5000], [16000, 8000], [25000, 13000], [38000, 20000]]
+    buildTimeSec: [15, 54, 360, 2700, 6075, 12150, 22500, 35820, 53880, 81720]
+  farm:
+    name: 'Farm'
+    category: producer
+    produces: grain
+    prereq: { hall: 3 }
+    maxLevel: 10
+    outputPerH: [5, 8, 15, 20, 30, 45, 75, 120, 200, 300] # distinct, lower early curve
+    cost: [[50, 0], [200, 0], [400, 200], [1400, 600], [3500, 1500], [6000, 3000], [10000, 5000], [16000, 8000], [25000, 13000], [38000, 20000]]
+    buildTimeSec: [15, 54, 360, 2700, 6075, 12150, 22500, 35820, 53880, 81720]
+
+  # --- Enhancer family (all four share one curve) ---
+  sawmill:
+    name: 'Sawmill'
+    category: enhancer
+    boosts: woodcutter_lodge
+    prereq: { hall: 6 }
+    maxLevel: 10
+    efficiencyPct: [30, 35, 40, 45, 50, 55, 60, 65, 70, 75]
+    storagePct: [20, 40, 60, 80, 100, 120, 140, 160, 180, 200]
+    cost: [[60, 60], [150, 150], [350, 350], [1100, 1100], [2700, 2700], [5000, 5000], [8500, 8500], [13500, 13500], [21500, 21500], [33000, 33000]]
+    buildTimeSec: [20, 108, 720, 5400, 12150, 24300, 44280, 71550, 107730, 163350]
+  stonemason:
+    name: 'Stonemason'
+    category: enhancer
+    boosts: quarry
+    prereq: { hall: 7 }
+    maxLevel: 10
+    efficiencyPct: [30, 35, 40, 45, 50, 55, 60, 65, 70, 75]
+    storagePct: [20, 40, 60, 80, 100, 120, 140, 160, 180, 200]
+    cost: [[60, 60], [150, 150], [350, 350], [1100, 1100], [2700, 2700], [5000, 5000], [8500, 8500], [13500, 13500], [21500, 21500], [33000, 33000]]
+    buildTimeSec: [20, 108, 720, 5400, 12150, 24300, 44280, 71550, 107730, 163350]
+  foundry:
+    name: 'Foundry'
+    category: enhancer
+    boosts: iron_mine
+    prereq: { hall: 9 }
+    maxLevel: 10
+    efficiencyPct: [30, 35, 40, 45, 50, 55, 60, 65, 70, 75]
+    storagePct: [20, 40, 60, 80, 100, 120, 140, 160, 180, 200]
+    cost: [[60, 60], [150, 150], [350, 350], [1100, 1100], [2700, 2700], [5000, 5000], [8500, 8500], [13500, 13500], [21500, 21500], [33000, 33000]]
+    buildTimeSec: [20, 108, 720, 5400, 12150, 24300, 44280, 71550, 107730, 163350]
+  mill:
+    name: 'Mill'
+    category: enhancer
+    boosts: farm
+    prereq: { hall: 8 }
+    maxLevel: 10
+    efficiencyPct: [30, 35, 40, 45, 50, 55, 60, 65, 70, 75]
+    storagePct: [20, 40, 60, 80, 100, 120, 140, 160, 180, 200]
+    cost: [[60, 60], [150, 150], [350, 350], [1100, 1100], [2700, 2700], [5000, 5000], [8500, 8500], [13500, 13500], [21500, 21500], [33000, 33000]]
+    buildTimeSec: [20, 108, 720, 5400, 12150, 24300, 44280, 71550, 107730, 163350]
+
+  # --- Civic / storage ---
+  cottage:
+    name: 'Cottage'
+    category: civic
+    prereq: { hall: 1 }
+    maxLevel: 10
+    buildSpeedPct: [4, 10, 16, 25, 35, 46, 58, 71, 85, 100] # city-wide, additive across cottages
+    manpowerPct: [3, 6, 9, 12, 15, 18, 21, 24, 27, 30] # per-adjacency producer bonus
+    cost: [[0, 50], [0, 150], [0, 300], [0, 600], [200, 1000], [500, 2000], [1000, 4000], [2000, 7500], [5000, 14000], [12000, 17000]]
+    buildTimeSec: [15, 54, 360, 2700, 6075, 12150, 22500, 35820, 53880, 81720]
+  warehouse:
+    name: 'Warehouse'
+    category: storage
+    prereq: { hall: 1 }
+    maxLevel: 10
+    storage: [2500, 5000, 9000, 16000, 26000, 42000, 65000, 100000, 145000, 200000]
+    cost: [[60, 0], [150, 0], [250, 50], [500, 150], [1600, 400], [3000, 1000], [6000, 2000], [9600, 4800], [15000, 9000], [20000, 13000]]
+    buildTimeSec: [15, 36, 240, 1800, 4050, 8100, 14760, 23850, 35910, 54450]
+  townhouse:
+    name: 'Townhouse'
+    category: gold
+    prereq: { hall: 5 }
+    maxLevel: 10
+    goldPerH: [25, 50, 75, 100, 130, 170, 210, 260, 320, 400]
+    cost: [[0, 100], [0, 300], [0, 600], [0, 2000], [1000, 4000], [2000, 7000], [3500, 11500], [7000, 17000], [14000, 20000], [29000, 29000]]
+    buildTimeSec: [17, 72, 480, 3600, 8100, 16200, 29520, 47700, 71820, 108900]
+  city_wall:
+    name: 'City Wall'
+    category: defense
+    prereq: { hall: 2 }
+    maxLevel: 10
+    onePerCity: true
+    indestructible: true
+    combatBonusPct: [1, 3, 6, 10, 15, 20, 26, 33, 41, 50]
+    cost: [[0, 200], [0, 2000], [0, 8000], [0, 20000], [0, 30000], [0, 45000], [0, 70000], [0, 100000], [0, 140000], [0, 200000]]
+    buildTimeSec: [30, 1200, 3600, 10800, 18000, 28800, 43200, 64800, 90000, 126000]

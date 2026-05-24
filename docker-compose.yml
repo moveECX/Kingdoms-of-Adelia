@@ -1,0 +1,23 @@
+# Local development database. `docker compose up -d db` → clean PostgreSQL in seconds.
+# Production is also PostgreSQL (no SQLite anywhere — see ARCHITECTURE.md).
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: aldermark-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-aldermark}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-aldermark}
+      POSTGRES_DB: ${POSTGRES_DB:-aldermark}
+    ports:
+      - '${POSTGRES_PORT:-5432}:5432'
+    volumes:
+      - aldermark-pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U ${POSTGRES_USER:-aldermark}']
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  aldermark-pgdata:

@@ -1,0 +1,39 @@
+[[File:Wall_tower_ranger.png|right]]The '''Ranger Tower''' is a building in [[Lord of Ultima]]. It increases the Defensive Value of a limited number of Rangers by 100%. If there are not enough Rangers in the city, City Guards can take their place and gain the same bonus. These towers don't count towards a city's building number limit.
+
+'''Requirements:''' [[Town Hall]] Level 3
+
+{| class="wikitable" width="100%"
+|-
+! Level
+! Unit Count
+! Resource Cost Wood
+! Resource Cost Stone
+! Build Time
+! Rank Points
+|-
+| 1 ||30 || - ||100 ||25 sec ||1
+|-
+| 2 ||60 || - ||200 ||5 min ||2
+|-
+| 3 ||120 || - ||400 ||13 min 30 sec ||5
+|-
+| 4 ||200 || - ||1000 ||25 min ||10
+|-
+| 5 ||320 || - ||3000 ||40 min ||16
+|-
+| 6 ||480 || - ||7000 ||1 h ||24
+|-
+| 7 ||700 || - ||14000 ||1 h 22 min ||34
+|-
+| 8 ||1000 || - ||24000 ||1 h 50 min ||46
+|-
+| 9 ||1400 || - ||38000 ||2 h 25 min ||60
+|-
+| 10 ||2000 || - ||58000 ||3 h 20 min ||80
+|-
+| '''Total''' ||'''2000''' || '''-''' ||'''145700''' ||'''11 h 21 min''' ||'''80'''
+|}
+
+{{ConSpd}}
+[[Category:Buildings]]
+[[Category:Pages to be moved to the new wiki]]

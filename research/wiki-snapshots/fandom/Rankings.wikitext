@@ -1,0 +1,24 @@
+{{Cleanup}}
+
+== Military ==
+
+Ranking for the best military city.<br />The score is calculated as:
+
+Score = SQRT (maximum troop strength^2 * sum of all recruitment speeds, Shipyard<br />speed counting double) /1000
+
+''Example:''<br />A city with a castle at level 10 and 50 barracks at level 10 would have a maximum troops strength of 200,000 TS.<br />Additionally the city is boosted to 6500% recruitment speed in the training ground but does not have other recruitment buildings.<br />Thus the sum of all recruitment speeds is: 7200 = 100 + 6500 + 100 + 100 + 100 + 100 + 100 * 2 (the shipyard recruitment speed is counting double)<br />The score for this city is SQRT (200,000^2*7200) / 1000 = 16970,563
+
+''Note:''<br />In the column that shows the sum of all recruitment speeds, the speed of the shipyard is not counting double. Thus two cities with the same values in this column and the Max TS column will have a different score if they have different speeds for the shipyard.
+
+== Resource ==
+
+Ranking for the best resource city.<br />Only one of your cities with the best score can participate.
+
+The score is calculated as following:
+
+Score = wood/hr + stone/hr + iron/hr + gold/hr * 1.5 + food/hr * 0.5
+
+''Example:''<br />A city with 12055 wood/hr production, 5817/hr stone production, 69893 iron/hr production and 12915 food/hr production would have a score of 12055 + 5817 + 69893 * 1.5 + 12915 * 0.5 = 129169
+[[Category:Ranking]]
+[[Category:Gameplay]]
+[[Category:Pages to be moved to the new wiki]]

@@ -1,0 +1,38 @@
+[[File:Wall_t.png|right]]The '''City Wall''' is a building in [[Lord of Ultima]]. It increases the defense of all units, except naval units, against all attacks. Cannot be totally demolished or destroyed.
+
+Requirements: [[Town Hall]] Level 2
+
+{| class="wikitable" width="100%"
+|-
+! Level
+! Combat Bonus
+! Resource Cost Wood
+! Resource Cost Stone
+! Build Time
+! City Score
+|-
+| 1 || +1% || - ||200 ||30 sec ||2
+|-
+| 2 || +3% || - ||2000 ||20 min ||6
+|-
+| 3 || +6% || - ||8000 ||1 h ||12
+|-
+| 4 || +10% || - ||20000 ||3 h ||24
+|-
+| 5 || +15% || - ||30000 ||5 h ||40
+|-
+| 6 || +20% || - ||45000 ||8 h ||60
+|-
+| 7 || +26% || - ||70000 ||12 h ||84
+|-
+| 8 || +33% || - ||100000 ||18 h ||114
+|-
+| 9 || +41% || - ||140000 ||25 h ||150
+|-
+| 10 || +50% || - ||200000 ||35 h ||
+200
+|}
+
+{{ConSpd}}
+[[Category:Buildings]]
+[[Category:Pages to be moved to the new wiki]]

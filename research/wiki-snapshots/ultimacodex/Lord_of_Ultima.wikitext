@@ -1,0 +1,100 @@
+{{DISPLAYTITLE:''Lord of Ultima''}}
+'''''Lord of Ultima''''' is a browser-based, real-time strategy game set the the ''Ultima'' universe. It was developed and published on April 20, 2010 by [http://www.phenomic.de/ EA Phenomic]. It was free to play, however premium features required the purchase of [http://www.play4free.com/en/ Play4Free Funds]. It was announced that ''Lord of Ultima'' was to be shut down on May 12, 2014, however, the shut down began some time before that.
+
+[[Image:Lou_ea_presents.png|center|450px]]
+
+== Gameplay ==
+[[Image:Lordofultima.jpg|right|thumb|200px|Game art]]
+[[Image:23606_game_extra_1.jpg|right|thumb|200px|In-game screenshot]]
+[[Image:Call to action.jpg|right|thumb|200px|Promotional artwork]]
+[[Image:Build your empire.jpg|right|thumb|200px|Promotional artwork]]
+The game is set in the land of [[Caledonia]], a series of island that has risen from the sea with the destruction of [[Sosaria]]. In ''Lord of Ultima'', gameplay primarily resolves around collecting [[Resources (LoU)|resources]], including: stone, wood, iron, and food to expand one's cities and armies. Players could use these resources to expand their [[Buildings (LoU)|cities]] and [[Units (LoU)|armies]], and then battle against each other for power and prestige.
+
+Players begin with control of a single city, which they must expand and protect. For the first 7 days they are protected from attack by other players, but after this they can be freely attacked. They can also use their armies to attack surrounding dungeons, monsters, and other players. Alliances can be joined, and they often offer protection from attack by other players. The player could even purchase [[Electronic Arts|Electronic Arts’]] Play4Free Funds online to more rapidly progress in game, enabling the player to hasten resource gathering and building speed.
+
+==Expansions==
+
+Each expansion for ''Lord of Ultima'' is named after a previous game in the ''Ultima'' series, but are unrelated to the respective game.
+
+===“Serpent Isle”===
+
+Released on October 7, 2010, "Serpent Isle" included the following new features:
+*New overviews
+*Report filters
+*Alliance report sharing
+*Customizable Alliance member rights
+*Player and Alliance Ranking
+
+===“Ascension”===
+
+Released on November 2, 2010, "Ascension" included the following changes:
+* Research to create [[Resources (LoU)#Purified Resources|purified resources]]
+* City Building modifications
+* [[Resources (LoU)#Building Minister|Building]] and [[Resources (LoU)#Defense Minister|Defense Ministers]]
+* Build Queue
+* Alliance Forums
+* Combat Reports
+* Chat
+
+===“Forge of Virtue”===
+
+Released on December 8, 2010, "Forge of Virtue" included the following new features:
+* Lord of Ultima Quest
+* [[Resources (LoU)#Trade Minister|Trade Minister]]
+* World Map
+* Event and Newsletter System
+* Art Update
+* Music &amp; Sound
+* Overviews
+
+===Other Game Updates===
+
+After "Forge of Virtue", game updates were released steadily, but unnamed and were generally referred to by release date. A number of improvements were made, but none with such sweeping changes as the above expansions.
+
+* [[Moongates]] were added with the 3/13/2012 patch. Along with this, [[moonstones]] were re-added to the game, and two new artifacts were added for obtaining Moonstones.
+* Two new artifacts were added with the 4/24/2012 patch to speed the movement of trade units.
+* The July 2012 patch included a Fortune Teller card reading, which provides a daily bonus artifact, along with light and dark castle customization, and six new buildings.
+* In March 2013, a new artifact, a  new raid drop, and a new unit were introduced.
+
+== More game related information ==
+
+* [[Resources (LoU)|Resources and Artifacts]]
+* [[Buildings (LoU)|Building Information]]
+* [[Construction (Lord of Ultima)|Construction Details]]
+* [[Units (LoU)|Units and Bestiary]]
+* [[Lord of Ultima Monster Data|Monster Details]]
+* [[Raiding (Lord of Ultima)|Raiding]]
+* [[Virtues (LoU)|Virtues]]
+* [[Faith (Lord of Ultima)|Faith]]
+* [[Quests (Lord of Ultima)|Quests]]
+* [[Research (Lord of Ultima)|Research]]
+* [[Titles (Lord of Ultima)|Titles]]
+
+== Trivia ==
+
+* ''Lord of Ultima'' originally has its own wiki, [[The Great Libraries of Caledonia]], which were shut down and moved to [http://lordofultima.wikia.com Wikia] in early 2013. Much of the information from the original wiki was incorporated into the Codex of Ultima Wisdom before the new Wikia database was unveiled.
+* The gameplay is similar to other browser-based strategy games based on the [[wikipedia:The Settlers|Settlers]] series. One of the founders of Phenomic, Volker Wertich, has been called "the mastermind behind the Settlers series."
+* An unrelated, cancelled [[Origin]] project from 1988, [[multi-player Ultima]], has some similarities in concept to ''Lord of Ultima''.
+* The music introduced with "Forge of Virtue" is the same [[Ultima X Odyssey Soundtrack|soundtrack]] that was composed for use in the late {{U10link}}.
+* EA Phenomic was criticized for using provocative advertising, similar to the ones [http://www.evony.com/ Evony] used at the time.{{clarify|see talk page}}
+* There are several player-made mods (in form of [[wikipedia:Userscript#Equivalents_for_other_browsers browser|scripts]]), which enhance the game interface.
+
+== Gallery ==
+
+<gallery orientation="original" widths="200" spacing="middle" captionalign="left">
+Image:LoUad.jpg|Female fighter wallpaper
+Image:Friendly city.jpg|Promotional artwork
+File:Crush opponents.jpg|Promotional artwork
+File:Lou_ad.jpg|''[[Ultima Online]]'' advertisement
+</gallery>
+
+==External Links==
+
+* [https://www.lordofultima.com/ Official Website]
+* [http://instagram.com/phenomicstudios EAPhenomic Instagram Feed]
+* [http://www.gamasutra.com/view/news/26953/EA_Phenomic_Revives_Ultima_With_BrowserBased_Strategy_Game.php Gamasutra Article]
+* [http://www.rockpapershotgun.com/2010/01/26/youre-not-going-to-like-this-ultimas-back/ Rock, Paper Shotgun Article]
+* [http://www.youtube.com/watch?v=x_b7qxLBVXY&feature=related YouTube - ''Lord of Ultima'' Gameplay Video]
+
+{{Game nav}}
+[[Category:Lord of Ultima]]

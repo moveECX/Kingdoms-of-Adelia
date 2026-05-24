@@ -1,0 +1,130 @@
+{{Good}}
+
+You can access alliance information by clicking on the alliance button at the top of the web page while logged into the game.
+
+== Creating a new alliance ==
+
+In the Alliance tab, If you're not already a member of an Alliance, the option to name a new Alliance, along with its abbreviation, will be available. Simply fill in these two pieces of information, click create alliance and you've created your own Alliance.
+
+* Alliances can be renamed once every 2 weeks, starting 2 weeks after the alliance is founded.
+* Alliances cannot have more than 100 members (this includes pending invites).
+
+== Joining an alliance ==
+
+If you want to join an existing alliance, you need to get an invitation. When you receive an invitation, you will get a report to inform you. Once you have received an alliance invitation, the option to accept or reject it will appear under the alliance tab.
+
+If you receive an invitation while already in another alliance, you must leave your current alliance before you can accept the new invitation.
+
+Usually, to get an invitation, you will have to ask someone already in the alliance for one. This can be done in world/continent chat or by PMing someone already in the alliance. Remember that no matter how mighty an alliance is, if there aren't any other members near you then they will be little help in a tight spot.
+
+Clicking on an alliance name, either from a player's information page or from the alliance ranking page, will give you some brief information about the alliance. The leadership members of the alliance are a good place to start if you are looking for an invite.
+
+== Alliance numbers ==
+
+The total number of members allowed in an alliance is set at 100 players. With the maximum number of cities set at 1000 per player, that gives the potential for 100,000 cities per alliance.
+
+= Overview Tab =
+
+== View Profile ==
+
+This shows the alliance's abbreviation, total number of members, the title of its highest ranked member, total points, average points, defeated opponents and alliance description. This page is public in game.
+
+The description is a good place to say if the alliance is taking new members and to give contact information for prospective members.
+
+== Announcement and History ==
+
+Create announcements for the alliance; members can view announcements and see alliance history. They are: Players invited; Players who left; Players kicked; Players whose role was changed; Announcement changes; and Description changes. The page is members only.
+
+=== Leave Alliance ===
+
+There is a Leave Alliance button at the bottom of the Announcement and History page.
+
+== Manage Invitations ==
+
+This page allows you to invite new members, withdraw invitations and view invitations that haven't been accepted yet and how much longer it is until the invitation expires.<br />Note that you're only allowed 100 total members and 20 open invitations at any given time.
+
+== Edit Properties ==
+
+Allows you to change the description of the alliance and to disband the alliance. To see this page you need proper rights.
+
+=== Disband Alliance ===
+
+To disband an alliance, click on the '''Alliance''' tab at the top of the webpage while you are in the game. On the '''Overview''' tab, click on the '''Edit Properties''' button and at the very bottom there should be a '''Disband Alliance''' button.
+
+= Diplomacy Tab =
+
+Allows you to add other alliances to Allied, Non-Aggression Pact, Enemy or No Relationship lists. You can also view which alliances you have added to these lists.
+
+This page is completely informative; it doesn't affect the game in any way.
+
+= Members Tab =
+
+The members tab displays a list of players that are part of the alliance. It also shows current online status of members who have given permission for that. At the bottom you can select whether or not your online status is shown to other members.
+
+== Show Member Rights ==
+
+Shows which alliance ranks are allowed to do what.
+
+{| class="wikitable"
+!Symbol
+!Rights
+|-
+|[[Image:alliance_incoming_all.png|alliance_incoming_all.png]]
+|Reveal all outgoing attacks and Defender TS of incoming attacks
+|-
+|[[Image:alliance_incoming_short.png|alliance_incoming_short.png]]
+|Reveal outoing attacks and Defender TS of incoming attacks one hour before they hit
+|-
+|[[Image:alliance_palace_priorities.png|alliance_palace_priorities.png]]
+|Define palace priorities
+|-
+|[[Image:alliance_share_report.png|alliance_share_report.png]]
+|View shared reports
+|-
+|[[Image:alliance_write_send_newsletter.png|alliance_write_send_newsletter.png]]
+|Write and send newsletters
+|-
+|[[Image:alliance_moderate_forums.png|alliance_moderate_forums.png]]
+|Moderate alliance forum, edit announcements, description and distribution lists
+|-
+|[[Image:alliance_create_delete_forum.png|alliance_create_delete_forum.png]]
+|Rename, create and remove forums
+|-
+|[[Image:alliance_invitations.png|alliance_invitations.png]]
+|Invite to the alliance and withdraw invitations
+|-
+|[[Image:alliance_diplomacy_status.png|alliance_diplomacy_status.png]]
+|Manage diplomatic status
+|-
+|[[Image:alliance_set_groups.png|alliance_set_groups.png]]
+|Promote lower member status (up to your current status)
+|-
+|[[Image:alliance_release_members.png|alliance_release_members.png]]
+|Dismiss alliance members
+|-
+|[[Image:alliance_define_rights.png|alliance_define_rights.png]]
+|Define rights
+|-
+|[[Image:alliance_new_leader.png|alliance_new_leader.png]]
+|Define new alliance leader and second leader and rename the alliance
+|-
+|[[Image:alliance_cancel.png|alliance_cancel.png]]
+|Disband alliance
+|}
+
+[[Image:report_sharing_alliance_member_rights_frame.png|report_sharing_alliance_member_rights_frame.png]]
+
+== Edit Member Status ==
+
+Allows members with the correct rights to dismiss or change rank status of alliance members.
+
+=== Forums F2 ===
+
+Allows you to visit, post, rename, delete and create alliance forums.
+
+=== Attacks F1 ===
+
+Lists attacks against the alliance members (Provided that they have a Defense Minister).
+[[Category:Alliances]]
+[[Category:Content]]
+[[Category:Pages to be moved to the new wiki]]

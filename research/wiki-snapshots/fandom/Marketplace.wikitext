@@ -1,0 +1,41 @@
+[[File:Market_place_256.png|right]]
+The '''Marketplace''' is a building in [[Lord of Ultima]]. It allows transport of resources between cities and enables trade with other players by land. Also increases the tax income of connected buildings.
+
+'''Requirements:''' [[Town Hall]] Level 5
+
+{| class="wikitable" width="100%"
+|-
+! Level
+! [[File:Icon_cart_city_info.png]] Carts
+! [[File:Icons_ressource_gold.png|28px]] Tax Bonus
+! Resource Cost Wood
+! Resource Cost Stone
+! Build Time
+! Rank Points
+|-
+| 1 ||1 || +2% ||40 ||20 ||20 sec ||1
+|-
+| 2 ||4 || +4% ||80 ||40 ||1 min 48 sec ||2
+|-
+| 3 ||10 || +6% ||160 ||80 ||12 min || 5
+|-
+| 4 ||20 || +8% ||400 ||200 ||1 h 30 min ||10
+|-
+| 5 ||30 || +10% ||1200 ||600 ||3 h 22,5 min ||16
+|-
+| 6 ||50 || +12% ||2800 ||1400 ||6 h 45 min ||24
+|-
+| 7 ||70 || +14% ||5600 ||2800 ||12 h 18 min ||34
+|-
+| 8 ||105 || +16% ||9600 ||4800 ||19 h 52,5 min ||46
+|-
+| 9  || 145 || +18% ||15200 ||7600 ||29 h 55,5 min ||60
+|-
+| 10 ||200 || +20% ||23200 ||11600 ||45 h 22,5 min ||80
+|-
+| '''Total''' ||'''200''' || '''+20%''' ||'''58280''' ||'''29140''' ||'''4 d 23 h 20 min''' ||'''80'''
+|}
+
+{{ConSpd}}
+[[Category:Buildings]]
+[[Category:Pages to be moved to the new wiki]]

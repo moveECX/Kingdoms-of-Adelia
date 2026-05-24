@@ -1,0 +1,38 @@
+[[File:Hideout_256.png|right]]The '''Hideout''' is a building in [[Lord of Ultima]]. It allows safe storage of resources, preventing them from being reported by Scouts or plundered. Its capacity can be increased if built beside woods.
+
+'''Requirements:''' [[Town Hall]] Level 2
+
+{| class="wikitable" width="100%"
+|-
+!Level
+!Hidden Storage
+!Resource Cost Wood
+!Resource Cost Stone
+!Build Time
+!Rank Points
+|-
+| 1 || 500 || - || 50 || 15 sec || 1
+|-
+| 2 || 1000 || - || 200 || 36 sec || 2
+|-
+| 3 || 2000 || - || 600 || 4 min || 3
+|-
+| 4 || 3000 || - || 1000 || 30 min || 5
+|-
+| 5 || 4500 || - || 1500 || 1 h 7.5 min || 8
+|-
+| 6 || 6000 || - || 2200 || 2 h 15 min || 12
+|-
+| 7 || 8000 || - || 3500 || 4 h 6 min || 17
+|-
+| 8 || 10000 || - || 4500 || 6 h 37.5 min || 23
+|-
+| 9 || 12000 || - || 6000 || 9 h 58.5 min || 30
+|-
+| 10 || 15000 || - || 8000 || 15 h 7.5 min || 40
+|-
+| Total || 15000 || - || 27550 || 1 d 15 h 47 min || 40
+|}
+
+{{ConSpd}}
+[[Category:Buildings]]

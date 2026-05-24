@@ -1,0 +1,191 @@
+
+== City shapes ==
+
+Visit the [[City shapes]] page to see how cities look on the Regional Map.
+
+== City Location Resource Guide ==
+
+* Every city, regardless of location has a base of 14 nodes of each wood/stone/iron and 2 lakes.
+* The position of the city relative to nearby forests/hills/mountains/plains will affect how many bonus nodes a new city gets.
+* The amount and type of bonus nodes is provided in the table below. Already existing cities are counted as regular Plains.
+
+{| class="wikitable"
+!Terrain!!Adjacent!!Diagonal
+|-
+!Forest
+|8 Wood Nodes||4 Wood Nodes
+|-
+!Hill
+|8 Stone Nodes||4 Stone Nodes
+|-
+!Mountain
+|8 Iron Nodes
+|4 Iron Nodes
+|-
+!Plain
+|1 Lake||1 Lake
+|-
+!Ocean
+|1 Lake||1 Lake
+|}
+
+Example:
+
+{| class="wikitable"
+|Forest||Plain||Mountain
+|-
+|Forest
+!City
+|Plain
+|-
+|Plain||Hill||Plain
+|}
+
+This city will have the following resource nodes:<br />26 Wood (14 base + 12 bonus)<br />22 Stone (14 base + 8 bonus)<br />18 Iron (14 base + 4 bonus)<br />6 Lakes (2 base + 4 bonus)
+
+Other notes:<br />There are some nodes that appear to look like mountains where a river is starting/ending that dont seem to count as a iron node and instead provide 1 lake as if it were an empty/plain. This is a bug in region view only. If you build a city next to such node, correct amount of iron nodes (eight or four) will be added to it for this mountain node instead of a lake.
+
+<br />
+
+== Creating a new city ==
+
+Your first city is free; after that, you need to follow these steps:
+
+=== Step 1 ===
+
+Upgrade Moonglow Tower (for step 2) and Trinsic Temple (for step 3) to level 10. You will also require 2 Markets (for step 4):<br />You will need 250 carts or 25 trade ships; one market at level 10 only provides 200 carts, hence the reason for the requirement of two.
+
+=== Step 2 ===
+
+Research Title Advancement to Earl.<br />1,000 resource = 1 purified resource.<br />Purify 50,000 of Wood, Stone, Iron and Food for 50 of each purified type (Darkwood, Runestone, Veritium and Trueseed). You also need 50,000 Gold. (On worlds started September 8, 2011 or later, the gold requirement is only 40,000.)
+
+=== Step 3 ===
+
+Recruit Baron.<br />50,000 Iron &amp; 100,000 Gold required.<br />Please note it will take quite a few hours for the baron to be recruited.
+
+=== Step 4 ===
+
+Either send Baron to settle a new city, or create order in a lawless city (no difference in cost of resources).
+
+100,000 Wood &amp; Stone, 25,000 Iron &amp; Food and 250 carts or 25 trade ships required. Lawless cities may be some distance from your first city, so you must allow for the travel time.
+
+If someone else builds a city on your chosen spot (or claims a lawless city) while your baron is enroute, your baron will simply return to the originating city, along with all carts and resources, and you can send him again to some other free spot. You will not lose anything but time.
+
+Total amount of resources required from step 2 onwards equal '''150,000 Wood &amp; Stone, 125,000 Iron, 75,000 Food and 150,000 Gold.'''
+
+Please note that the cost for advancing title increases with each advancement.
+
+See [[Getting to 250 carts]] for an analysis of how to quickly get to the minimum requirements.
+
+== Overview ==
+{| class="article-table"
+|-
+! scope="row"| Step
+! scope="col"| Required
+! scope="col"| Wood
+! scope="col"| Stone
+! scope="col"| Iron
+! scope="col"| Food
+! scope="col"| Gold
+|-
+! scope="row"| Title advance [[research]]
+| [[Moonglow Tower]] Level 10
+| 50,000
+| 50,000
+| 50,000
+| 50,000
+| 40,000
+|-
+! scope="row"| Baron recruitment
+| [[Trinsic Temple]] Level 10
+| 0
+| 0
+| 50,000
+| 0
+| 100,000
+|-
+! scope="row"| Settle
+| 250,000 transport capacity
+| 100,000
+| 100,000
+| 25,000
+| 25,000
+| 0
+|-
+! scope="row"| Total
+|
+'''Moonglow Tower L10,'''<br />
+'''Trinsic Temple L10,'''<br />
+'''250,000 transport capacity'''
+| '''150,000'''
+| '''150,000'''
+| '''125,000'''
+| '''75,000'''
+| '''140,000'''
+|}
+
+== Conquering a city ==
+To conquer player-controlled cities, you need a castle. See [http://www.lordofultima.com/en/wiki/view/pvp#sieges PvP section(PvP section)] for more information.
+== Abandoning a city ==
+To abandon a city, select Abandon City from the bottom of the Town Hall menu. If you only own one city, there will not be an option to abandon your city. You can instead restart your account by clicking Options&gt;Account&gt;Restart Game. You will start at a new location with a three-point city. You cannot restart within the first 40 hours of play, and you cannot restart again for seven days.
+
+Abandoning or manually restarting requires an abandon code that will be sent to your registered email for security purposes. The abandon code can be used for multiple cities within the same 24-hour period. When you abandon or restart, you will keep your title.
+
+If all of your cities are destroyed, you will be restarted. There is no need for an abandon code in this case. 
+If you don't play on a particular world at all for 14 days, your game on that world will be deleted. There is no other way to delete a game other than closing your account which will affect all worlds.
+== Lawless cities ==
+When a player becomes inactive, his city will start to decline, and will be open to conquering. If the player was ranked earl or higher, his cities will go lawless 30 days after the last login. For a player ranked baron or lower, the time period is only 15 days. Cities also go lawless immediately once they are abandoned, or if the player chooses to restart.
+
+You can send a baron to settle a lawless city, which costs the same resources as creating a new city , but you get the buildings already built. Non-castled lawless cities do not require an army to be sent with the baron, but castled lawless cities can only be taken by a baron and army sent from a castled city.
+<br />If a baron arrives at a lawless city that was settled after he left his home city, but before arriving at the lawless city, he will return to his home city with the 250k resources. If this happens, be prepared to have sufficient storage capacity available, or you will lose excess resources. If you abandon a city anytime after settling it, you will lose the resources and baron.
+
+Lawless cities decay 1 level of building per hour, starting with the highest level buildings. Often, the town hall in a lawless city will have lost a few levels, which will require the new owner to upgrade the town hall to be able to build any new buildings.
+
+Once a lawless city decays down to only 3 points, it turns into ruins. Ruins cannot be settled, and only last a few hours before disappearing completely. Lawless cities and ruins can be identified on the map by their gray color. 
+Once city is abandoned, there's a time period before the lawless city can be settled. The time period depends on a title of city's last owner and is random in specific range. The table below describes the time period.
+<br /><br />
+{| class="article-table"
+|-
+! scope="row"| Title
+! scope="col"| Wait time
+|-
+! scope="row"| Baron
+| Between 8 and 16 hours
+|-
+! scope="row"| Earl
+| Between 4 and 8 hours
+|-
+! scope="row"| Marquess
+| Between 2 and 4 hours
+|-
+! scope="row"| Prince
+| Between 1 and 2 hours
+|-
+! scope="row"| Duke
+| Between 30 minutes and 1 hour
+|-
+! scope="row"| King
+| Immediate
+|-
+! scope="row"| Emperor
+| Immediate
+|}
+==<span style="font-size:24px;">Founding cities overseas</span>==
+There are cases when players want to migrate to different continents. For example, if a lot of alliance members are living all around the map, coordinating activities is very challenging. Thus, many advanced alliances require migration to a primary continent.
+
+Cities can be built on other continents. In order to do that, one needs to have 25 merchant ships . There is a significant gold bonus for completing the quest of settling multiple continents.
+
+Travel time between continents is long. For example, between continent 55 and 42, travel time is more than 24 hours for one direction. Thus, it will take 48 hours to get ships there and back to the originating city.
+<br />A city does not need a Harbour or Marketplace to receive resources sent by Merchant ship, nor does it need to be on the coast. It does need to have a river along its side.
+
+If you send a baron to settle a tile and a new player is placed there before your settlers arrive, he will be sent back to the city of origin with the 250k resources that were sent with him.
+
+Empty continents cannot be settled by existing players until the server opens the continent for new player settlement.
+
+==City layout tips==
+[[Basic first city layout]]<br />
+[[Buildings]]<br />
+[[Resources|Natural resources]]
+[[Category:City]]
+[[Category:Gameplay]]
+[[Category:Pages to be moved to the new wiki]]

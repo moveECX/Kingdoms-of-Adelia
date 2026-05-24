@@ -1,0 +1,327 @@
+{{Tocright}}
+
+= Building Level =
+
+== Rank Points ==
+
+First of all, Rank Points may be misleading. Rank Points add to your City Score, not your Rank. Your Rank is based on your position in your World, which is in turn based on your City Score. Do not expect Rank Points to change your ranking by their quoted numbers!
+
+The Rank Points for each building show their cumulative total and '''not''' their points for that particular level. For example, a level 10 Town Hall pays 75 Rank Points to bring its total to 300 (not 300 points above level 9). To find Rank Points earned for a particular level, subtract the current level from the next level's points.
+
+Example: Town Hall level 10 = 300 RP, Town Hall level 9 = 225RP, therefore you will gain 75RP for leveling your Town Hall from 9 to 10.
+
+== Upgrading ==
+
+{{Stub}}
+
+== Downgrading ==
+
+You can reduce a building’s level by one by selecting it and then clicking the button at the bottom of the building information panel labelled “Downgrade to level N-1”, where N is the building’s current level.
+
+The “Demolish” button will completely remove the building. For a level one building the “Downgrade…” button is replaced by a “Destroy this building” button (in addition to the Demolish button [why have both?]).
+
+Downgrading takes half the time and refunds half of the resources of the corresponding upgrade. For example, upgrading a level two Shipyard costs 200w, 400s and takes 24 minutes. Downgrading a level three Shipyard will repay 100w, 200s and take 12 minutes.
+{| class="article-table"
+|-
+! scope="col"|Action
+! scope="col"|Resource Cost Wood
+! scope="col"|Resource Cost Stone
+! scope="col"|Execution Time
+|-
+|Upgrade of lvl 2 Shipyard
+|200
+|400
+|24 minutes
+|-
+|—
+|Wood acquired
+|Stone acquired
+|—
+|-
+|Downgrade of lvl 3 Shipyard
+|100
+|200
+|12 minutes
+|}
+{{Clr}}
+
+= List of Buildings =
+
+== Town Hall ==
+
+[[File:Townhall_256.png|left|128px]]
+Provides basic storage and wood production. Also determines the maximum number of buildings in a city. Only one can be built in each city. Cannot be totally demolished or destroyed.
+{{Main|Town Hall}}
+
+== Woodcutter's Hut ==
+
+[[File:Woodcutter_256.png|left|128px]]
+Produces wood. Any bordering woods, Cottages and a maximum of one Sawmill will increase productivity. There was an interim time when production was 16, 32, 50, 70, 90, 115, 145, 170, 205 and 250.
+{{Main|Woodcutter's Hut}}
+
+== Cottage ==
+
+[[File:Cottage.png|left|128px]]
+Increases the construction speed of all build orders in a city. Also increases productivity of bordering resource buildings.
+
+'''Requires:''' [[Town Hall]] Level 1
+{{Main|Cottage}}
+
+== Warehouse ==
+
+[[File:Storage_256.png|left|128px]]
+Increases the storage capacity for all resources. Enhanced by any bordering Sawmill, Stonemason, Mill or Foundry.
+
+'''Requires:''' [[Town Hall]] Level 1
+{{Main|Warehouse}}
+
+== Quarry ==
+
+[[File:Quarry_256.png|left|128px]]
+Produces Stone. Productivity can be increased by bordering Rocks, Cottages and a maximum of one Stonemason. There was an interim time when production was 16, 32, 50, 70, 90, 115, 145, 170, 205 and 250.
+
+'''Requires:''' [[Town Hall]] Level 2
+{{Main|Quarry}}
+
+== Hideout ==
+
+[[File:Hideout_256.png|left|128px]]
+Allows safe storage of resources, preventing them from being reported by Scouts or plundered. Its capacity can be increased if built beside woods.
+
+'''Requires:''' [[Town Hall]] Level 2
+{{Main|Hideout}}
+
+== Farm ==
+
+[[File:Farm_new.png|left|128px]]
+Produces food. Any bordering grassland, lakes, Cottages and Mills will increase productivity.
+
+'''Requires:''' [[Town Hall]] Level 3
+{{Main|Farm }}
+
+== Iron Mine ==
+
+[[File:Ore_mine_new.png|left|128px]]
+Produces iron. Any bordering ore deposits, Cottages and a maximum of one Foundry will increase productivity. There was an interim time when production was 16, 32, 50, 70, 90, 115, 145, 170, 205 and 250.
+
+'''Requires:''' [[Town Hall]] Level 4
+{{Main|Iron Mine}}
+
+== Townhouse ==
+
+[[File:Townhouse_256.png|left|128px]]
+Enables taxation. Income from tax can be increased by connecting Marketplaces and Harbors.
+
+'''Requires:''' [[Town Hall]] Level 5
+{{Main|Townhouse}}
+
+== Marketplace ==
+
+[[File:building_market_place.png|left|128px]]
+Allows transport of resources between cities and enables trade with other players by land. Also increases the tax income of connected buildings.
+
+'''Requires:''' [[Town Hall]] Level 5
+{{Main|Marketplace}}
+
+== Harbor ==
+
+[[Image:building_harbour.png|left|128px]]
+Allows for the transport of resources between cities and enables you to trade with other players by sea. Also increases the tax income of connected Townhouses.
+
+'''Requires:''' [[Town Hall]] Level 10
+{{Main|Harbor}}
+
+== Sawmill ==
+
+[[File:Lumber_mill.png|left|128px]]
+Increases the efficiency of bordering Woodcutter's Huts and wood storage capacity of any bordering Storage.
+
+'''Requires:''' [[Town Hall]] Level 6
+{{Main|Sawmill}}
+
+== Stonemason ==
+
+[[Image:stonecutter_256.png|left|128px]]
+Increases the efficiency of bordering Quarries and stone storage capacity of any bordering Storage.
+
+'''Requires:''' [[Town Hall]] Level 7
+{{Main|Stonemason}}
+
+== Mill ==
+
+[[Image:building_mill.png|left|128px]]
+Increases the efficiency of bordering Farms and food storage capacity of any bordering Storage.
+
+'''Requires:''' [[Town Hall]] Level 8
+{{Main|Mill}}
+
+== Foundry ==
+
+[[File:Iron_furnace_256.png|left|128px]]
+Increases the efficiency of bordering Ore Mines and iron storage capacity of bordering Storage.
+
+'''Requires:''' [[Town Hall]] Level 9
+{{Main|Foundry}}
+
+== City Wall ==
+
+[[Image:wall_t.png|left|128px]]
+Increases the defense of all units, except naval units, against all attacks. Cannot be totally demolished or destroyed.
+
+'''Requires:''' [[Town Hall]] Level 2
+{{Main|City Wall}}
+
+== City Guard House ==
+
+[[Image:building_cityguard_house.png|left|128px]]
+Allows recruitment of City Guards and, if upgraded, increases their recruitment speed. Placing a Barracks beside a City Guard House will NOT increase recruitment speed.
+
+'''Requires:''' [[Town Hall]] Level 3
+{{Main|City Guard House}}
+
+== Lookout Tower ==
+
+[[Image:wall_tower_lookout.png|left|128px]]
+Enables incoming attacks to be seen sooner. (Time without Lookout Tower: 1 Hour). Increases the Defensive Value of a limited amount of Scouts by 100%. If there are not enough Scouts in the city, 2 city guards can take each slot and gain the same bonus. Lookout Towers don't count towards a city's building number limit.
+
+'''Requires:''' [[Town Hall]] Level 2
+{{Main|Lookout Tower}}
+
+== Ranger Tower ==
+
+[[Image:wall_tower_ranger.png|left|128px]]
+Increases the Defensive Value of a limited number of Rangers by 100%. If there are not enough Rangers in the city, City Guards can take their place and gain the same bonus. These towers don't count towards a city's building number limit.
+
+'''Requires:''' [[Town Hall]] Level 3
+{{Main|Ranger Tower}}
+
+== Guardian Tower ==
+
+[[File:Wall_tower_guardians.png|left]]
+Increases the Defensive Value of a limited number of Guardians by 100%. If there are not enough Guardians in the city, City Guards can take their place and gain the same bonus. These towers don't count towards a city's building number limit.
+
+'''Requires:''' [[Town Hall]] Level 5
+{{Main|Guardian Tower}}
+
+== Barracks ==
+
+[[File:Barracks.png|left|128px]]
+Increases the maximum army size of a city. Also increases the recruitment speed of all bordering Training Grounds, Stables, Moonglow Towers, Trinsic Temples, Workshops and Shipyards.
+
+'''Requires:''' [[Town Hall]] Level 4
+{{Main|Barracks}}
+
+== Training Ground ==
+
+[[File:Casern.png|left|128px]]
+Allows recruitment of infantry units and, if upgraded, increases their recruitment speed. Placing a Barracks beside a Training Ground will also increase recruitment speed.
+
+'''Requires:''' [[Town Hall]] Level 4
+{{Main|Training Ground}}
+
+==Pitfall Trap==
+
+[[File:Wall_tower_fallgrube.png|left|128px]]
+Pitfall Traps neutralize the troop strength of a limited number of enemy infantry units. Neutralized attackers will not deal damage to defenders. A maximum of 50% of infantry attackers will be affected. Pitfall Traps can only be built on the outer ring of the City Wall, and don’t count towards a city’s building number limit.
+
+'''Requires:''' [[Town Hall]] Level 5
+{{Main|Pitfall Trap}}
+
+==Stable==
+
+[[File:Building_stables.png|left|128px]]
+Allows recruitment of cavalry units and, if upgraded, increases their recruitment speed. Placing a Barracks beside a Stable will also increase recruitment speed.
+
+'''Requires:''' [[Town Hall]] Level 6
+{{Main|Stable}}
+
+==Guardian Tower==
+
+[[File:Wall_tower_guardians.png|left|128px]]
+Increases the Defensive Value of a limited number of Guardians by 100%. If there are not enough Guardians in the city, City Guards can take their place and gain the same bonus. These towers don’t count towards a city’s building number limit.
+
+'''Requires:''' [[Town Hall]] Level 6
+{{Main|Guardian Tower}}
+
+==Moonglow Tower==
+
+[[File:Mage_tower_repaint_256.png|left|128px]]
+Allows recruitment of caster units ([[Mage]]s, [[Warlock]]s) and, if upgraded, increases their recruitment speed. Also enables purification of resources for research, vital when recruiting Barons. Placing a Barracks beside a Moonglow Tower will also increase recruitment speed.
+
+'''Requires:''' [[Town Hall]] Level 7
+{{Main|Moonglow Tower}}
+
+==Barricade==
+
+[[File:Wall_tower_barrikade.png|left|128px]]
+Barricades neutralize the troop strength of a limited number of enemy cavalry units. Neutralized attackers will not deal damage to defenders. A maximum of 50% of cavalry attackers will be affected. Barricades can only be built on the outer ring of the City Wall, and don’t count towards a city’s building number limit.
+
+'''Requires:''' [[Town Hall]] Level 7
+{{Main|Barricade}}
+
+==Castle==
+
+[[File:Building_stronghold.png|left|128px]]
+Construction of the Castle allows a lord to plunder cities (castled or not) and assault or siege castled cities. Each level of the Castle increases your maximum army size and expands your command queue by one. Only one Castle can be built in each city. Cannot be totally demolished or destroyed. Once built a Castle cannot be removed. Every 4th [[Title]] starting with Marquess is available free with an extra castle. Note: Building a Castle allows the castled city to be assaulted, sieged and/or captured.
+
+'''Requires:''' [[Town Hall]] Level 8
+{{Main|Castle}}
+
+==Trinsic Temple==
+
+[[File:Temple.png|left|128px]]
+Allows recruitment of blessed units and Barons and, if upgraded, increases their recruitment speed. Placing a Barracks beside a Trinsic Temple will also increase recruitment speed.
+
+'''Requires:''' [[Town Hall]] Level 8
+{{Main|Trinsic Temple}}
+
+
+==Templar Tower==
+
+[[File:Templar_tower.png|left|128px]]
+Increases the Defensive Value of a limited number of Templars by 100%. If there are not enough Templars in the city, City Guards can take their place and gain the same bonus. These towers don’t count towards a city’s building number limit.
+
+'''Requires:''' [[Town Hall]] Level 8
+{{Main|Templar Tower}}
+
+==Arcane Trap==
+
+[[File:Wall_tower_antimagie.png|left|128px]]
+Arcane Traps neutralize the troop strength of a limited number of enemy magic user units. Neutralized attackers will not deal damage to defenders. A maximum of 50% of magic using attackers will be affected. Arcane Traps can only be built on the outer ring of the City Wall, and don’t count towards a city’s building number limit.
+
+'''Requires:''' [[Town Hall]] Level 8
+{{Main|Arcane Trap}}
+
+==Ballista Tower==
+
+[[File:Wall_tower_cannon.png|left|128px]]
+Increases the Defensive Value of a limited number of Ballistae by 100%. If there are not enough Ballistae in the city, 10 City Guards can take each allotted slot and gain the same bonus. These towers don’t count towards a city’s building number limit.
+
+'''Requires:''' [[Town Hall]] Level 9
+{{Main|Ballista Tower}}
+
+==Workshop==
+
+[[File:Weapon_factory_256.png|left|128px]]
+Allows construction of siege engines and, if upgraded, increases their construction speed. Placing a Barracks beside a Workshop will also increase recruitment speed.
+
+'''Requires:''' [[Town Hall]] Level 9
+{{Main|Workshop}}
+
+==Shipyard==
+
+[[File:Shipyard_256.png|left|128px]]
+Enables recruitment of naval units and, if upgraded, increases their recruitment speed. Placing a Barracks nearby further increases recruitment speed.
+
+'''Requires:''' [[Town Hall]] Level 10
+{{Main|Shipyard}}
+
+==Camouflage Trap==
+
+[[File:Wall_tower_nebel.png|left|128px]]
+Camouflage Trap neutralize the troop strength of a limited number of enemy artillery units. Neutralized attackers will not deal damage to defenders, fortifications and buildings. A maximum of 50% of artillery units will be affected. Camouflage Traps can only be built on the outer ring of the City Wall, and don’t count towards a city’s building number limit.
+
+'''Requires:''' [[Town Hall]] Level 10
+{{Main|Camouflage Trap}}
+[[Category:Buildings]]
+[[Category:Gameplay]]

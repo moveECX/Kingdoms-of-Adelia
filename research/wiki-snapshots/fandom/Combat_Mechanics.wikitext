@@ -1,0 +1,22 @@
+{{Cleanup}}
+= Combat Basics =
+
+Two basic numbers determine the result of a battle: the '''attack power''' and the '''defense power'''.
+
+The easiest to compute is the '''attack power''': it is just the attack value of each type of attacking troop multiplied by their quantity. A 1000 berserkers have an attack power '''a_1''' of 50 * 1000 = 50,000, while a 1000 knights have an attack power '''a_2''' of 90,000. Together their power is '''a_tot''' = 140,000.
+
+The attention of the defending troops is evenly split among the attacking troops according to their attack power. So if 1,400 rangers are defending against the attack above, 500 will be defending themselves against the berserkers (a_1/a_tot of all rangers), while 900 against the knights (a_2/a_tot). The same happens if we add 1,400 guardians.
+
+The '''defense power''' against the berserkers will be the defense value of each type of unit times the number of units focused on the knights, i.e. a value '''d_1''' of 500 * 40 (rangers) + 500 * 30 (guardians) = 35,000. Same for the knights: '''d_2''' = 54,000. The '''total defense power''' is therefore '''d_tot''' = 89,000.
+
+The attacker '''wins''' if the attack power is greater than the defense power, he '''loses''' if the opposite event occurs.
+
+What about the number of kills? The defenders get the same percentage of losses for every troop: '''a_tot/d_tot''' if they win, the square root of this ratio if they lose. The resulting ratio must be multiplied by the '''battle intensity''' (cf. note). In our example the defenders lose: if we are talking abount an '''assault''' they lose .5 * sqrt(140/89) = 62.71 of their troops.
+
+The losses among the attackers depend on the troop type. In our case (only one troop per category) the losses are as follow: the berserkers lose *d_1/a_1* of their troops if they win, its square root if they lose and we take always into account the battle intensity. So the death rate among berserkers is .5 * 35/50 = 35, among the knights .5 * 54/90 = 30.
+
+*Note:* The *battle intensity* is 50 for '''assault''', '''scout''' or '''boss''', 10 for the attacker if the boss dies, 1 for the defender of a plunder, 10% for the rest.
+
+Numbers after the decimal point mean chance of an additional death.
+[[Category:Gameplay]]
+[[Category:Combat]]

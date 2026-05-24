@@ -1,0 +1,42 @@
+[[File:Harbour_256.png|right|256px]]
+The '''Harbor''' is a building in [[Lord of Ultima]]. It allows for the transport of resources between cities and enables you to trade with other players by sea. Also increases the tax income of connected [[Townhouse]]s.
+
+'''Requirements:''' [[Town Hall]] Level 10
+
+{| class="wikitable" width="100%"
+|-
+! Level
+! [[File:Icon_ship_city_info.png]]<br />Merchant Ships
+! [[File:Icons_ressource_gold.png|28px]]<br />Tax Bonus
+! Resource Cost Wood
+! Resource Cost Stone
+! Build Time
+! Rank Points
+|-
+| 1 ||1 || +5% ||80 ||40 ||22 sec ||1
+|-
+| 2 ||2 || +10% ||160 ||80 ||2 min 24 sec ||3
+|-
+| 3 ||4 || +15% ||320 ||160 ||16 min ||6
+|-
+| 4 ||6 || +20% ||800 ||400 ||2 h ||12
+|-
+| 5 ||9 || +25% ||2400 ||1200  ||4 h 30 min ||20
+|-
+| 6 ||12  || +30% ||5600 ||2800 ||9 h ||30
+|-
+| 7 ||15 || +35% ||11200 ||5600 ||16 h 24 min ||42
+|-
+| 8 ||19 || +40% ||19200 ||9600 ||1 d 2 h 30 min ||57
+|-
+| 9 ||24 || +45% ||30400 ||15200 ||1 d 15 h 54 min ||75
+|-
+| 10 ||30 || +50% ||46400 ||23200 ||2 d 12 h 30 min ||100
+|-
+| Total ||30 || +50% ||116560 ||58280 ||6 d 15 h 7 min ||100
+|}
+
+{{ConSpd}}
+[[de:Hafen]]
+[[Category:Buildings]]
+[[Category:Pages to be moved to the new wiki]]

@@ -1,0 +1,700 @@
+{{DISPLAYTITLE:''Lord of Ultima'' monster data}}
+The following '''''[[Lord of Ultima]]'' monster data''' is taken from the [[The Great Libraries of Caledonia]]<ref>{{RefWeb
+| author=Phenomic
+| moreAuthors=
+| webSite=The Great Libraries of Caledonia
+| accessDate=December 2012
+}}</ref>:
+
+===Units===
+Player units are used for attacking and defending cities
+{|style="margin:0.25em; border:1px solid silver;" cellpadding="5" cellspacing="0" rules="all"
+|- style="background-color:lightblue;"
+| align="center" | '''Unit'''
+| align="center" | '''Picture'''
+| align="center" | '''Type'''
+| align="center" | '''Attack'''
+| align="center" | '''Defense'''
+| align="center" | '''Loot'''
+| align="center" | '''Speed'''
+| align="center" | '''Notes'''
+|-
+| align="center" | City Guard
+| align="center" | [[Image: Lou_units_cityguard.png]]
+| align="center" | Infantry
+| align="center" | 10
+| align="center" | 10
+| align="center" | n/a
+| align="center" | n/a
+| align="center" | Requires City Guard House Level 1, cannot attack<br>Build Cost: 100 wood; Upkeep: 2 food, 0 troop slots
+|-
+| align="center" | Berserker
+| align="center" | [[Image: Lou_units_berserker.png]]
+| align="center" | Infantry
+| align="center" | 50
+| align="center" | 15 vs Infantry<br>12 vs Cavalry<br>10 vs Magic<br>15 vs Artillery
+| align="center" | 10 resources
+| align="center" | 20 minutes/field
+| align="center" | Requires Training Ground Level 1<br>Build Cost: 150 iron; Upkeep: 6 food, 1 troop slot
+|-
+| align="center" | Ranger
+| align="center" | [[Image: Lou_units_ranger.png]]
+| align="center" | Infantry
+| align="center" | 30
+| align="center" | 40 vs Infantry<br>10 vs Cavalry<br>25 vs Magic<br>15 vs Artillery
+| align="center" | 10 resources
+| align="center" | 20 minutes/field
+| align="center" | Requires Training Ground Level 4<br>Build Cost: 160 wood; Upkeep: 3 food, 1 troop slot
+|-
+| align="center" | Guardian
+| align="center" | [[Image: Lou_units_guardian.png]]
+| align="center" | Infantry
+| align="center" | 10
+| align="center" | 30 vs Infantry<br>50 vs Cavalry<br>20 vs Magic<br>15 vs Artillery
+| align="center" | 10 resources
+| align="center" | 20 minutes/field
+| align="center" | Requires Training Ground Level 10<br>Build Cost: 140 iron, 40 gold; Upkeep: 3 food, 1 troop slot
+|-
+| align="center" | Scout
+| align="center" | [[Image: Lou_units_scout.png]]
+| align="center" | Cavalry
+| align="center" | 10
+| align="center" | 10
+| align="center" | n/a
+| align="center" | 8 minutes/field
+| align="center" | Requires Stable Level 1, provides scouting reports<br>Build Cost: 40 iron, 120 gold; Upkeep: 5 food, 2 troop slots
+|-
+| align="center" | Crossbowman
+| align="center" | [[Image: Lou_units_crossbow.png]]
+| align="center" | Cavalry
+| align="center" | 40
+| align="center" | 40 vs Infantry<br>90 vs Cavalry<br>30 vs Magic<br>40 vs Artillery
+| align="center" | 15 resources
+| align="center" | 10 minutes/field
+| align="center" | Requires Stable Level 5<br>Build Cost: 150 wood, 200 gold; Upkeep: 10 food, 2 troop slots
+|-
+| align="center" | Knight
+| align="center" | [[Image: Lou_units_knight.png]]
+| align="center" | Cavalry
+| align="center" | 90
+| align="center" | 40 vs Infantry<br>30 vs Cavalry<br>20 vs Magic<br>40 vs Artillery
+| align="center" | 15 resources
+| align="center" | 10 minutes/field
+| align="center" | Requires Stable Level 10<br>Build Cost: 250 iron, 100 gold; Upkeep: 25 food, 2 troop slots
+|-
+| align="center" | Mage
+| align="center" | [[Image: Lou_units_mage.png]]
+| align="center" | Caster Infantry
+| align="center" | 70
+| align="center" | 15 vs Infantry<br>10 vs Cavalry<br>30 vs Magic<br>15 vs Artillery
+| align="center" | 5 resources
+| align="center" | 20 minutes/field
+| align="center" | Requires Moonglow Tower Level 1<br>Build Cost: 50 iron, 150 gold; Upkeep: 5 food, 1 troop slot
+|-
+| align="center" | Warlock
+| align="center" | [[Image: Lou_units_warlock.png]]
+| align="center" | Caster Cavalry
+| align="center" | 120
+| align="center" | 30 vs Infantry<br>20 vs Cavalry<br>50 vs Magic<br>40 vs Artillery
+| align="center" | 10 resources
+| align="center" | 10 minutes/field
+| align="center" | Requires Moonglow Tower Level 7<br>Build Cost: 100 iron, 350 gold; Upkeep: 20 food, 2 troop slots
+|-
+| align="center" | Templar
+| align="center" | [[Image: Lou_units_templar.png]]
+| align="center" | Blessed Infantry
+| align="center" | 25
+| align="center" | 20 vs Infantry<br>30 vs Cavalry<br>50 vs Magic<br>15 vs Artillery
+| align="center" | 10 resources
+| align="center" | 20 minutes/field
+| align="center" | Requies Trinsic Temple Level 1<br>Build Cost: 90 iron, 100 gold; Upkeep: 3 food, 1 troop slot
+|-
+| align="center" | Paladin
+| align="center" | [[Image: Lou_units_paladin.png]]
+| align="center" | Blessed Cavalry
+| align="center" | 60
+| align="center" | 50 vs Infantry<br>20 vs Cavalry<br>90 vs Magic<br>40 vs Artillery
+| align="center" | 20 resources
+| align="center" | 10 minutes/field
+| align="center" | Requires Trinsic Temple Level 6<br>Build Cost: 200 iron, 160 gold; Upkeep: 15 food, 2 troop slots
+|-
+| align="center" | Baron
+| align="center" | [[Image: Lou_units_baron.png]]
+| align="center" | Blessed Infantry
+| align="center" | 10
+| align="center" | 100 vs Infantry<br>50 vs Cavalry<br>20 vs Magic<br>10 vs Artillery
+| align="center" | n/a
+| align="center" | 40 minutes/field
+| align="center" | Requires Trinsic Template Level 10<br>Build Cost: 50000 iron, 100000 gold; Upkeep: 100 food, 1 troop slot
+|-
+| align="center" | Dragon<ref>{{RefWeb
+| author=Cigamit
+| moreAuthors=
+| webSite=The Lord of Ultima Forums
+| webLink=http://forum.lordofultima.com/showthread.php?2246-Mighty-Creatures
+| accessDate=March 2013
+}}</ref>
+| align="center" | [[Image: Lou_units_drake.png]]
+| align="center" | Special Infantry
+| align="center" | 700000<br>50000 vs Buildings
+| align="center" | 175000 vs Infantry<br>135000 vs Cavalry<br>160000 vs Magic<br>90000 vs Artillery
+| align="center" | n/a
+| align="center" | 8 minutes/field
+| align="center" | Requires Dragons Lair Level 1<br>Upkeep: 75000 food, 10000 troop slots
+|-
+| align="center" | Ram
+| align="center" | [[Image: Lou_units_ram.png]]
+| align="center" | Artillery
+| align="center" | 50<br>250 vs Defensive Structures
+| align="center" | 20 vs Infantry<br>20 vs Cavalry<br>20 vs Magic<br>50 vs Artillery
+| align="center" | n/a
+| align="center" | 30 minutes/field
+| align="center" | Requires Workshop Level 1<br>Build Cost: 500 wood, 300 iron; Upkeep: 50 food, 10 troop slots
+|-
+| align="center" | Ballista
+| align="center" | [[Image: Lou_units_ballista.png]]
+| align="center" | Artillery
+| align="center" | 50
+| align="center" | 200 vs Infantry<br>100 vs Cavalry<br>200 vs Magic<br>400 vs Artillery
+| align="center" | n/a
+| align="center" | 30 minutes/field
+| align="center" | Requires Workshop Level 6<br>Build Cost: 400 wood, 600 iron; Upkeep: 25 food, 10 troop slots
+|-
+| align="center" | Catapult
+| align="center" | [[Image: Lou_units_catapult.png]]
+| align="center" | Artillery
+| align="center" | 150<br>250 vs Buildings
+| align="center" | 100 vs Infantry<br>100 vs Cavalry<br>200 vs Magic<br>50 vs Artillery
+| align="center" | n/a
+| align="center" | 30 minutes/field
+| align="center" | Requires Workshop Level 10<br>Build Cost: 300 wood, 200 iron, 600 stone; Upkeep: 50 food, 10 troop slots
+|-
+| align="center" | Sloop
+| align="center" | [[Image: Lou_units_barge.png]]
+| align="center" | Ship
+| align="center" | 1200
+| align="center" | 4500 vs Infantry<br>4500 vs Cavalry<br>2000 vs Magic<br>6000 vs Artillery
+| align="center" | 1500 resources
+| align="center" | 5 minutes/field
+| align="center" | Requires Shipyard Level 1<br>Build Cost: 6000 wood, 4000 iron, 2000 gold; Upkeep: 300 food, 100 troop slots
+|-
+| align="center" | Frigate
+| align="center" | [[Image: Lou_units_frigate.png]]
+| align="center" | Ship
+| align="center" | 3000
+| align="center" | 4000 vs Infantry<br>4000 vs Cavalry<br>2000 vs Magic<br>2000 vs Artillery
+| align="center" | 1000 resources<br>500 units
+| align="center" | 5 minutes/field
+| align="center" | Requires Shipyard Level 6<br>Build Cost: 15000 wood, 5000 iron, 5000 gold; Upkeep: 500 food, 100 troop slots
+|-
+| align="center" | War Galleon
+| align="center" | [[Image: Lou_units_wargalleon.png]]
+| align="center" | Ship
+| align="center" | 12000<br>4000 vs Defensive Structures<br>4000 vs Buildings
+| align="center" | 5000 vs Infantry<br>5000 vs Cavalry<br>2500 vs Magic<br>6000 vs Artillery
+| align="center" | 3000 resources
+| align="center" | 5 minutes/field
+| align="center" | Shipyard Level 10<br>Build Cost: 30000 wood, 10000 iron, 20000 gold; Upkeep: 2500 food, 400 troop slots
+|}
+
+===Monsters===
+NPC monsters can be found in dungeons
+{|style="margin:0.25em; border:1px solid silver;" cellpadding="5" cellspacing="0" rules="all"
+|- style="background-color:lightblue;"
+| align="center" | '''Monster'''
+| align="center" | '''Picture'''
+| align="center" | '''Dungeon Type'''
+| align="center" | '''Attack'''
+| align="center" | '''Defense'''
+| align="center" | '''Loot'''
+| align="center" | '''Speed'''
+| align="center" | '''Notes'''
+|-
+| align="center" | Skeleton
+| align="center" | [[Image: Lou_npc_skeleton.png]]
+| align="center" | Hill
+| align="center" | 50
+| align="center" | 16 vs Infantry<br>16 vs Cavalry<br>10 vs Magic<br>16 vs Artillery
+| align="center" | 25 resources
+| align="center" | 10 minutes/field
+| align="center" | 
+|-
+| align="center" | Ghoul
+| align="center" | [[Image: Lou_npc_ghoul.png]]
+| align="center" | Hill
+| align="center" | 75
+| align="center" | 30 vs Infantry<br>30 vs Cavalry<br>15 vs Magic<br>30 vs Artillery
+| align="center" | 33 resources
+| align="center" | 10 minutes/field
+| align="center" | 
+|-
+| align="center" | Gargoyle
+| align="center" | [[Image: Lou_npc_gargoyle.png]]
+| align="center" | Hill
+| align="center" | 200
+| align="center" | 80 vs Infantry<br>80 vs Cavalry<br>40 vs Magic<br>80 vs Artillery
+| align="center" | 135 resources
+| align="center" | 20 minutes/field
+| align="center" | Counts as 4 units
+|-
+| align="center" | Daemon
+| align="center" | [[Image: Lou_npc_daemon.png]]
+| align="center" | Hill
+| align="center" | 500
+| align="center" | 200 vs Infantry<br>200 vs Cavalry<br>100 vs Magic<br>200 vs Artillery
+| align="center" | 340 resources
+| align="center" | 20 minutes/field
+| align="center" | Counts as 10 units
+|-
+| align="center" | Orc
+| align="center" | [[Image: Lou_npc_orc.png]]
+| align="center" | Mountain
+| align="center" | 60
+| align="center" | 12 vs Infantry<br>22 vs Cavalry<br>22 vs Magic<br>22 vs Artillery
+| align="center" | 30 resources
+| align="center" | 10 minutes/field
+| align="center" | 
+|-
+| align="center" | Troglodyte
+| align="center" | [[Image: Lou_npc_troglodyte.png]]
+| align="center" | Mountain
+| align="center" | 90
+| align="center" | 16 vs Infantry<br>33 vs Cavalry<br>33 vs Magic<br>33 vs Artillery
+| align="center" | 40 resources
+| align="center" | 10 minutes/field
+| align="center" | 
+|-
+| align="center" | Ettin
+| align="center" | [[Image: Lou_npc_etin.png]]
+| align="center" | Mountain
+| align="center" | 180
+| align="center" | 37 vs Infantry<br>75 vs Cavalry<br>75 vs Magic<br>75 vs Artillery
+| align="center" | 120 resources
+| align="center" | 20 minutes/field
+| align="center" | Counts as 3 units
+|-
+| align="center" | Minotaur
+| align="center" | [[Image: Lou_npc_minotaur.png]]
+| align="center" | Mountain
+| align="center" | 400
+| align="center" | 75 vs Infantry<br>150 vs Cavalry<br>150 vs Magic<br>150 vs Artillery
+| align="center" | 250 resources
+| align="center" | 20 minutes/field
+| align="center" | Counts as 6 units
+|-
+| align="center" | Giant Spider
+| align="center" | [[Image: Lou_npc_spider.png]]
+| align="center" | Forest
+| align="center" | 55
+| align="center" | 16 vs Infantry<br>6 vs Cavalry<br>16 vs Magic<br>16 vs Artillery
+| align="center" | 25 resources
+| align="center" | 10 minutes/field
+| align="center" | 
+|-
+| align="center" | Thief
+| align="center" | [[Image: Lou_npc_thief.png]]
+| align="center" | Forest
+| align="center" | 80
+| align="center" | 28 vs Infantry<br>14 vs Cavalry<br>28 vs Magic<br>28 vs Artillery
+| align="center" | 33 resources
+| align="center" | 10 minutes/field
+| align="center" | 
+|-
+| align="center" | Centaur
+| align="center" | [[Image: Lou_npc_centaur.png]]
+| align="center" | Forest
+| align="center" | 110
+| align="center" | 40 vs Infantry<br>20 vs Cavalry<br>40 vs Magic<br>40 vs Artillery
+| align="center" | 70 resources
+| align="center" | 20 minutes/field
+| align="center" | Counts as 2 units
+|-
+| align="center" | Troll
+| align="center" | [[Image: Lou_npc_troll.png]]
+| align="center" | Forest
+| align="center" | 450
+| align="center" | 160 vs Infantry<br>80 vs Cavalry<br>160 vs Magic<br>160 vs Artillery
+| align="center" | 290 resources
+| align="center" | 20 minutes/field
+| align="center" | Counts as 8 units
+|-
+| align="center" | Pirate Dhow
+| align="center" | [[Image: Lou_npc_pirates_dhow.png]]
+| align="center" | Sea
+| align="center" | 150
+| align="center" | 60 vs Infantry<br>60 vs Cavalry<br>60 vs Magic<br>30 vs Artillery
+| align="center" | 75 resources
+| align="center" | 20 minutes/field
+| align="center" | Counts as 3 units
+|-
+| align="center" | Pirate Sloop
+| align="center" | [[Image: Lou_npc_pirates.png]]
+| align="center" | Sea
+| align="center" | 500
+| align="center" | 200 vs Infantry<br>200 vs Cavalry<br>200 vs Magic<br>100 vs Artillery
+| align="center" | 250 resources
+| align="center" | 20 minutes/field
+| align="center" | Counts as 10 units
+|-
+| align="center" | Pirate Frigate
+| align="center" | [[Image: Lou_npc_pirate_frigate.png]]
+| align="center" | Sea
+| align="center" | 1250
+| align="center" | 500 vs Infantry<br>500 vs Cavalry<br>500 vs Magic<br>250 vs Artillery
+| align="center" | 650 resources
+| align="center" | 30 minutes/field
+| align="center" | Counts as 25 units
+|-
+| align="center" | Pirate War Galleon
+| align="center" | [[Image: Lou_npc_pirate_galleon.png]]
+| align="center" | Sea
+| align="center" | 2500
+| align="center" | 1000 vs Infantry<br>1000 vs Cavalry<br>1000 vs Magic<br>500 vs Artillery
+| align="center" | 1400 resources
+| align="center" | 30 minutes/field
+| align="center" | Counts as 50 units
+|}
+
+===Epic Creatures===
+All Epic Creatures count as 20 units
+{|style="margin:0.25em; border:1px solid silver;" cellpadding="5" cellspacing="0" rules="all"
+|- style="background-color:lightblue;"
+| align="center" | '''Monster'''
+| align="center" | '''Level'''
+| align="center" | '''Type'''
+| align="center" | '''Attack'''
+| align="center" | '''Defense'''
+| align="center" | '''Loot'''
+| align="center" | '''Speed'''
+| align="center" | '''Notes'''
+|-
+| align="center" rowspan=10 | Moloch<br><br>[[Image: Lou_npc_moloch.png]]
+| align="center" | Level 1
+| align="center" | Hill
+| align="center" | 2500
+| align="center" | 625 vs Infantry<br>625 vs Cavalry<br>420 vs Magic<br>625 vs Artillery
+| align="center" | 500 resources
+| align="center" | 20 minutes/field
+| align="center" | 
+|-
+| align="center" | Level 2
+| align="center" | Hill
+| align="center" | 15000
+| align="center" | 3750 vs Infantry<br>3750 vs Cavalry<br>2500 vs Magic<br>3750 vs Artillery
+| align="center" | 3000 resources
+| align="center" | 20 minutes/field
+| align="center" | 
+|-
+| align="center" | Level 3
+| align="center" | Hill
+| align="center" | 100000
+| align="center" | 25000 vs Infantry<br>25000 vs Cavalry<br>17000 vs Magic<br>25000 vs Artillery
+| align="center" | 20000 resources
+| align="center" | 20 minutes/field
+| align="center" | 
+|-
+| align="center" | Level 4
+| align="center" | Hill
+| align="center" | 200000
+| align="center" | 50000 vs Infantry<br>50000 vs Cavalry<br>33000 vs Magic<br>50000 vs Artillery
+| align="center" | 40000 resources
+| align="center" | 20 minutes/field
+| align="center" | 
+|-
+| align="center" | Level 5
+| align="center" | Hill
+| align="center" | 500000
+| align="center" | 125000 vs Infantry<br>125000 vs Cavalry<br>83000 vs Magic<br>125000 vs Artillery
+| align="center" | 100000 resources
+| align="center" | 20 minutes/field
+| align="center" | 
+|-
+| align="center" | Level 6
+| align="center" | Hill
+| align="center" | 750000
+| align="center" | 187500 vs Infantry<br>187500 vs Cavalry<br>125000 vs Magic<br>187500 vs Artillery
+| align="center" | 150000 resources
+| align="center" | 20 minutes/field
+| align="center" | 
+|-
+| align="center" | Level 7
+| align="center" | Hill
+| align="center" | 1000000
+| align="center" | 250000 vs Infantry<br>250000 vs Cavalry<br>170000 vs Magic<br>250000 vs Artillery
+| align="center" | 200000 resources
+| align="center" | 20 minutes/field
+| align="center" | 
+|-
+| align="center" | Level 8
+| align="center" | Hill
+| align="center" | 1500000
+| align="center" | 375000 vs Infantry<br>375000 vs Cavalry<br>250000 vs Magic<br>375000 vs Artillery
+| align="center" | 300000 resources
+| align="center" | 20 minutes/field
+| align="center" | 
+|-
+| align="center" | Level 9
+| align="center" | Hill
+| align="center" | 2250000
+| align="center" | 562500 vs Infantry<br>562500 vs Cavalry<br>375000 vs Magic<br>562500 vs Artillery
+| align="center" | 450000 resources
+| align="center" | 20 minutes/field
+| align="center" | 
+|-
+| align="center" | Level 10
+| align="center" | Hill
+| align="center" | 3000000
+| align="center" | 750000 vs Infantry<br>750000 vs Cavalry<br>500000 vs Magic<br>750000 vs Artillery
+| align="center" | 600000 resources
+| align="center" | 20 minutes/field
+| align="center" | 
+|-
+| align="center" rowspan=10 | Hydra<br><br>[[Image: Lou_npc_hydra.png]]
+| align="center" | Level 1
+| align="center" | Mountain
+| align="center" | 2500
+| align="center" | 420 vs Infantry<br>625 vs Cavalry<br>625 vs Magic<br>625 vs Artillery
+| align="center" | 500 resources
+| align="center" | 20 minutes/field
+| align="center" | 
+|-
+| align="center" | Level 2
+| align="center" | Mountain
+| align="center" | 15000
+| align="center" | 3750 vs Infantry<br>2500 vs Cavalry<br>3750 vs Magic<br>3750 vs Artillery
+| align="center" | 3000 resources
+| align="center" | 20 minutes/field
+| align="center" | 
+|-
+| align="center" | Level 3
+| align="center" | Mountain
+| align="center" | 100000
+| align="center" | 17000 vs Infantry<br>25000 vs Cavalry<br>25000 vs Magic<br>25000 vs Artillery
+| align="center" | 20000 resources
+| align="center" | 20 minutes/field
+| align="center" | 
+|-
+| align="center" | Level 4
+| align="center" | Mountain
+| align="center" | 200000
+| align="center" | 33000 vs Infantry<br>50000 vs Cavalry<br>50000 vs Magic<br>50000 vs Artillery
+| align="center" | 40000 resources
+| align="center" | 20 minutes/field
+| align="center" | 
+|-
+| align="center" | Level 5
+| align="center" | Mountain
+| align="center" | 500000
+| align="center" | 83000 vs Infantry<br>125000 vs Cavalry<br>125000 vs Magic<br>125000 vs Artillery
+| align="center" | 100000 resources
+| align="center" | 20 minutes/field
+| align="center" | 
+|-
+| align="center" | Level 6
+| align="center" | Mountain
+| align="center" | 750000
+| align="center" | 125000 vs Infantry<br>187500 vs Cavalry<br>187500 vs Magic<br>187500 vs Artillery
+| align="center" | 150000 resources
+| align="center" | 20 minutes/field
+| align="center" | 
+|-
+| align="center" | Level 7
+| align="center" | Mountain
+| align="center" | 1000000
+| align="center" | 170000 vs Infantry<br>250000 vs Cavalry<br>250000 vs Magic<br>250000 vs Artillery
+| align="center" | 200000 resources
+| align="center" | 20 minutes/field
+| align="center" | 
+|-
+| align="center" | Level 8
+| align="center" | Mountain
+| align="center" | 1500000
+| align="center" | 250000 vs Infantry<br>375000 vs Cavalry<br>375000 vs Magic<br>375000 vs Artillery
+| align="center" | 300000 resources
+| align="center" | 20 minutes/field
+| align="center" | 
+|-
+| align="center" | Level 9
+| align="center" | Mountain
+| align="center" | 2250000
+| align="center" | 375000 vs Infantry<br>562500 vs Cavalry<br>562500 vs Magic<br>562500 vs Artillery
+| align="center" | 450000 resources
+| align="center" | 20 minutes/field
+| align="center" | 
+|-
+| align="center" | Level 10
+| align="center" | Mountain
+| align="center" | 3000000
+| align="center" | 500000 vs Infantry<br>750000 vs Cavalry<br>750000 vs Magic<br>750000 vs Artillery
+| align="center" | 600000 resources
+| align="center" | 20 minutes/field
+| align="center" | 
+|-
+| align="center" rowspan=10 | Dragon<br><br>[[Image: Lou_npc_dragon.png]]
+| align="center" | Level 1
+| align="center" | Forest
+| align="center" | 2500
+| align="center" | 625 vs Infantry<br>420 vs Cavalry<br>625 vs Magic<br>625 vs Artillery
+| align="center" | 500 resources
+| align="center" | 20 minutes/field
+| align="center" | 
+|-
+| align="center" | Level 2
+| align="center" | Forest
+| align="center" | 15000
+| align="center" | 3750 vs Infantry<br>2500 vs Cavalry<br>3750 vs Magic<br>3750 vs Artillery
+| align="center" | 3000 resources
+| align="center" | 20 minutes/field
+| align="center" | 
+|-
+| align="center" | Level 3
+| align="center" | Forest
+| align="center" | 100000
+| align="center" | 25000 vs Infantry<br>17000 vs Cavalry<br>25000 vs Magic<br>25000 vs Artillery
+| align="center" | 20000 resources
+| align="center" | 20 minutes/field
+| align="center" | 
+|-
+| align="center" | Level 4
+| align="center" | Forest
+| align="center" | 200000
+| align="center" | 50000 vs Infantry<br>33000 vs Cavalry<br>50000 vs Magic<br>50000 vs Artillery
+| align="center" | 40000 resources
+| align="center" | 20 minutes/field
+| align="center" | 
+|-
+| align="center" | Level 5
+| align="center" | Forest
+| align="center" | 500000
+| align="center" | 125000 vs Infantry<br>83000 vs Cavalry<br>125000 vs Magic<br>125000 vs Artillery
+| align="center" | 100000 resources
+| align="center" | 20 minutes/field
+| align="center" | 
+|-
+| align="center" | Level 6
+| align="center" | Forest
+| align="center" | 750000
+| align="center" | 187500 vs Infantry<br>125000 vs Cavalry<br>187500 vs Magic<br>187500 vs Artillery
+| align="center" | 150000 resources
+| align="center" | 20 minutes/field
+| align="center" | 
+|-
+| align="center" | Level 7
+| align="center" | Forest
+| align="center" | 1000000
+| align="center" | 250000 vs Infantry<br>170000 vs Cavalry<br>250000 vs Magic<br>250000 vs Artillery
+| align="center" | 200000 resources
+| align="center" | 20 minutes/field
+| align="center" | 
+|-
+| align="center" | Level 8
+| align="center" | Forest
+| align="center" | 1500000
+| align="center" | 375000 vs Infantry<br>250000 vs Cavalry<br>375000 vs Magic<br>375000 vs Artillery
+| align="center" | 300000 resources
+| align="center" | 20 minutes/field
+| align="center" | 
+|-
+| align="center" | Level 9
+| align="center" | Forest
+| align="center" | 2250000
+| align="center" | 562500 vs Infantry<br>375000 vs Cavalry<br>562500 vs Magic<br>562500 vs Artillery
+| align="center" | 450000 resources
+| align="center" | 20 minutes/field
+| align="center" | 
+|-
+| align="center" | Level 10
+| align="center" | Forest
+| align="center" | 3000000
+| align="center" | 750000 vs Infantry<br>500000 vs Cavalry<br>750000 vs Magic<br>750000 vs Artillery
+| align="center" | 600000 resources
+| align="center" | 20 minutes/field
+| align="center" | 
+|-
+| align="center" rowspan=10 | Kraken<br><br>[[Image: Lou_npc_octopus.png]]
+| align="center" | Level 1
+| align="center" | Sea
+| align="center" | 2500
+| align="center" | 625 vs Infantry<br>625 vs Cavalry<br>625 vs Magic<br>420 vs Artillery
+| align="center" | 500 resources
+| align="center" | 20 minutes/field
+| align="center" | 
+|-
+| align="center" | Level 2
+| align="center" | Forest
+| align="center" | Sea
+| align="center" | 3750 vs Infantry<br>3750 vs Cavalry<br>3750 vs Magic<br>2500 vs Artillery
+| align="center" | 3000 resources
+| align="center" | 20 minutes/field
+| align="center" | 
+|-
+| align="center" | Level 3
+| align="center" | Sea
+| align="center" | 100000
+| align="center" | 25000 vs Infantry<br>25000 vs Cavalry<br>25000 vs Magic<br>17000 vs Artillery
+| align="center" | 20000 resources
+| align="center" | 20 minutes/field
+| align="center" | 
+|-
+| align="center" | Level 4
+| align="center" | Sea
+| align="center" | 200000
+| align="center" | 50000 vs Infantry<br>50000 vs Cavalry<br>50000 vs Magic<br>33000 vs Artillery
+| align="center" | 40000 resources
+| align="center" | 20 minutes/field
+| align="center" | 
+|-
+| align="center" | Level 5
+| align="center" | Sea
+| align="center" | 500000
+| align="center" | 125000 vs Infantry<br>125000 vs Cavalry<br>125000 vs Magic<br>83000 vs Artillery
+| align="center" | 100000 resources
+| align="center" | 20 minutes/field
+| align="center" | 
+|-
+| align="center" | Level 6
+| align="center" | Sea
+| align="center" | 750000
+| align="center" | 187500 vs Infantry<br>187500 vs Cavalry<br>187500 vs Magic<br>125000 vs Artillery
+| align="center" | 150000 resources
+| align="center" | 20 minutes/field
+| align="center" | 
+|-
+| align="center" | Level 7
+| align="center" | Sea
+| align="center" | 1000000
+| align="center" | 250000 vs Infantry<br>250000 vs Cavalry<br>250000 vs Magic<br>170000 vs Artillery
+| align="center" | 200000 resources
+| align="center" | 20 minutes/field
+| align="center" | 
+|-
+| align="center" | Level 8
+| align="center" | Sea
+| align="center" | 1500000
+| align="center" | 375000 vs Infantry<br>375000 vs Cavalry<br>375000 vs Magic<br>250000 vs Artillery
+| align="center" | 300000 resources
+| align="center" | 20 minutes/field
+| align="center" | 
+|-
+| align="center" | Level 9
+| align="center" | Sea
+| align="center" | 2250000
+| align="center" | 562500 vs Infantry<br>562500 vs Cavalry<br>562500 vs Magic<br>375000 vs Artillery
+| align="center" | 450000 resources
+| align="center" | 20 minutes/field
+| align="center" | 
+|-
+| align="center" | Level 10
+| align="center" | Sea
+| align="center" | 3000000
+| align="center" | 750000 vs Infantry<br>750000 vs Cavalry<br>750000 vs Magic<br>500000 vs Artillery
+| align="center" | 600000 resources
+| align="center" | 20 minutes/field
+| align="center" | 
+|}
+
+{{MonsterData}}
+
+==References==
+<References />
+[[Category:Lord of Ultima]]

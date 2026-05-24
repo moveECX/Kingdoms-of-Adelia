@@ -1,0 +1,14 @@
+# Title ladder → max cities, citadels required, mana. [verified] from Ultima Codex Titles page.
+# (Aldermark may rename titles for theme later; values are the mechanic.)
+schemaVersion: 1
+
+titles:
+  - { key: sir, maxCities: 1, citadelsRequired: 0, mana: 3000, manaRegenPerH: 0 }
+  - { key: knight, maxCities: 1, citadelsRequired: 0, mana: 15000, manaRegenPerH: 250 }
+  - { key: baron, maxCities: 1, citadelsRequired: 0, mana: 20000, manaRegenPerH: 300 }
+  - { key: earl, maxCities: 2, citadelsRequired: 0, mana: 30000, manaRegenPerH: 400 }
+  - { key: marquess, maxCities: 4, citadelsRequired: 1, mana: 40000, manaRegenPerH: 500 }
+  - { key: prince, maxCities: 8, citadelsRequired: 2, mana: 50000, manaRegenPerH: 600 }
+  - { key: duke, maxCities: 16, citadelsRequired: 4, mana: 70000, manaRegenPerH: 700 }
+  - { key: king, maxCities: 40, citadelsRequired: 10, mana: 80000, manaRegenPerH: 800 }
+  - { key: emperor, maxCities: 80, citadelsRequired: 20, mana: 120000, manaRegenPerH: 1000 }

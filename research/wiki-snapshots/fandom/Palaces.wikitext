@@ -1,0 +1,116 @@
+The '''Palace''' is a building in [[ Lord of Ultima|Lord of Ultima]]. It boosts the faith for the alliance in that virtue. A Palace can only be build in a city with a [[castle]] that is enlightened by a nearby [[shrine]]. It requires a free build slot and a 3x3 area in to place it in. A palace build, once ordered, cannot be canceled or moved in the build queue. Applying shovels or keys while the palace, or any other building, is being constructed will have no affect on build speed.
+==Map Icons==
+
+Castles with palaces are visible on the main map. The icon will vary according to the level of the palace.
+
+{| class="wikitable"
+!Palace Level
+|1
+|2-3
+|4-6
+|7-9
+|10
+|-
+!Active Palace
+|[[Image:icon_town_palace_01.png|100px|Level 1 Map Icon]]
+|[[Image:icon_town_palace_02.png|100px|Level 2 Map Icon]]
+|[[Image:icon_town_palace_03.png|100px|Level 3 Map Icon]]
+|[[Image:icon_town_palace_04.png|100px|Level 4 Map Icon]]
+|[[Image:icon_town_palace_05.png|100px|Level 5 Map Icon]]
+|}
+
+==Palace Building==
+
+Once a city has been enlightened it can begin dedicating resources towards the construction of a palace. Palaces require only wood and stone to build. Once the palace has been built, the enlightenment period ends, no matter how much time is left in the enlightenment period. A city cannot be enlightened if it is already enlightened by the shrine, is currently building a palace, is enlightened or has a palace of another faith, or already has a palace at Level 10.
+
+Upgrading a palace requires a certain amount of alliance faith in the palace's virtue. It appears the current required faith values are:
+
+{| class="article-table"
+!Upgrade Level
+!Faith Required
+!Faith acquired
+|-
+|0 -&gt; 1
+|0%
+|1%
+|-
+|1 -&gt; 2
+|0%
+|2%
+|-
+|2 -&gt; 3
+|0%
+|3%
+|-
+|3 -&gt; 4
+|5%
+|4%
+|-
+|4 -&gt; 5
+|10%
+|6%
+|-
+|5 -&gt; 6
+|20%
+|8%
+|-
+|6 -&gt; 7
+|35%
+|10%
+|-
+|7 -&gt; 8
+|50%
+|13%
+|-
+|8 -&gt; 9
+|70%
+|16%
+|-
+|9 -&gt; 10
+|96%
+|20%
+|}
+
+{| class="article-table"
+!Palace Level!!Wood &amp; Stone<br />Requirement!!Time!!Faith!!City Picture
+|-
+|0|| || ||
+|[[Image:building_palace_construction.png|200px|Palace Under Construction]]
+|-
+|1||10 Million||864000s (10 days)||1
+|[[File:Building_palace_level_01.png|left|200px]]
+|-
+|2||30 Million||2592000s (30 days)||2
+|[[Image:building_palace_level_02.png|200px|Level 2 Palace]]
+|-
+|3||60 Million||5184000s (60 days)||3
+|[[Image:building_palace_level_02.png|200px|Level 3 Palace]]
+|-
+|4||100 Million||8640000s (100 days)||4
+|[[Image:building_palace_level_03.png|200px|Level 4 Palace]]
+|-
+|5||250 Million||12960000s (150 days)||6
+|[[Image:building_palace_level_03.png|200px|Level 5 Palace]]
+|-
+|6||350 Million||19008000s (220 days)||8
+|[[Image:building_palace_level_04.png|200px|Level 6 Palace]]
+|-
+|7||500 Million||25920000s (300 days)||10
+|[[Image:building_palace_level_04.png|200px|Level 7 Palace]]
+|-
+|8||800 Million||38880000s (450 days)||13
+|[[Image:building_palace_level_05.png|200px|Level 8 Palace]]
+|-
+|9||1 Billion||51840000s (600 days)||16
+|[[Image:building_palace_level_05.png|200px|(Level 9 Palace)]]
+|-
+|10||1.5 Billion ||77760000s (900 days)||20
+|[[Image:building_palace_level_06.png|200px|Level 10 Palace]]
+|}
+{{ConSpd}}
+
+==Palace speed up strategy==
+If you want to speed up your palace, use some of the keys and shovels you are gaining from raiding bosses, or buy them, and use them to add more construction speed. Just downgrade your Town Hall and use a key (assuming Valorite). Doing this several times can really help with some of those longer Palace builds. Don't use one while something is building on the queue, the currently building structure will not gain the effect.
+[[Category:Buildings]]
+[[Category:Gameplay]]
+[[Category:Pages to be moved to the new wiki]]

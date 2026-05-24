@@ -1,0 +1,702 @@
+The following Lord of Ultima raid information is taken from the [[The Great Libraries of Caledonia]]<ref>{{RefWeb
+| author=Phenomic
+| moreAuthors=
+| webSite=The Great Libraries of Caledonia
+| accessDate=December 2012
+}}</ref>: 
+
+==Raiding Dungeons==
+Dungeons offer players the opportunity to acquire [[Resources (LoU)|resources]]. When raiding a dungeon, you select how many of each unit to send. Bear in mind that the army moves at the speed of its slowest unit, and that when raiding dungeons it takes an hour for your troops to prepare before departing, and an extra hour to unload your spoils upon return.
+
+===Dungeon Lifecycle===
+When a dungeon first forms, its level is randomly determined and it is 0% complete. As it is raided, or time passes, its completion increases until it is 100% and the dungeon is closed. An untouched dungeon will last roughly two weeks, but most often will be depleted in a matter of days. The closed dungeon remains visible on the regional map for a few days before fading away.
+
+===Bestiary===
+At 0%, the dungeon contains only its base creatures: Skeletons in Hill Dungeons, Orcs in Mountain Dungeons, Giant Spiders in Forest Dungeons, and Pirate Dhows in Sea Dungeons. As the completion level rises, the numbers of creatures encountered also rises. As it nears 25%, the number of base creatures begin to drop and the secondary creatures begin to appear: Ghouls, Troglodytes, Thieves and Pirate Sloops. Once the number of these secondary creatures peak, near 50% completion, the base creatures stop appearing and a tertiary creature begins to appear: Gargoyles, Ettins, Centaur, and Pirate Frigates. Again at the 75% mark, the secondary creatures stop appearing, and a final creature type appears: Daemons, Minotaur, Trolls, and Pirate Galleons.
+
+===Loot===
+The amount of loot obtained from a raid varies according to the monsters that appear within the dungeon. The table below shows the base amount of loot per creature.
+
+{| class="wikitable" border="0" cellpadding="4"
+|
+| '''Forest Dungeon'''
+| '''Hill Dungeon'''
+| '''Mountain Dungeon'''
+| '''Sea Dungeon'''
+|-
+| '''Base Creature'''
+| 25 per Spider
+| 25 per Skeleton
+| 30 per Orc
+| 75 per Pirate Dhow
+|-
+| '''Secondary Creature'''
+| 33 per Thief
+| 33 per Ghoul
+| 40 per Troglodyte
+| 250 per Pirate Sloop
+|-
+| '''Tertiary Creature'''
+| 70 per Centaur
+| 135 per Gargoyle
+| 120 per Ettin
+| 650 per Pirate Frigate
+|-
+| '''Final Creature'''
+| 290 per Troll
+| 340 per Daemon
+| 250 per Minotaur
+| 1400 per Pirate Galleon
+|}
+
+The maximum amount of loot available for each depends on the level of the dungeons and how complete it is. A dungeon at 50% provides 150% of the base loot, one at 75% provides 200% of the base, and one at 100% provides 300% of the base. Each unit has a maximum loot value, which determines how much they can carry when returning from a raid. The following table shows the base loot for the various dungeon levels.
+
+{| class="wikitable" border="0" cellpadding="4"
+| '''Level'''
+| '''1'''
+| '''2'''
+| '''3'''
+| '''4'''
+| '''5'''
+| '''6'''
+| '''7'''
+| '''8'''
+| '''9'''
+| '''10'''
+|-
+| '''Max Foes'''
+| 10
+| 40
+| 117
+| 444
+| 1,183
+| 2,181
+| 4,687
+| 8,351
+| 14,162?
+| 17,655?
+|-
+| '''Max Loot/Foe'''
+| 30
+| 30
+| 30
+| 30
+| 40
+| 25?
+| 25?
+| 31.75
+| 25
+| 25?
+|-
+| '''Max Loot'''
+| 320
+| 977?
+| 2,000?
+| 15,488?
+| 30,000?
+| 56,850?
+| 117,175?
+| 198,205?
+| 356,970?
+| 441,375?
+|-
+| '''Gold/Loot'''
+| 200%
+| 120%
+| 80%
+| 50%
+| 35%
+| 30%
+| 28%
+| 27%
+| 26%
+| 25%
+|}
+
+===Raiding Strategy===
+The number of units to send on a raid can vary widely, and is mostly determined by the attack and carrying capacity of the troops involved. The following table include suggestions for the various dungeon levels.
+
+{| class="wikitable" border="0" cellpadding="4"
+| '''Level'''
+| '''1'''
+| '''2'''
+| '''3'''
+| '''4'''
+| '''5'''
+| '''6'''
+| '''7'''
+| '''8'''
+| '''9'''
+| '''10'''
+|-
+| '''Berserkers suggested at 0%'''
+| 15
+| >80
+| >450
+| >800
+| >3,000
+| >5,500-6,500
+| >12,000-14,000
+| >25,000
+| >35,000
+| >60,000
+|-
+| '''Berserkers suggested at 50%'''
+| 30
+| 120
+| 520
+| 1,800
+| 5,400
+| 12,000
+| 24,000
+| 45,000
+| 70,000
+| 110,000
+|-
+| '''Berserkers suggested at 100%'''
+| 45
+| 180
+| 780
+| 2,700
+| 8,000
+| 18,000
+| 35,000
+| 70,000
+| 100,000
+| 160,000
+|}
+
+If raiding with units other than berserkers, use the following equivalents:
+
+10 berserkers = 15 rangers = 6 knights = 7 mages = 50 guardians = 9 paladins = 12 crossbow = 20 templar = 5 warlocks
+
+This is for attack power only; additional troops may be needed to match loot capacity.
+
+==Raiding Bosses==
+Mighty creatures, like dungeons, can be assaulted for resources and artifacts. As with dungeons, the type of resources gathered vary with the creature: Dragons provide more wood, Hydra provide more stone, Moloch provide more iron, and Kraken provide more gold.
+
+===Boss Lifecycle===
+When bosses form, its level is determined by the levels of the cities closest. An untouched boss will last roughly one week, but often disappear faster if they are defeated by a number of players. Each player can only defeat a given boss once, and it is unknown how many players must defeat one before it vanishes.
+
+===Loot===
+The amount of loot obtained from a boss raid depends on the number of units that survive the attack, regardless of whether the boss is defeated. Defeating the creature is only required in order to obtain any artifact it might carry. However, if the boss survives, troop losses are five times higher than if the boss is defeated.
+
+{| class="wikitable" border="0" cellpadding="4"
+| '''Level'''
+| '''1'''
+| '''2'''
+| '''3'''
+| '''4'''
+| '''5'''
+| '''6'''
+| '''7'''
+| '''8'''
+| '''9'''
+| '''10'''
+|-
+| '''Max Loot'''
+| 500
+| 3,000
+| 20,000
+| 40,000
+| 100,000
+| 150,000
+| 200,000
+| 300,000
+| 450,000
+| 600,000
+|-
+| '''Gold/Loot'''
+| 200%
+| 120%
+| 80%
+| 50%
+| 35%
+| 35%
+| 30%
+| 27%
+| 26%
+| 25%
+|-
+| '''Max Gold'''
+| 1,000
+| 3,600
+| 16,000
+| 20,000
+| 35,000
+| 52,500
+| 60,000
+| 81,000
+| 117,000
+| 30,000
+|}
+
+Artifacts are awarded when defeating a boss that awards artifacts at one title level below your current. For example, a Marquess would not be awarded an artifact for defeating a level 2 boss. The type of artifact varies depending on the type of creature defeated.
+
+{| class="wikitable" border="0" cellpadding="4"
+| '''Level'''
+| '''1'''
+| '''2'''
+| '''3'''
+| '''4'''
+| '''5'''
+| '''6'''
+| '''7'''
+| '''8'''
+| '''9'''
+| '''10'''
+|-
+| '''Artifact Level'''
+| Copper ''(Knight)''
+| Bronze ''(Baron)''
+| Steel ''(Earl)''
+| Silver ''(Marquess)''
+| Gold ''(Prince)''
+| Platinum ''(Duke)''
+| Verite ''(King)''
+| Valorite ''(Emperor)''
+| Valorite x2
+| Valorite x3
+|-
+| '''Dragon Artifacts'''
+| colspan="10" | Axes, Shovels, Amulets, Medallions, Horns, Chests, Toolkits
+|-
+| '''Hydra Artifacts'''
+| colspan="10" | Picks, Shovels, Amulets, Medallions, Horns, Chests, Toolkits
+|-
+| '''Moloch Artifacts'''
+| colspan="10" | Hammers, Shovels, Amulets, Medallions, Horns, Chests, Toolkits
+|-
+| '''Kraken Artifacts'''
+| colspan="10" | Axes, Picks, Hammers, Sickles, Shovels, Amulets, Medallions, Horns, Chests, Toolkits
+|}
+
+===Raiding Strategy===
+The number of units necessary to kill a creature is shown below; however, it is not always necessary to kill the creature in order to "farm" it for resources. The chance to kill the creature is decreased with fewer units; you have a 75% chance of killing a boss you must send 56.25% of the unit; a 50% chance of with 25% of the units, and a 25% chance with only 12.5% of the unit numbers.
+
+'''Dragon Raids'''
+{| class="wikitable" border="0" cellpadding="4"
+| '''Level'''
+| '''1'''
+| '''2'''
+| '''3'''
+| '''4'''
+| '''5'''
+| '''6'''
+| '''7'''
+| '''8'''
+| '''9'''
+| '''10'''
+|-
+| '''Berserkers'''
+| 50
+| 300
+| 2,000
+| 4,000
+| 10,000
+| 15,000
+| 20,000
+| 30,000
+| 45,000
+| 60,000
+|-
+| '''Rangers'''
+| 84
+| 500
+| 3,334
+| 6,667
+| 16,667
+| 25,000
+| 33,334
+| 50,000
+| 75,000
+| 100,000
+|-
+| '''Guardians'''
+| 250
+| 1,500
+| 10,000
+| 20,000
+| 50,000
+| 75,000
+| 100,000
+| 150,000
+| 225,000
+| 300,000
+|-
+| '''Crossbowmen'''
+| 42
+| 250
+| 1,700
+| 3,300
+| 8,300
+| 12,500
+| 17,000
+| 25,000
+| 37,500
+| 50,000
+|-
+| '''Knights'''
+| 19
+| 112
+| 756
+| 1,467
+| 3,689
+| 5,556
+| 7,556
+| 11,112
+| 16,667
+| 22,223
+|-
+| '''Mages'''
+| 36
+| 215
+| 1,429
+| 2,858
+| 7,143
+| 10,715
+| 14,286
+| 21,429
+| 32,143
+| 42,858
+|-
+| '''Warlocks'''
+| 21
+| 125
+| 834
+| 1,667
+| 4,167
+| 6,250
+| 8,334
+| 12,500
+| 18,750
+| 25,000
+|-
+| '''Templars'''
+| 100
+| 600
+| 4,000
+| 8,000
+| 20,000
+| 30,000
+| 40,000
+| 60,000
+| 90,000
+| 120,000
+|-
+| '''Paladins'''
+| 28
+| 167
+| 1,134
+| 2,200
+| 5,534
+| 8,334
+| 11,334
+| 16,667
+| 25,000
+| 33,334
+|}
+
+'''Hydra Raids'''
+{| class="wikitable" border="0" cellpadding="4"
+| '''Level'''
+| '''1'''
+| '''2'''
+| '''3'''
+| '''4'''
+| '''5'''
+| '''6'''
+| '''7'''
+| '''8'''
+| '''9'''
+| '''10'''
+|-
+| '''Berserkers'''
+| 34
+| 200
+| 1,360
+| 2,640
+| 6,640
+| 10,000
+| 13,600
+| 20,000
+| 30,000
+| 40,000
+|-
+| '''Rangers'''
+| 56
+| 334
+| 2,267
+| 4,400
+| 11,067
+| 16,667
+| 22,667
+| 33,334
+| 50,000
+| 66,667
+|-
+| '''Guardians'''
+| 168
+| 1,000
+| 6,800
+| 13,200
+| 33,200
+| 50,000
+| 68,000
+| 100,000
+| 150,000
+| 200,000
+|-
+| '''Crossbowmen'''
+| 63
+| 375
+| 2,500
+| 5,000
+| 12,500
+| 18,750
+| 25,000
+| 37,500
+| 56,250
+| 75,000
+|-
+| '''Knights'''
+| 28
+| 167
+| 1,112
+| 2,223
+| 5,556
+| 8,334
+| 11,112
+| 16,667
+| 25,000
+| 33,334
+|-
+| '''Mages'''
+| 36
+| 215
+| 1,429
+| 2,858
+| 7,143
+| 10,715
+| 14,286
+| 21,429
+| 32,143
+| 42,858
+|-
+| '''Warlocks'''
+| 21
+| 125
+| 834
+| 1,667
+| 4,167
+| 6,250
+| 8,334
+| 12,500
+| 18,750
+| 25,000
+|-
+| '''Templars'''
+| 68
+| 400
+| 2,720
+| 5,280
+| 13,280
+| 20,000
+| 27,200
+| 40,000
+| 60,000
+| 80,000
+|-
+| '''Paladins'''
+| 42
+| 250
+| 1,667
+| 3,334
+| 8,334
+| 12,500
+| 16,667
+| 25,000
+| 37,500
+| 50,000
+|}
+
+'''Moloch Raids'''
+{| class="wikitable" border="0" cellpadding="4"
+| '''Level'''
+| '''1'''
+| '''2'''
+| '''3'''
+| '''4'''
+| '''5'''
+| '''6'''
+| '''7'''
+| '''8'''
+| '''9'''
+| '''10'''
+|-
+| '''Berserkers'''
+| 50
+| 300
+| 2,000
+| 4,000
+| 10,000
+| 15,000
+| 20,000
+| 30,000
+| 45,000
+| 60,000
+|-
+| '''Rangers'''
+| 84
+| 500
+| 3,334
+| 6,667
+| 16,667
+| 25,000
+| 33,334
+| 50,000
+| 75,000
+| 100,000
+|-
+| '''Guardians'''
+| 250
+| 1,500
+| 10,000
+| 20,000
+| 50,000
+| 75,000
+| 100,000
+| 150,000
+| 225,000
+| 300,000
+|-
+| '''Crossbowmen'''
+| 63
+| 375
+| 2,500
+| 5,000
+| 12,500
+| 18,750
+| 25,000
+| 37,500
+| 56,250
+| 75,000
+|-
+| '''Knights'''
+| 28
+| 167
+| 1,112
+| 2,223
+| 5,556
+| 8,334
+| 11,112
+| 16,667
+| 25,000
+| 33,334
+|-
+| '''Mages'''
+| 24
+| 143
+| 972
+| 1,886
+| 4,743
+| 7,143
+| 9,715
+| 14,286
+| 21,429
+| 28,572
+|-
+| '''Warlocks'''
+| 14
+| 84
+| 567
+| 1,100
+| 2,767
+| 4,167
+| 5,667
+| 8,334
+| 12,500
+| 16,667
+|-
+| '''Templars'''
+| 100
+| 600
+| 4,000
+| 8,000
+| 20,000
+| 30,000
+| 40,000
+| 60,000
+| 90,000
+| 120,000
+|-
+| '''Paladins'''
+| 42
+| 250
+| 1,667
+| 3,334
+| 8,334
+| 12,500
+| 16,667
+| 25,000
+| 37,500
+| 50,000
+|}
+
+
+'''Hydra Raids'''
+{| class="wikitable" border="0" cellpadding="4"
+| '''Level'''
+| '''1'''
+| '''2'''
+| '''3'''
+| '''4'''
+| '''5'''
+| '''6'''
+| '''7'''
+| '''8'''
+| '''9'''
+| '''10'''
+|-
+| '''Sloops'''
+| 2
+| 9
+| 57
+| 110
+| 277
+| 417
+| 567
+| 834
+| 1,250
+| 1,667
+|-
+| '''Frigates'''
+| 1
+| 4
+| 23
+| 44
+| 111
+| 167
+| 227
+| 334
+| 500
+| 667
+|-
+| '''War Galleons'''
+| 1
+| 1
+| 6
+| 11
+| 28
+| 42
+| 57
+| 84
+| 125
+| 167
+|}
+
+Note that these number are for attack power only; additional troops may be needed to maximize loot capacity.
+
+==References==
+<References />
+[[Category:Lord of Ultima]]

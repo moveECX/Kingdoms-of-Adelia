@@ -1,0 +1,31 @@
+{
+  "name": "@aldermark/server",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Authoritative game server: Fastify REST + ws + tick scheduler + Kysely/Postgres.",
+  "scripts": {
+    "dev": "tsx watch src/main.ts",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/main.js",
+    "migrate": "tsx src/db/migrate.ts",
+    "seed": "tsx src/db/seed.ts",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@aldermark/shared": "*",
+    "fastify": "^5.2.0",
+    "@fastify/cookie": "^11.0.0",
+    "kysely": "^0.27.4",
+    "pg": "^8.13.0",
+    "ws": "^8.18.0",
+    "yaml": "^2.6.0",
+    "zod": "^3.24.0",
+    "argon2": "^0.41.0"
+  },
+  "devDependencies": {
+    "@types/pg": "^8.11.0",
+    "@types/ws": "^8.5.0",
+    "tsx": "^4.19.0"
+  }
+}

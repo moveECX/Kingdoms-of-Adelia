@@ -1,0 +1,40 @@
+[[File:Townhouse_256.png|right|256px]]
+The '''Townhouse''' is a building in [[Lord of Ultima]]. It enables taxation. Income from tax can be increased by connecting [[Marketplace]]s and [[Harbor]]s.
+
+'''Requirements:''' [[Town Hall]] Level 5
+
+{| class="wikitable" width="100%"
+|-
+! Level
+! [[File:Icons_ressource_gold.png|28px]]Gold Production/h
+! Resource Cost Wood
+! Resource Cost Stone
+! Build Time
+! Rank Points
+|-
+| 1 ||25 || - ||100 ||17 sec ||1
+|-
+| 2 ||50 || - ||300 ||1 min 12 sec ||3
+|-
+| 3 ||75 || - ||600 ||8 min ||6
+|-
+| 4 ||100 || - ||2000 ||1 h ||12
+|-
+| 5 ||130 ||1000 ||4000 ||2 h 15 min ||20
+|-
+| 6 ||170 ||2000 ||7000 ||4 h 30 min ||30
+|-
+| 7 ||210 ||3500 ||11500 ||8 h 12 min ||42
+|-
+| 8 ||260 ||7000 ||17000 ||13 h 15 min ||57
+|-
+| 9 ||320 ||14000 ||20000 ||19 h 57 min ||75
+|-
+| 10 ||400 ||29000 ||29000 ||30 h 15 min ||100
+|-
+| Total ||400 ||56500 ||91500 ||3 d 7 h 34 min ||100
+|}
+
+{{ConSpd}}
+[[Category:Buildings]]
+[[Category:Pages to be moved to the new wiki]]

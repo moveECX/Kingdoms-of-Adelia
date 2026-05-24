@@ -1,0 +1,40 @@
+[[File:Barracks_256.png|right]]The '''Barracks''' is a building in [[Lord of Ultima]]. It increases the maximum army size of a city. Also increases the recruitment speed of all bordering [[Training Ground]]s, [[Stable]]s, [[Moonglow Tower]]s, [[Trinsic Temple]]s, [[Workshop]]s and [[Shipyard]]s.
+
+Requirements: [[Town Hall]] Level 4
+
+<br />
+
+{| class="wikitable" width="100%"
+|-
+! Level
+! Army Size
+! Recruiting Speed
+! Resources Cost Wood
+! Resources Cost Stone
+! Building Time
+! Rank Points
+|-
+| 1 || +10 || +1% || - ||50 ||15 sec ||1
+|-
+| 2 || +30 || +2% || - ||150 ||36 sec ||2
+|-
+| 3 || +60 || +4% || - ||300 ||4 min ||4
+|-
+| 4 || +100 || +6% || - ||600 ||30 min ||7
+|-
+| 5 || +160  || +8% || - ||1200 ||1 h 7.5 min ||12
+|-
+| 6 || +240 || +10% || - ||2500 ||2 h 15 min ||18
+|-
+| 7 || +350 || +13% || - ||4000 ||4 h 6 min ||25
+|-
+| 8 || +500 || +16% || - ||7000 ||6 h 37.5 min ||34
+|-
+| 9 || +700 || +20% || - ||11500 ||9 h 58.5 min ||45
+|-
+| 10 || +1000 || +25% || - ||17500 ||15 h 7.5 min ||60
+|}
+
+{{ConSpd}}
+[[Category:Buildings]]
+[[Category:Pages to be moved to the new wiki]]

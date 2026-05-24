@@ -1,0 +1,41 @@
+The '''Guardian Tower''' is a building in [[Lord of Ultima]]. It increases the Defensive Value of a limited number of Guardians by 100%. If there are not enough Guardians in the city, City Guards can take their place and gain the same bonus. These towers don't count towards a city's building number limit.
+
+Requirements: [[Town Hall]] Level 6
+
+[[File:Wall tower guardians.png]]
+
+<br />
+
+{| class="wikitable" width="100%"
+|-
+! Level
+! Unit Count
+! Resource Cost Wood
+! Resource Cost Stone
+! Build Time
+! Rank Points
+|-
+| 1 ||	30 ||	- ||	100 ||	25sec ||	1
+|-
+| 2 ||	60 ||	- ||	200 ||	5min ||	2
+|-
+| 3 ||	120 ||	- ||	400 ||	13min, 30sec ||	5
+|-
+| 4 ||	200 ||	- ||	1000 ||	25min ||	10
+|-
+| 5 ||	320 ||	- ||	3000 ||	40min ||	16
+|-
+| 6 ||	480 ||	- ||	7000 ||	1hr ||	24
+|-
+| 7 ||	700 ||	- ||	14000 ||	1hr, 22min ||	34
+|-
+| 8 ||	1000 ||	- ||	24000 ||	1hr, 50min ||	46
+|-
+| 9 ||	1400 ||	- ||	38000 ||	2hr, 25min ||	60
+|-
+| 10 ||	2000 ||	- ||	58000 ||	3hr, 20min ||	80
+|}
+
+<br style="clear:both" />
+[[Category:Buildings]]
+[[Category:Pages to be moved to the new wiki]]
