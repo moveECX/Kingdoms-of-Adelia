@@ -8,6 +8,8 @@ import { startBuild, BuildError } from '../game/build';
 import { startTraining, TrainError } from '../game/train';
 import { startRaid, RaidError } from '../game/raid';
 import { foundNewCity, FoundCityError } from '../game/found-city';
+import { getAccountId } from '../auth/session';
+import { requireAccount, requireCityOwner } from '../auth/guard';
 import type { CityHub } from '../ws/hub';
 
 export interface RouteCtx {
@@ -29,10 +31,12 @@ const raidBody = z.object({
 });
 const foundBody = z.object({ x: z.number().int(), y: z.number().int() });
 
-/** Registriert die Phase-1-REST-Routen unter /api/v1. */
+/** Registriert die Spiel-Routen unter /api/v1. Stadt-Aktionen erfordern Anmeldung + Besitz. */
 export function registerCityRoutes(app: FastifyInstance, ctx: RouteCtx): void {
   app.get<{ Params: { id: string } }>('/api/v1/cities/:id', async (req, reply) => {
-    const snapshot = await loadCitySnapshot(ctx.db, Number(req.params.id));
+    const cityId = Number(req.params.id);
+    if ((await requireCityOwner(ctx.db, req, reply, cityId)) === null) return;
+    const snapshot = await loadCitySnapshot(ctx.db, cityId);
     if (snapshot === null) return reply.code(404).send({ error: 'Stadt nicht gefunden' });
     return snapshot;
   });
@@ -40,6 +44,7 @@ export function registerCityRoutes(app: FastifyInstance, ctx: RouteCtx): void {
   // Neubau (leerer Slot) oder Ausbau (belegter Slot, gleiches Gebäude).
   app.post<{ Params: { id: string } }>('/api/v1/cities/:id/build', async (req, reply) => {
     const cityId = Number(req.params.id);
+    if ((await requireCityOwner(ctx.db, req, reply, cityId)) === null) return;
     const parsed = buildBody.safeParse(req.body);
     if (!parsed.success) return reply.code(400).send({ error: parsed.error.message });
     try {
@@ -52,35 +57,9 @@ export function registerCityRoutes(app: FastifyInstance, ctx: RouteCtx): void {
     }
   });
 
-  app.get('/api/v1/data/manifest', () => ({
-    buildings: ctx.gameData.buildings.schemaVersion,
-    units: ctx.gameData.units.schemaVersion,
-    resources: ctx.gameData.resources.schemaVersion,
-    titles: ctx.gameData.titles.schemaVersion,
-  }));
-
-  // Gebäude-Definitionen für die Client-Vorschau (Kosten/Output je Stufe).
-  app.get('/api/v1/data/buildings', () => ctx.gameData.buildings.buildings);
-
-  // Auth-Stub (Phase 1): erster/einziger Account + seine Städte.
-  app.get('/api/v1/me', async () => {
-    const account = await ctx.db
-      .selectFrom('accounts')
-      .select(['id', 'username', 'title', 'gold'])
-      .orderBy('id')
-      .executeTakeFirst();
-    if (account === undefined) return { account: null, cities: [] };
-    const cities = await ctx.db
-      .selectFrom('cities')
-      .select(['id', 'name', 'x', 'y'])
-      .where('account_id', '=', account.id)
-      .orderBy('id')
-      .execute();
-    return { account, cities };
-  });
-
   app.post<{ Params: { id: string } }>('/api/v1/cities/:id/train', async (req, reply) => {
     const cityId = Number(req.params.id);
+    if ((await requireCityOwner(ctx.db, req, reply, cityId)) === null) return;
     const parsed = trainBody.safeParse(req.body);
     if (!parsed.success) return reply.code(400).send({ error: parsed.error.message });
     try {
@@ -95,6 +74,7 @@ export function registerCityRoutes(app: FastifyInstance, ctx: RouteCtx): void {
 
   app.post<{ Params: { id: string } }>('/api/v1/cities/:id/raid', async (req, reply) => {
     const cityId = Number(req.params.id);
+    if ((await requireCityOwner(ctx.db, req, reply, cityId)) === null) return;
     const parsed = raidBody.safeParse(req.body);
     if (!parsed.success) return reply.code(400).send({ error: parsed.error.message });
     try {
@@ -109,18 +89,20 @@ export function registerCityRoutes(app: FastifyInstance, ctx: RouteCtx): void {
 
   app.post<{ Params: { id: string } }>('/api/v1/cities/:id/found', async (req, reply) => {
     const sourceCityId = Number(req.params.id);
+    const accountId = await requireCityOwner(ctx.db, req, reply, sourceCityId);
+    if (accountId === null) return;
     const parsed = foundBody.safeParse(req.body);
     if (!parsed.success) return reply.code(400).send({ error: parsed.error.message });
-    const source = await ctx.db
-      .selectFrom('cities')
-      .select(['account_id'])
-      .where('id', '=', sourceCityId)
-      .executeTakeFirst();
-    if (source === undefined) return reply.code(404).send({ error: 'Quell-Stadt nicht gefunden' });
     try {
       const newCityId = await foundNewCity(
         ctx.db,
-        { accountId: source.account_id, sourceCityId, x: parsed.data.x, y: parsed.data.y, seed: Math.floor(Math.random() * 1_000_000_000) },
+        {
+          accountId,
+          sourceCityId,
+          x: parsed.data.x,
+          y: parsed.data.y,
+          seed: Math.floor(Math.random() * 1_000_000_000),
+        },
         ctx.gameData,
       );
       return { cityId: newCityId };
@@ -130,10 +112,55 @@ export function registerCityRoutes(app: FastifyInstance, ctx: RouteCtx): void {
     }
   });
 
-  app.get('/api/v1/map', async () => {
+  // Eingeloggter Account + seine Städte (null, wenn nicht angemeldet — kein 401).
+  app.get('/api/v1/me', async (req) => {
+    const accountId = getAccountId(req);
+    if (accountId === null) return { account: null, cities: [] };
+    const account = await ctx.db
+      .selectFrom('accounts')
+      .select(['id', 'username', 'title', 'gold'])
+      .where('id', '=', accountId)
+      .executeTakeFirst();
+    if (account === undefined) return { account: null, cities: [] };
+    const cities = await ctx.db
+      .selectFrom('cities')
+      .select(['id', 'name', 'x', 'y'])
+      .where('account_id', '=', account.id)
+      .orderBy('id')
+      .execute();
+    return { account, cities };
+  });
+
+  app.get('/api/v1/data/manifest', () => ({
+    buildings: ctx.gameData.buildings.schemaVersion,
+    units: ctx.gameData.units.schemaVersion,
+    resources: ctx.gameData.resources.schemaVersion,
+    titles: ctx.gameData.titles.schemaVersion,
+  }));
+
+  // Gebäude-Definitionen für die Client-Vorschau (Kosten/Output je Stufe).
+  app.get('/api/v1/data/buildings', () => ctx.gameData.buildings.buildings);
+
+  // Weltkarte: alle Städte (mit Besitzer-Name) + Dungeons. Erfordert Anmeldung.
+  app.get('/api/v1/map', async (req, reply) => {
+    if (requireAccount(req, reply) === null) return;
     const [cities, dungeons] = await Promise.all([
-      ctx.db.selectFrom('cities').select(['id', 'name', 'x', 'y', 'account_id']).execute(),
-      ctx.db.selectFrom('dungeons').select(['id', 'x', 'y', 'dungeon_type', 'level', 'completion']).execute(),
+      ctx.db
+        .selectFrom('cities')
+        .innerJoin('accounts', 'accounts.id', 'cities.account_id')
+        .select([
+          'cities.id',
+          'cities.name',
+          'cities.x',
+          'cities.y',
+          'cities.account_id',
+          'accounts.username',
+        ])
+        .execute(),
+      ctx.db
+        .selectFrom('dungeons')
+        .select(['id', 'x', 'y', 'dungeon_type', 'level', 'completion'])
+        .execute(),
     ]);
     return { cities, dungeons };
   });

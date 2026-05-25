@@ -1,8 +1,27 @@
 import type { RawData, WebSocket } from 'ws';
 
-/** Verwaltet WS-Abonnements pro Stadt und sendet Deltas an die Subscriber. */
+export interface ChatMessage {
+  username: string;
+  text: string;
+  at: string; // ISO-Zeitstempel
+}
+
+const CHAT_HISTORY = 50;
+
+/** Verwaltet WS-Verbindungen: Stadt-Abos (Deltas) + globaler Chat. */
 export class CityHub {
   private readonly byCity = new Map<number, Set<WebSocket>>();
+  private readonly clients = new Set<WebSocket>();
+  private readonly chatLog: ChatMessage[] = [];
+
+  addClient(socket: WebSocket): void {
+    this.clients.add(socket);
+  }
+
+  removeClient(socket: WebSocket): void {
+    this.clients.delete(socket);
+    this.unsubscribeAll(socket);
+  }
 
   subscribe(cityId: number, socket: WebSocket): void {
     let set = this.byCity.get(cityId);
@@ -18,10 +37,24 @@ export class CityHub {
   }
 
   broadcast(cityId: number, message: unknown): void {
-    const set = this.byCity.get(cityId);
-    if (set === undefined) return;
+    this.send(this.byCity.get(cityId), message);
+  }
+
+  /** Hängt eine Chat-Nachricht an den Verlauf (max. 50) und sendet sie an alle Clients. */
+  postChat(message: ChatMessage): void {
+    this.chatLog.push(message);
+    if (this.chatLog.length > CHAT_HISTORY) this.chatLog.shift();
+    this.send(this.clients, { t: 'chat.msg', d: message });
+  }
+
+  recentChat(): readonly ChatMessage[] {
+    return this.chatLog;
+  }
+
+  private send(targets: Set<WebSocket> | undefined, message: unknown): void {
+    if (targets === undefined) return;
     const data = JSON.stringify(message);
-    for (const socket of set) {
+    for (const socket of targets) {
       if (socket.readyState === socket.OPEN) socket.send(data);
     }
   }
