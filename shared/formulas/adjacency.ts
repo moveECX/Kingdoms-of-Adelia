@@ -31,11 +31,13 @@ export interface AdjacencyInput {
   /** Efficiency-Bonus (in %) des einen angrenzenden Verstärkers; 0 wenn keiner (max. 1). */
   enhancerPct: number;
   cfg: AdjacencyConfig;
+  /** Zusätzlicher Knoten-Bonus-Bruch ohne Abschwächung (z. B. Seen für Farms: +0.5 je See). */
+  extraNodeFraction?: number;
 }
 
 /** Produktions-Multiplikator (×base). */
 export function adjacencyMultiplier(input: AdjacencyInput): number {
-  const nodes = nodeBonusFraction(input.nodeCount, input.cfg);
+  const nodes = nodeBonusFraction(input.nodeCount, input.cfg) + (input.extraNodeFraction ?? 0);
   const cottages = input.cottageManpowerPcts.reduce((sum, p) => sum + p / 100, 0);
   const enhancer = input.enhancerPct / 100;
   if (input.cfg.model === 'separate_multiplicative') {
