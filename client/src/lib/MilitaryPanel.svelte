@@ -1,11 +1,17 @@
 <script lang="ts">
-  import { game } from './store.svelte';
+  import { game, type AttackKind } from './store.svelte';
 
   const TRAINABLE = ['city_guard', 'berserker', 'ranger', 'guardian', 'knight'];
 
   let trainUnit = $state('berserker');
   let trainQty = $state(10);
   let raidQty = $state(40);
+  let attackUnit = $state('berserker');
+  let attackQty = $state(50);
+
+  function attack(kind: AttackKind): void {
+    void game.attack(kind, { [attackUnit]: attackQty });
+  }
 </script>
 
 <h2>Militär — {game.snapshot?.name}</h2>
@@ -28,7 +34,25 @@
   <button class="btn" onclick={() => void game.train(trainUnit, trainQty)}>Ausbilden</button>
 </div>
 
-{#if game.selectedDungeon}
+{#if game.selectedTarget}
+  <h3>Angriff</h3>
+  <div class="target">
+    Ziel: <strong>{game.selectedTarget.name}</strong> ({game.selectedTarget.username}) · {game.selectedTarget.x}:{game
+      .selectedTarget.y}
+  </div>
+  <div class="form">
+    <select class="input" bind:value={attackUnit}>
+      {#each TRAINABLE as u (u)}<option value={u}>{u}</option>{/each}
+    </select>
+    <input class="input num" type="number" min="1" bind:value={attackQty} />
+  </div>
+  <div class="form">
+    <button class="btn" onclick={() => attack('scout')}>Scout</button>
+    <button class="btn" onclick={() => attack('plunder')}>Plündern</button>
+    <button class="btn primary" onclick={() => attack('assault')}>Assault</button>
+  </div>
+  <p class="hint">Scout klärt auf · Plündern raubt Ressourcen · Assault vernichtet Truppen. Erfordert eine Citadel.</p>
+{:else if game.selectedDungeon}
   <h3>Raid</h3>
   <div class="dungeon">
     Ziel: {game.selectedDungeon.type} · Stufe {game.selectedDungeon.level} · {game.selectedDungeon.completion}%
@@ -41,7 +65,7 @@
   </div>
   <p class="hint">Truppen reisen zum Dungeon, kämpfen und kehren mit Beute zurück.</p>
 {:else}
-  <p class="muted">Wähle einen Dungeon auf der Weltkarte, um zu raiden.</p>
+  <p class="muted">Wähle einen Dungeon oder eine fremde Stadt auf der Weltkarte.</p>
 {/if}
 
 {#if game.error}<div class="err">{game.error}</div>{/if}
@@ -67,6 +91,7 @@
     display: flex;
     gap: var(--sp-2);
     align-items: center;
+    margin-bottom: var(--sp-2);
   }
   .input {
     height: 28px;
@@ -100,7 +125,8 @@
   .btn:hover {
     border-color: var(--accent-primary);
   }
-  .dungeon {
+  .dungeon,
+  .target {
     font-size: var(--fs-sm);
     color: var(--text-primary);
     margin-bottom: var(--sp-2);

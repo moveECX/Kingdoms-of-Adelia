@@ -67,4 +67,14 @@ export interface ChatMessage {
   at: string;
 }
 
+export interface CombatReport {
+  id: number;
+  attacker_id: number | null;
+  defender_id: number | null;
+  target_x: number;
+  target_y: number;
+  occurred_at: string;
+  detail: Record<string, unknown>;
+}
+
 export type ResourceKey = 'timber' | 'stone' | 'iron' | 'grain';

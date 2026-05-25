@@ -88,6 +88,15 @@
         return;
       }
     }
+    // Klick auf eine fremde Stadt → als Angriffsziel wählen.
+    for (const c of map.cities) {
+      if (c.account_id === game.account?.id) continue;
+      const { sx, sy } = screen(c.x, c.y);
+      if (Math.abs(mx - sx) <= 8 && Math.abs(my - sy) <= 8) {
+        game.selectTarget(c);
+        return;
+      }
+    }
   }
 </script>
 

@@ -7,6 +7,7 @@
   import WorldMap from './lib/WorldMap.svelte';
   import MilitaryPanel from './lib/MilitaryPanel.svelte';
   import ChatPanel from './lib/ChatPanel.svelte';
+  import ReportsPanel from './lib/ReportsPanel.svelte';
   import LoginPanel from './lib/LoginPanel.svelte';
 
   onMount(() => {
@@ -17,6 +18,7 @@
     { view: 'city', label: '▦ Stadt' },
     { view: 'map', label: '🜨 Weltkarte' },
     { view: 'military', label: '⚔ Militär' },
+    { view: 'reports', label: '⚑ Berichte' },
     { view: 'chat', label: '💬 Chat' },
   ];
 </script>
@@ -43,6 +45,8 @@
     <main class="main">
       {#if game.view === 'chat'}
         <ChatPanel />
+      {:else if game.view === 'reports'}
+        <ReportsPanel />
       {:else if game.snapshot === null && game.error !== null}
         <div class="err">{game.error}</div>
       {:else if game.snapshot === null}

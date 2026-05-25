@@ -1,9 +1,10 @@
 import type { BuildingDef } from '@adelia/shared/schemas/data';
-import type { CitySnapshot, MapData, MapCity, Account, Me, ChatMessage } from './types';
+import type { CitySnapshot, MapData, MapCity, Account, Me, ChatMessage, CombatReport } from './types';
 import { getJson, postJson } from './api';
 import { connect, type GameSocket } from './ws';
 
-export type View = 'city' | 'map' | 'military' | 'chat';
+export type View = 'city' | 'map' | 'military' | 'chat' | 'reports';
+export type AttackKind = 'scout' | 'plunder' | 'assault';
 export interface SelectedDungeon {
   x: number;
   y: number;
@@ -25,6 +26,8 @@ class GameStore {
   view = $state<View>('city');
   mapData = $state<MapData | null>(null);
   selectedDungeon = $state<SelectedDungeon | null>(null);
+  selectedTarget = $state<MapCity | null>(null);
+  reports = $state<CombatReport[]>([]);
   error = $state<string | null>(null);
 
   private socket: GameSocket | null = null;
@@ -124,6 +127,7 @@ class GameStore {
   async setView(view: View): Promise<void> {
     this.view = view;
     if (view === 'map') await this.loadMap();
+    else if (view === 'reports') await this.loadReports();
   }
 
   async loadMap(): Promise<void> {
@@ -147,7 +151,33 @@ class GameStore {
 
   selectDungeon(d: SelectedDungeon): void {
     this.selectedDungeon = d;
+    this.selectedTarget = null;
     this.view = 'military';
+  }
+
+  selectTarget(city: MapCity): void {
+    this.selectedTarget = city;
+    this.selectedDungeon = null;
+    this.view = 'military';
+  }
+
+  async attack(kind: AttackKind, troops: Record<string, number>): Promise<void> {
+    if (this.cityId === null || this.selectedTarget === null) return;
+    await this.post(`/cities/${this.cityId}/attack`, {
+      targetX: this.selectedTarget.x,
+      targetY: this.selectedTarget.y,
+      troops,
+      kind,
+    });
+  }
+
+  async loadReports(): Promise<void> {
+    try {
+      const data = await getJson<{ reports: CombatReport[] }>('/reports');
+      this.reports = data.reports;
+    } catch (err) {
+      this.fail(err);
+    }
   }
 
   async build(buildingKey: string): Promise<void> {
