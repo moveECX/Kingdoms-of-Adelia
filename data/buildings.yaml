@@ -156,3 +156,142 @@ buildings:
     maxLevel: 10
     cost: [[25, 50], [55, 110], [110, 220], [275, 550], [800, 1600], [1900, 3800], [3750, 7500], [6500, 13000], [10200, 20400], [15500, 31000]]
     buildTimeSec: [22, 144, 960, 7200, 16200, 32400, 59040, 95400, 143640, 217800]
+
+  # --- Lager / Handel (Phase 4) — Kosten/Bauzeit [A] Dev, an §3.7-Endwerten orientiert ---
+  cellar: # LoU: Hideout — verstecktes, unplünderbares Lager
+    name: 'Cellar'
+    category: storage
+    prereq: { hall: 2 }
+    maxLevel: 10
+    storage: [500, 1000, 1800, 2800, 4000, 6000, 8500, 11000, 13000, 15000]
+    cost: [[0, 50], [0, 120], [0, 280], [0, 600], [0, 1200], [0, 2200], [0, 3600], [0, 5200], [0, 6800], [0, 8000]]
+    buildTimeSec: [15, 36, 240, 1800, 4050, 8100, 14760, 23850, 35910, 54450]
+  market: # LoU: Marketplace — Spieler-Marktplatz (Inserate); Landhandel/Steuer später
+    name: 'Market'
+    category: trade
+    prereq: { hall: 5 }
+    maxLevel: 10
+    cost: [[100, 50], [300, 150], [600, 300], [1200, 600], [2400, 1200], [4000, 2000], [6500, 3500], [10000, 6000], [15000, 10000], [22000, 15000]]
+    buildTimeSec: [17, 72, 480, 3600, 8100, 16200, 29520, 47700, 71820, 108900]
+  harbor: # Seehandel (Schiffe) + Steuer
+    name: 'Harbor'
+    category: trade
+    prereq: { hall: 10 }
+    maxLevel: 10
+    cost: [[500, 300], [1200, 700], [2400, 1400], [4000, 2400], [6500, 4000], [10000, 6500], [15000, 10000], [22000, 15000], [32000, 22000], [45000, 32000]]
+    buildTimeSec: [60, 300, 1200, 5400, 12150, 24300, 44280, 71550, 107730, 163350]
+
+  # --- Militärgebäude (Phase 4–5): Trainer/Spezial; Effekte im Server-Code via building_key ---
+  barracks: # +Armeegröße, +Rekrutiertempo angrenzender Trainer
+    name: 'Barracks'
+    category: military
+    prereq: { hall: 4 }
+    maxLevel: 10
+    cost: [[40, 60], [90, 130], [180, 260], [450, 650], [1300, 1900], [3000, 4400], [6000, 8800], [10400, 15000], [16400, 24000], [25000, 36000]]
+    buildTimeSec: [22, 144, 960, 7200, 16200, 32400, 59040, 95400, 143640, 217800]
+  mage_tower: # LoU: Moonglow Tower — Magier + Ressourcen-Veredelung
+    name: 'Mage Tower'
+    category: military
+    prereq: { hall: 7 }
+    maxLevel: 10
+    cost: [[60, 120], [130, 260], [260, 520], [650, 1300], [1900, 3800], [4400, 8800], [8800, 17000], [15000, 30000], [24000, 48000], [36000, 72000]]
+    buildTimeSec: [30, 200, 1400, 9000, 20000, 40000, 72000, 116000, 174000, 264000]
+  sanctuary: # LoU: Trinsic Temple — gesegnete Einheiten + Marshal/Baron (L10)
+    name: 'Sanctuary'
+    category: military
+    prereq: { hall: 8 }
+    maxLevel: 10
+    cost: [[80, 160], [180, 360], [360, 720], [900, 1800], [2600, 5200], [6000, 12000], [12000, 24000], [21000, 42000], [33000, 66000], [50000, 100000]]
+    buildTimeSec: [40, 260, 1800, 11000, 24000, 48000, 86000, 140000, 210000, 320000]
+  siege_workshop: # LoU: Workshop — Belagerungsgerät
+    name: 'Siege Workshop'
+    category: military
+    prereq: { hall: 9 }
+    maxLevel: 10
+    cost: [[100, 100], [220, 220], [440, 440], [1100, 1100], [3200, 3200], [7400, 7400], [14800, 14800], [25600, 25600], [40000, 40000], [60000, 60000]]
+    buildTimeSec: [40, 260, 1800, 11000, 24000, 48000, 86000, 140000, 210000, 320000]
+  shipyard: # Marine-Einheiten
+    name: 'Shipyard'
+    category: military
+    prereq: { hall: 10 }
+    maxLevel: 10
+    cost: [[200, 150], [450, 350], [900, 700], [2200, 1700], [6000, 4600], [13000, 10000], [24000, 18000], [40000, 30000], [60000, 46000], [88000, 66000]]
+    buildTimeSec: [60, 360, 2400, 12000, 26000, 52000, 94000, 152000, 228000, 348000]
+
+  # --- Spezial (Phase 4): Citadel ermöglicht Angriffe/Belagerung; nur Stein (§3.7) ---
+  citadel: # LoU: Castle — Plündern/Belagern, +Befehls-Queue, 1/Stadt, unzerstörbar
+    name: 'Citadel'
+    category: special
+    prereq: { hall: 8 }
+    maxLevel: 10
+    onePerCity: true
+    indestructible: true
+    cost: [[0, 20000], [0, 25000], [0, 30000], [0, 40000], [0, 55000], [0, 75000], [0, 100000], [0, 130000], [0, 160000], [0, 200000]]
+    buildTimeSec: [600, 1800, 5400, 14400, 28800, 50400, 79200, 115200, 158400, 216000]
+
+  # --- Türme (Phase 4): verdoppeln passende Verteidiger (Server: cityDefenseModifiers); nur Stein (§3.9) ---
+  ranger_tower:
+    name: 'Ranger Tower'
+    category: defense
+    prereq: { hall: 4 }
+    maxLevel: 10
+    cost: [[0, 100], [0, 300], [0, 800], [0, 2000], [0, 4000], [0, 8000], [0, 15000], [0, 26000], [0, 40000], [0, 58000]]
+    buildTimeSec: [30, 120, 600, 2400, 6000, 12000, 22000, 36000, 54000, 78000]
+  guardian_tower:
+    name: 'Guardian Tower'
+    category: defense
+    prereq: { hall: 4 }
+    maxLevel: 10
+    cost: [[0, 100], [0, 300], [0, 800], [0, 2000], [0, 4000], [0, 8000], [0, 15000], [0, 26000], [0, 40000], [0, 58000]]
+    buildTimeSec: [30, 120, 600, 2400, 6000, 12000, 22000, 36000, 54000, 78000]
+  templar_tower:
+    name: 'Templar Tower'
+    category: defense
+    prereq: { hall: 8 }
+    maxLevel: 10
+    cost: [[0, 100], [0, 300], [0, 800], [0, 2000], [0, 4000], [0, 8000], [0, 15000], [0, 26000], [0, 40000], [0, 58000]]
+    buildTimeSec: [30, 120, 600, 2400, 6000, 12000, 22000, 36000, 54000, 78000]
+  ballista_tower:
+    name: 'Ballista Tower'
+    category: defense
+    prereq: { hall: 9 }
+    maxLevel: 10
+    cost: [[0, 120], [0, 360], [0, 960], [0, 2400], [0, 4800], [0, 9600], [0, 18000], [0, 31000], [0, 48000], [0, 70000]]
+    buildTimeSec: [30, 120, 600, 2400, 6000, 12000, 22000, 36000, 54000, 78000]
+  lookout_tower: # +Scouts, +Angriffswarnung
+    name: 'Lookout Tower'
+    category: defense
+    prereq: { hall: 3 }
+    maxLevel: 10
+    cost: [[0, 80], [0, 240], [0, 640], [0, 1600], [0, 3200], [0, 6400], [0, 12000], [0, 21000], [0, 32000], [0, 46000]]
+    buildTimeSec: [30, 120, 600, 2400, 6000, 12000, 22000, 36000, 54000, 78000]
+
+  # --- Fallen (Phase 4): neutralisieren ≤50% eines Angreifertyps (Server); T/S (§3.9) ---
+  pitfall_trap: # vs Infanterie
+    name: 'Pitfall'
+    category: defense
+    prereq: { hall: 4 }
+    maxLevel: 10
+    cost: [[40, 120], [90, 280], [200, 640], [450, 1500], [900, 3000], [1800, 6000], [3200, 11000], [5400, 19000], [8800, 32000], [14000, 48000]]
+    buildTimeSec: [30, 120, 600, 2400, 6000, 12000, 22000, 36000, 54000, 78000]
+  barricade_trap: # vs Kavallerie
+    name: 'Barricade'
+    category: defense
+    prereq: { hall: 4 }
+    maxLevel: 10
+    cost: [[40, 120], [90, 280], [200, 640], [450, 1500], [900, 3000], [1800, 6000], [3200, 11000], [5400, 19000], [8800, 32000], [14000, 48000]]
+    buildTimeSec: [30, 120, 600, 2400, 6000, 12000, 22000, 36000, 54000, 78000]
+  arcane_trap: # vs Magie
+    name: 'Arcane Trap'
+    category: defense
+    prereq: { hall: 7 }
+    maxLevel: 10
+    cost: [[40, 120], [90, 280], [200, 640], [450, 1500], [900, 3000], [1800, 6000], [3200, 11000], [5400, 19000], [8800, 32000], [14000, 48000]]
+    buildTimeSec: [30, 120, 600, 2400, 6000, 12000, 22000, 36000, 54000, 78000]
+  camouflage_trap: # vs Marine
+    name: 'Camouflage'
+    category: defense
+    prereq: { hall: 10 }
+    maxLevel: 10
+    cost: [[40, 120], [90, 280], [200, 640], [450, 1500], [900, 3000], [1800, 6000], [3200, 11000], [5400, 19000], [8800, 32000], [14000, 48000]]
+    buildTimeSec: [30, 120, 600, 2400, 6000, 12000, 22000, 36000, 54000, 78000]
