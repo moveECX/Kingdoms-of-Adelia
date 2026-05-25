@@ -9,7 +9,7 @@
  * Modifikatoren (aus units.yaml `combat`): City Wall, Nachtschutz (Angreifer −40%).
  */
 import type { Kysely, Selectable } from 'kysely';
-import { resolveCombat, toCombatStats, type Force } from '@adelia/shared/formulas/combat';
+import { resolveCombat, toCombatStats, type Force, type DefenseCategory } from '@adelia/shared/formulas/combat';
 import type { GameData } from '@adelia/shared/schemas/data';
 import type { Database, MilitaryActionsTable } from '../db/types';
 import { TRAVEL_SEC_PER_TILE, chebyshev, totalCarry, sendBack } from './movement';
@@ -37,6 +37,49 @@ async function loadGarrison(db: Kysely<Database>, cityId: number): Promise<Force
   const force: Force = {};
   for (const r of rows) if (r.qty > 0) force[r.unit_key] = r.qty;
   return force;
+}
+
+// [A] Türme/Fallen sind noch nicht in data/buildings.yaml (nicht baubar); die
+// Mechanik ist hier verdrahtet und greift, sobald die Gebäude in city_buildings stehen.
+const TOWER_DEFENDER: Record<string, string> = { ranger_tower: 'ranger', guardian_tower: 'guardian' };
+const TRAP_CATEGORY: Record<string, DefenseCategory> = {
+  pitfall_trap: 'infantry',
+  barricade_trap: 'cavalry',
+  arcane_trap: 'magic',
+  camouflage_trap: 'artillery',
+};
+const TOWER_CAPACITY = 2000; // [A] L10-Kapazität (GAME-MECHANICS §3.9), vorerst level-unabhängig
+const TRAP_CAPACITY = 1000; // [A] L10-Kapazität
+const CATS: readonly DefenseCategory[] = ['infantry', 'cavalry', 'magic', 'artillery'];
+
+/** Türme/Fallen der Stadt → Kampf-Modifikatoren (Turm-Def-Bonus + Fallen-Neutralisierung). */
+async function cityDefenseModifiers(
+  db: Kysely<Database>,
+  cityId: number,
+  garrison: Force,
+  stats: Record<string, { defense: Record<DefenseCategory, number> }>,
+): Promise<{
+  towerDefenseBonus: Partial<Record<DefenseCategory, number>>;
+  trapNeutralized: Partial<Record<DefenseCategory, number>>;
+}> {
+  const buildings = await db
+    .selectFrom('city_buildings')
+    .select('building_key')
+    .where('city_id', '=', cityId)
+    .execute();
+  const towerDefenseBonus: Partial<Record<DefenseCategory, number>> = {};
+  const trapNeutralized: Partial<Record<DefenseCategory, number>> = {};
+  for (const b of buildings) {
+    const defUnit = TOWER_DEFENDER[b.building_key];
+    const def = defUnit === undefined ? undefined : stats[defUnit]?.defense;
+    if (defUnit !== undefined && def !== undefined) {
+      const covered = Math.min(TOWER_CAPACITY, garrison[defUnit] ?? 0); // Turm verdoppelt → +1× Def
+      for (const cat of CATS) towerDefenseBonus[cat] = (towerDefenseBonus[cat] ?? 0) + covered * def[cat];
+    }
+    const trapCat = TRAP_CATEGORY[b.building_key];
+    if (trapCat !== undefined) trapNeutralized[trapCat] = (trapNeutralized[trapCat] ?? 0) + TRAP_CAPACITY;
+  }
+  return { towerDefenseBonus, trapNeutralized };
 }
 
 /** Schickt Truppen auf einen Angriff gegen eine fremde Stadt. */
@@ -173,6 +216,7 @@ export async function resolvePvpArrival(
   const intensity =
     action.kind === 'plunder' ? (combat.intensity['plunderDefender'] ?? 0.01) : (combat.intensity['assault'] ?? 0.5);
 
+  const mods = await cityDefenseModifiers(db, target.id, garrison, stats);
   const result = resolveCombat({
     attackers: troops,
     defenders: garrison,
@@ -180,6 +224,8 @@ export async function resolvePvpArrival(
     intensity,
     defenderDefenseMultiplier: wallMult,
     attackerAttackMultiplier: nightMult,
+    towerDefenseBonus: mods.towerDefenseBonus,
+    trapNeutralized: mods.trapNeutralized,
   });
 
   for (const [unit, lost] of Object.entries(result.defenderLosses)) {

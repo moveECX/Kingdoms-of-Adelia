@@ -32,6 +32,10 @@ export interface CombatInput {
   defenderDefenseMultiplier?: number;
   /** Multiplikator auf die Angriffskraft (z. B. 0.6 bei Nachtschutz); Default 1. */
   attackerAttackMultiplier?: number;
+  /** Flacher Verteidigungs-Bonus je Angreifer-Kategorie (Türme verstärken passende Verteidiger). */
+  towerDefenseBonus?: Partial<Record<DefenseCategory, number>>;
+  /** Neutralisierbare Angreifer-Einheiten je Kategorie (Fallen; Effekt gedeckelt auf 50% des Typs). */
+  trapNeutralized?: Partial<Record<DefenseCategory, number>>;
 }
 
 export interface CombatResult {
@@ -45,24 +49,41 @@ export interface CombatResult {
 }
 
 const clamp01 = (x: number): number => Math.max(0, Math.min(1, x));
+const CATEGORIES: readonly DefenseCategory[] = ['infantry', 'cavalry', 'magic', 'artillery'];
 
 export function resolveCombat(input: CombatInput): CombatResult {
   const wallMult = input.defenderDefenseMultiplier ?? 1;
   const atkMult = input.attackerAttackMultiplier ?? 1;
   const intensity = input.intensity;
+  const towerBonus = input.towerDefenseBonus ?? {};
+  const trapCap = input.trapNeutralized ?? {};
 
-  // (1) Angriffskraft je Typ + gesamt (atkMult z. B. Nachtschutz −40%).
+  // Fallen: neutralisierter Anteil je Angreifer-Kategorie (max 50% des Typs).
+  const qtyByCat: Record<DefenseCategory, number> = { infantry: 0, cavalry: 0, magic: 0, artillery: 0 };
+  for (const [key, qty] of Object.entries(input.attackers)) {
+    const s = input.stats[key];
+    if (s === undefined || qty <= 0) continue;
+    qtyByCat[s.category] += qty;
+  }
+  const neutralFrac: Record<DefenseCategory, number> = { infantry: 0, cavalry: 0, magic: 0, artillery: 0 };
+  for (const cat of CATEGORIES) {
+    const total = qtyByCat[cat];
+    const cap = trapCap[cat] ?? 0;
+    if (total > 0 && cap > 0) neutralFrac[cat] = Math.min(cap, 0.5 * total) / total;
+  }
+
+  // (1) Angriffskraft je Typ + gesamt (atkMult Nachtschutz; Fallen reduzieren passende Typen).
   const aPower = new Map<string, number>();
   let aTot = 0;
   for (const [key, qty] of Object.entries(input.attackers)) {
     const s = input.stats[key];
     if (s === undefined || qty <= 0) continue;
-    const power = s.attack * qty * atkMult;
+    const power = s.attack * qty * atkMult * (1 - neutralFrac[s.category]);
     aPower.set(key, power);
     aTot += power;
   }
 
-  // (3a) Verteidigungssumme je Kategorie.
+  // (3a) Verteidigungssumme je Kategorie (+ Turm-Bonus).
   const defByCat: Record<DefenseCategory, number> = { infantry: 0, cavalry: 0, magic: 0, artillery: 0 };
   for (const [key, qty] of Object.entries(input.defenders)) {
     const s = input.stats[key];
@@ -72,6 +93,7 @@ export function resolveCombat(input: CombatInput): CombatResult {
     defByCat.magic += s.defense.magic * qty;
     defByCat.artillery += s.defense.artillery * qty;
   }
+  for (const cat of CATEGORIES) defByCat[cat] += towerBonus[cat] ?? 0;
 
   // (3b) Verteidigungskraft je Angreifertyp + gesamt.
   const dPower = new Map<string, number>();

@@ -66,6 +66,31 @@ describe('resolveCombat', () => {
     // schwächerer Angriff → weniger Verteidigerverluste
     expect(night.defenderLosses.ranger ?? 0).toBeLessThan(day.defenderLosses.ranger ?? 0);
   });
+
+  it('Turm-Bonus erhöht die Verteidigung der Kategorie', () => {
+    const base = resolveCombat({ attackers: { berserker: 1000 }, defenders: { ranger: 500 }, stats, intensity: 0.5 });
+    const towered = resolveCombat({
+      attackers: { berserker: 1000 },
+      defenders: { ranger: 500 },
+      stats,
+      intensity: 0.5,
+      towerDefenseBonus: { infantry: 20000 },
+    });
+    expect(towered.defensePower).toBeCloseTo(base.defensePower + 20000);
+    expect(towered.defenderLosses.ranger ?? 0).toBeLessThan(base.defenderLosses.ranger ?? 0);
+  });
+
+  it('Fallen neutralisieren bis zu 50 % eines Angreifertyps', () => {
+    const base = resolveCombat({ attackers: { berserker: 1000 }, defenders: { ranger: 500 }, stats, intensity: 0.5 });
+    const trapped = resolveCombat({
+      attackers: { berserker: 1000 },
+      defenders: { ranger: 500 },
+      stats,
+      intensity: 0.5,
+      trapNeutralized: { infantry: 10000 }, // weit über 50 % → auf 50 % gedeckelt
+    });
+    expect(trapped.attackPower).toBeCloseTo(base.attackPower * 0.5);
+  });
 });
 
 describe('toCombatStats', () => {
