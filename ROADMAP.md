@@ -29,10 +29,10 @@ Mehrere Städte pro Account; eine **Weltkarten**-Ansicht; **PvE**-Kampf gegen Du
 **Auth, Sessions, persistente gemeinsame Welt**, viele koexistierende Accounts. **Noch kein PvP.**
 
 **Akzeptanzkriterien**
-- Registrieren/Login (argon2id), Session-Cookies, ratenbegrenzte Endpoints (minimal — selbst gehostet).
-- Eine persistente Welt; Spieler sehen die Städte der anderen auf der Karte; WS-Region-Rooms liefern Karten-Deltas.
-- Server übersteht Neustart ohne Zustandsverlust; Scheduler nimmt fällige Events korrekt wieder auf.
-- Chat (global + Stadt) über WS.
+- ✅ Registrieren/Login (Passwörter via `scrypt` statt argon2id — Begründung in `CLAUDE.md`), signierte Session-Cookies; Autorisierung auf allen Stadt-Endpoints. ⏳ Ratenbegrenzung (minimal) noch offen.
+- ✅ Eine persistente Welt; Spieler sehen die Städte der anderen auf der Karte (mit Besitzername). ⏳ WS-Region-Rooms für Karten-Deltas noch offen (Karte lädt aktuell per REST).
+- ✅ Server übersteht Neustart ohne Zustandsverlust (kein In-Memory-Spielzustand; Scheduler löst fällige Events zeitbasiert via DB-Query auf) — expliziter Neustart-Test noch ausstehend.
+- ✅ Chat **global** über WS (Verlauf + Live-Broadcast). ⏳ Stadt-Kanal noch offen.
 
 ## Phase 4 — PvP & Wirtschaft  ·  ~3–4 Wochen
 **Spieler-gegen-Spieler**-Kampf, der **Marktplatz** und **Allianzen**.
