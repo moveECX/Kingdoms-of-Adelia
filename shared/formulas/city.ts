@@ -80,6 +80,11 @@ export function computeCityProduction(input: CityProductionInput): CityProductio
       constructionPct += at(def.buildSpeedPct, b.level);
     }
 
+    // Basis-Timber-Produktion (z. B. Hall, +300/h), flach, ohne Adjazenz.
+    if (def.baseTimberPerH !== undefined) {
+      ratePerH.timber += def.baseTimberPerH;
+    }
+
     // Nur geerntete Produzenten erzeugen Ressourcen-Produktion.
     if (def.category !== 'producer' || def.produces === undefined || def.produces === 'gold') {
       continue;
