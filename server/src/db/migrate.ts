@@ -1,21 +1,28 @@
 /**
- * Migrations-Runner (CLI): `npm run migrate` → `tsx src/db/migrate.ts`.
- * Wendet alle ausstehenden Migrationen aus server/db/migrations an.
+ * Migrations-Runner (CLI): `npm run migrate`.
+ * Nutzt einen statischen Provider statt FileMigrationProvider — dessen
+ * dynamischer import() von Backslash-Pfaden scheitert unter Windows
+ * (ERR_UNSUPPORTED_ESM_URL_SCHEME). Neue Migrationen hier importieren
+ * und in die Map eintragen.
  * Setzt eine laufende Postgres-Instanz voraus (`docker compose up -d db`).
  */
-import { promises as fs } from 'node:fs';
-import { dirname, join } from 'node:path';
-import { fileURLToPath } from 'node:url';
-import { FileMigrationProvider, Migrator } from 'kysely';
+import { Migrator } from 'kysely';
+import type { Migration, MigrationProvider } from 'kysely';
 import { createDb } from './connection';
+import * as m0001Core from '../../db/migrations/0001_core';
 
-const migrationFolder = join(dirname(fileURLToPath(import.meta.url)), '../../db/migrations');
+const migrations: Record<string, Migration> = {
+  '0001_core': m0001Core,
+};
+
+const provider: MigrationProvider = {
+  getMigrations() {
+    return Promise.resolve(migrations);
+  },
+};
 
 const db = createDb();
-const migrator = new Migrator({
-  db,
-  provider: new FileMigrationProvider({ fs, path: { join }, migrationFolder }),
-});
+const migrator = new Migrator({ db, provider });
 
 const { error, results } = await migrator.migrateToLatest();
 
