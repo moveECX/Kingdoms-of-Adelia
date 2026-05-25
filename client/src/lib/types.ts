@@ -29,7 +29,13 @@ export interface CitySnapshot {
     toLevel: number;
     resolveAt: string;
   }>;
+  garrison: Array<{ unitKey: string; qty: number }>;
   now: string;
+}
+
+export interface MapData {
+  cities: Array<{ id: number; name: string; x: number; y: number; account_id: number }>;
+  dungeons: Array<{ id: number; x: number; y: number; dungeon_type: string; level: number; completion: number }>;
 }
 
 export type ResourceKey = 'timber' | 'stone' | 'iron' | 'grain';

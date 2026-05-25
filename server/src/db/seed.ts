@@ -6,6 +6,7 @@ import { sql } from 'kysely';
 import { createDb } from './connection';
 import { loadGameData } from '../data/load-game-data';
 import { foundCity } from '../game/found-city';
+import { recomputeCity } from '../game/recompute';
 import { spawnDungeons } from '../game/dungeon';
 
 const db = createDb();
@@ -28,7 +29,15 @@ await db
   .where('id', '=', cityId)
   .execute();
 
+// Für die PvE-Demo: Hall L4 + Training Yard, damit sofort ausgebildet werden kann.
+await db.updateTable('city_buildings').set({ level: 4 }).where('city_id', '=', cityId).where('building_key', '=', 'hall').execute();
+await db
+  .insertInto('city_buildings')
+  .values({ city_id: cityId, slot_x: 0, slot_y: 1, building_key: 'training_yard', level: 1 })
+  .execute();
+await recomputeCity(db, cityId, gameData);
+
 await spawnDungeons(db, { x: 100, y: 100 });
 
-console.log(`Seed: Account #${account.id} (dev), Stadt #${cityId} + Dungeons angelegt.`);
+console.log(`Seed: Account #${account.id} (dev), Stadt #${cityId} (Hall L4 + Training Yard) + Dungeons.`);
 await db.destroy();
