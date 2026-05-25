@@ -60,6 +60,138 @@ units:
     trainer: { building: stable, level: 10 }
     cost: { timber: 0, stone: 0, iron: 250, gold: 100 }
     trainingTimeSec: 180
+  scout:
+    name: 'Scout'
+    type: scout
+    role: offensive
+    attack: 10
+    defense: { infantry: 10, cavalry: 10, magic: 10, artillery: 10 }
+    upkeepGrain: 5
+    carry: 0
+    trainer: { building: stable, level: 1 }
+    cost: { timber: 0, stone: 0, iron: 40, gold: 120 }
+    trainingTimeSec: 45
+  crossbowman:
+    name: 'Crossbowman'
+    type: infantry
+    role: defensive
+    attack: 40
+    defense: { infantry: 40, cavalry: 90, magic: 30, artillery: 40 }
+    upkeepGrain: 0
+    carry: 0
+    trainer: { building: stable, level: 5 }
+    cost: { timber: 150, stone: 0, iron: 0, gold: 200 }
+    trainingTimeSec: 120
+  mage:
+    name: 'Mage'
+    type: caster
+    role: offensive
+    attack: 70
+    defense: { infantry: 15, cavalry: 10, magic: 30, artillery: 15 }
+    upkeepGrain: 5
+    carry: 5
+    trainer: { building: mage_tower, level: 1 }
+    cost: { timber: 0, stone: 0, iron: 50, gold: 150 }
+    trainingTimeSec: 120
+  warlock:
+    name: 'Warlock'
+    type: caster
+    role: offensive
+    attack: 120
+    defense: { infantry: 30, cavalry: 20, magic: 50, artillery: 40 }
+    upkeepGrain: 20
+    carry: 5
+    trainer: { building: mage_tower, level: 7 }
+    cost: { timber: 0, stone: 0, iron: 100, gold: 350 }
+    trainingTimeSec: 240
+  templar:
+    name: 'Templar'
+    type: infantry
+    role: defensive
+    attack: 25
+    defense: { infantry: 20, cavalry: 30, magic: 50, artillery: 15 }
+    upkeepGrain: 0
+    carry: 0
+    trainer: { building: sanctuary, level: 1 }
+    cost: { timber: 0, stone: 0, iron: 90, gold: 100 }
+    trainingTimeSec: 120
+  paladin:
+    name: 'Paladin'
+    type: cavalry
+    role: defensive
+    attack: 60
+    defense: { infantry: 50, cavalry: 20, magic: 90, artillery: 40 }
+    upkeepGrain: 0
+    carry: 0
+    trainer: { building: sanctuary, level: 6 }
+    cost: { timber: 0, stone: 0, iron: 200, gold: 160 }
+    trainingTimeSec: 240
+  ram:
+    name: 'Ram'
+    type: siege
+    role: offensive
+    attack: 50
+    defense: { infantry: 20, cavalry: 20, magic: 20, artillery: 50 }
+    upkeepGrain: 0
+    carry: 0
+    trainer: { building: siege_workshop, level: 1 }
+    cost: { timber: 500, stone: 0, iron: 300, gold: 0 }
+    trainingTimeSec: 300
+  ballista:
+    name: 'Ballista'
+    type: siege
+    role: defensive
+    attack: 50
+    defense: { infantry: 200, cavalry: 100, magic: 200, artillery: 400 }
+    upkeepGrain: 0
+    carry: 0
+    trainer: { building: siege_workshop, level: 6 }
+    cost: { timber: 400, stone: 0, iron: 600, gold: 0 }
+    trainingTimeSec: 360
+  catapult:
+    name: 'Catapult'
+    type: siege
+    role: offensive
+    attack: 150
+    defense: { infantry: 100, cavalry: 100, magic: 200, artillery: 50 }
+    upkeepGrain: 0
+    carry: 0
+    trainer: { building: siege_workshop, level: 10 }
+    cost: { timber: 300, stone: 600, iron: 200, gold: 0 }
+    trainingTimeSec: 420
+  sloop:
+    name: 'Sloop'
+    type: naval
+    role: defensive
+    attack: 1200
+    defense: { infantry: 4500, cavalry: 4500, magic: 2000, artillery: 6000 }
+    upkeepGrain: 0
+    carry: 0
+    trainer: { building: shipyard, level: 1 }
+    cost: { timber: 6000, stone: 0, iron: 4000, gold: 2000 }
+    trainingTimeSec: 600
+  frigate:
+    name: 'Frigate'
+    type: naval
+    role: defensive
+    attack: 3000
+    defense: { infantry: 4000, cavalry: 4000, magic: 2000, artillery: 2000 }
+    upkeepGrain: 0
+    carry: 500
+    trainer: { building: shipyard, level: 6 }
+    cost: { timber: 15000, stone: 0, iron: 5000, gold: 5000 }
+    trainingTimeSec: 900
+  war_galleon:
+    name: 'War Galleon'
+    type: naval
+    role: offensive
+    attack: 12000
+    defense: { infantry: 5000, cavalry: 5000, magic: 2500, artillery: 6000 }
+    upkeepGrain: 2500
+    carry: 3000
+    trainer: { building: shipyard, level: 10 }
+    cost: { timber: 30000, stone: 0, iron: 10000, gold: 20000 }
+    trainingTimeSec: 1800
   marshal:
     # Anführer: nötig für Belagerung/Eroberung (GAME-MECHANICS §5/§6) + Stadtgründung.
     name: 'Marshal'

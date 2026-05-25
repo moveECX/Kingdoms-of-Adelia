@@ -1,7 +1,26 @@
 <script lang="ts">
   import { game, type AttackKind } from './store.svelte';
 
-  const TRAINABLE = ['city_guard', 'berserker', 'ranger', 'guardian', 'knight'];
+  const TRAINABLE = [
+    'city_guard',
+    'berserker',
+    'ranger',
+    'guardian',
+    'knight',
+    'scout',
+    'crossbowman',
+    'mage',
+    'warlock',
+    'templar',
+    'paladin',
+    'ram',
+    'ballista',
+    'catapult',
+    'sloop',
+    'frigate',
+    'war_galleon',
+    'marshal',
+  ];
 
   let trainUnit = $state('berserker');
   let trainQty = $state(10);
