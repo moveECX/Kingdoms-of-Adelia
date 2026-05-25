@@ -1,0 +1,54 @@
+/* Design-Tokens — synchron mit DESIGN-SYSTEM.md / design-system.html. */
+:root {
+  --bg-base: #0d0f12;
+  --bg-elevated: #15181d;
+  --bg-raised: #1c2027;
+  --bg-row-alt: #121519;
+  --bg-hover: #1f242b;
+  --bg-selected: rgba(217, 164, 65, 0.14);
+  --backdrop: rgba(6, 8, 10, 0.66);
+
+  --border-subtle: #262b33;
+  --border-strong: #353c46;
+  --border-focus: #d9a441;
+
+  --text-primary: #e6e9ee;
+  --text-secondary: #aab2bd;
+  --text-muted: #6b7480;
+  --text-disabled: #4a515b;
+  --text-inverse: #0d0f12;
+
+  --accent-primary: #d9a441;
+  --accent-hover: #e8b65a;
+  --accent-active: #c08f30;
+  --accent-soft: rgba(217, 164, 65, 0.12);
+
+  --status-success: #4a9e5c;
+  --status-warn: #d0982f;
+  --status-error: #cf5b43;
+  --status-info: #4f86a8;
+
+  --res-timber: #6f9d57;
+  --res-stone: #9aa0a8;
+  --res-iron: #6f8fa8;
+  --res-grain: #c8923a;
+  --res-gold: #e6c84f;
+
+  --font-ui: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+  --fs-xs: 11px;
+  --fs-sm: 12px;
+  --fs-base: 13px;
+  --fs-md: 14px;
+  --fs-lg: 16px;
+  --fs-xl: 20px;
+
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 24px;
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --shadow-modal: 0 8px 28px rgba(0, 0, 0, 0.55);
+}

@@ -48,4 +48,24 @@ export function registerCityRoutes(app: FastifyInstance, ctx: RouteCtx): void {
     resources: ctx.gameData.resources.schemaVersion,
     titles: ctx.gameData.titles.schemaVersion,
   }));
+
+  // Gebäude-Definitionen für die Client-Vorschau (Kosten/Output je Stufe).
+  app.get('/api/v1/data/buildings', () => ctx.gameData.buildings.buildings);
+
+  // Auth-Stub (Phase 1): erster/einziger Account + seine Städte.
+  app.get('/api/v1/me', async () => {
+    const account = await ctx.db
+      .selectFrom('accounts')
+      .select(['id', 'username', 'title', 'gold'])
+      .orderBy('id')
+      .executeTakeFirst();
+    if (account === undefined) return { account: null, cities: [] };
+    const cities = await ctx.db
+      .selectFrom('cities')
+      .select(['id', 'name', 'x', 'y'])
+      .where('account_id', '=', account.id)
+      .orderBy('id')
+      .execute();
+    return { account, cities };
+  });
 }
