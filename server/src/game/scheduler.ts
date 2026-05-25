@@ -3,6 +3,7 @@ import type { GameData } from '@adelia/shared/schemas/data';
 import { TICK_INTERVAL_MS } from '@adelia/shared/constants/game';
 import type { Database } from '../db/types';
 import { recomputeCity } from './recompute';
+import { resolveDueMilitary } from './raid';
 
 /**
  * Löst alle fälligen Bauaufträge auf (#010): setzt/erhöht das Gebäude, entfernt
@@ -87,8 +88,9 @@ export function startScheduler(
       try {
         const built = await resolveDueBuilds(db, gameData);
         const trained = await resolveDueTraining(db);
+        const moved = await resolveDueMilitary(db, gameData);
         if (onCityChanged !== undefined) {
-          for (const id of new Set([...built, ...trained])) onCityChanged(id);
+          for (const id of new Set([...built, ...trained, ...moved])) onCityChanged(id);
         }
       } catch (err) {
         console.error('Scheduler-Fehler:', err);
