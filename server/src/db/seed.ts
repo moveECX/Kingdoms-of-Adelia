@@ -10,6 +10,7 @@ import { foundCity } from '../game/found-city';
 import { recomputeCity } from '../game/recompute';
 import { spawnDungeons } from '../game/dungeon';
 import { hashPassword } from '../auth/password';
+import { VIRTUES } from '@adelia/shared/constants/game';
 
 const db = createDb();
 const gameData = loadGameData();
@@ -43,7 +44,8 @@ async function createPlayer(opts: {
   return { accountId: account.id, cityId };
 }
 
-await sql`TRUNCATE accounts, cities, city_tiles, city_buildings, build_queue, garrison, training_queue, military_actions, combat_reports, dungeons RESTART IDENTITY CASCADE`.execute(db);
+await sql`TRUNCATE accounts, cities, city_tiles, city_buildings, build_queue, garrison, training_queue, military_actions, combat_reports, dungeons, market_listings, alliances, alliance_diplomacy, alliance_events, shrines, palaces, world_state RESTART IDENTITY CASCADE`.execute(db);
+await sql`INSERT INTO world_state (id, ended) VALUES (1, false)`.execute(db);
 
 // Hauptspieler (Login: dev / password123) — mit Startkapital für die Demo.
 const dev = await createPlayer({ username: 'dev', x: 100, y: 100, seed: 12345, title: 'earl', gold: 5000 });
@@ -70,7 +72,28 @@ await createPlayer({ username: 'borin', x: 97, y: 103, seed: 33333, title: 'sir'
 
 await spawnDungeons(db, { x: 100, y: 100 });
 
+// Acht Schreine (je eine Tugend, aktiv) rund um die Startregion — erleuchten nahe Allianzstädte.
+const SHRINE_POSITIONS: ReadonlyArray<readonly [number, number]> = [
+  [100, 90],
+  [110, 92],
+  [115, 100],
+  [110, 108],
+  [100, 110],
+  [90, 108],
+  [85, 100],
+  [90, 92],
+];
+await db
+  .insertInto('shrines')
+  .values(
+    VIRTUES.map((virtue, i) => {
+      const pos = SHRINE_POSITIONS[i] ?? [100, 100];
+      return { x: pos[0], y: pos[1], virtue, active: true };
+    }),
+  )
+  .execute();
+
 console.log(
-  `Seed: 3 Accounts (dev/aldara/borin, Passwort '${PASSWORD}'), dev-Stadt #${dev.cityId} (Hall L4 + Training Yard) + Dungeons.`,
+  `Seed: 3 Accounts (dev/aldara/borin, Passwort '${PASSWORD}'), dev-Stadt #${dev.cityId} + Dungeons + ${VIRTUES.length} Schreine.`,
 );
 await db.destroy();

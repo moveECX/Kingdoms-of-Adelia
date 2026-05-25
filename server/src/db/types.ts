@@ -165,6 +165,28 @@ export interface AllianceEventsTable {
   at: Timestamptz;
 }
 
+export interface ShrinesTable {
+  id: Generated<number>;
+  x: number;
+  y: number;
+  virtue: string;
+  active: WithDefault<boolean>;
+}
+
+export interface PalacesTable {
+  id: Generated<number>;
+  city_id: number;
+  virtue: string;
+  level: WithDefault<number>;
+}
+
+export interface WorldStateTable {
+  id: number;
+  ended: WithDefault<boolean>;
+  champion_alliance: number | null;
+  ended_at: NullableTimestamptz;
+}
+
 export interface Database {
   accounts: AccountsTable;
   cities: CitiesTable;
@@ -180,4 +202,7 @@ export interface Database {
   alliances: AlliancesTable;
   alliance_diplomacy: AllianceDiplomacyTable;
   alliance_events: AllianceEventsTable;
+  shrines: ShrinesTable;
+  palaces: PalacesTable;
+  world_state: WorldStateTable;
 }
