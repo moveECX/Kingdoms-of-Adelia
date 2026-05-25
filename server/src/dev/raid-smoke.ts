@@ -7,7 +7,8 @@ import { createDb } from '../db/connection';
 import { loadGameData } from '../data/load-game-data';
 import { foundCity } from '../game/found-city';
 import { spawnDungeons } from '../game/dungeon';
-import { startRaid, resolveDueMilitary } from '../game/raid';
+import { startRaid } from '../game/raid';
+import { resolveDueMilitary } from '../game/military';
 
 const db = createDb();
 const gameData = loadGameData();

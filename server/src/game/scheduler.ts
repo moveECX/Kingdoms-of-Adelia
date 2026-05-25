@@ -3,7 +3,7 @@ import type { GameData } from '@adelia/shared/schemas/data';
 import { TICK_INTERVAL_MS } from '@adelia/shared/constants/game';
 import type { Database } from '../db/types';
 import { recomputeCity } from './recompute';
-import { resolveDueMilitary } from './raid';
+import { resolveDueMilitary } from './military';
 
 /**
  * Löst alle fälligen Bauaufträge auf (#010): setzt/erhöht das Gebäude, entfernt

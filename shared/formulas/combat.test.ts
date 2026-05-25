@@ -52,6 +52,20 @@ describe('resolveCombat', () => {
     expect(walled.defensePower).toBeCloseTo(base.defensePower * 2);
     expect(walled.defenderLosses.ranger).toBeLessThan(base.defenderLosses.ranger ?? 0);
   });
+
+  it('Nachtschutz senkt die Angriffskraft um 40 %', () => {
+    const day = resolveCombat({ attackers: { berserker: 1000 }, defenders: { ranger: 500 }, stats, intensity: 0.5 });
+    const night = resolveCombat({
+      attackers: { berserker: 1000 },
+      defenders: { ranger: 500 },
+      stats,
+      intensity: 0.5,
+      attackerAttackMultiplier: 0.6,
+    });
+    expect(night.attackPower).toBeCloseTo(day.attackPower * 0.6);
+    // schwächerer Angriff → weniger Verteidigerverluste
+    expect(night.defenderLosses.ranger ?? 0).toBeLessThan(day.defenderLosses.ranger ?? 0);
+  });
 });
 
 describe('toCombatStats', () => {

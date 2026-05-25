@@ -3,9 +3,8 @@ import { resolveCombat, toCombatStats, type Force } from '@adelia/shared/formula
 import type { GameData } from '@adelia/shared/schemas/data';
 import type { Database, MilitaryActionsTable } from '../db/types';
 import { dungeonDefenders, lootCap, type DungeonType } from './dungeon';
-import { materializeResources } from './resources';
+import { TRAVEL_SEC_PER_TILE, chebyshev, totalCarry, sendBack } from './movement';
 
-const TRAVEL_SEC_PER_TILE = 60; // Dev: 1 min/Tile
 const RAID_INTENSITY = 0.5;
 
 export class RaidError extends Error {}
@@ -15,17 +14,6 @@ export interface StartRaidParams {
   targetX: number;
   targetY: number;
   troops: Force;
-}
-
-const chebyshev = (ax: number, ay: number, bx: number, by: number): number =>
-  Math.max(Math.abs(ax - bx), Math.abs(ay - by));
-
-function totalCarry(force: Force, gameData: GameData): number {
-  let sum = 0;
-  for (const [unit, qty] of Object.entries(force)) {
-    sum += (gameData.units.units[unit]?.carry ?? 0) * qty;
-  }
-  return sum;
 }
 
 /** Schickt Truppen aus der Garnison auf einen Dungeon-Raid (#P2-4). */
@@ -86,34 +74,8 @@ export async function startRaid(
   return { actionId: action.id, resolveAt };
 }
 
-/** Löst fällige Truppenbewegungen auf: Ankunft (Kampf + Beute) und Rückkehr. */
-export async function resolveDueMilitary(
-  db: Kysely<Database>,
-  gameData: GameData,
-  now: Date = new Date(),
-): Promise<number[]> {
-  const due = await db
-    .selectFrom('military_actions')
-    .selectAll()
-    .where('resolve_at', '<=', now)
-    .orderBy('resolve_at')
-    .execute();
-
-  const changed = new Set<number>();
-  for (const action of due) {
-    if (action.phase === 'return') {
-      await resolveReturn(db, action);
-    } else if (action.kind === 'raid') {
-      await resolveRaidArrival(db, gameData, action);
-    } else {
-      await db.deleteFrom('military_actions').where('id', '=', action.id).execute();
-    }
-    changed.add(action.origin_city);
-  }
-  return [...changed];
-}
-
-async function resolveRaidArrival(
+/** Löst die Ankunft eines Dungeon-Raids auf: Kampf, Loot (durch Carry gedeckelt), Rückreise. */
+export async function resolveRaidArrival(
   db: Kysely<Database>,
   gameData: GameData,
   action: Selectable<MilitaryActionsTable>,
@@ -174,59 +136,4 @@ async function resolveRaidArrival(
   } else {
     await db.deleteFrom('military_actions').where('id', '=', action.id).execute();
   }
-}
-
-/** Stellt die Bewegung auf Rückkehr um (gleiche Reisedauer wie hin). */
-async function sendBack(
-  db: Kysely<Database>,
-  action: Selectable<MilitaryActionsTable>,
-  survivors: Force,
-  cargo: Record<string, number>,
-): Promise<void> {
-  const travelOutMs = action.resolve_at.getTime() - action.depart_at.getTime();
-  await db
-    .updateTable('military_actions')
-    .set({
-      phase: 'return',
-      troops: JSON.stringify(survivors),
-      cargo: JSON.stringify(cargo),
-      resolve_at: new Date(action.resolve_at.getTime() + travelOutMs),
-    })
-    .where('id', '=', action.id)
-    .execute();
-}
-
-async function resolveReturn(db: Kysely<Database>, action: Selectable<MilitaryActionsTable>): Promise<void> {
-  // Truppen zurück in die Garnison.
-  for (const [unit, qty] of Object.entries(action.troops)) {
-    if (qty <= 0) continue;
-    await db
-      .insertInto('garrison')
-      .values({ city_id: action.origin_city, unit_key: unit, qty })
-      .onConflict((oc) => oc.columns(['city_id', 'unit_key']).doUpdateSet((eb) => ({ qty: eb('garrison.qty', '+', qty) })))
-      .execute();
-  }
-
-  // Beute der Stadt gutschreiben (gedeckelt).
-  const cargo = action.cargo ?? {};
-  if (Object.keys(cargo).length > 0) {
-    const at = action.resolve_at;
-    await materializeResources(db, action.origin_city, at);
-    const city = await db
-      .selectFrom('cities')
-      .select(['timber', 'stone', 'iron', 'cap_timber', 'cap_stone', 'cap_iron'])
-      .where('id', '=', action.origin_city)
-      .executeTakeFirstOrThrow();
-    await db
-      .updateTable('cities')
-      .set({
-        timber: Math.min(city.cap_timber, city.timber + (cargo.timber ?? 0)),
-        stone: Math.min(city.cap_stone, city.stone + (cargo.stone ?? 0)),
-        iron: Math.min(city.cap_iron, city.iron + (cargo.iron ?? 0)),
-      })
-      .where('id', '=', action.origin_city)
-      .execute();
-  }
-
-  await db.deleteFrom('military_actions').where('id', '=', action.id).execute();
 }

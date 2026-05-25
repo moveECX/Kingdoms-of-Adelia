@@ -8,6 +8,7 @@ import { startBuild, BuildError } from '../game/build';
 import { startTraining, TrainError } from '../game/train';
 import { startRaid, RaidError } from '../game/raid';
 import { foundNewCity, FoundCityError } from '../game/found-city';
+import { startAttack, AttackError } from '../game/pvp';
 import { getAccountId } from '../auth/session';
 import { requireAccount, requireCityOwner } from '../auth/guard';
 import type { CityHub } from '../ws/hub';
@@ -30,6 +31,12 @@ const raidBody = z.object({
   troops: z.record(z.string(), z.number().int().min(0)),
 });
 const foundBody = z.object({ x: z.number().int(), y: z.number().int() });
+const attackBody = z.object({
+  targetX: z.number().int(),
+  targetY: z.number().int(),
+  troops: z.record(z.string(), z.number().int().min(0)),
+  kind: z.enum(['scout', 'plunder', 'assault']),
+});
 
 /** Registriert die Spiel-Routen unter /api/v1. Stadt-Aktionen erfordern Anmeldung + Besitz. */
 export function registerCityRoutes(app: FastifyInstance, ctx: RouteCtx): void {
@@ -85,6 +92,36 @@ export function registerCityRoutes(app: FastifyInstance, ctx: RouteCtx): void {
       if (err instanceof RaidError) return reply.code(400).send({ error: err.message });
       throw err;
     }
+  });
+
+  // PvP-Angriff auf eine fremde Stadt (Scout/Plunder/Assault).
+  app.post<{ Params: { id: string } }>('/api/v1/cities/:id/attack', async (req, reply) => {
+    const cityId = Number(req.params.id);
+    if ((await requireCityOwner(ctx.db, req, reply, cityId)) === null) return;
+    const parsed = attackBody.safeParse(req.body);
+    if (!parsed.success) return reply.code(400).send({ error: parsed.error.message });
+    try {
+      const action = await startAttack(ctx.db, { cityId, ...parsed.data }, new Date());
+      ctx.hub.broadcast(cityId, { t: 'city.delta', d: await loadCitySnapshot(ctx.db, cityId) });
+      return { actionId: action.actionId, resolveAt: action.resolveAt.toISOString() };
+    } catch (err) {
+      if (err instanceof AttackError) return reply.code(400).send({ error: err.message });
+      throw err;
+    }
+  });
+
+  // Kampfberichte des eingeloggten Accounts (als Angreifer oder Verteidiger).
+  app.get('/api/v1/reports', async (req, reply) => {
+    const accountId = requireAccount(req, reply);
+    if (accountId === null) return;
+    const reports = await ctx.db
+      .selectFrom('combat_reports')
+      .select(['id', 'attacker_id', 'defender_id', 'target_x', 'target_y', 'occurred_at', 'detail'])
+      .where((eb) => eb.or([eb('attacker_id', '=', accountId), eb('defender_id', '=', accountId)]))
+      .orderBy('occurred_at', 'desc')
+      .limit(50)
+      .execute();
+    return { reports };
   });
 
   app.post<{ Params: { id: string } }>('/api/v1/cities/:id/found', async (req, reply) => {
