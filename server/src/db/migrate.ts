@@ -10,9 +10,11 @@ import { Migrator } from 'kysely';
 import type { Migration, MigrationProvider } from 'kysely';
 import { createDb } from './connection';
 import * as m0001Core from '../../db/migrations/0001_core';
+import * as m0002Combat from '../../db/migrations/0002_combat';
 
 const migrations: Record<string, Migration> = {
   '0001_core': m0001Core,
+  '0002_combat': m0002Combat,
 };
 
 const provider: MigrationProvider = {

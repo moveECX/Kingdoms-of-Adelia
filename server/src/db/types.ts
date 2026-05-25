@@ -84,10 +84,62 @@ export interface BuildQueueTable {
   ordinal: number;
 }
 
+export interface GarrisonTable {
+  city_id: number;
+  unit_key: string;
+  qty: WithDefault<number>;
+}
+
+export interface TrainingQueueTable {
+  id: Generated<number>;
+  city_id: number;
+  unit_key: string;
+  qty_total: number;
+  qty_done: WithDefault<number>;
+  resolve_at: ColumnType<Date, Date | string, Date | string>;
+}
+
+export interface MilitaryActionsTable {
+  id: Generated<number>;
+  kind: string;
+  origin_city: number;
+  target_x: number;
+  target_y: number;
+  troops: ColumnType<Record<string, number>, string, string>;
+  cargo: ColumnType<Record<string, number> | null, string | null, string | null>;
+  depart_at: ColumnType<Date, Date | string, Date | string>;
+  resolve_at: ColumnType<Date, Date | string, Date | string>;
+  phase: WithDefault<string>;
+}
+
+export interface CombatReportsTable {
+  id: Generated<number>;
+  attacker_id: number | null;
+  defender_id: number | null;
+  target_x: number;
+  target_y: number;
+  occurred_at: Timestamptz;
+  detail: ColumnType<unknown, string, string>;
+}
+
+export interface DungeonsTable {
+  id: Generated<number>;
+  x: number;
+  y: number;
+  dungeon_type: string;
+  level: number;
+  completion: WithDefault<number>;
+}
+
 export interface Database {
   accounts: AccountsTable;
   cities: CitiesTable;
   city_tiles: CityTilesTable;
   city_buildings: CityBuildingsTable;
   build_queue: BuildQueueTable;
+  garrison: GarrisonTable;
+  training_queue: TrainingQueueTable;
+  military_actions: MilitaryActionsTable;
+  combat_reports: CombatReportsTable;
+  dungeons: DungeonsTable;
 }
