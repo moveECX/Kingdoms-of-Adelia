@@ -103,4 +103,15 @@ export interface MyAlliance {
   diplomacy?: Array<{ id: number; alliance_a: number; alliance_b: number; status: string }>;
 }
 
+export interface EndgameData {
+  world: { id: number; ended: boolean; champion_alliance: number | null; ended_at: string | null } | null;
+  shrines: Array<{ id: number; x: number; y: number; virtue: string; active: boolean }>;
+  faith: Record<string, number> | null;
+}
+
+export interface Leaderboard {
+  players: Array<{ id: number; username: string; title: string; rank_points: number }>;
+  alliances: Array<{ id: number; name: string; tag: string; faith: number }>;
+}
+
 export type ResourceKey = 'timber' | 'stone' | 'iron' | 'grain';

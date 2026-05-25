@@ -10,11 +10,13 @@ import type {
   MarketListing,
   AllianceSummary,
   MyAlliance,
+  EndgameData,
+  Leaderboard,
 } from './types';
 import { getJson, postJson, deleteJson } from './api';
 import { connect, type GameSocket } from './ws';
 
-export type View = 'city' | 'map' | 'military' | 'chat' | 'reports' | 'market' | 'alliance';
+export type View = 'city' | 'map' | 'military' | 'chat' | 'reports' | 'market' | 'alliance' | 'endgame';
 export type AttackKind = 'scout' | 'plunder' | 'assault' | 'siege';
 export interface SelectedDungeon {
   x: number;
@@ -43,6 +45,8 @@ class GameStore {
   market = $state<MarketListing[]>([]);
   alliances = $state<AllianceSummary[]>([]);
   myAlliance = $state<MyAlliance | null>(null);
+  endgame = $state<EndgameData | null>(null);
+  leaderboard = $state<Leaderboard | null>(null);
   error = $state<string | null>(null);
 
   private socket: GameSocket | null = null;
@@ -97,6 +101,8 @@ class GameStore {
     this.chatAlliance = [];
     this.alliances = [];
     this.myAlliance = null;
+    this.endgame = null;
+    this.leaderboard = null;
     this.view = 'city';
   }
 
@@ -149,6 +155,7 @@ class GameStore {
     else if (view === 'reports') await this.loadReports();
     else if (view === 'market') await this.loadMarket();
     else if (view === 'alliance') await this.loadAlliance();
+    else if (view === 'endgame') await this.loadEndgame();
   }
 
   async loadMap(): Promise<void> {
@@ -280,6 +287,26 @@ class GameStore {
 
   async setDiplomacy(otherAllianceId: number, status: string): Promise<void> {
     await this.allianceAction(() => postJson('/alliances/diplomacy', { otherAllianceId, status }));
+  }
+
+  async loadEndgame(): Promise<void> {
+    try {
+      this.endgame = await getJson<EndgameData>('/endgame');
+      this.leaderboard = await getJson<Leaderboard>('/leaderboard');
+    } catch (err) {
+      this.fail(err);
+    }
+  }
+
+  async buildPalace(virtue: string): Promise<void> {
+    if (this.cityId === null) return;
+    try {
+      await postJson(`/cities/${this.cityId}/palace`, { virtue });
+      this.error = null;
+      await this.loadEndgame();
+    } catch (err) {
+      this.fail(err);
+    }
   }
 
   async build(buildingKey: string): Promise<void> {
