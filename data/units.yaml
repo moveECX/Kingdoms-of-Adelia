@@ -60,6 +60,19 @@ units:
     trainer: { building: stable, level: 10 }
     cost: { timber: 0, stone: 0, iron: 250, gold: 100 }
     trainingTimeSec: 180
+  marshal:
+    # Anführer: nötig für Belagerung/Eroberung (GAME-MECHANICS §5/§6).
+    # [A] trainer vorläufig training_yard L10 — eigentlich Sanctuary L10 (noch nicht in buildings.yaml).
+    name: 'Marshal'
+    type: special
+    role: offensive
+    attack: 10
+    defense: { infantry: 100, cavalry: 50, magic: 20, artillery: 10 }
+    upkeepGrain: 0
+    carry: 0
+    trainer: { building: training_yard, level: 10 }
+    cost: { timber: 0, stone: 0, iron: 50000, gold: 100000 }
+    trainingTimeSec: 600
 
 # Combat constants — see GAME-MECHANICS.md §5 ([verified] formula).
 combat:

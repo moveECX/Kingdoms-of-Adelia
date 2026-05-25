@@ -35,7 +35,7 @@ const attackBody = z.object({
   targetX: z.number().int(),
   targetY: z.number().int(),
   troops: z.record(z.string(), z.number().int().min(0)),
-  kind: z.enum(['scout', 'plunder', 'assault']),
+  kind: z.enum(['scout', 'plunder', 'assault', 'siege']),
 });
 
 /** Registriert die Spiel-Routen unter /api/v1. Stadt-Aktionen erfordern Anmeldung + Besitz. */

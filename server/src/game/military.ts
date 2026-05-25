@@ -10,7 +10,7 @@ import { resolveReturn } from './movement';
 import { resolveRaidArrival } from './raid';
 import { resolvePvpArrival } from './pvp';
 
-const PVP_KINDS = new Set(['scout', 'plunder', 'assault']);
+const PVP_KINDS = new Set(['scout', 'plunder', 'assault', 'siege']);
 
 export async function resolveDueMilitary(
   db: Kysely<Database>,

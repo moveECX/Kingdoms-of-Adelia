@@ -51,6 +51,7 @@ export interface CitiesTable {
   construction_pct: WithDefault<number>;
   layout_dirty: WithDefault<boolean>;
   protected_until: NullableTimestamptz;
+  siege_progress: WithDefault<number>;
   created_at: Timestamptz;
 }
 

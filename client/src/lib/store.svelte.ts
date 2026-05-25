@@ -4,7 +4,7 @@ import { getJson, postJson } from './api';
 import { connect, type GameSocket } from './ws';
 
 export type View = 'city' | 'map' | 'military' | 'chat' | 'reports';
-export type AttackKind = 'scout' | 'plunder' | 'assault';
+export type AttackKind = 'scout' | 'plunder' | 'assault' | 'siege';
 export interface SelectedDungeon {
   x: number;
   y: number;

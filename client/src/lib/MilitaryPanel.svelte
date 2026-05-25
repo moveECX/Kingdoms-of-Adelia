@@ -12,6 +12,10 @@
   function attack(kind: AttackKind): void {
     void game.attack(kind, { [attackUnit]: attackQty });
   }
+  function siege(): void {
+    // Belagerung erfordert einen Marshal (aus der Garnison).
+    void game.attack('siege', { [attackUnit]: attackQty, marshal: 1 });
+  }
 </script>
 
 <h2>Militär — {game.snapshot?.name}</h2>
@@ -49,9 +53,10 @@
   <div class="form">
     <button class="btn" onclick={() => attack('scout')}>Scout</button>
     <button class="btn" onclick={() => attack('plunder')}>Plündern</button>
-    <button class="btn primary" onclick={() => attack('assault')}>Assault</button>
+    <button class="btn" onclick={() => attack('assault')}>Assault</button>
+    <button class="btn primary" onclick={siege}>Belagern</button>
   </div>
-  <p class="hint">Scout klärt auf · Plündern raubt Ressourcen · Assault vernichtet Truppen. Erfordert eine Citadel.</p>
+  <p class="hint">Scout klärt auf · Plündern raubt · Assault vernichtet · Belagern (+1 Marshal) erobert bei 100 %. Erfordert eine Citadel.</p>
 {:else if game.selectedDungeon}
   <h3>Raid</h3>
   <div class="dungeon">
