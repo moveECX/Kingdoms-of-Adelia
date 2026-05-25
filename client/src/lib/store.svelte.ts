@@ -1,9 +1,20 @@
 import type { BuildingDef } from '@adelia/shared/schemas/data';
-import type { CitySnapshot, MapData, MapCity, Account, Me, ChatMessage, CombatReport, MarketListing } from './types';
+import type {
+  CitySnapshot,
+  MapData,
+  MapCity,
+  Account,
+  Me,
+  ChatMessage,
+  CombatReport,
+  MarketListing,
+  AllianceSummary,
+  MyAlliance,
+} from './types';
 import { getJson, postJson, deleteJson } from './api';
 import { connect, type GameSocket } from './ws';
 
-export type View = 'city' | 'map' | 'military' | 'chat' | 'reports' | 'market';
+export type View = 'city' | 'map' | 'military' | 'chat' | 'reports' | 'market' | 'alliance';
 export type AttackKind = 'scout' | 'plunder' | 'assault' | 'siege';
 export interface SelectedDungeon {
   x: number;
@@ -19,6 +30,7 @@ class GameStore {
   authChecked = $state(false);
   chatGlobal = $state<ChatMessage[]>([]);
   chatCity = $state<ChatMessage[]>([]);
+  chatAlliance = $state<ChatMessage[]>([]);
   cityId = $state<number | null>(null);
   snapshot = $state<CitySnapshot | null>(null);
   buildingDefs = $state<Record<string, BuildingDef>>({});
@@ -29,6 +41,8 @@ class GameStore {
   selectedTarget = $state<MapCity | null>(null);
   reports = $state<CombatReport[]>([]);
   market = $state<MarketListing[]>([]);
+  alliances = $state<AllianceSummary[]>([]);
+  myAlliance = $state<MyAlliance | null>(null);
   error = $state<string | null>(null);
 
   private socket: GameSocket | null = null;
@@ -80,6 +94,9 @@ class GameStore {
     this.mapData = null;
     this.chatGlobal = [];
     this.chatCity = [];
+    this.chatAlliance = [];
+    this.alliances = [];
+    this.myAlliance = null;
     this.view = 'city';
   }
 
@@ -101,6 +118,7 @@ class GameStore {
       },
       onChatMsg: (msg) => {
         if (msg.channel === 'city') this.chatCity = [...this.chatCity, msg].slice(-100);
+        else if (msg.channel === 'alliance') this.chatAlliance = [...this.chatAlliance, msg].slice(-100);
         else this.chatGlobal = [...this.chatGlobal, msg].slice(-100);
       },
       onMapDelta: (city) => {
@@ -111,7 +129,7 @@ class GameStore {
     this.socket.subscribeMap();
   }
 
-  sendChat(text: string, channel: 'global' | 'city' = 'global'): void {
+  sendChat(text: string, channel: 'global' | 'city' | 'alliance' = 'global'): void {
     const trimmed = text.trim();
     if (trimmed.length > 0) this.socket?.sendChat(trimmed, channel);
   }
@@ -130,6 +148,7 @@ class GameStore {
     if (view === 'map') await this.loadMap();
     else if (view === 'reports') await this.loadReports();
     else if (view === 'market') await this.loadMarket();
+    else if (view === 'alliance') await this.loadAlliance();
   }
 
   async loadMap(): Promise<void> {
@@ -222,6 +241,45 @@ class GameStore {
     } catch (err) {
       this.fail(err);
     }
+  }
+
+  async loadAlliance(): Promise<void> {
+    try {
+      this.alliances = (await getJson<{ alliances: AllianceSummary[] }>('/alliances')).alliances;
+      this.myAlliance = await getJson<MyAlliance>('/alliances/mine');
+    } catch (err) {
+      this.fail(err);
+    }
+  }
+
+  private async allianceAction(fn: () => Promise<unknown>): Promise<void> {
+    try {
+      await fn();
+      this.error = null;
+      await this.loadAlliance();
+    } catch (err) {
+      this.fail(err);
+    }
+  }
+
+  async createAlliance(name: string, tag: string): Promise<void> {
+    await this.allianceAction(() => postJson('/alliances', { name, tag }));
+  }
+
+  async joinAlliance(id: number): Promise<void> {
+    await this.allianceAction(() => postJson(`/alliances/${id}/join`, {}));
+  }
+
+  async leaveAlliance(): Promise<void> {
+    await this.allianceAction(() => postJson('/alliances/leave', {}));
+  }
+
+  async setRank(targetId: number, rank: string): Promise<void> {
+    await this.allianceAction(() => postJson('/alliances/rank', { targetId, rank }));
+  }
+
+  async setDiplomacy(otherAllianceId: number, status: string): Promise<void> {
+    await this.allianceAction(() => postJson('/alliances/diplomacy', { otherAllianceId, status }));
   }
 
   async build(buildingKey: string): Promise<void> {

@@ -9,6 +9,7 @@
   import ChatPanel from './lib/ChatPanel.svelte';
   import ReportsPanel from './lib/ReportsPanel.svelte';
   import MarketPanel from './lib/MarketPanel.svelte';
+  import AlliancePanel from './lib/AlliancePanel.svelte';
   import LoginPanel from './lib/LoginPanel.svelte';
 
   onMount(() => {
@@ -21,6 +22,7 @@
     { view: 'military', label: '⚔ Militär' },
     { view: 'reports', label: '⚑ Berichte' },
     { view: 'market', label: '🛒 Markt' },
+    { view: 'alliance', label: '🛡 Allianz' },
     { view: 'chat', label: '💬 Chat' },
   ];
 </script>
@@ -51,6 +53,8 @@
         <ReportsPanel />
       {:else if game.view === 'market'}
         <MarketPanel />
+      {:else if game.view === 'alliance'}
+        <AlliancePanel />
       {:else if game.snapshot === null && game.error !== null}
         <div class="err">{game.error}</div>
       {:else if game.snapshot === null}

@@ -10,7 +10,7 @@ export interface WsHandlers {
 export interface GameSocket {
   subscribeCity: (cityId: number) => void;
   subscribeMap: () => void;
-  sendChat: (text: string, channel: 'global' | 'city') => void;
+  sendChat: (text: string, channel: 'global' | 'city' | 'alliance') => void;
   close: () => void;
 }
 
@@ -49,7 +49,7 @@ export function connect(handlers: WsHandlers): GameSocket {
       pendingMap = true;
       if (ws.readyState === WebSocket.OPEN) sendMapSub();
     },
-    sendChat(text: string, channel: 'global' | 'city'): void {
+    sendChat(text: string, channel: 'global' | 'city' | 'alliance'): void {
       if (ws.readyState === WebSocket.OPEN) ws.send(JSON.stringify({ t: 'chat.send', channel, text }));
     },
     close(): void {

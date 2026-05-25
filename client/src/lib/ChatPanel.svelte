@@ -1,11 +1,13 @@
 <script lang="ts">
   import { game } from './store.svelte';
 
-  let activeChannel = $state<'global' | 'city'>('global');
+  let activeChannel = $state<'global' | 'city' | 'alliance'>('global');
   let text = $state('');
   let log = $state<HTMLDivElement | null>(null);
 
-  const messages = $derived(activeChannel === 'global' ? game.chatGlobal : game.chatCity);
+  const messages = $derived(
+    activeChannel === 'global' ? game.chatGlobal : activeChannel === 'city' ? game.chatCity : game.chatAlliance,
+  );
 
   function send(): void {
     game.sendChat(text, activeChannel);
@@ -29,6 +31,7 @@
   <div class="tabs">
     <button class="tab" class:active={activeChannel === 'global'} onclick={() => (activeChannel = 'global')}>Global</button>
     <button class="tab" class:active={activeChannel === 'city'} onclick={() => (activeChannel = 'city')}>Stadt</button>
+    <button class="tab" class:active={activeChannel === 'alliance'} onclick={() => (activeChannel = 'alliance')}>Allianz</button>
   </div>
 </div>
 <div class="log" bind:this={log}>
@@ -42,7 +45,9 @@
     <p class="muted">
       {activeChannel === 'global'
         ? 'Noch keine Nachrichten. Sag Hallo!'
-        : 'Stadt-Chat — sichtbar für alle, die diese Stadt sehen.'}
+        : activeChannel === 'city'
+          ? 'Stadt-Chat — sichtbar für alle, die diese Stadt sehen.'
+          : 'Allianz-Chat — nur für Mitglieder deiner Allianz.'}
     </p>
   {/each}
 </div>
@@ -52,7 +57,12 @@
     send();
   }}
 >
-  <input class="input" bind:value={text} placeholder={activeChannel === 'global' ? 'An alle…' : 'An die Stadt…'} maxlength="500" />
+  <input
+    class="input"
+    bind:value={text}
+    placeholder={activeChannel === 'global' ? 'An alle…' : activeChannel === 'city' ? 'An die Stadt…' : 'An die Allianz…'}
+    maxlength="500"
+  />
   <button class="btn primary" type="submit">Senden</button>
 </form>
 

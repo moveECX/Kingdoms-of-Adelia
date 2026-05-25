@@ -13,12 +13,14 @@ import * as m0001Core from '../../db/migrations/0001_core';
 import * as m0002Combat from '../../db/migrations/0002_combat';
 import * as m0003Pvp from '../../db/migrations/0003_pvp';
 import * as m0004Market from '../../db/migrations/0004_market';
+import * as m0005Alliances from '../../db/migrations/0005_alliances';
 
 const migrations: Record<string, Migration> = {
   '0001_core': m0001Core,
   '0002_combat': m0002Combat,
   '0003_pvp': m0003Pvp,
   '0004_market': m0004Market,
+  '0005_alliances': m0005Alliances,
 };
 
 const provider: MigrationProvider = {

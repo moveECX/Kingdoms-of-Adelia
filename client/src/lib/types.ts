@@ -60,7 +60,7 @@ export interface Me {
 }
 
 export interface ChatMessage {
-  channel: 'global' | 'city';
+  channel: 'global' | 'city' | 'alliance';
   cityId?: number;
   username: string;
   text: string;
@@ -85,6 +85,22 @@ export interface MarketListing {
   seller_account: number;
   username: string;
   created_at: string;
+}
+
+export interface AllianceSummary {
+  id: number;
+  name: string;
+  tag: string;
+  leader_account: number;
+  members: number;
+}
+
+export interface MyAlliance {
+  alliance: { id: number; name: string; tag: string; leader_account: number } | null;
+  myRank?: string | null;
+  members?: Array<{ id: number; username: string; alliance_rank: string | null }>;
+  events?: Array<{ id: number; text: string; at: string }>;
+  diplomacy?: Array<{ id: number; alliance_a: number; alliance_b: number; status: string }>;
 }
 
 export type ResourceKey = 'timber' | 'stone' | 'iron' | 'grain';

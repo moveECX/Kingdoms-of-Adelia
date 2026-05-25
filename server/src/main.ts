@@ -15,6 +15,7 @@ import { CityHub, decodeMessage } from './ws/hub';
 import { registerCityRoutes } from './routes/cities';
 import { registerAuthRoutes } from './routes/auth';
 import { registerMarketRoutes } from './routes/market';
+import { registerAllianceRoutes } from './routes/alliance';
 import { getAccountId } from './auth/session';
 
 const db = createDb();
@@ -30,19 +31,20 @@ await app.register(rateLimit, { global: false });
 registerAuthRoutes(app, db);
 registerCityRoutes(app, { db, gameData, hub });
 registerMarketRoutes(app, db);
+registerAllianceRoutes(app, db);
 
 const clientMsg = z.discriminatedUnion('t', [
   z.object({ t: z.literal('subscribe'), channel: z.enum(['city', 'map']), id: z.number().int().optional() }),
   z.object({
     t: z.literal('chat.send'),
-    channel: z.enum(['global', 'city']).default('global'),
+    channel: z.enum(['global', 'city', 'alliance']).default('global'),
     text: z.string().trim().min(1).max(500),
   }),
 ]);
 
 // WS: subscribe → city.snapshot + künftige city.delta (nur eigene Stadt); chat.send → chat.msg an alle.
 app.get('/ws', { websocket: true }, (socket, req) => {
-  hub.addClient(socket);
+  hub.addClient(socket, getAccountId(req));
   socket.send(JSON.stringify({ t: 'chat.history', d: hub.recentChat() }));
   socket.on('message', (raw) => {
     void (async () => {
@@ -76,18 +78,32 @@ app.get('/ws', { websocket: true }, (socket, req) => {
         } else {
           const acc = await db
             .selectFrom('accounts')
-            .select('username')
+            .select(['username', 'alliance_id'])
             .where('id', '=', accountId)
             .executeTakeFirst();
           if (acc === undefined) return;
           const at = new Date().toISOString();
-          if (msg.channel === 'global') {
-            hub.postGlobalChat({ channel: 'global', username: acc.username, text: msg.text, at });
-          } else {
+          if (msg.channel === 'alliance') {
+            if (acc.alliance_id === null) {
+              socket.send(JSON.stringify({ t: 'error', d: 'Du bist in keiner Allianz' }));
+              return;
+            }
+            const members = await db
+              .selectFrom('accounts')
+              .select('id')
+              .where('alliance_id', '=', acc.alliance_id)
+              .execute();
+            hub.broadcastToAccounts(new Set(members.map((m) => m.id)), {
+              t: 'chat.msg',
+              d: { channel: 'alliance', username: acc.username, text: msg.text, at },
+            });
+          } else if (msg.channel === 'city') {
             // Stadt-Chat geht an die Abonnenten jeder vom Sender abonnierten Stadt.
             for (const cityId of hub.citiesFor(socket)) {
               hub.postCityChat(cityId, { channel: 'city', cityId, username: acc.username, text: msg.text, at });
             }
+          } else {
+            hub.postGlobalChat({ channel: 'global', username: acc.username, text: msg.text, at });
           }
         }
       } catch {

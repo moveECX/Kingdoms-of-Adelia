@@ -1,7 +1,7 @@
 import type { RawData, WebSocket } from 'ws';
 
 export interface ChatMessage {
-  channel: 'global' | 'city';
+  channel: 'global' | 'city' | 'alliance';
   cityId?: number; // gesetzt bei channel === 'city'
   username: string;
   text: string;
@@ -15,16 +15,28 @@ export class CityHub {
   private readonly byCity = new Map<number, Set<WebSocket>>();
   private readonly clients = new Set<WebSocket>();
   private readonly mapClients = new Set<WebSocket>();
+  private readonly accountBySocket = new Map<WebSocket, number>();
   private readonly chatLog: ChatMessage[] = [];
 
-  addClient(socket: WebSocket): void {
+  addClient(socket: WebSocket, accountId: number | null): void {
     this.clients.add(socket);
+    if (accountId !== null) this.accountBySocket.set(socket, accountId);
   }
 
   removeClient(socket: WebSocket): void {
     this.clients.delete(socket);
     this.mapClients.delete(socket);
+    this.accountBySocket.delete(socket);
     this.unsubscribeAll(socket);
+  }
+
+  /** Sendet an alle Sockets, deren Account in der Menge ist (z. B. Allianz-Chat). */
+  broadcastToAccounts(accountIds: ReadonlySet<number>, message: unknown): void {
+    const data = JSON.stringify(message);
+    for (const socket of this.clients) {
+      const acc = this.accountBySocket.get(socket);
+      if (acc !== undefined && accountIds.has(acc) && socket.readyState === socket.OPEN) socket.send(data);
+    }
   }
 
   /** Abonniert die Weltkarte (erhält künftige map.delta-Broadcasts). */

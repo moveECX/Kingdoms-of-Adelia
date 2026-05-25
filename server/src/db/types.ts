@@ -24,7 +24,8 @@ export interface AccountsTable {
   gold: WithDefault<number>;
   mana: WithDefault<number>;
   rank_points: WithDefault<number>;
-  alliance_id: number | null; // FK auf alliances folgt in Phase 4
+  alliance_id: number | null;
+  alliance_rank: string | null;
   created_at: Timestamptz;
   last_seen_at: NullableTimestamptz;
 }
@@ -142,6 +143,28 @@ export interface MarketListingsTable {
   created_at: Timestamptz;
 }
 
+export interface AlliancesTable {
+  id: Generated<number>;
+  name: string;
+  tag: string;
+  leader_account: number;
+  created_at: Timestamptz;
+}
+
+export interface AllianceDiplomacyTable {
+  id: Generated<number>;
+  alliance_a: number;
+  alliance_b: number;
+  status: string;
+}
+
+export interface AllianceEventsTable {
+  id: Generated<number>;
+  alliance_id: number;
+  text: string;
+  at: Timestamptz;
+}
+
 export interface Database {
   accounts: AccountsTable;
   cities: CitiesTable;
@@ -154,4 +177,7 @@ export interface Database {
   combat_reports: CombatReportsTable;
   dungeons: DungeonsTable;
   market_listings: MarketListingsTable;
+  alliances: AlliancesTable;
+  alliance_diplomacy: AllianceDiplomacyTable;
+  alliance_events: AllianceEventsTable;
 }
