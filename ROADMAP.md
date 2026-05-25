@@ -45,10 +45,10 @@ Mehrere Städte pro Account; eine **Weltkarten**-Ansicht; **PvE**-Kampf gegen Du
 ## Phase 5 — Endgame  ·  ~2–3 Wochen
 **Schreine, Paläste, Siegbedingungen, Bestenlisten.**
 
-**Akzeptanzkriterien**
-- Schreine aktivieren; Erleuchtung lässt castled Allianzstädte Paläste bauen/ausbauen (1/Erleuchtung).
-- Allianz-**Faith** aggregiert pro Tugend mit dem dokumentierten Bonus; **Besitz eines L10-Palastes aller 8 Tugenden gewinnt** und beendet die Welt.
-- Ranglisten/Bestenlisten (Spieler + Allianzen) und ein Champions-Eintrag.
+**Akzeptanzkriterien** — Kern erfüllt ✅
+- ✅ Schreine (8 Tugenden) erleuchten nahe Allianzstädte → Palast bauen/ausbauen (1/Stadt, max L10). ⏳ Zeit-Aktivierung der Schreine, „castled"/3×3-Slot-Check und Schrein-Armee-Bonus noch vereinfacht (Schreine beim Seed aktiv).
+- ✅ Allianzweite **Faith** pro Tugend (Summe der Palast-Stufen); **L10-Palast aller acht Tugenden gewinnt** → `world_state.ended` + Champion-Allianz.
+- ✅ Ranglisten (Spieler nach Rangpunkten, Allianzen nach Faith) + Champion-Eintrag.
 
 ---
 
