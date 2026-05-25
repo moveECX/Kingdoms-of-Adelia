@@ -82,11 +82,20 @@ research/ REPO-DECISION.md openlou-analysis.md lordofultima-felix-analysis.md
 ---
 
 ## Aktueller Kontext
-**Zuletzt bearbeitet (2026-05-24):** Bootstrap-Session — alle Planungsdokumente geschrieben; beide Referenz-Repos analysiert (Entscheidung: neu in TS bauen); LoU-Mechaniken recherchiert und die wichtigsten Fandom-Seiten nach `research/wiki-snapshots/` gespiegelt (Gebäude-Tabellen pro Stufe, Adjazenz und Kampfformel sind `[verified]`); Repo-Gerüst + Workspace-Configs + `data/*.yaml` mit verifizierten Zahlen angelegt; Initial-Commit. Danach **Rebrand auf „Kingdoms of Adelia"**, **AGPL-3.0** ergänzt, **alle Docs ins Deutsche** übersetzt und nach **GitHub** (`moveECX/Kingdoms-of-Adelia`) gepusht. **Kein Gameplay-Code.**
+**Stand (2026-05-25): Phase 1 abgeschlossen — Solo-Prototyp spielbar.** Alle 16 Phase-1-Tickets erledigt + verifiziert:
+- **shared/formulas** (rein, 26 Unit-Tests): Adjazenz (Fandom-Modell, daydull-Variante per Flag), Kosten, Bauzeit, Produktion, Terrain-Generator, Ressourcenmodell, `computeCityProduction`.
+- **DB**: PostgreSQL 16 + Kysely, Migration `0001_core` (gegen DB gelaufen, `schema.sql`).
+- **Server**: Gründung/Bau/Scheduler/Adjazenz-Loop; Fastify-REST (`/api/v1/cities`, `/build`, `/me`, `/data/*`) + WebSocket-Deltas; Tick-Scheduler.
+- **Client**: Svelte 5 + Vite — Stadtraster (9×9), Bau-UI mit Vorschau, Live-Ressourcen-HUD.
+- Verifiziert end-to-end über den Vite-Proxy (`:5173` → `:3000`).
 
-**Als Nächstes → Phase 1, Ticket #001** (`ROADMAP.md`): *Monorepo & Toolchain-Bootstrap* — `npm install` im Root, prüfen dass `@shared/*` aus Server & Client auflöst, `lint`/`typecheck` laufen auf dem Gerüst durch. Danach #002 (Docker-Postgres) und #003 (Kysely + erste Migration).
+**Lokaler Start:** `docker compose up -d db` (Host-Port **5433**) → `npm run migrate` → `npm run seed` → `npm run dev` → **http://localhost:5173**.
 
-**Achtung in der nächsten Session:**
-- Das **Fandom-Adjazenzmodell** (`base×(1+Σnodes+Σcottages)×(1+enhancer)`) hinter Tests implementieren; die daydull-Variante ist eine geflaggte Alternative (`RESEARCH-LOG.md`, offener Konflikt #1).
-- `[U]`-Lücken (Trainingszeiten, einige Tragekapazitäten) über den Fandom-`?action=raw`-+-Browser-UA-Trick füllen, der diese Session funktioniert hat.
-- OpenLoU-Zahlen niemals über den Fandom-Wikitext stellen (OpenLoU hat Datenfehler).
+**Als Nächstes → Phase 2 (Weltkarte & Monster, `ROADMAP.md`):** Multi-City, Canvas-Weltkarte, PvE gegen Dungeons. Vorarbeiten: Welt-/Map-Schema, `units.yaml` vervollständigen (aktuell Starter-Subset), **`shared/formulas/combat`** nach `GAME-MECHANICS.md` §5 implementieren (Formel ist `[verified]`).
+
+**Offene Punkte aus Phase 1 (technische Schuld, bewusst):**
+- Militärgebäude (Trainer) haben nur Kosten/Bauzeit, keine Rekrutier-Wirkung (Phase 2).
+- REST: `demolish`/`queue-cancel` fehlen; Ausbau läuft über `/build` (belegter Slot).
+- API-Request-Schemas inline (zod) statt in `shared/schemas/api` — bei Bedarf extrahieren.
+- Prod-Build: `@adelia/shared`-exports zeigen auf `.ts` (für tsx/Vite); für `node dist` auf `dist/*.js` umstellen.
+- `startBuild`/`materialize` ohne Transaktion (Single-Player ok; bei Concurrency absichern).
