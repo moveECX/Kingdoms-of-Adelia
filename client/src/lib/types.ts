@@ -33,8 +33,17 @@ export interface CitySnapshot {
   now: string;
 }
 
+export interface MapCity {
+  id: number;
+  name: string;
+  x: number;
+  y: number;
+  account_id: number;
+  username: string;
+}
+
 export interface MapData {
-  cities: Array<{ id: number; name: string; x: number; y: number; account_id: number; username: string }>;
+  cities: MapCity[];
   dungeons: Array<{ id: number; x: number; y: number; dungeon_type: string; level: number; completion: number }>;
 }
 
@@ -51,6 +60,8 @@ export interface Me {
 }
 
 export interface ChatMessage {
+  channel: 'global' | 'city';
+  cityId?: number;
   username: string;
   text: string;
   at: string;

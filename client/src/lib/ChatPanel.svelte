@@ -1,11 +1,14 @@
 <script lang="ts">
   import { game } from './store.svelte';
 
+  let activeChannel = $state<'global' | 'city'>('global');
   let text = $state('');
   let log = $state<HTMLDivElement | null>(null);
 
+  const messages = $derived(activeChannel === 'global' ? game.chatGlobal : game.chatCity);
+
   function send(): void {
-    game.sendChat(text);
+    game.sendChat(text, activeChannel);
     text = '';
   }
 
@@ -13,23 +16,34 @@
     return new Date(iso).toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' });
   }
 
-  // Nach jeder neuen Nachricht ans Ende scrollen.
+  // Bei neuer Nachricht oder Kanalwechsel ans Ende scrollen.
   $effect(() => {
-    void game.chat.length;
+    void messages.length;
+    void activeChannel;
     if (log !== null) log.scrollTop = log.scrollHeight;
   });
 </script>
 
-<h2>Globaler Chat</h2>
+<div class="head">
+  <h2>Chat</h2>
+  <div class="tabs">
+    <button class="tab" class:active={activeChannel === 'global'} onclick={() => (activeChannel = 'global')}>Global</button>
+    <button class="tab" class:active={activeChannel === 'city'} onclick={() => (activeChannel = 'city')}>Stadt</button>
+  </div>
+</div>
 <div class="log" bind:this={log}>
-  {#each game.chat as m, i (i)}
+  {#each messages as m, i (i)}
     <div class="msg">
       <span class="time mono">{time(m.at)}</span>
       <span class="user" class:me={m.username === game.account?.username}>{m.username}</span>
       <span class="text">{m.text}</span>
     </div>
   {:else}
-    <p class="muted">Noch keine Nachrichten. Sag Hallo!</p>
+    <p class="muted">
+      {activeChannel === 'global'
+        ? 'Noch keine Nachrichten. Sag Hallo!'
+        : 'Stadt-Chat — sichtbar für alle, die diese Stadt sehen.'}
+    </p>
   {/each}
 </div>
 <form
@@ -38,15 +52,38 @@
     send();
   }}
 >
-  <input class="input" bind:value={text} placeholder="Nachricht…" maxlength="500" />
+  <input class="input" bind:value={text} placeholder={activeChannel === 'global' ? 'An alle…' : 'An die Stadt…'} maxlength="500" />
   <button class="btn primary" type="submit">Senden</button>
 </form>
 
 <style>
+  .head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--sp-3);
+  }
   h2 {
     font-size: var(--fs-md);
     color: var(--text-secondary);
-    margin: 0 0 var(--sp-3);
+    margin: 0;
+  }
+  .tabs {
+    display: flex;
+    gap: 2px;
+  }
+  .tab {
+    background: var(--bg-raised);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    color: var(--text-secondary);
+    padding: 4px var(--sp-2);
+    font-size: var(--fs-xs);
+  }
+  .tab.active {
+    background: var(--accent-soft);
+    color: var(--text-primary);
+    border-color: var(--accent-primary);
   }
   .log {
     height: calc(100vh - 180px);

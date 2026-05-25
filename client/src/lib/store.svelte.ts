@@ -1,5 +1,5 @@
 import type { BuildingDef } from '@adelia/shared/schemas/data';
-import type { CitySnapshot, MapData, Account, Me, ChatMessage } from './types';
+import type { CitySnapshot, MapData, MapCity, Account, Me, ChatMessage } from './types';
 import { getJson, postJson } from './api';
 import { connect, type GameSocket } from './ws';
 
@@ -16,7 +16,8 @@ export interface SelectedDungeon {
 class GameStore {
   account = $state<Account | null>(null);
   authChecked = $state(false);
-  chat = $state<ChatMessage[]>([]);
+  chatGlobal = $state<ChatMessage[]>([]);
+  chatCity = $state<ChatMessage[]>([]);
   cityId = $state<number | null>(null);
   snapshot = $state<CitySnapshot | null>(null);
   buildingDefs = $state<Record<string, BuildingDef>>({});
@@ -73,7 +74,8 @@ class GameStore {
     this.cityId = null;
     this.snapshot = null;
     this.mapData = null;
-    this.chat = [];
+    this.chatGlobal = [];
+    this.chatCity = [];
     this.view = 'city';
   }
 
@@ -91,18 +93,23 @@ class GameStore {
         this.snapshot = snap;
       },
       onChatHistory: (msgs) => {
-        this.chat = msgs;
+        this.chatGlobal = msgs;
       },
       onChatMsg: (msg) => {
-        this.chat = [...this.chat, msg].slice(-100);
+        if (msg.channel === 'city') this.chatCity = [...this.chatCity, msg].slice(-100);
+        else this.chatGlobal = [...this.chatGlobal, msg].slice(-100);
+      },
+      onMapDelta: (city) => {
+        this.addMapCity(city);
       },
     });
     this.socket.subscribeCity(first.id);
+    this.socket.subscribeMap();
   }
 
-  sendChat(text: string): void {
+  sendChat(text: string, channel: 'global' | 'city' = 'global'): void {
     const trimmed = text.trim();
-    if (trimmed.length > 0) this.socket?.sendChat(trimmed);
+    if (trimmed.length > 0) this.socket?.sendChat(trimmed, channel);
   }
 
   private fail(err: unknown): void {
@@ -125,6 +132,13 @@ class GameStore {
     } catch (err) {
       this.fail(err);
     }
+  }
+
+  /** Fügt eine per WS gemeldete neue Stadt zur Karte hinzu (falls bereits geladen). */
+  private addMapCity(city: MapCity): void {
+    if (this.mapData === null) return;
+    if (this.mapData.cities.some((c) => c.id === city.id)) return;
+    this.mapData = { ...this.mapData, cities: [...this.mapData.cities, city] };
   }
 
   select(x: number, y: number): void {
