@@ -7,14 +7,14 @@ import { recomputeCity } from './recompute';
 /**
  * Löst alle fälligen Bauaufträge auf (#010): setzt/erhöht das Gebäude, entfernt
  * den Queue-Eintrag und berechnet die Stadt **zum Abschlusszeitpunkt** neu
- * (deterministisch, unabhängig vom realen Tick). Gibt die Anzahl auf­gelöster
- * Aufträge zurück.
+ * (deterministisch, unabhängig vom realen Tick). Gibt die IDs der geänderten
+ * Städte zurück (für WS-Benachrichtigungen).
  */
 export async function resolveDueBuilds(
   db: Kysely<Database>,
   gameData: GameData,
   now: Date = new Date(),
-): Promise<number> {
+): Promise<number[]> {
   const due = await db
     .selectFrom('build_queue')
     .selectAll()
@@ -22,6 +22,7 @@ export async function resolveDueBuilds(
     .orderBy('resolve_at')
     .execute();
 
+  const changed = new Set<number>();
   for (const job of due) {
     const existing = await db
       .selectFrom('city_buildings')
@@ -48,20 +49,28 @@ export async function resolveDueBuilds(
 
     await db.deleteFrom('build_queue').where('id', '=', job.id).execute();
     await recomputeCity(db, job.city_id, gameData, job.resolve_at);
+    changed.add(job.city_id);
   }
 
-  return due.length;
+  return [...changed];
 }
 
 /** Startet die periodische Auflösung (für den Server, #012). */
 export function startScheduler(
   db: Kysely<Database>,
   gameData: GameData,
+  onCityChanged?: (cityId: number) => void,
   intervalMs: number = TICK_INTERVAL_MS,
 ): NodeJS.Timeout {
   return setInterval(() => {
-    resolveDueBuilds(db, gameData).catch((err: unknown) => {
-      console.error('Scheduler-Fehler:', err);
-    });
+    resolveDueBuilds(db, gameData)
+      .then((cities) => {
+        if (onCityChanged !== undefined) {
+          for (const id of cities) onCityChanged(id);
+        }
+      })
+      .catch((err: unknown) => {
+        console.error('Scheduler-Fehler:', err);
+      });
   }, intervalMs);
 }

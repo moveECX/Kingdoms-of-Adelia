@@ -73,7 +73,7 @@ await show('Bau gestartet');
 
 // Scheduler kurz nach Fertigstellung.
 const resolved = await resolveDueBuilds(db, gameData, new Date(job.resolveAt.getTime() + 1000));
-console.log(`Scheduler: ${resolved} Auftrag/Aufträge aufgelöst.`);
+console.log(`Scheduler: ${resolved.length} Auftrag/Aufträge aufgelöst.`);
 await show('Woodcutter fertig');
 
 // 2h vergehen lassen + materialisieren.
