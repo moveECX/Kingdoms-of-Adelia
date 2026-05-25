@@ -1,5 +1,7 @@
 <script lang="ts">
   import { game, type AttackKind } from './store.svelte';
+  import Icon from './Icon.svelte';
+  import { iconForUnit } from './icons';
 
   const TRAINABLE = [
     'city_guard',
@@ -42,7 +44,10 @@
 <h3>Garnison</h3>
 {#if game.snapshot && game.snapshot.garrison.length > 0}
   {#each game.snapshot.garrison as g (g.unitKey)}
-    <div class="line mono">{g.unitKey} × {g.qty}</div>
+    <div class="line">
+      <span class="uic"><Icon name={iconForUnit(g.unitKey)} size={15} /></span>
+      <span class="mono">{g.unitKey} × {g.qty}</span>
+    </div>
   {/each}
 {:else}
   <p class="muted">Keine Truppen stationiert.</p>
@@ -111,6 +116,13 @@
   .line {
     padding: 2px 0;
     color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: var(--sp-2);
+  }
+  .uic {
+    line-height: 0;
+    color: var(--text-secondary);
   }
   .form {
     display: flex;

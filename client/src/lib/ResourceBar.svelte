@@ -1,6 +1,7 @@
 <script lang="ts">
   import { deriveAmount } from '@adelia/shared/formulas/resources';
   import { game } from './store.svelte';
+  import Icon from './Icon.svelte';
   import type { ResourceKey } from './types';
 
   // Lokaler 1s-Ticker für flüssige Interpolation (gleiche Formel wie der Server).
@@ -39,7 +40,7 @@
   {#if game.snapshot}
     {#each RES as r (r.key)}
       <span class="res" title={r.label}>
-        <span class="dot" style="background:{r.color}"></span>
+        <span class="ic" style="color:{r.color}"><Icon name={r.key} size={15} /></span>
         <span class="amt mono">{live(r.key).toLocaleString('de-DE')}</span>
         <span class="rate mono">+{game.snapshot.resources[r.key].ratePerH}/h</span>
       </span>
@@ -69,10 +70,8 @@
     gap: var(--sp-2);
     font-size: var(--fs-sm);
   }
-  .dot {
-    width: 8px;
-    height: 8px;
-    border-radius: var(--radius-sm);
+  .ic {
+    line-height: 0;
   }
   .rate {
     color: var(--text-muted);

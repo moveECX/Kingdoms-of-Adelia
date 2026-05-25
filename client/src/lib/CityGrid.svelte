@@ -1,34 +1,10 @@
 <script lang="ts">
   import { game } from './store.svelte';
+  import Icon from './Icon.svelte';
+  import { iconForBuilding, iconForNode, NODE_COLOR } from './icons';
 
   const SIZE = 9;
   const COORDS = Array.from({ length: SIZE }, (_, i) => i);
-
-  const GLYPH: Record<string, string> = {
-    hall: '⌂',
-    woodcutter_lodge: '🪵',
-    quarry: '⛏',
-    iron_mine: '⚒',
-    farm: '🌾',
-    sawmill: '🪚',
-    stonemason: '🧱',
-    foundry: '🔥',
-    mill: '🌀',
-    cottage: '🏠',
-    warehouse: '📦',
-    townhouse: '💰',
-    city_wall: '🧱',
-    watch_house: '🛡',
-    training_yard: '⚔',
-    stable: '🐎',
-  };
-  const NODE_COLOR: Record<string, string> = {
-    wood: 'var(--res-timber)',
-    stone: 'var(--res-stone)',
-    iron: 'var(--res-iron)',
-    grain: 'var(--res-grain)',
-    lake: '#3f6f8f',
-  };
 
   const tileMap = $derived(
     new Map((game.snapshot?.tiles ?? []).map((t) => [`${t.slotX},${t.slotY}`, t.nodeType])),
@@ -45,20 +21,25 @@
       {@const b = buildMap.get(`${x},${y}`)}
       {@const node = tileMap.get(`${x},${y}`)}
       {@const sel = game.selected?.x === x && game.selected?.y === y}
+      {@const hasNode = node !== undefined && node !== 'empty'}
       <button
         class="cell"
         class:built={b !== undefined}
         class:selected={sel}
+        class:node={hasNode && b === undefined}
+        style={hasNode && b === undefined ? `--tile:${NODE_COLOR[node] ?? 'transparent'}` : ''}
         onclick={() => {
           game.select(x, y);
         }}
         title={b ? `${b.buildingKey} L${b.level} (+${b.adjacencyPct}%)` : (node ?? 'empty')}
       >
         {#if b}
-          <span class="glyph">{GLYPH[b.buildingKey] ?? '▦'}</span>
+          <span class="glyph"><Icon name={iconForBuilding(b.buildingKey)} size={22} /></span>
           <span class="lvl mono">{b.level}</span>
-        {:else if node && node !== 'empty'}
-          <span class="node" style="background:{NODE_COLOR[node] ?? 'transparent'}"></span>
+        {:else if hasNode}
+          <span class="terrain" style="color:{NODE_COLOR[node] ?? 'var(--text-muted)'}">
+            <Icon name={iconForNode(node)} size={18} />
+          </span>
         {/if}
       </button>
     {/each}
@@ -93,29 +74,31 @@
     border-color: var(--border-strong);
     background: var(--bg-hover);
   }
+  .cell.node {
+    /* dezente Terrain-Tönung der freien Knoten-Felder */
+    background: color-mix(in srgb, var(--tile) 14%, transparent);
+    border-color: color-mix(in srgb, var(--tile) 35%, var(--border-subtle));
+  }
   .cell.built {
     border-style: solid;
     border-color: var(--border-strong);
     background: var(--bg-raised);
+    color: var(--accent-primary);
   }
   .cell.selected {
     border-color: var(--accent-primary);
     box-shadow: 0 0 0 1px var(--accent-primary);
   }
   .glyph {
-    font-size: 18px;
-    line-height: 1;
+    line-height: 0;
   }
   .lvl {
     font-size: 9px;
     color: var(--accent-primary);
+    margin-top: 1px;
   }
-  .node {
-    position: absolute;
-    top: 3px;
-    right: 3px;
-    width: 8px;
-    height: 8px;
-    border-radius: var(--radius-sm);
+  .terrain {
+    line-height: 0;
+    opacity: 0.85;
   }
 </style>
