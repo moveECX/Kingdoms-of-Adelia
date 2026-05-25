@@ -11,7 +11,7 @@ import { resolveRaidArrival } from './raid';
 import { resolvePvpArrival } from './pvp';
 import { resolveTransfer } from './market';
 
-const PVP_KINDS = new Set(['scout', 'plunder', 'assault', 'siege']);
+const PVP_KINDS = new Set(['scout', 'plunder', 'assault', 'siege', 'support']);
 
 export async function resolveDueMilitary(
   db: Kysely<Database>,

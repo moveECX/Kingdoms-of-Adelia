@@ -15,7 +15,7 @@ import type { Database, MilitaryActionsTable } from '../db/types';
 import { TRAVEL_SEC_PER_TILE, chebyshev, totalCarry, sendBack } from './movement';
 import { materializeResources } from './resources';
 
-export type AttackKind = 'scout' | 'plunder' | 'assault' | 'siege';
+export type AttackKind = 'scout' | 'plunder' | 'assault' | 'siege' | 'support';
 export class AttackError extends Error {}
 
 export interface StartAttackParams {
@@ -115,9 +115,20 @@ export async function startAttack(
     .where('y', '=', params.targetY)
     .executeTakeFirst();
   if (target === undefined) throw new AttackError('Keine Stadt am Zielort');
-  if (target.account_id === origin.account_id) throw new AttackError('Du kannst deine eigene Stadt nicht angreifen');
-  if (target.protected_until !== null && target.protected_until > now) {
-    throw new AttackError('Die Zielstadt steht unter Schutz');
+  if (params.kind === 'support') {
+    // Verstärkung: nur eigene Stadt oder Allianz-Mitglied; kein Schutz-Check.
+    if (target.account_id !== origin.account_id) {
+      const me = await db.selectFrom('accounts').select('alliance_id').where('id', '=', origin.account_id).executeTakeFirstOrThrow();
+      const them = await db.selectFrom('accounts').select('alliance_id').where('id', '=', target.account_id).executeTakeFirstOrThrow();
+      if (me.alliance_id === null || me.alliance_id !== them.alliance_id) {
+        throw new AttackError('Support nur an eigene Städte oder Allianz-Mitglieder');
+      }
+    }
+  } else {
+    if (target.account_id === origin.account_id) throw new AttackError('Du kannst deine eigene Stadt nicht angreifen');
+    if (target.protected_until !== null && target.protected_until > now) {
+      throw new AttackError('Die Zielstadt steht unter Schutz');
+    }
   }
 
   for (const [unit, qty] of troops) {
@@ -183,6 +194,22 @@ export async function resolvePvpArrival(
     .where('id', '=', action.origin_city)
     .executeTakeFirst();
   const attackerId = origin?.account_id ?? null;
+
+  // Support: Truppen verstärken die Zielgarnison (kein Kampf, sie bleiben dort).
+  if (action.kind === 'support') {
+    for (const [unit, qty] of Object.entries(troops)) {
+      if (qty <= 0) continue;
+      await db
+        .insertInto('garrison')
+        .values({ city_id: target.id, unit_key: unit, qty })
+        .onConflict((oc) => oc.columns(['city_id', 'unit_key']).doUpdateSet((eb) => ({ qty: eb('garrison.qty', '+', qty) })))
+        .execute();
+    }
+    await writeReport(db, attackerId, target.account_id, action, { kind: 'support', troops });
+    await db.deleteFrom('military_actions').where('id', '=', action.id).execute();
+    return [target.id];
+  }
+
   const garrison = await loadGarrison(db, target.id);
 
   // Scout: kein Kampf, nur Aufklärung.

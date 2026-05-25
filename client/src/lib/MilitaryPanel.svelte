@@ -73,9 +73,10 @@
     <button class="btn" onclick={() => attack('scout')}>Scout</button>
     <button class="btn" onclick={() => attack('plunder')}>Plündern</button>
     <button class="btn" onclick={() => attack('assault')}>Assault</button>
-    <button class="btn primary" onclick={siege}>Belagern</button>
+    <button class="btn" onclick={siege}>Belagern</button>
+    <button class="btn" onclick={() => attack('support')}>Support</button>
   </div>
-  <p class="hint">Scout klärt auf · Plündern raubt · Assault vernichtet · Belagern (+1 Marshal) erobert bei 100 %. Erfordert eine Citadel.</p>
+  <p class="hint">Scout klärt auf · Plündern raubt · Assault vernichtet · Belagern (+1 Marshal) erobert bei 100 % · Support verstärkt eigene/verbündete Städte. Erfordert eine Citadel.</p>
 {:else if game.selectedDungeon}
   <h3>Raid</h3>
   <div class="dungeon">

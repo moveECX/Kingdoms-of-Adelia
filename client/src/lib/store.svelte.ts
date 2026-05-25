@@ -17,7 +17,7 @@ import { getJson, postJson, deleteJson } from './api';
 import { connect, type GameSocket } from './ws';
 
 export type View = 'city' | 'map' | 'military' | 'chat' | 'reports' | 'market' | 'alliance' | 'endgame';
-export type AttackKind = 'scout' | 'plunder' | 'assault' | 'siege';
+export type AttackKind = 'scout' | 'plunder' | 'assault' | 'siege' | 'support';
 export interface SelectedDungeon {
   x: number;
   y: number;
