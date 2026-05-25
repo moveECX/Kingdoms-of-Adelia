@@ -37,10 +37,10 @@ Mehrere Städte pro Account; eine **Weltkarten**-Ansicht; **PvE**-Kampf gegen Du
 ## Phase 4 — PvP & Wirtschaft  ·  ~3–4 Wochen
 **Spieler-gegen-Spieler**-Kampf, der **Marktplatz** und **Allianzen**.
 
-**Akzeptanzkriterien**
-- Citadel-gegatete Angriffstypen (Scout/Plunder/Assault/Siege/Support); Nachtschutz; Wall-/Turm-/Fallen-Modifikatoren; Kampfberichte an beide Seiten.
-- Marktplatz-Inserate + Karren-/Schiff-Transfers, die nach Reisezeit auflösen.
-- Allianzen (≤100, Ränge, Diplomatie, Allianz-Chat/Forum, Event-Log).
+**Akzeptanzkriterien** — Kern erfüllt ✅
+- ✅ Citadel-gegatete Angriffstypen **Scout/Plunder/Assault/Siege**; Nachtschutz; Wall-/Turm-/Fallen-Modifikatoren; Kampfberichte an beide Seiten. ⏳ **Support** (Truppen-Verstärkung) noch offen; Türme/Fallen sind verdrahtet, aber noch nicht baubar (nicht in `buildings.yaml`).
+- ✅ Marktplatz-Inserate (Ressource↔Gold) + Transfers, die nach Reisezeit liefern. ⏳ Schiff-/Karren-Unterscheidung + Transport-Cap noch vereinfacht (Karren-Tempo).
+- ✅ Allianzen (≤100, Ränge leader/officer/member, Diplomatie allied/nap/enemy, Allianz-Chat, Event-Log).
 
 ## Phase 5 — Endgame  ·  ~2–3 Wochen
 **Schreine, Paläste, Siegbedingungen, Bestenlisten.**
