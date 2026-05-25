@@ -82,25 +82,21 @@ research/ REPO-DECISION.md openlou-analysis.md lordofultima-felix-analysis.md
 ---
 
 ## Aktueller Kontext
-**Stand (2026-05-25): Phase 1 + Phase 2 abgeschlossen; Phase 3 (Multiplayer-Grundlagen) im Kern fertig — Auth/Sessions/Chat stehen.**
+**Stand (2026-05-25): Phase 1–3 abgeschlossen — Aufbau & PvE im Browser spielbar; Multiplayer-Grundlagen (Auth, Sessions, Autorisierung, Chat, Karten-Deltas) vollständig. Noch kein PvP (Phase 4).**
 
 - **Phase 1 (Solo-Prototyp):** shared/formulas (Adjazenz/Kosten/Bauzeit/Produktion/Terrain/Ressourcen), DB (Postgres 16 + Kysely, `0001_core`), Server-Loop (Gründung/Bau/Scheduler), Fastify-REST + WebSocket-Deltas, Svelte-Client (Stadtraster + Bau-UI).
 - **Phase 2 (Weltkarte & Monster):** Kampfformel (`shared/formulas/combat`, §5-verifiziert), Migration `0002` (garrison/training/military_actions/combat_reports/dungeons), Einheiten-Training, Dungeons + Raid/Combat-Auflösung (Loot capped by carry, 2-Phasen-Bewegung), Multi-City (Cap je Titel), **Canvas-Weltkarte + Militär-UI**.
-- **Phase 3 (Multiplayer-Grundlagen, Kern):** Auth — `scrypt`-Passwörter (`server/src/auth/password.ts`), signierte Session-Cookies (`@fastify/cookie`, `session.ts`), `register`/`login`/`logout` (`routes/auth.ts`). Autorisierung auf allen Stadt-Endpoints via `auth/guard.ts` (`requireAccount`/`requireCityOwner` → 401/403) inkl. WS-`subscribe`. Seed mit **mehreren Accounts** (dev/aldara/borin, Passwort `password123`). Globaler **Chat** über WS (Verlauf + Live-Broadcast, `ws/hub.ts`). Client: **Login-/Register-UI** (`LoginPanel.svelte`), Chat-Ansicht (`ChatPanel.svelte`), fremde Städte auf der Karte (eigene=gold, fremd=blau, mit Besitzername).
-- Tests: **35 Unit-Tests** (inkl. Passwort-Hash) + Smoke-Skripte (`server/src/dev/*-smoke.ts`: build/train/raid + `ws-smoke` mit Login→subscribe→Chat + Negativtest).
+- **Phase 3 (Multiplayer-Grundlagen):** Auth — `scrypt`-Passwörter (`server/src/auth/password.ts`), signierte Session-Cookies (`@fastify/cookie`, `session.ts`), `register`/`login`/`logout` (`routes/auth.ts`), **Rate-Limit 10/min** auf `auth/*` (`@fastify/rate-limit`, `global:false`). Autorisierung auf allen Stadt-Endpoints via `auth/guard.ts` (`requireAccount`/`requireCityOwner` → 401/403) inkl. WS-`subscribe`. Seed mit **mehreren Accounts** (dev/aldara/borin, Passwort `password123`). **Chat global + Stadt** über WS (`ws/hub.ts`). **WS-Map-Room**: neu gegründete Städte erscheinen live als `map.delta`. Client: **Login-/Register-UI** (`LoginPanel.svelte`), Chat mit Kanal-Umschalter (`ChatPanel.svelte`), fremde Städte auf der Karte (eigene=gold, fremd=blau, mit Besitzername).
+- Tests: **35 Unit-Tests** (inkl. Passwort-Hash) + Smoke-Skripte (`server/src/dev/*-smoke.ts`): build/train/raid, `ws-smoke` (Login→subscribe→Chat global+Stadt + Negativtest), `resume-smoke` (Neustart-Resilienz), `map-smoke` (Karten-Delta).
 
 **Lokaler Start:** `docker compose up -d db` (Host-Port **5433**) → `npm run migrate` → `npm run seed` → `npm run dev` → **http://localhost:5173** → Login `dev` / `password123` (Stadt bauen · Weltkarte · Truppen · Chat).
 
-**Als Nächstes:** entweder **Phase-3-Restpunkte** (siehe unten) abschließen oder **Phase 4 (PvP & Wirtschaft, `ROADMAP.md`):** spielergegen­spieler-Angriffe (Scout/Plunder/Assault/Siege/Support), Marktplatz, Allianzen.
-
-**Phase-3-Restpunkte (laut ROADMAP-Akzeptanzkriterien noch offen):**
-- **WS-Region-Rooms für Karten-Deltas:** Karte lädt aktuell per REST (`GET /map`); kein Live-Update, wenn ein anderer Spieler eine Stadt gründet.
-- **Stadt-Chat-Kanal:** bisher nur globaler Chat; Kriterium nennt „global + Stadt".
-- **Rate-Limiting** auf `auth/*` (minimal, gegen Brute-Force) — noch nicht eingebaut.
-- **Neustart-Resilienz** ist konzeptionell erfüllt (kein In-Memory-Spielzustand; Scheduler löst zeitbasiert via DB-Query auf — durch Smokes über echte Ticks belegt), aber noch nicht mit einem expliziten Neustart-Test abgehakt.
+**Als Nächstes → Phase 4 (PvP & Wirtschaft, `ROADMAP.md`):** Spieler-gegen-Spieler-Angriffe (Scout/Plunder/Assault/Siege/Support), Nachtschutz, Wall-/Turm-/Fallen-Modifikatoren, Kampfberichte an beide Seiten; Marktplatz (Inserate + Karren/Schiffe nach Reisezeit); Allianzen (Ränge, Diplomatie, Allianz-Chat). Login: `dev` / `password123` (Seed).
 
 **Offene Punkte (technische Schuld, bewusst):**
 - Passwort-Hashing nutzt `node:crypto` **scrypt** (argon2 baut auf Node 25 ohne Build-Tools nicht). `SESSION_SECRET` in `.env` setzen (Dev-Fallback `dev-secret-change-me`).
+- **Kysely 0.27** hat eine als „high" gemeldete SQL-Injection-Advisory (JSON-Path-Keys / `sql.lit`-MySQL-Backslash / `Kysely<any>`). Praktische Exposure niedrig (Postgres, kein JSONPath-Builder, durchgängig typisiertes `Kysely<Database>`); Fix = Breaking-Major (0.29) → als separates Dependency-Upgrade einplanen.
+- Karten-Deltas laufen über **einen** globalen WS-Map-Room; echte Koordinaten-Partitionierung (Sharding nach Region) ist eine spätere Optimierung für große Welten.
 - Militärgebäude: Rekrutiertempo-Bonus noch nicht angewandt; Trainingszeiten/Monster-Stats/Gründungskosten sind Dev-Werte `[A]` → Balancing-Pass ausstehend.
 - REST: `demolish`/`queue-cancel` fehlen; Ausbau via `/build`.
 - Mutationen (`startBuild`/`startTraining`/`startRaid`) ohne DB-Transaktion (Single-Player ok; bei Concurrency/PvP absichern).
