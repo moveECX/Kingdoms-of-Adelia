@@ -82,20 +82,19 @@ research/ REPO-DECISION.md openlou-analysis.md lordofultima-felix-analysis.md
 ---
 
 ## Aktueller Kontext
-**Stand (2026-05-25): Phase 1 abgeschlossen — Solo-Prototyp spielbar.** Alle 16 Phase-1-Tickets erledigt + verifiziert:
-- **shared/formulas** (rein, 26 Unit-Tests): Adjazenz (Fandom-Modell, daydull-Variante per Flag), Kosten, Bauzeit, Produktion, Terrain-Generator, Ressourcenmodell, `computeCityProduction`.
-- **DB**: PostgreSQL 16 + Kysely, Migration `0001_core` (gegen DB gelaufen, `schema.sql`).
-- **Server**: Gründung/Bau/Scheduler/Adjazenz-Loop; Fastify-REST (`/api/v1/cities`, `/build`, `/me`, `/data/*`) + WebSocket-Deltas; Tick-Scheduler.
-- **Client**: Svelte 5 + Vite — Stadtraster (9×9), Bau-UI mit Vorschau, Live-Ressourcen-HUD.
-- Verifiziert end-to-end über den Vite-Proxy (`:5173` → `:3000`).
+**Stand (2026-05-25): Phase 1 + Phase 2 abgeschlossen — Aufbau & PvE im Browser spielbar.**
 
-**Lokaler Start:** `docker compose up -d db` (Host-Port **5433**) → `npm run migrate` → `npm run seed` → `npm run dev` → **http://localhost:5173**.
+- **Phase 1 (Solo-Prototyp):** shared/formulas (Adjazenz/Kosten/Bauzeit/Produktion/Terrain/Ressourcen), DB (Postgres 16 + Kysely, `0001_core`), Server-Loop (Gründung/Bau/Scheduler), Fastify-REST + WebSocket-Deltas, Svelte-Client (Stadtraster + Bau-UI).
+- **Phase 2 (Weltkarte & Monster):** Kampfformel (`shared/formulas/combat`, §5-verifiziert), Migration `0002` (garrison/training/military_actions/combat_reports/dungeons), Einheiten-Training, Dungeons + Raid/Combat-Auflösung (Loot capped by carry, 2-Phasen-Bewegung), Multi-City (Cap je Titel), **Canvas-Weltkarte + Militär-UI**.
+- Tests: **30 Unit-Tests** + Smoke-Skripte (`server/src/dev/*-smoke.ts`: build/train/raid).
 
-**Als Nächstes → Phase 2 (Weltkarte & Monster, `ROADMAP.md`):** Multi-City, Canvas-Weltkarte, PvE gegen Dungeons. Vorarbeiten: Welt-/Map-Schema, `units.yaml` vervollständigen (aktuell Starter-Subset), **`shared/formulas/combat`** nach `GAME-MECHANICS.md` §5 implementieren (Formel ist `[verified]`).
+**Lokaler Start:** `docker compose up -d db` (Host-Port **5433**) → `npm run migrate` → `npm run seed` → `npm run dev` → **http://localhost:5173** (Stadt bauen · Weltkarte · Truppen ausbilden + Dungeons raiden).
 
-**Offene Punkte aus Phase 1 (technische Schuld, bewusst):**
-- Militärgebäude (Trainer) haben nur Kosten/Bauzeit, keine Rekrutier-Wirkung (Phase 2).
-- REST: `demolish`/`queue-cancel` fehlen; Ausbau läuft über `/build` (belegter Slot).
-- API-Request-Schemas inline (zod) statt in `shared/schemas/api` — bei Bedarf extrahieren.
-- Prod-Build: `@adelia/shared`-exports zeigen auf `.ts` (für tsx/Vite); für `node dist` auf `dist/*.js` umstellen.
-- `startBuild`/`materialize` ohne Transaktion (Single-Player ok; bei Concurrency absichern).
+**Als Nächstes → Phase 3 (Multiplayer-Grundlagen, `ROADMAP.md`):** echtes Auth (argon2id statt Dev-Stub), Sessions, persistente gemeinsame Welt mit mehreren Accounts, WS-Region-Rooms für Karten-Deltas, Chat. Noch **kein PvP** (Phase 4).
+
+**Offene Punkte (technische Schuld, bewusst):**
+- Auth ist ein Stub (erster Account); echtes Login in Phase 3.
+- Militärgebäude: Rekrutiertempo-Bonus noch nicht angewandt; Trainingszeiten/Monster-Stats/Gründungskosten sind Dev-Werte `[A]` → Balancing-Pass ausstehend.
+- REST: `demolish`/`queue-cancel` fehlen; Ausbau via `/build`.
+- Mutationen (`startBuild`/`startTraining`/`startRaid`) ohne DB-Transaktion (Single-Player ok; bei Concurrency/PvP absichern).
+- Prod-Build: `@adelia/shared`-exports zeigen auf `.ts` (dev/tsx/Vite); für `node dist` auf `dist/*.js` umstellen.
