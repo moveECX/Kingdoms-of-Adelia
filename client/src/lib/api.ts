@@ -10,13 +10,14 @@ async function parse<T>(res: Response, path: string): Promise<T> {
 }
 
 export async function getJson<T>(path: string): Promise<T> {
-  return parse<T>(await fetch(BASE + path), path);
+  return parse<T>(await fetch(BASE + path, { credentials: 'include' }), path);
 }
 
 export async function postJson<T>(path: string, body: unknown): Promise<T> {
   const res = await fetch(BASE + path, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
+    credentials: 'include',
     body: JSON.stringify(body),
   });
   return parse<T>(res, path);

@@ -15,6 +15,7 @@
   };
 
   function center(): { x: number; y: number } {
+    if (game.snapshot !== null) return { x: game.snapshot.x, y: game.snapshot.y };
     return game.mapData?.cities[0] ?? { x: 100, y: 100 };
   }
   function screen(x: number, y: number): { sx: number; sy: number } {
@@ -59,14 +60,18 @@
     }
     for (const c of map.cities) {
       const { sx, sy } = screen(c.x, c.y);
-      ctx.fillStyle = '#d9a441';
+      const own = c.account_id === game.account?.id;
+      ctx.fillStyle = own ? '#d9a441' : '#5a7a9a';
       ctx.fillRect(sx - 7, sy - 7, 14, 14);
+      ctx.fillStyle = '#c9d1d9';
+      ctx.fillText(c.username, sx + 10, sy + 3);
     }
   }
 
   $effect(() => {
     void game.mapData;
     void game.selectedDungeon;
+    void game.account;
     draw();
   });
 
@@ -88,7 +93,9 @@
 
 <h2>Weltkarte</h2>
 <canvas bind:this={canvas} width={W} height={H} onclick={onClick} class="map"></canvas>
-<p class="hint">● Dungeon (Zahl = Level) · ▢ Stadt — klick einen Dungeon an, um einen Raid zu planen.</p>
+<p class="hint">
+  ▢ <span class="own">eigene</span> · ▢ <span class="foreign">fremde</span> Stadt · ● Dungeon (Zahl = Level) — klick einen Dungeon für einen Raid.
+</p>
 
 <style>
   h2 {
@@ -105,5 +112,11 @@
     color: var(--text-muted);
     font-size: var(--fs-xs);
     margin-top: var(--sp-2);
+  }
+  .own {
+    color: #d9a441;
+  }
+  .foreign {
+    color: #5a7a9a;
   }
 </style>

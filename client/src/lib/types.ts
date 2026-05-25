@@ -34,8 +34,26 @@ export interface CitySnapshot {
 }
 
 export interface MapData {
-  cities: Array<{ id: number; name: string; x: number; y: number; account_id: number }>;
+  cities: Array<{ id: number; name: string; x: number; y: number; account_id: number; username: string }>;
   dungeons: Array<{ id: number; x: number; y: number; dungeon_type: string; level: number; completion: number }>;
+}
+
+export interface Account {
+  id: number;
+  username: string;
+  title: string;
+  gold: number;
+}
+
+export interface Me {
+  account: Account | null;
+  cities: Array<{ id: number; name: string; x: number; y: number }>;
+}
+
+export interface ChatMessage {
+  username: string;
+  text: string;
+  at: string;
 }
 
 export type ResourceKey = 'timber' | 'stone' | 'iron' | 'grain';

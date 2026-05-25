@@ -6,6 +6,8 @@
   import BuildPanel from './lib/BuildPanel.svelte';
   import WorldMap from './lib/WorldMap.svelte';
   import MilitaryPanel from './lib/MilitaryPanel.svelte';
+  import ChatPanel from './lib/ChatPanel.svelte';
+  import LoginPanel from './lib/LoginPanel.svelte';
 
   onMount(() => {
     void game.init();
@@ -15,37 +17,57 @@
     { view: 'city', label: '▦ Stadt' },
     { view: 'map', label: '🜨 Weltkarte' },
     { view: 'military', label: '⚔ Militär' },
+    { view: 'chat', label: '💬 Chat' },
   ];
 </script>
 
-<ResourceBar />
-<div class="shell">
-  <nav class="sidebar">
-    {#each NAV as n (n.view)}
-      <button class="nav-item" class:active={game.view === n.view} onclick={() => void game.setView(n.view)}>
-        {n.label}
-      </button>
-    {/each}
-  </nav>
-  <main class="main">
-    {#if game.snapshot === null && game.error !== null}
-      <div class="err">{game.error}</div>
-    {:else if game.snapshot === null}
-      <div class="muted">Lade Stadt…</div>
-    {:else if game.view === 'map'}
-      <WorldMap />
-    {:else if game.view === 'military'}
-      <MilitaryPanel />
-    {:else}
-      <CityGrid />
+{#if !game.authChecked}
+  <div class="boot">Lade…</div>
+{:else if game.account === null}
+  <LoginPanel />
+{:else}
+  <ResourceBar />
+  <div class="shell">
+    <nav class="sidebar">
+      <div class="account">
+        <div class="who">{game.account.username}</div>
+        <div class="title">{game.account.title}</div>
+        <button class="logout" onclick={() => void game.logout()}>Abmelden</button>
+      </div>
+      {#each NAV as n (n.view)}
+        <button class="nav-item" class:active={game.view === n.view} onclick={() => void game.setView(n.view)}>
+          {n.label}
+        </button>
+      {/each}
+    </nav>
+    <main class="main">
+      {#if game.view === 'chat'}
+        <ChatPanel />
+      {:else if game.snapshot === null && game.error !== null}
+        <div class="err">{game.error}</div>
+      {:else if game.snapshot === null}
+        <div class="muted">Lade Stadt…</div>
+      {:else if game.view === 'map'}
+        <WorldMap />
+      {:else if game.view === 'military'}
+        <MilitaryPanel />
+      {:else}
+        <CityGrid />
+      {/if}
+    </main>
+    {#if game.view === 'city'}
+      <aside class="context"><BuildPanel /></aside>
     {/if}
-  </main>
-  {#if game.view === 'city'}
-    <aside class="context"><BuildPanel /></aside>
-  {/if}
-</div>
+  </div>
+{/if}
 
 <style>
+  .boot {
+    display: grid;
+    place-items: center;
+    height: 100vh;
+    color: var(--text-muted);
+  }
   .shell {
     display: grid;
     grid-template-columns: 160px 1fr auto;
@@ -58,6 +80,35 @@
     display: flex;
     flex-direction: column;
     gap: 2px;
+  }
+  .account {
+    padding: var(--sp-2);
+    margin-bottom: var(--sp-2);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .who {
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: var(--fs-sm);
+  }
+  .title {
+    color: var(--accent-primary);
+    font-size: var(--fs-xs);
+    text-transform: capitalize;
+    margin-bottom: var(--sp-2);
+  }
+  .logout {
+    width: 100%;
+    background: var(--bg-raised);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    color: var(--text-secondary);
+    padding: 4px;
+    font-size: var(--fs-xs);
+  }
+  .logout:hover {
+    border-color: var(--accent-primary);
+    color: var(--text-primary);
   }
   .nav-item {
     width: 100%;
