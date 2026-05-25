@@ -5,6 +5,7 @@
 import Fastify from 'fastify';
 import websocket from '@fastify/websocket';
 import cookie from '@fastify/cookie';
+import rateLimit from '@fastify/rate-limit';
 import { z } from 'zod';
 import { createDb } from './db/connection';
 import { loadGameData } from './data/load-game-data';
@@ -22,13 +23,19 @@ const hub = new CityHub();
 const app = Fastify({ logger: true });
 await app.register(websocket);
 await app.register(cookie, { secret: process.env.SESSION_SECRET ?? 'dev-secret-change-me' });
+// global:false → Limit gilt nur für Routen, die es per config.rateLimit anfordern (auth/*).
+await app.register(rateLimit, { global: false });
 
 registerAuthRoutes(app, db);
 registerCityRoutes(app, { db, gameData, hub });
 
 const clientMsg = z.discriminatedUnion('t', [
-  z.object({ t: z.literal('subscribe'), channel: z.literal('city'), id: z.number().int() }),
-  z.object({ t: z.literal('chat.send'), text: z.string().trim().min(1).max(500) }),
+  z.object({ t: z.literal('subscribe'), channel: z.enum(['city', 'map']), id: z.number().int().optional() }),
+  z.object({
+    t: z.literal('chat.send'),
+    channel: z.enum(['global', 'city']).default('global'),
+    text: z.string().trim().min(1).max(500),
+  }),
 ]);
 
 // WS: subscribe → city.snapshot + künftige city.delta (nur eigene Stadt); chat.send → chat.msg an alle.
@@ -45,6 +52,14 @@ app.get('/ws', { websocket: true }, (socket, req) => {
           return;
         }
         if (msg.t === 'subscribe') {
+          if (msg.channel === 'map') {
+            hub.subscribeMap(socket);
+            return;
+          }
+          if (msg.id === undefined) {
+            socket.send(JSON.stringify({ t: 'error', d: 'Stadt-ID fehlt' }));
+            return;
+          }
           const city = await db
             .selectFrom('cities')
             .select('account_id')
@@ -63,7 +78,15 @@ app.get('/ws', { websocket: true }, (socket, req) => {
             .where('id', '=', accountId)
             .executeTakeFirst();
           if (acc === undefined) return;
-          hub.postChat({ username: acc.username, text: msg.text, at: new Date().toISOString() });
+          const at = new Date().toISOString();
+          if (msg.channel === 'global') {
+            hub.postGlobalChat({ channel: 'global', username: acc.username, text: msg.text, at });
+          } else {
+            // Stadt-Chat geht an die Abonnenten jeder vom Sender abonnierten Stadt.
+            for (const cityId of hub.citiesFor(socket)) {
+              hub.postCityChat(cityId, { channel: 'city', cityId, username: acc.username, text: msg.text, at });
+            }
+          }
         }
       } catch {
         socket.send(JSON.stringify({ t: 'error', d: 'Ungültige Nachricht' }));

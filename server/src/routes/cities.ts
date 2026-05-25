@@ -105,6 +105,14 @@ export function registerCityRoutes(app: FastifyInstance, ctx: RouteCtx): void {
         },
         ctx.gameData,
       );
+      // Karten-Abonnenten live über die neue Stadt informieren.
+      const newCity = await ctx.db
+        .selectFrom('cities')
+        .innerJoin('accounts', 'accounts.id', 'cities.account_id')
+        .select(['cities.id', 'cities.name', 'cities.x', 'cities.y', 'cities.account_id', 'accounts.username'])
+        .where('cities.id', '=', newCityId)
+        .executeTakeFirst();
+      if (newCity !== undefined) ctx.hub.broadcastMap({ t: 'map.delta', d: { city: newCity } });
       return { cityId: newCityId };
     } catch (err) {
       if (err instanceof FoundCityError) return reply.code(400).send({ error: err.message });

@@ -11,8 +11,11 @@ const loginBody = z.object({
 });
 const registerBody = loginBody.extend({ email: z.string().email() });
 
+// Brute-Force-Schutz: 10 Versuche pro Minute und IP (minimal, selbst gehostet).
+const authRateLimit = { config: { rateLimit: { max: 10, timeWindow: '1 minute' } } };
+
 export function registerAuthRoutes(app: FastifyInstance, db: Kysely<Database>): void {
-  app.post('/api/v1/auth/register', async (req, reply) => {
+  app.post('/api/v1/auth/register', authRateLimit, async (req, reply) => {
     const parsed = registerBody.safeParse(req.body);
     if (!parsed.success) return reply.code(400).send({ error: parsed.error.message });
     const existing = await db
@@ -35,7 +38,7 @@ export function registerAuthRoutes(app: FastifyInstance, db: Kysely<Database>): 
     return { accountId: account.id, username: parsed.data.username };
   });
 
-  app.post('/api/v1/auth/login', async (req, reply) => {
+  app.post('/api/v1/auth/login', authRateLimit, async (req, reply) => {
     const parsed = loginBody.safeParse(req.body);
     if (!parsed.success) return reply.code(400).send({ error: parsed.error.message });
     const account = await db

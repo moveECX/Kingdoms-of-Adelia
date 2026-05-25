@@ -1,8 +1,8 @@
 /**
  * WS-Smoke (#013 / Phase 3): Login -> WS mit Session-Cookie -> subscribe(city:1)
- * erwartet city.snapshot, chat.send erwartet chat.msg. Negativtest: ohne Cookie
- * darf subscribe nicht durchgehen. Voraussetzung: laufender Server + Seed.
- * Aufruf: npx tsx server/src/dev/ws-smoke.ts
+ * erwartet city.snapshot; chat.send global + city erwarten je eine chat.msg.
+ * Negativtest: ohne Cookie darf subscribe nicht durchgehen. Voraussetzung:
+ * laufender Server + Seed.  Aufruf: npx tsx server/src/dev/ws-smoke.ts
  */
 import WebSocket from 'ws';
 import { decodeMessage } from '../ws/hub';
@@ -27,35 +27,44 @@ async function login(username: string, password: string): Promise<string> {
   return cookies.map((c) => c.split(';')[0] ?? '').join('; ');
 }
 
-/** Authentifizierter Lauf: subscribe + chat müssen beide Antworten liefern. */
+/** Authentifiziert: subscribe + globaler & Stadt-Chat müssen alle eine Antwort liefern. */
 function runAuthed(cookie: string): Promise<void> {
   return new Promise<void>((resolve, reject) => {
     const ws = new WebSocket(WS_URL, { headers: { Cookie: cookie } });
-    const seen = new Set<string>();
-    const timer = setTimeout(() => { reject(new Error(`Timeout, gesehen: ${[...seen].join(',')}`)); }, 5000);
+    let snapshot = false;
+    const chatSeen = new Set<string>();
+    const timer = setTimeout(() => {
+      reject(new Error(`Timeout: snapshot=${String(snapshot)} chat=[${[...chatSeen].join(',')}]`));
+    }, 5000);
+    const checkDone = (): void => {
+      if (snapshot && chatSeen.has('global') && chatSeen.has('city')) {
+        clearTimeout(timer);
+        ws.close();
+        resolve();
+      }
+    };
     ws.on('open', () => {
       ws.send(JSON.stringify({ t: 'subscribe', channel: 'city', id: 1 }));
-      ws.send(JSON.stringify({ t: 'chat.send', text: 'Hallo Adelia!' }));
+      ws.send(JSON.stringify({ t: 'chat.send', channel: 'global', text: 'Hallo Welt!' }));
     });
     ws.on('message', (raw) => {
       const msg = JSON.parse(decodeMessage(raw)) as Msg;
-      seen.add(msg.t);
       if (msg.t === 'city.snapshot') {
+        snapshot = true;
         const d = msg.d as { resources: { timber: { amount: number } } };
         console.log(`  city.snapshot: timber=${d.resources.timber.amount}`);
+        // Erst jetzt ist der Socket abonniert -> Stadt-Chat senden.
+        ws.send(JSON.stringify({ t: 'chat.send', channel: 'city', text: 'Hallo Stadt!' }));
       } else if (msg.t === 'chat.msg') {
-        const d = msg.d as { username: string; text: string };
-        console.log(`  chat.msg: ${d.username}: ${d.text}`);
+        const d = msg.d as { channel: string; username: string; text: string };
+        chatSeen.add(d.channel);
+        console.log(`  chat.msg [${d.channel}]: ${d.username}: ${d.text}`);
       } else if (msg.t === 'chat.history') {
         console.log(`  chat.history: ${(msg.d as unknown[]).length} Nachrichten`);
       } else if (msg.t === 'error') {
         console.log(`  error: ${String(msg.d)}`);
       }
-      if (seen.has('city.snapshot') && seen.has('chat.msg')) {
-        clearTimeout(timer);
-        ws.close();
-        resolve();
-      }
+      checkDone();
     });
     ws.on('error', reject);
   });
@@ -65,8 +74,12 @@ function runAuthed(cookie: string): Promise<void> {
 function runNoAuth(): Promise<void> {
   return new Promise<void>((resolve, reject) => {
     const ws = new WebSocket(WS_URL);
-    const timer = setTimeout(() => { reject(new Error('Timeout (no-auth)')); }, 5000);
-    ws.on('open', () => { ws.send(JSON.stringify({ t: 'subscribe', channel: 'city', id: 1 })); });
+    const timer = setTimeout(() => {
+      reject(new Error('Timeout (no-auth)'));
+    }, 5000);
+    ws.on('open', () => {
+      ws.send(JSON.stringify({ t: 'subscribe', channel: 'city', id: 1 }));
+    });
     ws.on('message', (raw) => {
       const msg = JSON.parse(decodeMessage(raw)) as Msg;
       if (msg.t === 'chat.history') return; // kommt vor dem subscribe-Ergebnis
@@ -85,7 +98,7 @@ function runNoAuth(): Promise<void> {
 
 const cookie = await login('dev', 'password123');
 console.log('Login ok, Cookie erhalten.');
-console.log('--- mit Auth (subscribe + chat) ---');
+console.log('--- mit Auth (subscribe + Chat global & Stadt) ---');
 await runAuthed(cookie);
 console.log('--- ohne Auth (subscribe) ---');
 await runNoAuth();

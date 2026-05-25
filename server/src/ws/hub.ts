@@ -1,6 +1,8 @@
 import type { RawData, WebSocket } from 'ws';
 
 export interface ChatMessage {
+  channel: 'global' | 'city';
+  cityId?: number; // gesetzt bei channel === 'city'
   username: string;
   text: string;
   at: string; // ISO-Zeitstempel
@@ -8,10 +10,11 @@ export interface ChatMessage {
 
 const CHAT_HISTORY = 50;
 
-/** Verwaltet WS-Verbindungen: Stadt-Abos (Deltas) + globaler Chat. */
+/** Verwaltet WS-Verbindungen: Stadt-Abos (Deltas) + Chat (global & pro Stadt). */
 export class CityHub {
   private readonly byCity = new Map<number, Set<WebSocket>>();
   private readonly clients = new Set<WebSocket>();
+  private readonly mapClients = new Set<WebSocket>();
   private readonly chatLog: ChatMessage[] = [];
 
   addClient(socket: WebSocket): void {
@@ -20,7 +23,18 @@ export class CityHub {
 
   removeClient(socket: WebSocket): void {
     this.clients.delete(socket);
+    this.mapClients.delete(socket);
     this.unsubscribeAll(socket);
+  }
+
+  /** Abonniert die Weltkarte (erhält künftige map.delta-Broadcasts). */
+  subscribeMap(socket: WebSocket): void {
+    this.mapClients.add(socket);
+  }
+
+  /** Karten-Delta an alle Karten-Abonnenten (z. B. eine neu gegründete Stadt). */
+  broadcastMap(message: unknown): void {
+    this.send(this.mapClients, message);
   }
 
   subscribe(cityId: number, socket: WebSocket): void {
@@ -36,15 +50,27 @@ export class CityHub {
     for (const set of this.byCity.values()) set.delete(socket);
   }
 
+  /** Städte, die dieser Socket abonniert hat (Ziel für den Stadt-Chat des Senders). */
+  citiesFor(socket: WebSocket): number[] {
+    const ids: number[] = [];
+    for (const [cityId, set] of this.byCity) if (set.has(socket)) ids.push(cityId);
+    return ids;
+  }
+
   broadcast(cityId: number, message: unknown): void {
     this.send(this.byCity.get(cityId), message);
   }
 
-  /** Hängt eine Chat-Nachricht an den Verlauf (max. 50) und sendet sie an alle Clients. */
-  postChat(message: ChatMessage): void {
+  /** Globaler Chat: Verlauf (max. 50) + Broadcast an alle Clients. */
+  postGlobalChat(message: ChatMessage): void {
     this.chatLog.push(message);
     if (this.chatLog.length > CHAT_HISTORY) this.chatLog.shift();
     this.send(this.clients, { t: 'chat.msg', d: message });
+  }
+
+  /** Stadt-Chat: Broadcast nur an die Abonnenten dieser Stadt (kein globaler Verlauf). */
+  postCityChat(cityId: number, message: ChatMessage): void {
+    this.send(this.byCity.get(cityId), { t: 'chat.msg', d: message });
   }
 
   recentChat(): readonly ChatMessage[] {
