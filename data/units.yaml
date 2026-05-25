@@ -1,7 +1,7 @@
 # Unit rules. Numeric stats are [approximate] (Ultima Codex monster_data, via research agents);
 # trainer/unlock levels are [verified]. Defense is per attacker-type: {infantry,cavalry,magic,artillery}.
-# upkeepGrain = grain/day. carry = plunder capacity. See GAME-MECHANICS.md §4–5.
-# This is the Phase-2 starter subset; full roster transcribed when combat lands.
+# upkeepGrain = grain/day. carry = plunder capacity. trainingTimeSec = Basis-Trainingszeit/Einheit [A]
+# (Quellen geben keine exakten Zeiten; kurze Dev-Werte, später kalibrierbar). See GAME-MECHANICS.md §4–5.
 schemaVersion: 1
 
 units:
@@ -15,6 +15,7 @@ units:
     carry: 0
     trainer: { building: watch_house, level: 1 }
     cost: { timber: 100, stone: 0, iron: 0, gold: 0 }
+    trainingTimeSec: 30
   berserker:
     name: 'Berserker'
     type: infantry
@@ -25,6 +26,7 @@ units:
     carry: 10
     trainer: { building: training_yard, level: 1 }
     cost: { timber: 0, stone: 0, iron: 150, gold: 0 }
+    trainingTimeSec: 60
   ranger:
     name: 'Ranger'
     type: infantry
@@ -35,6 +37,7 @@ units:
     carry: 0
     trainer: { building: training_yard, level: 4 }
     cost: { timber: 160, stone: 0, iron: 0, gold: 0 }
+    trainingTimeSec: 90
   guardian:
     name: 'Guardian'
     type: infantry
@@ -45,6 +48,7 @@ units:
     carry: 20
     trainer: { building: training_yard, level: 10 }
     cost: { timber: 0, stone: 0, iron: 140, gold: 40 }
+    trainingTimeSec: 120
   knight:
     name: 'Knight'
     type: cavalry
@@ -55,10 +59,11 @@ units:
     carry: 18
     trainer: { building: stable, level: 10 }
     cost: { timber: 0, stone: 0, iron: 250, gold: 100 }
+    trainingTimeSec: 180
 
 # Combat constants — see GAME-MECHANICS.md §5 ([verified] formula).
 combat:
-  intensity: { assault: 0.5, scout: 0.5, boss: 0.5, plunderDefender: 0.01, default: 0.1 }
+  intensity: { assault: 0.5, scout: 0.5, boss: 0.5, plunderDefender: 0.01, raid: 0.5, default: 0.1 }
   defenseColumns: [infantry, cavalry, magic, artillery]
   wallBonusPct: [1, 3, 6, 10, 15, 20, 26, 33, 41, 50]
   nightProtection: { fromHour: 22, toHour: 10, attackerPenaltyPct: 40 }

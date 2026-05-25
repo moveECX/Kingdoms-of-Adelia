@@ -104,6 +104,7 @@ const unitDef = z
     cost: z
       .object({ timber: nonNeg, stone: nonNeg, iron: nonNeg, gold: nonNeg })
       .strict(),
+    trainingTimeSec: nonNeg,
   })
   .strict();
 

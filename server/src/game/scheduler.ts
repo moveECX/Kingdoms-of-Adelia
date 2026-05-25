@@ -55,7 +55,27 @@ export async function resolveDueBuilds(
   return [...changed];
 }
 
-/** Startet die periodische Auflösung (für den Server, #012). */
+/** Löst fällige Trainings-Batches auf: schreibt die Einheiten in die garrison. */
+export async function resolveDueTraining(db: Kysely<Database>, now: Date = new Date()): Promise<number[]> {
+  const due = await db.selectFrom('training_queue').selectAll().where('resolve_at', '<=', now).execute();
+  const changed = new Set<number>();
+  for (const job of due) {
+    await db
+      .insertInto('garrison')
+      .values({ city_id: job.city_id, unit_key: job.unit_key, qty: job.qty_total })
+      .onConflict((oc) =>
+        oc.columns(['city_id', 'unit_key']).doUpdateSet((eb) => ({
+          qty: eb('garrison.qty', '+', job.qty_total),
+        })),
+      )
+      .execute();
+    await db.deleteFrom('training_queue').where('id', '=', job.id).execute();
+    changed.add(job.city_id);
+  }
+  return [...changed];
+}
+
+/** Startet die periodische Auflösung aller fälligen Jobs (für den Server). */
 export function startScheduler(
   db: Kysely<Database>,
   gameData: GameData,
@@ -63,14 +83,16 @@ export function startScheduler(
   intervalMs: number = TICK_INTERVAL_MS,
 ): NodeJS.Timeout {
   return setInterval(() => {
-    resolveDueBuilds(db, gameData)
-      .then((cities) => {
+    void (async () => {
+      try {
+        const built = await resolveDueBuilds(db, gameData);
+        const trained = await resolveDueTraining(db);
         if (onCityChanged !== undefined) {
-          for (const id of cities) onCityChanged(id);
+          for (const id of new Set([...built, ...trained])) onCityChanged(id);
         }
-      })
-      .catch((err: unknown) => {
+      } catch (err) {
         console.error('Scheduler-Fehler:', err);
-      });
+      }
+    })();
   }, intervalMs);
 }
