@@ -53,7 +53,7 @@ production = base(level)
 = 300 × 2.90 × 1.75  =  1.522,5 Holz/h
 ```
 
-> ⚠️ **Zu kalibrierender Konflikt `[A]`:** ein populärer Community-Guide (daydull) behandelt Cottages als *separate* multiplikative Gruppe → `300×2.30×1.75×1.60 = 2.100`. Wir implementieren das **Fandom-Modell „additiv-dann-multiplikativ"** als kanonisch, aber die Formel lebt in `shared/formulas/adjacency.ts` hinter Unit-Tests, ist also trivial nachjustierbar.
+> ⚠️ **Zu kalibrierender Konflikt `[A]`:** ein populärer Community-Guide (daydull) behandelt Cottages als *separate* multiplikative Gruppe → `300×2.30×1.75×1.60 = 1.932`. Wir implementieren das **Fandom-Modell „additiv-dann-multiplikativ"** als kanonisch, aber die Formel lebt in `shared/formulas/adjacency.ts` hinter Unit-Tests, ist also trivial nachjustierbar.
 
 **Faustregeln (aus dem Wiki) für Layout-Hilfen/UX:** jeder Produzent sollte einen Verstärker + ≥75% an Knoten berühren; jeder Verstärker ≥2–3 Produzenten; jede Cottage ≥3 Produzenten; Cottages hochziehen, bis das Bautempo sehr hoch ist. `[V]`
 

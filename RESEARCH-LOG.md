@@ -32,7 +32,7 @@
 - Exakte Truppen-Reisezeit-Formel pro Tile (≈10–20 min/Tile je Einheit).
 
 ### Offene Konflikte (im Playtest kalibrieren; hinter `shared/formulas` + Tests isolieren)
-1. **Adjazenz-Cottage-Gruppierung**: Fandom = Cottages additiv mit Knoten, Verstärker danach multiplikativ (→1.522/h im Beispiel); daydull-Community-Guide = Cottages separate multiplikative Gruppe (→2.100/h). **Entscheidung: das Fandom-Modell kanonisch implementieren.**
+1. **Adjazenz-Cottage-Gruppierung**: Fandom = Cottages additiv mit Knoten, Verstärker danach multiplikativ (→1.522/h im Beispiel); daydull-Community-Guide = Cottages separate multiplikative Gruppe (→1.932/h, geprüft per Unit-Test). **Entscheidung: das Fandom-Modell kanonisch implementieren.**
 2. **Produzenten-Basis-Output bei L10**: Fandom `300` `[V]` vs OpenLoU-JSON `300` vs ein Agenten-Sekundär-Snippet `250`. → `300` verwenden.
 3. **Kampfintensität „10% für den Rest"**: wörtlich 0,10 vs 0,10×0,50. → 0,10 verwenden, geflaggt.
 

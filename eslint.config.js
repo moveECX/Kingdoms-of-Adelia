@@ -12,6 +12,8 @@ export default tseslint.config(
       // Coding standards (CLAUDE.md): no `any`; explain every escape hatch.
       '@typescript-eslint/no-explicit-any': 'error',
       '@typescript-eslint/ban-ts-comment': ['error', { 'ts-ignore': 'allow-with-description' }],
+      // Zahlen in Fehler-/Log-Meldungen sind erlaubt.
+      '@typescript-eslint/restrict-template-expressions': ['error', { allowNumber: true }],
     },
   },
 );

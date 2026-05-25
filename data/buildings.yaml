@@ -133,3 +133,26 @@ buildings:
     combatBonusPct: [1, 3, 6, 10, 15, 20, 26, 33, 41, 50]
     cost: [[0, 200], [0, 2000], [0, 8000], [0, 20000], [0, 30000], [0, 45000], [0, 70000], [0, 100000], [0, 140000], [0, 200000]]
     buildTimeSec: [30, 1200, 3600, 10800, 18000, 28800, 43200, 64800, 90000, 126000]
+
+  # --- Militärgebäude (Trainer) — Phase 1: nur Kosten/Bauzeit; Rekrutier-Wirkung folgt in Phase 2 (#005-Vollausbau). [verified] ---
+  watch_house: # LoU: City Guard House
+    name: 'Watch House'
+    category: military
+    prereq: { hall: 3 }
+    maxLevel: 10
+    cost: [[15, 30], [30, 60], [55, 110], [140, 280], [400, 800], [1000, 2000], [1900, 3800], [3200, 6400], [5100, 10200], [8000, 16000]]
+    buildTimeSec: [17, 72, 480, 3600, 8100, 16200, 29520, 47700, 71820, 108900]
+  training_yard: # LoU: Training Ground
+    name: 'Training Yard'
+    category: military
+    prereq: { hall: 4 }
+    maxLevel: 10
+    cost: [[20, 40], [40, 80], [80, 160], [200, 400], [600, 1200], [1400, 2800], [2800, 5600], [4800, 9600], [7500, 15000], [11500, 23000]]
+    buildTimeSec: [20, 108, 720, 5400, 12150, 24300, 44280, 71550, 107730, 163350]
+  stable: # LoU: Stables
+    name: 'Stable'
+    category: military
+    prereq: { hall: 6 }
+    maxLevel: 10
+    cost: [[25, 50], [55, 110], [110, 220], [275, 550], [800, 1600], [1900, 3800], [3750, 7500], [6500, 13000], [10200, 20400], [15500, 31000]]
+    buildTimeSec: [22, 144, 960, 7200, 16200, 32400, 59040, 95400, 143640, 217800]

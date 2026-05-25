@@ -1,0 +1,6 @@
+{
+  // 'client' kehrt in die References zurück, sobald in #014 Client-Code existiert
+  // (aktuell nur vite.config.ts, das separat über die Vite-Toolchain getypt wird).
+  "files": [],
+  "references": [{ "path": "./shared" }, { "path": "./server" }]
+}

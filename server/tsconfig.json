@@ -3,9 +3,8 @@
   "compilerOptions": {
     "composite": true,
     "outDir": "dist",
-    "rootDir": "src",
     "types": ["node"]
   },
-  "include": ["src"],
+  "include": ["src", "db"],
   "references": [{ "path": "../shared" }]
 }
