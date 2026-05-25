@@ -15,7 +15,7 @@ await sql`TRUNCATE accounts, cities, city_tiles, city_buildings, build_queue, ga
 
 const account = await db
   .insertInto('accounts')
-  .values({ username: 'dev', email: 'dev@adelia.local', password_hash: 'dev-only', gold: 5000 })
+  .values({ username: 'dev', email: 'dev@adelia.local', password_hash: 'dev-only', title: 'earl', gold: 5000 })
   .returning('id')
   .executeTakeFirstOrThrow();
 

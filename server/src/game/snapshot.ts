@@ -32,6 +32,7 @@ export interface CitySnapshot {
     toLevel: number;
     resolveAt: string;
   }>;
+  garrison: Array<{ unitKey: string; qty: number }>;
   now: string;
 }
 
@@ -51,7 +52,7 @@ export async function loadCitySnapshot(
     cap,
   });
 
-  const [tiles, buildings, queue] = await Promise.all([
+  const [tiles, buildings, queue, garrison] = await Promise.all([
     db.selectFrom('city_tiles').select(['slot_x', 'slot_y', 'node_type']).where('city_id', '=', cityId).execute(),
     db
       .selectFrom('city_buildings')
@@ -64,6 +65,7 @@ export async function loadCitySnapshot(
       .where('city_id', '=', cityId)
       .orderBy('resolve_at')
       .execute(),
+    db.selectFrom('garrison').select(['unit_key', 'qty']).where('city_id', '=', cityId).execute(),
   ]);
 
   return {
@@ -95,6 +97,7 @@ export async function loadCitySnapshot(
       toLevel: q.to_level,
       resolveAt: q.resolve_at.toISOString(),
     })),
+    garrison: garrison.map((g) => ({ unitKey: g.unit_key, qty: g.qty })),
     now: now.toISOString(),
   };
 }
