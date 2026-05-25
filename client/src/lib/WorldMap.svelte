@@ -47,24 +47,45 @@
       ctx.stroke();
     }
 
-    ctx.font = '10px monospace';
+    // Dungeons: typgefärbte Scheibe mit Stufe; ausgewählt = Goldring.
     for (const d of map.dungeons) {
       const { sx, sy } = screen(d.x, d.y);
       const sel = game.selectedDungeon?.x === d.x && game.selectedDungeon.y === d.y;
+      if (sel) {
+        ctx.strokeStyle = '#d9a441';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.arc(sx, sy, 12, 0, Math.PI * 2);
+        ctx.stroke();
+      }
       ctx.fillStyle = DUNGEON_COLOR[d.dungeon_type] ?? '#888';
       ctx.beginPath();
-      ctx.arc(sx, sy, sel ? 11 : 8, 0, Math.PI * 2);
+      ctx.arc(sx, sy, 8, 0, Math.PI * 2);
       ctx.fill();
+      ctx.strokeStyle = '#0d0f12';
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
       ctx.fillStyle = '#0d0f12';
-      ctx.fillText(`${d.level}`, sx - 3, sy + 3);
+      ctx.font = 'bold 10px monospace';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(String(d.level), sx, sy);
     }
+    // Städte: kleine Burg (Körper + Zinnen + Tor); eigene gold, fremde blau.
+    ctx.textAlign = 'start';
+    ctx.textBaseline = 'alphabetic';
     for (const c of map.cities) {
       const { sx, sy } = screen(c.x, c.y);
-      const own = c.account_id === game.account?.id;
-      ctx.fillStyle = own ? '#d9a441' : '#5a7a9a';
-      ctx.fillRect(sx - 7, sy - 7, 14, 14);
-      ctx.fillStyle = '#c9d1d9';
-      ctx.fillText(c.username, sx + 10, sy + 3);
+      ctx.fillStyle = c.account_id === game.account?.id ? '#d9a441' : '#5a7a9a';
+      ctx.fillRect(sx - 7, sy - 3, 14, 9); // Körper
+      ctx.fillRect(sx - 7, sy - 7, 3, 4); // Zinnen
+      ctx.fillRect(sx - 1.5, sy - 7, 3, 4);
+      ctx.fillRect(sx + 4, sy - 7, 3, 4);
+      ctx.fillStyle = '#0d0f12';
+      ctx.fillRect(sx - 2, sy, 4, 6); // Tor
+      ctx.fillStyle = '#aab2bd';
+      ctx.font = '10px sans-serif';
+      ctx.fillText(c.username, sx + 11, sy + 4);
     }
   }
 

@@ -1,6 +1,7 @@
 <script lang="ts">
   import { VIRTUES, VIRTUE_NAMES, MAX_PALACE_LEVEL } from '@adelia/shared/constants/game';
   import { game } from './store.svelte';
+  import Icon from './Icon.svelte';
 
   let virtue = $state<string>(VIRTUES[0]);
 
@@ -26,6 +27,7 @@
 {#if game.endgame?.faith}
   {#each VIRTUES as v (v)}
     <div class="row">
+      <span class="vic"><Icon name="shrine" size={13} /></span>
       <span class="virtue">{VIRTUE_NAMES[v]}</span>
       <span class="faith mono">Faith {game.endgame.faith[v] ?? 0}</span>
     </div>
@@ -51,6 +53,7 @@
 <h3>Schreine</h3>
 {#each game.endgame?.shrines ?? [] as s (s.id)}
   <div class="row">
+    <span class="vic" class:on={s.active}><Icon name="shrine" size={13} /></span>
     <span class="virtue">{vname(s.virtue)}</span>
     <span class="loc mono">{s.x}:{s.y}</span>
     <span class="active" class:on={s.active}>{s.active ? 'aktiv' : 'inaktiv'}</span>
@@ -102,6 +105,13 @@
     align-items: center;
     padding: 3px 0;
     font-size: var(--fs-sm);
+  }
+  .vic {
+    line-height: 0;
+    color: var(--accent-primary);
+  }
+  .vic.on {
+    color: var(--res-gold);
   }
   .virtue {
     color: var(--text-primary);

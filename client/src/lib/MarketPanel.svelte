@@ -1,5 +1,6 @@
 <script lang="ts">
   import { game } from './store.svelte';
+  import Icon from './Icon.svelte';
 
   const RESOURCES = ['timber', 'stone', 'iron', 'grain'];
   let resource = $state('timber');
@@ -28,9 +29,9 @@
 {:else}
   {#each game.market as l (l.id)}
     <div class="listing">
-      <span class="give mono">{l.give_qty.toLocaleString('de-DE')} {l.give_resource}</span>
+      <span class="give"><Icon name={l.give_resource} size={13} /><span class="mono">{l.give_qty.toLocaleString('de-DE')}</span></span>
       <span class="arrow">→</span>
-      <span class="price mono">{l.want_gold.toLocaleString('de-DE')} Gold</span>
+      <span class="price"><Icon name="gold" size={13} /><span class="mono">{l.want_gold.toLocaleString('de-DE')}</span></span>
       <span class="seller">{l.username}</span>
       {#if l.seller_account === game.account?.id}
         <button class="btn" onclick={() => void game.cancelListing(l.id)}>Zurückziehen</button>
@@ -90,12 +91,18 @@
   }
   .give {
     color: var(--text-primary);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
   }
   .arrow {
     color: var(--text-muted);
   }
   .price {
-    color: var(--res-grain);
+    color: var(--res-gold);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
   }
   .seller {
     color: var(--text-secondary);
