@@ -14,6 +14,7 @@ import { loadCitySnapshot } from './game/snapshot';
 import { CityHub, decodeMessage } from './ws/hub';
 import { registerCityRoutes } from './routes/cities';
 import { registerAuthRoutes } from './routes/auth';
+import { registerMarketRoutes } from './routes/market';
 import { getAccountId } from './auth/session';
 
 const db = createDb();
@@ -28,6 +29,7 @@ await app.register(rateLimit, { global: false });
 
 registerAuthRoutes(app, db);
 registerCityRoutes(app, { db, gameData, hub });
+registerMarketRoutes(app, db);
 
 const clientMsg = z.discriminatedUnion('t', [
   z.object({ t: z.literal('subscribe'), channel: z.enum(['city', 'map']), id: z.number().int().optional() }),

@@ -9,6 +9,7 @@ import type { Database } from '../db/types';
 import { resolveReturn } from './movement';
 import { resolveRaidArrival } from './raid';
 import { resolvePvpArrival } from './pvp';
+import { resolveTransfer } from './market';
 
 const PVP_KINDS = new Set(['scout', 'plunder', 'assault', 'siege']);
 
@@ -33,6 +34,8 @@ export async function resolveDueMilitary(
       await resolveRaidArrival(db, gameData, action);
     } else if (PVP_KINDS.has(action.kind)) {
       for (const id of await resolvePvpArrival(db, gameData, action)) changed.add(id);
+    } else if (action.kind === 'transfer') {
+      for (const id of await resolveTransfer(db, action)) changed.add(id);
     } else {
       await db.deleteFrom('military_actions').where('id', '=', action.id).execute();
     }

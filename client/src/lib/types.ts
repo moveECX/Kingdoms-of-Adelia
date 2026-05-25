@@ -77,4 +77,14 @@ export interface CombatReport {
   detail: Record<string, unknown>;
 }
 
+export interface MarketListing {
+  id: number;
+  give_resource: string;
+  give_qty: number;
+  want_gold: number;
+  seller_account: number;
+  username: string;
+  created_at: string;
+}
+
 export type ResourceKey = 'timber' | 'stone' | 'iron' | 'grain';

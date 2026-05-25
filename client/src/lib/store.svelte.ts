@@ -1,9 +1,9 @@
 import type { BuildingDef } from '@adelia/shared/schemas/data';
-import type { CitySnapshot, MapData, MapCity, Account, Me, ChatMessage, CombatReport } from './types';
-import { getJson, postJson } from './api';
+import type { CitySnapshot, MapData, MapCity, Account, Me, ChatMessage, CombatReport, MarketListing } from './types';
+import { getJson, postJson, deleteJson } from './api';
 import { connect, type GameSocket } from './ws';
 
-export type View = 'city' | 'map' | 'military' | 'chat' | 'reports';
+export type View = 'city' | 'map' | 'military' | 'chat' | 'reports' | 'market';
 export type AttackKind = 'scout' | 'plunder' | 'assault' | 'siege';
 export interface SelectedDungeon {
   x: number;
@@ -28,6 +28,7 @@ class GameStore {
   selectedDungeon = $state<SelectedDungeon | null>(null);
   selectedTarget = $state<MapCity | null>(null);
   reports = $state<CombatReport[]>([]);
+  market = $state<MarketListing[]>([]);
   error = $state<string | null>(null);
 
   private socket: GameSocket | null = null;
@@ -128,6 +129,7 @@ class GameStore {
     this.view = view;
     if (view === 'map') await this.loadMap();
     else if (view === 'reports') await this.loadReports();
+    else if (view === 'market') await this.loadMarket();
   }
 
   async loadMap(): Promise<void> {
@@ -175,6 +177,48 @@ class GameStore {
     try {
       const data = await getJson<{ reports: CombatReport[] }>('/reports');
       this.reports = data.reports;
+    } catch (err) {
+      this.fail(err);
+    }
+  }
+
+  async loadMarket(): Promise<void> {
+    try {
+      this.market = (await getJson<{ listings: MarketListing[] }>('/market')).listings;
+    } catch (err) {
+      this.fail(err);
+    }
+  }
+
+  async createListing(resource: string, qty: number, wantGold: number): Promise<void> {
+    if (this.cityId === null) return;
+    try {
+      await postJson('/market/list', { cityId: this.cityId, resource, qty, wantGold });
+      this.error = null;
+      await this.refresh();
+      await this.loadMarket();
+    } catch (err) {
+      this.fail(err);
+    }
+  }
+
+  async acceptListing(id: number): Promise<void> {
+    if (this.cityId === null) return;
+    try {
+      await postJson(`/market/${id}/accept`, { buyerCityId: this.cityId });
+      this.error = null;
+      await this.refresh();
+      await this.loadMarket();
+    } catch (err) {
+      this.fail(err);
+    }
+  }
+
+  async cancelListing(id: number): Promise<void> {
+    try {
+      await deleteJson(`/market/${id}`);
+      await this.refresh();
+      await this.loadMarket();
     } catch (err) {
       this.fail(err);
     }

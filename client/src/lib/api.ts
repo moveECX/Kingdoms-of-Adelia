@@ -22,3 +22,7 @@ export async function postJson<T>(path: string, body: unknown): Promise<T> {
   });
   return parse<T>(res, path);
 }
+
+export async function deleteJson<T>(path: string): Promise<T> {
+  return parse<T>(await fetch(BASE + path, { method: 'DELETE', credentials: 'include' }), path);
+}

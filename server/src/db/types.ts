@@ -132,6 +132,16 @@ export interface DungeonsTable {
   completion: WithDefault<number>;
 }
 
+export interface MarketListingsTable {
+  id: Generated<number>;
+  seller_city: number;
+  seller_account: number;
+  give_resource: string;
+  give_qty: number;
+  want_gold: number;
+  created_at: Timestamptz;
+}
+
 export interface Database {
   accounts: AccountsTable;
   cities: CitiesTable;
@@ -143,4 +153,5 @@ export interface Database {
   military_actions: MilitaryActionsTable;
   combat_reports: CombatReportsTable;
   dungeons: DungeonsTable;
+  market_listings: MarketListingsTable;
 }
